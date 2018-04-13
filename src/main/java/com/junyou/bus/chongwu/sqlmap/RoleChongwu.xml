@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleChongwu" class="com.junyou.bus.chongwu.entity.RoleChongwu" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="configId" column="config_id"/>
+		<result property="level" column="level"/>
+		<result property="levelExp" column="level_exp"/>
+		<result property="jie" column="jie"/>
+		<result property="ceng" column="ceng"/>
+		<result property="jieExp" column="jie_exp"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleChongwu">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="levelExp"> level_exp = #levelExp# </isNotNull>
+			<isNotNull prepend="and" property="jie"> jie = #jie# </isNotNull>
+			<isNotNull prepend="and" property="ceng"> ceng = #ceng# </isNotNull>
+			<isNotNull prepend="and" property="jieExp"> jie_exp = #jieExp# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleChongwu">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleChongwu" parameterClass="com.junyou.bus.chongwu.entity.RoleChongwu">
+		insert into role_chongwu(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="levelExp"> level_exp </isNotNull> 
+		<isNotNull prepend="," property="jie"> jie </isNotNull> 
+		<isNotNull prepend="," property="ceng"> ceng </isNotNull> 
+		<isNotNull prepend="," property="jieExp"> jie_exp </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="levelExp"> #levelExp# </isNotNull>
+		<isNotNull prepend="," property="jie"> #jie# </isNotNull>
+		<isNotNull prepend="," property="ceng"> #ceng# </isNotNull>
+		<isNotNull prepend="," property="jieExp"> #jieExp# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleChongwu">
+		delete from role_chongwu
+		<include refid="queryByKeyRoleChongwu"/>
+	</delete>
+	
+	<update id="updateRoleChongwu" parameterClass="com.junyou.bus.chongwu.entity.RoleChongwu">
+		update role_chongwu 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="levelExp"> level_exp = #levelExp# </isNotNull>
+			<isNotNull prepend="," property="jie"> jie = #jie# </isNotNull>
+			<isNotNull prepend="," property="ceng"> ceng = #ceng# </isNotNull>
+			<isNotNull prepend="," property="jieExp"> jie_exp = #jieExp# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleChongwu"/>
+	</update>
+	
+	<select id="selectSingleRoleChongwu" resultMap="roleChongwu">
+		select 
+		id
+		,user_role_id
+		,config_id
+		,level
+		,level_exp
+		,jie
+		,ceng
+		,jie_exp
+		,status
+		,update_time
+		from role_chongwu 
+		<include refid="queryByKeyRoleChongwu"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleChongwu" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_chongwu
+		<include refid="queryConditionRoleChongwu"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleChongwu" parameterClass="java.util.Map" resultMap="roleChongwu">
+		select 
+		id
+		,user_role_id
+		,config_id
+		,level
+		,level_exp
+		,jie
+		,ceng
+		,jie_exp
+		,status
+		,update_time
+		from role_chongwu
+		<include refid="queryConditionRoleChongwu"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleChongwu" parameterClass="java.util.Map" resultMap="roleChongwu">
+		select 
+		id
+		,user_role_id
+		,config_id
+		,level
+		,level_exp
+		,jie
+		,ceng
+		,jie_exp
+		,status
+		,update_time
+		from role_chongwu
+		<include refid="queryConditionRoleChongwu"/>
+	</select>
+	
+	<select id="selectAllRoleChongwu" resultMap="roleChongwu">
+		select 
+		id
+		,user_role_id
+		,config_id
+		,level
+		,level_exp
+		,jie
+		,ceng
+		,jie_exp
+		,status
+		,update_time
+		from role_chongwu
+	</select>
+	
+	<select id="selectSingleByParamsRoleChongwu" resultMap="roleChongwu">
+		select 
+		id
+		,user_role_id
+		,config_id
+		,level
+		,level_exp
+		,jie
+		,ceng
+		,jie_exp
+		,status
+		,update_time
+		from role_chongwu 
+		<include refid="queryConditionRoleChongwu"/>
+	</select>	
+	
+	
+</sqlMap>
+	

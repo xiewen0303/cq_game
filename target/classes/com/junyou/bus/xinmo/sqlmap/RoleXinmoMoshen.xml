@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXinmoMoshen" class="com.junyou.bus.xinmo.entity.RoleXinmoMoshen" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xmMoshenType" column="xm_moshen_type"/>
+		<result property="xmMoshenRank" column="xm_moshen_rank"/>
+		<result property="blessValue" column="bless_value"/>
+		<result property="blessClearTime" column="bless_clear_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXinmoMoshen">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xmMoshenType"> xm_moshen_type = #xmMoshenType# </isNotNull>
+			<isNotNull prepend="and" property="xmMoshenRank"> xm_moshen_rank = #xmMoshenRank# </isNotNull>
+			<isNotNull prepend="and" property="blessValue"> bless_value = #blessValue# </isNotNull>
+			<isNotNull prepend="and" property="blessClearTime"> bless_clear_time = #blessClearTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXinmoMoshen">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleXinmoMoshen" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoMoshen">
+		insert into role_xinmo_moshen(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xmMoshenType"> xm_moshen_type </isNotNull> 
+		<isNotNull prepend="," property="xmMoshenRank"> xm_moshen_rank </isNotNull> 
+		<isNotNull prepend="," property="blessValue"> bless_value </isNotNull> 
+		<isNotNull prepend="," property="blessClearTime"> bless_clear_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xmMoshenType"> #xmMoshenType# </isNotNull>
+		<isNotNull prepend="," property="xmMoshenRank"> #xmMoshenRank# </isNotNull>
+		<isNotNull prepend="," property="blessValue"> #blessValue# </isNotNull>
+		<isNotNull prepend="," property="blessClearTime"> #blessClearTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXinmoMoshen">
+		delete from role_xinmo_moshen
+		<include refid="queryByKeyRoleXinmoMoshen"/>
+	</delete>
+	
+	<update id="updateRoleXinmoMoshen" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoMoshen">
+		update role_xinmo_moshen 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xmMoshenType"> xm_moshen_type = #xmMoshenType# </isNotNull>
+			<isNotNull prepend="," property="xmMoshenRank"> xm_moshen_rank = #xmMoshenRank# </isNotNull>
+			<isNotNull prepend="," property="blessValue"> bless_value = #blessValue# </isNotNull>
+			<isNotNull prepend="," property="blessClearTime"> bless_clear_time = #blessClearTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXinmoMoshen"/>
+	</update>
+	
+	<select id="selectSingleRoleXinmoMoshen" resultMap="roleXinmoMoshen">
+		select 
+		id
+		,user_role_id
+		,xm_moshen_type
+		,xm_moshen_rank
+		,bless_value
+		,bless_clear_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen 
+		<include refid="queryByKeyRoleXinmoMoshen"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXinmoMoshen" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xinmo_moshen
+		<include refid="queryConditionRoleXinmoMoshen"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXinmoMoshen" parameterClass="java.util.Map" resultMap="roleXinmoMoshen">
+		select 
+		id
+		,user_role_id
+		,xm_moshen_type
+		,xm_moshen_rank
+		,bless_value
+		,bless_clear_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen
+		<include refid="queryConditionRoleXinmoMoshen"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXinmoMoshen" parameterClass="java.util.Map" resultMap="roleXinmoMoshen">
+		select 
+		id
+		,user_role_id
+		,xm_moshen_type
+		,xm_moshen_rank
+		,bless_value
+		,bless_clear_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen
+		<include refid="queryConditionRoleXinmoMoshen"/>
+	</select>
+	
+	<select id="selectAllRoleXinmoMoshen" resultMap="roleXinmoMoshen">
+		select 
+		id
+		,user_role_id
+		,xm_moshen_type
+		,xm_moshen_rank
+		,bless_value
+		,bless_clear_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen
+	</select>
+	
+	<select id="selectSingleByParamsRoleXinmoMoshen" resultMap="roleXinmoMoshen">
+		select 
+		id
+		,user_role_id
+		,xm_moshen_type
+		,xm_moshen_rank
+		,bless_value
+		,bless_clear_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen 
+		<include refid="queryConditionRoleXinmoMoshen"/>
+	</select>	
+	
+	
+</sqlMap>
+	

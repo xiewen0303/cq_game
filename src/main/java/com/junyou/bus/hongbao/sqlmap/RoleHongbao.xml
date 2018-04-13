@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleHongbao" class="com.junyou.bus.hongbao.entity.RoleHongbao" >
+		<result property="id" column="id"/>
+		<result property="sendRoleId" column="send_role_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="state" column="state"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleHongbao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="sendRoleId"> send_role_id = #sendRoleId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleHongbao">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleHongbao" parameterClass="com.junyou.bus.hongbao.entity.RoleHongbao">
+		insert into role_hongbao(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="sendRoleId"> send_role_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="sendRoleId"> #sendRoleId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleHongbao">
+		delete from role_hongbao
+		<include refid="queryByKeyRoleHongbao"/>
+	</delete>
+	
+	<update id="updateRoleHongbao" parameterClass="com.junyou.bus.hongbao.entity.RoleHongbao">
+		update role_hongbao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="sendRoleId"> send_role_id = #sendRoleId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleHongbao"/>
+	</update>
+	
+	<select id="selectSingleRoleHongbao" resultMap="roleHongbao">
+		select 
+		id
+		,send_role_id
+		,user_role_id
+		,state
+		,create_time
+		from role_hongbao 
+		<include refid="queryByKeyRoleHongbao"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleHongbao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_hongbao
+		<include refid="queryConditionRoleHongbao"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleHongbao" parameterClass="java.util.Map" resultMap="roleHongbao">
+		select 
+		id
+		,send_role_id
+		,user_role_id
+		,state
+		,create_time
+		from role_hongbao
+		<include refid="queryConditionRoleHongbao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleHongbao" parameterClass="java.util.Map" resultMap="roleHongbao">
+		select 
+		id
+		,send_role_id
+		,user_role_id
+		,state
+		,create_time
+		from role_hongbao
+		<include refid="queryConditionRoleHongbao"/>
+	</select>
+	
+	<select id="selectAllRoleHongbao" resultMap="roleHongbao">
+		select 
+		id
+		,send_role_id
+		,user_role_id
+		,state
+		,create_time
+		from role_hongbao
+	</select>
+	
+	<select id="selectSingleByParamsRoleHongbao" resultMap="roleHongbao">
+		select 
+		id
+		,send_role_id
+		,user_role_id
+		,state
+		,create_time
+		from role_hongbao 
+		<include refid="queryConditionRoleHongbao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

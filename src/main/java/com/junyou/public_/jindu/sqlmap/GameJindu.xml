@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="gameJindu" class="com.junyou.public_.jindu.entity.GameJindu" >
+		<result property="time" column="time"/>
+		<result property="gameRole" column="game_role"/>
+		<result property="createRole" column="create_role"/>
+		<result property="firstTask" column="first_task"/>
+		<result property="gameRoleOther" column="game_role_other"/>
+		<result property="createRoleOther" column="create_role_other"/>
+		<result property="firstTaskOther" column="first_task_other"/>
+	</resultMap>
+	
+	<sql id="queryConditionGameJindu">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="time"> time = #time# </isNotNull>
+			<isNotNull prepend="and" property="gameRole"> game_role = #gameRole# </isNotNull>
+			<isNotNull prepend="and" property="createRole"> create_role = #createRole# </isNotNull>
+			<isNotNull prepend="and" property="firstTask"> first_task = #firstTask# </isNotNull>
+			<isNotNull prepend="and" property="gameRoleOther"> game_role_other = #gameRoleOther# </isNotNull>
+			<isNotNull prepend="and" property="createRoleOther"> create_role_other = #createRoleOther# </isNotNull>
+			<isNotNull prepend="and" property="firstTaskOther"> first_task_other = #firstTaskOther# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyGameJindu">
+		where time = #time#
+	</sql>
+	
+	<insert id="insertGameJindu" parameterClass="com.junyou.public_.jindu.entity.GameJindu">
+		insert into game_jindu(
+		<isNotNull prepend="" property="time"> time </isNotNull> 
+		<isNotNull prepend="," property="gameRole"> game_role </isNotNull> 
+		<isNotNull prepend="," property="createRole"> create_role </isNotNull> 
+		<isNotNull prepend="," property="firstTask"> first_task </isNotNull> 
+		<isNotNull prepend="," property="gameRoleOther"> game_role_other </isNotNull>
+		<isNotNull prepend="," property="createRoleOther"> create_role_other </isNotNull>
+		<isNotNull prepend="," property="firstTaskOther"> first_task_other </isNotNull>
+		)
+		values(
+		<isNotNull prepend="" property="time"> #time# </isNotNull>
+		<isNotNull prepend="," property="gameRole"> #gameRole# </isNotNull>
+		<isNotNull prepend="," property="createRole"> #createRole# </isNotNull>
+		<isNotNull prepend="," property="firstTask"> #firstTask# </isNotNull>
+		<isNotNull prepend="," property="gameRoleOther"> #gameRoleOther# </isNotNull>
+		<isNotNull prepend="," property="createRoleOther"> #createRoleOther# </isNotNull>
+		<isNotNull prepend="," property="firstTaskOther"> #firstTaskOther# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteGameJindu">
+		delete from game_jindu
+		<include refid="queryByKeyGameJindu"/>
+	</delete>
+	
+	<update id="updateGameJindu" parameterClass="com.junyou.public_.jindu.entity.GameJindu">
+		update game_jindu 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="time"> time = #time# </isNotNull>
+			<isNotNull prepend="," property="gameRole"> game_role = #gameRole# </isNotNull>
+			<isNotNull prepend="," property="createRole"> create_role = #createRole# </isNotNull>
+			<isNotNull prepend="," property="firstTask"> first_task = #firstTask# </isNotNull>
+			<isNotNull prepend="," property="gameRoleOther"> game_role_other = #gameRoleOther# </isNotNull>
+			<isNotNull prepend="," property="createRoleOther"> create_role_other = #createRoleOther# </isNotNull>
+			<isNotNull prepend="," property="firstTaskOther"> first_task_other = #firstTaskOther# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyGameJindu"/>
+	</update>
+	
+	<select id="selectSingleGameJindu" resultMap="gameJindu">
+		select 
+		time
+		,game_role
+		,create_role
+		,first_task
+		,game_role_other
+		,create_role_other
+		,first_task_other
+		from game_jindu 
+		<include refid="queryByKeyGameJindu"/>
+	</select>
+	
+	<select id="selectRecordsCountGameJindu" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from game_jindu
+		<include refid="queryConditionGameJindu"/>
+	</select>
+	
+	<select id="selectMultiPagingGameJindu" parameterClass="java.util.Map" resultMap="gameJindu">
+		select 
+		time
+		,game_role
+		,create_role
+		,first_task
+		,game_role_other
+		,create_role_other
+		,first_task_other
+		from game_jindu
+		<include refid="queryConditionGameJindu"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiGameJindu" parameterClass="java.util.Map" resultMap="gameJindu">
+		select 
+		time
+		,game_role
+		,create_role
+		,first_task
+		,game_role_other
+		,create_role_other
+		,first_task_other
+		from game_jindu
+		<include refid="queryConditionGameJindu"/>
+		order by time desc
+		limit 1
+	</select>
+	
+	<select id="selectAllGameJindu" resultMap="gameJindu">
+		select 
+		time
+		,game_role
+		,create_role
+		,first_task
+		,game_role_other
+		,create_role_other
+		,first_task_other
+		from game_jindu
+	</select>
+	
+	<select id="selectSingleByParamsGameJindu" resultMap="gameJindu">
+		select 
+		time
+		,game_role
+		,create_role
+		,first_task
+		,game_role_other
+		,create_role_other
+		,first_task_other
+		from game_jindu 
+		<include refid="queryConditionGameJindu"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="territory" class="com.junyou.bus.territory.entity.Territory" >
+		<result property="mapId" column="map_id"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionTerritory">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="mapId"> map_id = #mapId# </isNotNull>
+			<isNotNull prepend="and" property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTerritory">
+		where map_id = #mapId#
+	</sql>
+	
+	<insert id="insertTerritory" parameterClass="com.junyou.bus.territory.entity.Territory">
+		insert into territory(
+		<isNotNull prepend="" property="mapId"> map_id </isNotNull> 
+		<isNotNull prepend="," property="guildId"> guild_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="mapId"> #mapId# </isNotNull>
+		<isNotNull prepend="," property="guildId"> #guildId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTerritory">
+		delete from territory
+		<include refid="queryByKeyTerritory"/>
+	</delete>
+	
+	<update id="updateTerritory" parameterClass="com.junyou.bus.territory.entity.Territory">
+		update territory 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="mapId"> map_id = #mapId# </isNotNull>
+			<isNotNull prepend="," property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>			
+		</dynamic>
+		<include refid="queryByKeyTerritory"/>
+	</update>
+	
+	<select id="selectSingleTerritory" resultMap="territory">
+		select 
+		map_id
+		,guild_id
+		,update_time
+		from territory 
+		<include refid="queryByKeyTerritory"/>
+	</select>
+	
+	<select id="selectRecordsCountTerritory" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from territory
+		<include refid="queryConditionTerritory"/>
+	</select>
+	
+	<select id="selectMultiPagingTerritory" parameterClass="java.util.Map" resultMap="territory">
+		select 
+		map_id
+		,guild_id
+		,update_time
+		from territory
+		<include refid="queryConditionTerritory"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTerritory" parameterClass="java.util.Map" resultMap="territory">
+		select 
+		map_id
+		,guild_id
+		,update_time
+		from territory
+		<include refid="queryConditionTerritory"/>
+	</select>
+	
+	<select id="selectAllTerritory" resultMap="territory">
+		select 
+		map_id
+		,guild_id
+		,update_time
+		from territory
+	</select>
+	
+	<select id="selectSingleByParamsTerritory" resultMap="territory">
+		select 
+		map_id
+		,guild_id
+		,update_time
+		from territory 
+		<include refid="queryConditionTerritory"/>
+	</select>	
+	
+	
+</sqlMap>
+	

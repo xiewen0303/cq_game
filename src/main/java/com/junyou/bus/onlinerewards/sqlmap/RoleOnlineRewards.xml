@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleOnlineRewards" class="com.junyou.bus.onlinerewards.entity.RoleOnlineRewards" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="startTime" column="start_time"/>
+		<result property="todayOnlineTime" column="today_online_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="subId" column="sub_id"/>
+		<result property="state" column="state"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleOnlineRewards">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="startTime"> start_time = #startTime# </isNotNull>
+			<isNotNull prepend="and" property="todayOnlineTime"> today_online_time = #todayOnlineTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleOnlineRewards">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleOnlineRewards" parameterClass="com.junyou.bus.onlinerewards.entity.RoleOnlineRewards">
+		insert into role_online_rewards(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="startTime"> start_time </isNotNull> 
+		<isNotNull prepend="," property="todayOnlineTime"> today_online_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="startTime"> #startTime# </isNotNull>
+		<isNotNull prepend="," property="todayOnlineTime"> #todayOnlineTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleOnlineRewards">
+		delete from role_online_rewards
+		<include refid="queryByKeyRoleOnlineRewards"/>
+	</delete>
+	
+	<update id="updateRoleOnlineRewards" parameterClass="com.junyou.bus.onlinerewards.entity.RoleOnlineRewards">
+		update role_online_rewards 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="startTime"> start_time = #startTime# </isNotNull>
+			<isNotNull prepend="," property="todayOnlineTime"> today_online_time = #todayOnlineTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleOnlineRewards"/>
+	</update>
+	
+	<select id="selectSingleRoleOnlineRewards" resultMap="roleOnlineRewards">
+		select 
+		id
+		,user_role_id
+		,start_time
+		,today_online_time
+		,update_time
+		,sub_id
+		,state
+		,create_time
+		from role_online_rewards 
+		<include refid="queryByKeyRoleOnlineRewards"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleOnlineRewards" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_online_rewards
+		<include refid="queryConditionRoleOnlineRewards"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleOnlineRewards" parameterClass="java.util.Map" resultMap="roleOnlineRewards">
+		select 
+		id
+		,user_role_id
+		,start_time
+		,today_online_time
+		,update_time
+		,sub_id
+		,state
+		,create_time
+		from role_online_rewards
+		<include refid="queryConditionRoleOnlineRewards"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleOnlineRewards" parameterClass="java.util.Map" resultMap="roleOnlineRewards">
+		select 
+		id
+		,user_role_id
+		,start_time
+		,today_online_time
+		,update_time
+		,sub_id
+		,state
+		,create_time
+		from role_online_rewards
+		<include refid="queryConditionRoleOnlineRewards"/>
+	</select>
+	
+	<select id="selectAllRoleOnlineRewards" resultMap="roleOnlineRewards">
+		select 
+		id
+		,user_role_id
+		,start_time
+		,today_online_time
+		,update_time
+		,sub_id
+		,state
+		,create_time
+		from role_online_rewards
+	</select>
+	
+	<select id="selectSingleByParamsRoleOnlineRewards" resultMap="roleOnlineRewards">
+		select 
+		id
+		,user_role_id
+		,start_time
+		,today_online_time
+		,update_time
+		,sub_id
+		,state
+		,create_time
+		from role_online_rewards 
+		<include refid="queryConditionRoleOnlineRewards"/>
+	</select>	
+	
+	
+</sqlMap>
+	

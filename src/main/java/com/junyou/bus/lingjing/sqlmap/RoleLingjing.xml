@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleLingjing" class="com.junyou.bus.lingjing.entity.RoleLingjing" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="rank" column="rank"/>
+		<result property="state" column="state"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleLingjing">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleLingjing">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleLingjing" parameterClass="com.junyou.bus.lingjing.entity.RoleLingjing">
+		insert into role_lingjing(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="rank"> rank </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="rank"> #rank# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleLingjing">
+		delete from role_lingjing
+		<include refid="queryByKeyRoleLingjing"/>
+	</delete>
+	
+	<update id="updateRoleLingjing" parameterClass="com.junyou.bus.lingjing.entity.RoleLingjing">
+		update role_lingjing 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleLingjing"/>
+	</update>
+	
+	<select id="selectSingleRoleLingjing" resultMap="roleLingjing">
+		select 
+		user_role_id
+		,rank
+		,state
+		from role_lingjing 
+		<include refid="queryByKeyRoleLingjing"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleLingjing" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_lingjing
+		<include refid="queryConditionRoleLingjing"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleLingjing" parameterClass="java.util.Map" resultMap="roleLingjing">
+		select 
+		user_role_id
+		,rank
+		,state
+		from role_lingjing
+		<include refid="queryConditionRoleLingjing"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleLingjing" parameterClass="java.util.Map" resultMap="roleLingjing">
+		select 
+		user_role_id
+		,rank
+		,state
+		from role_lingjing
+		<include refid="queryConditionRoleLingjing"/>
+	</select>
+	
+	<select id="selectAllRoleLingjing" resultMap="roleLingjing">
+		select 
+		user_role_id
+		,rank
+		,state
+		from role_lingjing
+	</select>
+	
+	<select id="selectSingleByParamsRoleLingjing" resultMap="roleLingjing">
+		select 
+		user_role_id
+		,rank
+		,state
+		from role_lingjing 
+		<include refid="queryConditionRoleLingjing"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="sevenLogin" class="com.junyou.bus.sevenlogin.entity.SevenLogin" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="loginDays" column="login_days"/>
+		<result property="rewardDays" column="reward_days"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionSevenLogin">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="loginDays"> login_days = #loginDays# </isNotNull>
+			<isNotNull prepend="and" property="rewardDays"> reward_days = #rewardDays# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeySevenLogin">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertSevenLogin" parameterClass="com.junyou.bus.sevenlogin.entity.SevenLogin">
+		insert into seven_login(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="loginDays"> login_days </isNotNull> 
+		<isNotNull prepend="," property="rewardDays"> reward_days </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="loginDays"> #loginDays# </isNotNull>
+		<isNotNull prepend="," property="rewardDays"> #rewardDays# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteSevenLogin">
+		delete from seven_login
+		<include refid="queryByKeySevenLogin"/>
+	</delete>
+	
+	<update id="updateSevenLogin" parameterClass="com.junyou.bus.sevenlogin.entity.SevenLogin">
+		update seven_login 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="loginDays"> login_days = #loginDays# </isNotNull>
+			<isNotNull prepend="," property="rewardDays"> reward_days = #rewardDays# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeySevenLogin"/>
+	</update>
+	
+	<select id="selectSingleSevenLogin" resultMap="sevenLogin">
+		select 
+		user_role_id
+		,login_days
+		,reward_days
+		,update_time
+		from seven_login 
+		<include refid="queryByKeySevenLogin"/>
+	</select>
+	
+	<select id="selectRecordsCountSevenLogin" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from seven_login
+		<include refid="queryConditionSevenLogin"/>
+	</select>
+	
+	<select id="selectMultiPagingSevenLogin" parameterClass="java.util.Map" resultMap="sevenLogin">
+		select 
+		user_role_id
+		,login_days
+		,reward_days
+		,update_time
+		from seven_login
+		<include refid="queryConditionSevenLogin"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiSevenLogin" parameterClass="java.util.Map" resultMap="sevenLogin">
+		select 
+		user_role_id
+		,login_days
+		,reward_days
+		,update_time
+		from seven_login
+		<include refid="queryConditionSevenLogin"/>
+	</select>
+	
+	<select id="selectAllSevenLogin" resultMap="sevenLogin">
+		select 
+		user_role_id
+		,login_days
+		,reward_days
+		,update_time
+		from seven_login
+	</select>
+	
+	<select id="selectSingleByParamsSevenLogin" resultMap="sevenLogin">
+		select 
+		user_role_id
+		,login_days
+		,reward_days
+		,update_time
+		from seven_login 
+		<include refid="queryConditionSevenLogin"/>
+	</select>	
+	
+	
+</sqlMap>
+	

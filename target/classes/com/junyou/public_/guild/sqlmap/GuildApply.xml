@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="guildApply" class="com.junyou.public_.guild.entity.GuildApply" >
+		<result property="id" column="id"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="applyTime" column="apply_time"/>
+	</resultMap>
+	<resultMap id="guildApplyVo" class="com.junyou.public_.guild.entity.GuildApply" >
+		<result property="id" column="id"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="applyTime" column="apply_time"/>
+		<result property="zplus" column="zplus"/>
+		<result property="configId" column="config_id"/>
+		<result property="level" column="level"/>
+		<result property="name" column="name"/>
+		<result property="vip" column="vip"/>
+	</resultMap>
+	
+	<sql id="queryConditionGuildApply">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="applyTime"> apply_time = #applyTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyGuildApply">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertGuildApply" parameterClass="com.junyou.public_.guild.entity.GuildApply">
+		insert into guild_apply(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="guildId"> guild_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="applyTime"> apply_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="guildId"> #guildId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="applyTime"> #applyTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteGuildApply">
+		delete from guild_apply
+		<include refid="queryByKeyGuildApply"/>
+	</delete>
+	
+	<delete id="deleteAllGuildApplysByRole" parameterClass="java.util.Map" >
+		delete from guild_apply
+		<include refid="queryConditionGuildApply"/>
+	</delete>
+	<delete id="deleteGuildApplys" parameterClass="java.util.Map" >
+		delete from guild_apply
+		where user_role_id in ($userRoleIds$) 
+		<isNotNull prepend="and" property="guildId"> guild_id = #guildId#</isNotNull>
+	</delete>
+	
+	<update id="updateGuildApply" parameterClass="com.junyou.public_.guild.entity.GuildApply">
+		update guild_apply 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="applyTime"> apply_time = #applyTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyGuildApply"/>
+	</update>
+	
+	<select id="selectSingleGuildApply" resultMap="guildApply">
+		select 
+		id
+		,guild_id
+		,user_role_id
+		,apply_time
+		from guild_apply 
+		<include refid="queryByKeyGuildApply"/>
+	</select>
+	
+	<select id="selectRecordsCountGuildApply" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from guild_apply
+		<include refid="queryConditionGuildApply"/>
+	</select>
+	
+	<select id="selectMultiPagingGuildApply" parameterClass="java.util.Map" resultMap="guildApply">
+		select 
+		id
+		,guild_id
+		,user_role_id
+		,apply_time
+		from guild_apply
+		<include refid="queryConditionGuildApply"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiGuildApply" parameterClass="java.util.Map" resultMap="guildApply">
+		select 
+		id
+		,guild_id
+		,user_role_id
+		,apply_time
+		from guild_apply
+		<include refid="queryConditionGuildApply"/>
+	</select>
+	
+	<select id="selectAllGuildApply" resultMap="guildApply">
+		select 
+		id
+		,guild_id
+		,user_role_id
+		,apply_time
+		from guild_apply
+	</select>
+	
+	<select id="selectSingleByParamsGuildApply" resultMap="guildApply">
+		select 
+		id
+		,guild_id
+		,user_role_id
+		,apply_time
+		from guild_apply 
+		<include refid="queryConditionGuildApply"/>
+	</select>	
+	
+	<select id="selectMultiGuildMemberVo" parameterClass="java.util.Map"  resultMap="guildApplyVo">
+		select 
+		g.id
+		,g.guild_id
+		,g.user_role_id
+		,g.apply_time
+		,u.name
+		,u.level
+		,u.offline_time
+		,u.config_id
+		,b.cur_fighter zplus
+		,v.vip_level vip
+		from guild_apply g
+		left join user_role u on g.user_role_id = u.id
+		left join role_business_info b on b.user_role_id = u.id
+		left join role_vip_info v on v.user_role_id = u.id
+		where g.guild_id = #guildId#
+	</select>
+	
+	
+</sqlMap>
+	

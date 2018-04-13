@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<easyexecutorconfig>
+	
+	<worker-scan>com.junyou.login</worker-scan>
+	<worker-scan>com.junyou.public_</worker-scan>
+
+</easyexecutorconfig>

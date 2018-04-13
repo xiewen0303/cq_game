@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="rolePlatformInfo" class="com.junyou.bus.platform.common.entity.RolePlatformInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="platformId" column="platform_id"/>
+		<result property="giftState" column="gift_state"/>
+		<result property="giftStateStandby" column="gift_state_standby"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRolePlatformInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="platformId"> platform_id = #platformId# </isNotNull>
+			<isNotNull prepend="and" property="giftState"> gift_state = #giftState# </isNotNull>
+			<isNotNull prepend="and" property="giftStateStandby"> gift_state_standby = #giftStateStandby# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRolePlatformInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRolePlatformInfo" parameterClass="com.junyou.bus.platform.common.entity.RolePlatformInfo">
+		insert into role_platform_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="platformId"> platform_id </isNotNull> 
+		<isNotNull prepend="," property="giftState"> gift_state </isNotNull> 
+		<isNotNull prepend="," property="giftStateStandby"> gift_state_standby </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="platformId"> #platformId# </isNotNull>
+		<isNotNull prepend="," property="giftState"> #giftState# </isNotNull>
+		<isNotNull prepend="," property="giftStateStandby"> #giftStateStandby# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRolePlatformInfo">
+		delete from role_platform_info
+		<include refid="queryByKeyRolePlatformInfo"/>
+	</delete>
+	
+	<update id="updateRolePlatformInfo" parameterClass="com.junyou.bus.platform.common.entity.RolePlatformInfo">
+		update role_platform_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="platformId"> platform_id = #platformId# </isNotNull>
+			<isNotNull prepend="," property="giftState"> gift_state = #giftState# </isNotNull>
+			<isNotNull prepend="," property="giftStateStandby"> gift_state_standby = #giftStateStandby# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRolePlatformInfo"/>
+	</update>
+	
+	<select id="selectSingleRolePlatformInfo" resultMap="rolePlatformInfo">
+		select 
+		user_role_id
+		,update_time
+		,platform_id
+		,gift_state
+		,gift_state_standby
+		,create_time
+		from role_platform_info 
+		<include refid="queryByKeyRolePlatformInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountRolePlatformInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_platform_info
+		<include refid="queryConditionRolePlatformInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingRolePlatformInfo" parameterClass="java.util.Map" resultMap="rolePlatformInfo">
+		select 
+		user_role_id
+		,update_time
+		,platform_id
+		,gift_state
+		,gift_state_standby
+		,create_time
+		from role_platform_info
+		<include refid="queryConditionRolePlatformInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRolePlatformInfo" parameterClass="java.util.Map" resultMap="rolePlatformInfo">
+		select 
+		user_role_id
+		,update_time
+		,platform_id
+		,gift_state
+		,gift_state_standby
+		,create_time
+		from role_platform_info
+		<include refid="queryConditionRolePlatformInfo"/>
+	</select>
+	
+	<select id="selectAllRolePlatformInfo" resultMap="rolePlatformInfo">
+		select 
+		user_role_id
+		,update_time
+		,platform_id
+		,gift_state
+		,gift_state_standby
+		,create_time
+		from role_platform_info
+	</select>
+	
+	<select id="selectSingleByParamsRolePlatformInfo" resultMap="rolePlatformInfo">
+		select 
+		user_role_id
+		,update_time
+		,platform_id
+		,gift_state
+		,gift_state_standby
+		,create_time
+		from role_platform_info 
+		<include refid="queryConditionRolePlatformInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

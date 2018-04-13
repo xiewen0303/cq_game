@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="wuxingShilianFuben" class="com.junyou.bus.fuben.entity.WuxingShilianFuben" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="todayFightNum" column="today_fight_num"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionWuxingShilianFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="todayFightNum"> today_fight_num = #todayFightNum# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyWuxingShilianFuben">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertWuxingShilianFuben" parameterClass="com.junyou.bus.fuben.entity.WuxingShilianFuben">
+		insert into wuxing_shilian_fuben(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="todayFightNum"> today_fight_num </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="todayFightNum"> #todayFightNum# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteWuxingShilianFuben">
+		delete from wuxing_shilian_fuben
+		<include refid="queryByKeyWuxingShilianFuben"/>
+	</delete>
+	
+	<update id="updateWuxingShilianFuben" parameterClass="com.junyou.bus.fuben.entity.WuxingShilianFuben">
+		update wuxing_shilian_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="todayFightNum"> today_fight_num = #todayFightNum# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyWuxingShilianFuben"/>
+	</update>
+	
+	<select id="selectSingleWuxingShilianFuben" resultMap="wuxingShilianFuben">
+		select 
+		user_role_id
+		,today_fight_num
+		,create_time
+		,update_time
+		from wuxing_shilian_fuben 
+		<include refid="queryByKeyWuxingShilianFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountWuxingShilianFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from wuxing_shilian_fuben
+		<include refid="queryConditionWuxingShilianFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingWuxingShilianFuben" parameterClass="java.util.Map" resultMap="wuxingShilianFuben">
+		select 
+		user_role_id
+		,today_fight_num
+		,create_time
+		,update_time
+		from wuxing_shilian_fuben
+		<include refid="queryConditionWuxingShilianFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiWuxingShilianFuben" parameterClass="java.util.Map" resultMap="wuxingShilianFuben">
+		select 
+		user_role_id
+		,today_fight_num
+		,create_time
+		,update_time
+		from wuxing_shilian_fuben
+		<include refid="queryConditionWuxingShilianFuben"/>
+	</select>
+	
+	<select id="selectAllWuxingShilianFuben" resultMap="wuxingShilianFuben">
+		select 
+		user_role_id
+		,today_fight_num
+		,create_time
+		,update_time
+		from wuxing_shilian_fuben
+	</select>
+	
+	<select id="selectSingleByParamsWuxingShilianFuben" resultMap="wuxingShilianFuben">
+		select 
+		user_role_id
+		,today_fight_num
+		,create_time
+		,update_time
+		from wuxing_shilian_fuben 
+		<include refid="queryConditionWuxingShilianFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

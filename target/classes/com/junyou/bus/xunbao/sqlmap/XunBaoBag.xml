@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="xunBaoBag" class="com.junyou.bus.xunbao.entity.XunBaoBag" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="goodsId" column="goods_id"/>
+		<result property="goodsCount" column="goods_count"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionXunBaoBag">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="goodsId"> goods_id = #goodsId# </isNotNull>
+			<isNotNull prepend="and" property="goodsCount"> goods_count = #goodsCount# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyXunBaoBag">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertXunBaoBag" parameterClass="com.junyou.bus.xunbao.entity.XunBaoBag">
+		insert into xun_bao_bag(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="goodsId"> goods_id </isNotNull> 
+		<isNotNull prepend="," property="goodsCount"> goods_count </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="goodsId"> #goodsId# </isNotNull>
+		<isNotNull prepend="," property="goodsCount"> #goodsCount# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteXunBaoBag">
+		delete from xun_bao_bag
+		<include refid="queryByKeyXunBaoBag"/>
+	</delete>
+	
+	<update id="updateXunBaoBag" parameterClass="com.junyou.bus.xunbao.entity.XunBaoBag">
+		update xun_bao_bag 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="goodsId"> goods_id = #goodsId# </isNotNull>
+			<isNotNull prepend="," property="goodsCount"> goods_count = #goodsCount# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyXunBaoBag"/>
+	</update>
+	
+	<select id="selectSingleXunBaoBag" resultMap="xunBaoBag">
+		select 
+		id
+		,user_role_id
+		,goods_id
+		,goods_count
+		,create_time
+		from xun_bao_bag 
+		<include refid="queryByKeyXunBaoBag"/>
+	</select>
+	
+	<select id="selectRecordsCountXunBaoBag" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from xun_bao_bag
+		<include refid="queryConditionXunBaoBag"/>
+	</select>
+	
+	<select id="selectMultiPagingXunBaoBag" parameterClass="java.util.Map" resultMap="xunBaoBag">
+		select 
+		id
+		,user_role_id
+		,goods_id
+		,goods_count
+		,create_time
+		from xun_bao_bag
+		<include refid="queryConditionXunBaoBag"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiXunBaoBag" parameterClass="java.util.Map" resultMap="xunBaoBag">
+		select 
+		id
+		,user_role_id
+		,goods_id
+		,goods_count
+		,create_time
+		from xun_bao_bag
+		<include refid="queryConditionXunBaoBag"/>
+	</select>
+	
+	<select id="selectAllXunBaoBag" resultMap="xunBaoBag">
+		select 
+		id
+		,user_role_id
+		,goods_id
+		,goods_count
+		,create_time
+		from xun_bao_bag
+	</select>
+	
+	<select id="selectSingleByParamsXunBaoBag" resultMap="xunBaoBag">
+		select 
+		id
+		,user_role_id
+		,goods_id
+		,goods_count
+		,create_time
+		from xun_bao_bag 
+		<include refid="queryConditionXunBaoBag"/>
+	</select>	
+	
+	
+</sqlMap>
+	

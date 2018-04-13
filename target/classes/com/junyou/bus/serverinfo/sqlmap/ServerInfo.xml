@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="serverInfo" class="com.junyou.bus.serverinfo.entity.ServerInfo" >
+		<result property="id" column="id"/>
+		<result property="startTime" column="start_time"/>
+		<result property="hefuTime" column="hefu_time"/>
+		<result property="platformId" column="platform_id"/>
+		<result property="ptServerId" column="pt_server_id"/>
+		<result property="prefixId" column="prefix_id"/>
+		<result property="sendCmEmail" column="send_cm_email"/>
+		<result property="version" column="version"/>
+		<result property="hefuTimes" column="hefu_times"/>
+		<result property="stopTimes" column="stop_times"/>
+	</resultMap>
+	
+	<sql id="queryConditionServerInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="startTime"> start_time = #startTime# </isNotNull>
+			<isNotNull prepend="and" property="hefuTime"> hefu_time = #hefuTime# </isNotNull>
+			<isNotNull prepend="and" property="platformId"> platform_id = #platformId# </isNotNull>
+			<isNotNull prepend="and" property="ptServerId"> pt_server_id = #ptServerId# </isNotNull>
+			<isNotNull prepend="and" property="prefixId"> prefix_id = #prefixId# </isNotNull>
+			<isNotNull prepend="and" property="sendCmEmail"> send_cm_email = #sendCmEmail# </isNotNull>
+			<isNotNull prepend="and" property="version"> version = #version# </isNotNull>
+			<isNotNull prepend="and" property="hefuTimes"> hefu_times = #hefuTimes# </isNotNull>
+			<isNotNull prepend="and" property="stopTimes"> stop_times = #stopTimes# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyServerInfo">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertServerInfo" parameterClass="com.junyou.bus.serverinfo.entity.ServerInfo">
+		insert into server_info(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="startTime"> start_time </isNotNull> 
+		<isNotNull prepend="," property="hefuTime"> hefu_time </isNotNull> 
+		<isNotNull prepend="," property="platformId"> platform_id </isNotNull> 
+		<isNotNull prepend="," property="ptServerId"> pt_server_id </isNotNull> 
+		<isNotNull prepend="," property="prefixId"> prefix_id </isNotNull> 
+		<isNotNull prepend="," property="sendCmEmail"> send_cm_email </isNotNull> 
+		<isNotNull prepend="," property="version"> version </isNotNull> 
+		<isNotNull prepend="," property="hefuTimes"> hefu_times </isNotNull> 
+		<isNotNull prepend="," property="stopTimes"> stop_times </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="startTime"> #startTime# </isNotNull>
+		<isNotNull prepend="," property="hefuTime"> #hefuTime# </isNotNull>
+		<isNotNull prepend="," property="platformId"> #platformId# </isNotNull>
+		<isNotNull prepend="," property="ptServerId"> #ptServerId# </isNotNull>
+		<isNotNull prepend="," property="prefixId"> #prefixId# </isNotNull>
+		<isNotNull prepend="," property="sendCmEmail"> #sendCmEmail# </isNotNull>
+		<isNotNull prepend="," property="version"> #version# </isNotNull>
+		<isNotNull prepend="," property="hefuTimes"> #hefuTimes# </isNotNull>
+		<isNotNull prepend="," property="stopTimes"> #stopTimes# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteServerInfo">
+		delete from server_info
+		<include refid="queryByKeyServerInfo"/>
+	</delete>
+	
+	<update id="updateServerInfo" parameterClass="com.junyou.bus.serverinfo.entity.ServerInfo">
+		update server_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="startTime"> start_time = #startTime# </isNotNull>
+			<isNotNull prepend="," property="hefuTime"> hefu_time = #hefuTime# </isNotNull>
+			<isNotNull prepend="," property="platformId"> platform_id = #platformId# </isNotNull>
+			<isNotNull prepend="," property="ptServerId"> pt_server_id = #ptServerId# </isNotNull>
+			<isNotNull prepend="," property="prefixId"> prefix_id = #prefixId# </isNotNull>
+			<isNotNull prepend="," property="sendCmEmail"> send_cm_email = #sendCmEmail# </isNotNull>
+			<isNotNull prepend="," property="version"> version = #version# </isNotNull>
+			<isNotNull prepend="," property="hefuTimes"> hefu_times = #hefuTimes# </isNotNull>
+			<isNotNull prepend="," property="stopTimes"> stop_times = #stopTimes# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyServerInfo"/>
+	</update>
+	
+	<select id="selectSingleServerInfo" resultMap="serverInfo">
+		select 
+		id
+		,start_time
+		,hefu_time
+		,platform_id
+		,pt_server_id
+		,prefix_id
+		,send_cm_email
+		,version
+		,hefu_times
+		,stop_times
+		from server_info 
+		<include refid="queryByKeyServerInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountServerInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from server_info
+		<include refid="queryConditionServerInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingServerInfo" parameterClass="java.util.Map" resultMap="serverInfo">
+		select 
+		id
+		,start_time
+		,hefu_time
+		,platform_id
+		,pt_server_id
+		,prefix_id
+		,send_cm_email
+		,version
+		,hefu_times
+		,stop_times
+		from server_info
+		<include refid="queryConditionServerInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiServerInfo" parameterClass="java.util.Map" resultMap="serverInfo">
+		select 
+		id
+		,start_time
+		,hefu_time
+		,platform_id
+		,pt_server_id
+		,prefix_id
+		,send_cm_email
+		,version
+		,hefu_times
+		,stop_times
+		from server_info
+		<include refid="queryConditionServerInfo"/>
+	</select>
+	
+	<select id="selectAllServerInfo" resultMap="serverInfo">
+		select 
+		id
+		,start_time
+		,hefu_time
+		,platform_id
+		,pt_server_id
+		,prefix_id
+		,send_cm_email
+		,version
+		,hefu_times
+		,stop_times
+		from server_info
+	</select>
+	
+	<select id="selectSingleByParamsServerInfo" resultMap="serverInfo">
+		select 
+		id
+		,start_time
+		,hefu_time
+		,prefix_id
+		,send_cm_email
+		,version
+		,hefu_times
+		,stop_times
+		from server_info 
+		<include refid="queryConditionServerInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

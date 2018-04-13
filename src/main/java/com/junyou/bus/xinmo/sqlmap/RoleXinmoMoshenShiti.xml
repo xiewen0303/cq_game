@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXinmoMoshenShiti" class="com.junyou.bus.xinmo.entity.RoleXinmoMoshenShiti" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xinmoMoshenId" column="xinmo_moshen_id"/>
+		<result property="shitiTime" column="shiti_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXinmoMoshenShiti">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xinmoMoshenId"> xinmo_moshen_id = #xinmoMoshenId# </isNotNull>
+			<isNotNull prepend="and" property="shitiTime"> shiti_time = #shitiTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXinmoMoshenShiti">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleXinmoMoshenShiti" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoMoshenShiti">
+		insert into role_xinmo_moshen_shiti(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xinmoMoshenId"> xinmo_moshen_id </isNotNull> 
+		<isNotNull prepend="," property="shitiTime"> shiti_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xinmoMoshenId"> #xinmoMoshenId# </isNotNull>
+		<isNotNull prepend="," property="shitiTime"> #shitiTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXinmoMoshenShiti">
+		delete from role_xinmo_moshen_shiti
+		<include refid="queryByKeyRoleXinmoMoshenShiti"/>
+	</delete>
+	
+	<update id="updateRoleXinmoMoshenShiti" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoMoshenShiti">
+		update role_xinmo_moshen_shiti 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xinmoMoshenId"> xinmo_moshen_id = #xinmoMoshenId# </isNotNull>
+			<isNotNull prepend="," property="shitiTime"> shiti_time = #shitiTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXinmoMoshenShiti"/>
+	</update>
+	
+	<select id="selectSingleRoleXinmoMoshenShiti" resultMap="roleXinmoMoshenShiti">
+		select 
+		user_role_id
+		,xinmo_moshen_id
+		,shiti_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen_shiti 
+		<include refid="queryByKeyRoleXinmoMoshenShiti"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXinmoMoshenShiti" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xinmo_moshen_shiti
+		<include refid="queryConditionRoleXinmoMoshenShiti"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXinmoMoshenShiti" parameterClass="java.util.Map" resultMap="roleXinmoMoshenShiti">
+		select 
+		user_role_id
+		,xinmo_moshen_id
+		,shiti_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen_shiti
+		<include refid="queryConditionRoleXinmoMoshenShiti"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXinmoMoshenShiti" parameterClass="java.util.Map" resultMap="roleXinmoMoshenShiti">
+		select 
+		user_role_id
+		,xinmo_moshen_id
+		,shiti_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen_shiti
+		<include refid="queryConditionRoleXinmoMoshenShiti"/>
+	</select>
+	
+	<select id="selectAllRoleXinmoMoshenShiti" resultMap="roleXinmoMoshenShiti">
+		select 
+		user_role_id
+		,xinmo_moshen_id
+		,shiti_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen_shiti
+	</select>
+	
+	<select id="selectSingleByParamsRoleXinmoMoshenShiti" resultMap="roleXinmoMoshenShiti">
+		select 
+		user_role_id
+		,xinmo_moshen_id
+		,shiti_time
+		,create_time
+		,update_time
+		from role_xinmo_moshen_shiti 
+		<include refid="queryConditionRoleXinmoMoshenShiti"/>
+	</select>	
+	
+	
+</sqlMap>
+	

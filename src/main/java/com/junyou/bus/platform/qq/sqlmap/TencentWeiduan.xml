@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="tencentWeiduan" class="com.junyou.bus.platform.qq.entity.TencentWeiduan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="weiduanStatus" column="weiduan_status"/>
+		<result property="tgpStatus" column="tgp_status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="dtgpStatus" column="dtgp_status"/>
+		<result property="tgpLevelStatus" column="tgp_level_status"/>
+		<result property="baoziStatus" column="baozi_status"/>
+	</resultMap>
+	
+	<sql id="queryConditionTencentWeiduan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="weiduanStatus"> weiduan_status = #weiduanStatus# </isNotNull>
+			<isNotNull prepend="and" property="tgpStatus"> tgp_status = #tgpStatus# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="dtgpStatus"> dtgp_status = #dtgpStatus# </isNotNull>
+			<isNotNull prepend="and" property="tgpLevelStatus"> tgp_level_status = #tgpLevelStatus# </isNotNull>
+			<isNotNull prepend="and" property="baoziStatus"> baozi_status = #baoziStatus# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTencentWeiduan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertTencentWeiduan" parameterClass="com.junyou.bus.platform.qq.entity.TencentWeiduan">
+		insert into tencent_weiduan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="weiduanStatus"> weiduan_status </isNotNull> 
+		<isNotNull prepend="," property="tgpStatus"> tgp_status </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="dtgpStatus"> dtgp_status </isNotNull> 
+		<isNotNull prepend="," property="tgpLevelStatus"> tgp_level_status </isNotNull> 
+		<isNotNull prepend="," property="baoziStatus"> baozi_status </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="weiduanStatus"> #weiduanStatus# </isNotNull>
+		<isNotNull prepend="," property="tgpStatus"> #tgpStatus# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="dtgpStatus"> #dtgpStatus# </isNotNull>
+		<isNotNull prepend="," property="tgpLevelStatus"> #tgpLevelStatus# </isNotNull>
+		<isNotNull prepend="," property="baoziStatus"> #baoziStatus# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTencentWeiduan">
+		delete from tencent_weiduan
+		<include refid="queryByKeyTencentWeiduan"/>
+	</delete>
+	
+	<update id="updateTencentWeiduan" parameterClass="com.junyou.bus.platform.qq.entity.TencentWeiduan">
+		update tencent_weiduan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="weiduanStatus"> weiduan_status = #weiduanStatus# </isNotNull>
+			<isNotNull prepend="," property="tgpStatus"> tgp_status = #tgpStatus# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="dtgpStatus"> dtgp_status = #dtgpStatus# </isNotNull>
+			<isNotNull prepend="," property="tgpLevelStatus"> tgp_level_status = #tgpLevelStatus# </isNotNull>
+			<isNotNull prepend="," property="baoziStatus"> baozi_status = #baoziStatus# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTencentWeiduan"/>
+	</update>
+	
+	<select id="selectSingleTencentWeiduan" resultMap="tencentWeiduan">
+		select 
+		user_role_id
+		,weiduan_status
+		,tgp_status
+		,create_time
+		,update_time
+		,dtgp_status
+		,tgp_level_status
+		,baozi_status
+		from tencent_weiduan 
+		<include refid="queryByKeyTencentWeiduan"/>
+	</select>
+	
+	<select id="selectRecordsCountTencentWeiduan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from tencent_weiduan
+		<include refid="queryConditionTencentWeiduan"/>
+	</select>
+	
+	<select id="selectMultiPagingTencentWeiduan" parameterClass="java.util.Map" resultMap="tencentWeiduan">
+		select 
+		user_role_id
+		,weiduan_status
+		,tgp_status
+		,create_time
+		,update_time
+		,dtgp_status
+		,tgp_level_status
+		,baozi_status
+		from tencent_weiduan
+		<include refid="queryConditionTencentWeiduan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTencentWeiduan" parameterClass="java.util.Map" resultMap="tencentWeiduan">
+		select 
+		user_role_id
+		,weiduan_status
+		,tgp_status
+		,create_time
+		,update_time
+		,dtgp_status
+		,tgp_level_status
+		,baozi_status
+		from tencent_weiduan
+		<include refid="queryConditionTencentWeiduan"/>
+	</select>
+	
+	<select id="selectAllTencentWeiduan" resultMap="tencentWeiduan">
+		select 
+		user_role_id
+		,weiduan_status
+		,tgp_status
+		,create_time
+		,update_time
+		,dtgp_status
+		,tgp_level_status
+		,baozi_status
+		from tencent_weiduan
+	</select>
+	
+	<select id="selectSingleByParamsTencentWeiduan" resultMap="tencentWeiduan">
+		select 
+		user_role_id
+		,weiduan_status
+		,tgp_status
+		,create_time
+		,update_time
+		,dtgp_status
+		,tgp_level_status
+		,baozi_status
+		from tencent_weiduan 
+		<include refid="queryConditionTencentWeiduan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

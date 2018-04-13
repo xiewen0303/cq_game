@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleYuanbaoRecord" class="com.junyou.bus.rfbactivity.entity.RoleYuanbaoRecord" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="czValue" column="cz_value"/>
+		<result property="xfValue" column="xf_value"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleYuanbaoRecord">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="czValue"> cz_value = #czValue# </isNotNull>
+			<isNotNull prepend="and" property="xfValue"> xf_value = #xfValue# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleYuanbaoRecord">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleYuanbaoRecord" parameterClass="com.junyou.bus.rfbactivity.entity.RoleYuanbaoRecord">
+		insert into role_yuanbao_record(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="czValue"> cz_value </isNotNull> 
+		<isNotNull prepend="," property="xfValue"> xf_value </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="czValue"> #czValue# </isNotNull>
+		<isNotNull prepend="," property="xfValue"> #xfValue# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleYuanbaoRecord">
+		delete from role_yuanbao_record
+		<include refid="queryByKeyRoleYuanbaoRecord"/>
+	</delete>
+	
+	<update id="updateRoleYuanbaoRecord" parameterClass="com.junyou.bus.rfbactivity.entity.RoleYuanbaoRecord">
+		update role_yuanbao_record 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="czValue"> cz_value = #czValue# </isNotNull>
+			<isNotNull prepend="," property="xfValue"> xf_value = #xfValue# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleYuanbaoRecord"/>
+	</update>
+	
+	<select id="selectSingleRoleYuanbaoRecord" resultMap="roleYuanbaoRecord">
+		select 
+		user_role_id
+		,cz_value
+		,xf_value
+		,create_time
+		,update_time
+		from role_yuanbao_record 
+		<include refid="queryByKeyRoleYuanbaoRecord"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleYuanbaoRecord" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_yuanbao_record
+		<include refid="queryConditionRoleYuanbaoRecord"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleYuanbaoRecord" parameterClass="java.util.Map" resultMap="roleYuanbaoRecord">
+		select 
+		user_role_id
+		,cz_value
+		,xf_value
+		,create_time
+		,update_time
+		from role_yuanbao_record
+		<include refid="queryConditionRoleYuanbaoRecord"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleYuanbaoRecord" parameterClass="java.util.Map" resultMap="roleYuanbaoRecord">
+		select 
+		user_role_id
+		,cz_value
+		,xf_value
+		,create_time
+		,update_time
+		from role_yuanbao_record
+		<include refid="queryConditionRoleYuanbaoRecord"/>
+	</select>
+	
+	<select id="selectAllRoleYuanbaoRecord" resultMap="roleYuanbaoRecord">
+		select 
+		user_role_id
+		,cz_value
+		,xf_value
+		,create_time
+		,update_time
+		from role_yuanbao_record
+	</select>
+	
+	<select id="selectSingleByParamsRoleYuanbaoRecord" resultMap="roleYuanbaoRecord">
+		select 
+		user_role_id
+		,cz_value
+		,xf_value
+		,create_time
+		,update_time
+		from role_yuanbao_record 
+		<include refid="queryConditionRoleYuanbaoRecord"/>
+	</select>	
+	
+	
+</sqlMap>
+	

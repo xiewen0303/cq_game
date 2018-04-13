@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleChengShen" class="com.junyou.bus.chengshen.entity.RoleChengShen" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="level" column="level"/>
+		<result property="shenhunValue" column="shenhun_value"/>
+		<result property="updateLevelTime" column="update_level_time"/>
+		<result property="updateShenhunTime" column="update_shenhun_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleChengShen">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="shenhunValue"> shenhun_value = #shenhunValue# </isNotNull>
+			<isNotNull prepend="and" property="updateLevelTime"> update_level_time = #updateLevelTime# </isNotNull>
+			<isNotNull prepend="and" property="updateShenhunTime"> update_shenhun_time = #updateShenhunTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleChengShen">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleChengShen" parameterClass="com.junyou.bus.chengshen.entity.RoleChengShen">
+		insert into role_cheng_shen(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="shenhunValue"> shenhun_value </isNotNull> 
+		<isNotNull prepend="," property="updateLevelTime"> update_level_time </isNotNull> 
+		<isNotNull prepend="," property="updateShenhunTime"> update_shenhun_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="shenhunValue"> #shenhunValue# </isNotNull>
+		<isNotNull prepend="," property="updateLevelTime"> #updateLevelTime# </isNotNull>
+		<isNotNull prepend="," property="updateShenhunTime"> #updateShenhunTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleChengShen">
+		delete from role_cheng_shen
+		<include refid="queryByKeyRoleChengShen"/>
+	</delete>
+	
+	<update id="updateRoleChengShen" parameterClass="com.junyou.bus.chengshen.entity.RoleChengShen">
+		update role_cheng_shen 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="shenhunValue"> shenhun_value = #shenhunValue# </isNotNull>
+			<isNotNull prepend="," property="updateLevelTime"> update_level_time = #updateLevelTime# </isNotNull>
+			<isNotNull prepend="," property="updateShenhunTime"> update_shenhun_time = #updateShenhunTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleChengShen"/>
+	</update>
+	
+	<select id="selectSingleRoleChengShen" resultMap="roleChengShen">
+		select 
+		user_role_id
+		,level
+		,shenhun_value
+		,update_level_time
+		,update_shenhun_time
+		,create_time
+		from role_cheng_shen 
+		<include refid="queryByKeyRoleChengShen"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleChengShen" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_cheng_shen
+		<include refid="queryConditionRoleChengShen"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleChengShen" parameterClass="java.util.Map" resultMap="roleChengShen">
+		select 
+		user_role_id
+		,level
+		,shenhun_value
+		,update_level_time
+		,update_shenhun_time
+		,create_time
+		from role_cheng_shen
+		<include refid="queryConditionRoleChengShen"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleChengShen" parameterClass="java.util.Map" resultMap="roleChengShen">
+		select 
+		user_role_id
+		,level
+		,shenhun_value
+		,update_level_time
+		,update_shenhun_time
+		,create_time
+		from role_cheng_shen
+		<include refid="queryConditionRoleChengShen"/>
+	</select>
+	
+	<select id="selectAllRoleChengShen" resultMap="roleChengShen">
+		select 
+		user_role_id
+		,level
+		,shenhun_value
+		,update_level_time
+		,update_shenhun_time
+		,create_time
+		from role_cheng_shen
+	</select>
+	
+	<select id="selectSingleByParamsRoleChengShen" resultMap="roleChengShen">
+		select 
+		user_role_id
+		,level
+		,shenhun_value
+		,update_level_time
+		,update_shenhun_time
+		,create_time
+		from role_cheng_shen 
+		<include refid="queryConditionRoleChengShen"/>
+	</select>	
+	
+	
+</sqlMap>
+	

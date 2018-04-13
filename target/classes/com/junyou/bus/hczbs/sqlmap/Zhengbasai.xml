@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="zhengbasai" class="com.junyou.bus.hczbs.entity.Zhengbasai" >
+		<result property="id" column="id"/>
+		<result property="guildLeaderId" column="guild_leader_id"/>
+		<result property="guildName" column="guild_name"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionZhengbasai">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="guildLeaderId"> guild_leader_id = #guildLeaderId# </isNotNull>
+			<isNotNull prepend="and" property="guildName"> guild_name = #guildName# </isNotNull>
+			<isNotNull prepend="and" property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyZhengbasai">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertZhengbasai" parameterClass="com.junyou.bus.hczbs.entity.Zhengbasai">
+		insert into zhengbasai(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="guildLeaderId"> guild_leader_id </isNotNull> 
+		<isNotNull prepend="," property="guildName"> guild_name </isNotNull> 
+		<isNotNull prepend="," property="guildId"> guild_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="guildLeaderId"> #guildLeaderId# </isNotNull>
+		<isNotNull prepend="," property="guildName"> #guildName# </isNotNull>
+		<isNotNull prepend="," property="guildId"> #guildId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteZhengbasai">
+		delete from zhengbasai
+		<include refid="queryByKeyZhengbasai"/>
+	</delete>
+	
+	<update id="updateZhengbasai" parameterClass="com.junyou.bus.hczbs.entity.Zhengbasai">
+		update zhengbasai 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="guildLeaderId"> guild_leader_id = #guildLeaderId# </isNotNull>
+			<isNotNull prepend="," property="guildName"> guild_name = #guildName# </isNotNull>
+			<isNotNull prepend="," property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyZhengbasai"/>
+	</update>
+	
+	<select id="selectSingleZhengbasai" resultMap="zhengbasai">
+		select 
+		id
+		,guild_leader_id
+		,guild_name
+		,guild_id
+		,update_time
+		from zhengbasai 
+		<include refid="queryByKeyZhengbasai"/>
+	</select>
+	
+	<select id="selectRecordsCountZhengbasai" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from zhengbasai
+		<include refid="queryConditionZhengbasai"/>
+	</select>
+	
+	<select id="selectMultiPagingZhengbasai" parameterClass="java.util.Map" resultMap="zhengbasai">
+		select 
+		id
+		,guild_leader_id
+		,guild_name
+		,guild_id
+		,update_time
+		from zhengbasai
+		<include refid="queryConditionZhengbasai"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiZhengbasai" parameterClass="java.util.Map" resultMap="zhengbasai">
+		select 
+		id
+		,guild_leader_id
+		,guild_name
+		,guild_id
+		,update_time
+		from zhengbasai
+		<include refid="queryConditionZhengbasai"/>
+	</select>
+	
+	<select id="selectAllZhengbasai" resultMap="zhengbasai">
+		select 
+		id
+		,guild_leader_id
+		,guild_name
+		,guild_id
+		,update_time
+		from zhengbasai
+	</select>
+	
+	<select id="selectSingleByParamsZhengbasai" resultMap="zhengbasai">
+		select 
+		id
+		,guild_leader_id
+		,guild_name
+		,guild_id
+		,update_time
+		from zhengbasai 
+		<include refid="queryConditionZhengbasai"/>
+	</select>	
+	
+	
+</sqlMap>
+	

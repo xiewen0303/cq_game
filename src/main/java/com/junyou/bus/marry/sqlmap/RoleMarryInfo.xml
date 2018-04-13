@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleMarryInfo" class="com.junyou.bus.marry.entity.RoleMarryInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="state" column="state"/>
+		<result property="targetRoleId" column="target_role_id"/>
+		<result property="yuanfen" column="yuanfen"/>
+		<result property="loveVal" column="love_val"/>
+		<result property="xinwu" column="xinwu"/>
+		<result property="lfLevel" column="lf_level"/>
+		<result property="marryTime" column="marry_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="xinqing" column="xinqing"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleMarryInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="targetRoleId"> target_role_id = #targetRoleId# </isNotNull>
+			<isNotNull prepend="and" property="yuanfen"> yuanfen = #yuanfen# </isNotNull>
+			<isNotNull prepend="and" property="loveVal"> love_val = #loveVal# </isNotNull>
+			<isNotNull prepend="and" property="xinwu"> xinwu = #xinwu# </isNotNull>
+			<isNotNull prepend="and" property="lfLevel"> lf_level = #lfLevel# </isNotNull>
+			<isNotNull prepend="and" property="marryTime"> marry_time = #marryTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="xinqing"> xinqing = #xinqing# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleMarryInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleMarryInfo" parameterClass="com.junyou.bus.marry.entity.RoleMarryInfo">
+		insert into role_marry_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		<isNotNull prepend="," property="targetRoleId"> target_role_id </isNotNull> 
+		<isNotNull prepend="," property="yuanfen"> yuanfen </isNotNull> 
+		<isNotNull prepend="," property="loveVal"> love_val </isNotNull> 
+		<isNotNull prepend="," property="xinwu"> xinwu </isNotNull> 
+		<isNotNull prepend="," property="lfLevel"> lf_level </isNotNull> 
+		<isNotNull prepend="," property="marryTime"> marry_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="xinqing"> xinqing </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		<isNotNull prepend="," property="targetRoleId"> #targetRoleId# </isNotNull>
+		<isNotNull prepend="," property="yuanfen"> #yuanfen# </isNotNull>
+		<isNotNull prepend="," property="loveVal"> #loveVal# </isNotNull>
+		<isNotNull prepend="," property="xinwu"> #xinwu# </isNotNull>
+		<isNotNull prepend="," property="lfLevel"> #lfLevel# </isNotNull>
+		<isNotNull prepend="," property="marryTime"> #marryTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="xinqing"> #xinqing# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleMarryInfo">
+		delete from role_marry_info
+		<include refid="queryByKeyRoleMarryInfo"/>
+	</delete>
+	
+	<update id="updateRoleMarryInfo" parameterClass="com.junyou.bus.marry.entity.RoleMarryInfo">
+		update role_marry_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="," property="targetRoleId"> target_role_id = #targetRoleId# </isNotNull>
+			<isNotNull prepend="," property="yuanfen"> yuanfen = #yuanfen# </isNotNull>
+			<isNotNull prepend="," property="loveVal"> love_val = #loveVal# </isNotNull>
+			<isNotNull prepend="," property="xinwu"> xinwu = #xinwu# </isNotNull>
+			<isNotNull prepend="," property="lfLevel"> lf_level = #lfLevel# </isNotNull>
+			<isNotNull prepend="," property="marryTime"> marry_time = #marryTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="xinqing"> xinqing = #xinqing# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleMarryInfo"/>
+	</update>
+	
+	<select id="selectSingleRoleMarryInfo" resultMap="roleMarryInfo">
+		select 
+		user_role_id
+		,state
+		,target_role_id
+		,yuanfen
+		,love_val
+		,xinwu
+		,lf_level
+		,marry_time
+		,update_time
+		,xinqing
+		from role_marry_info 
+		<include refid="queryByKeyRoleMarryInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleMarryInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_marry_info
+		<include refid="queryConditionRoleMarryInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleMarryInfo" parameterClass="java.util.Map" resultMap="roleMarryInfo">
+		select 
+		user_role_id
+		,state
+		,target_role_id
+		,yuanfen
+		,love_val
+		,xinwu
+		,lf_level
+		,marry_time
+		,update_time
+		,xinqing
+		from role_marry_info
+		<include refid="queryConditionRoleMarryInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleMarryInfo" parameterClass="java.util.Map" resultMap="roleMarryInfo">
+		select 
+		user_role_id
+		,state
+		,target_role_id
+		,yuanfen
+		,love_val
+		,xinwu
+		,lf_level
+		,marry_time
+		,update_time
+		,xinqing
+		from role_marry_info
+		<include refid="queryConditionRoleMarryInfo"/>
+	</select>
+	
+	<select id="selectAllRoleMarryInfo" resultMap="roleMarryInfo">
+		select 
+		user_role_id
+		,state
+		,target_role_id
+		,yuanfen
+		,love_val
+		,xinwu
+		,lf_level
+		,marry_time
+		,update_time
+		,xinqing
+		from role_marry_info
+	</select>
+	
+	<select id="selectSingleByParamsRoleMarryInfo" resultMap="roleMarryInfo">
+		select 
+		user_role_id
+		,state
+		,target_role_id
+		,yuanfen
+		,love_val
+		,xinwu
+		,lf_level
+		,marry_time
+		,update_time
+		,xinqing
+		from role_marry_info 
+		<include refid="queryConditionRoleMarryInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleJingjiDuihuan" class="com.junyou.bus.jingji.entity.RoleJingjiDuihuan" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="itemId" column="item_id"/>
+		<result property="count" column="count"/>
+		<result property="updataTime" column="updata_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleJingjiDuihuan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="itemId"> item_id = #itemId# </isNotNull>
+			<isNotNull prepend="and" property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="and" property="updataTime"> updata_time = #updataTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleJingjiDuihuan">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleJingjiDuihuan" parameterClass="com.junyou.bus.jingji.entity.RoleJingjiDuihuan">
+		insert into role_jingji_duihuan(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="itemId"> item_id </isNotNull> 
+		<isNotNull prepend="," property="count"> count </isNotNull> 
+		<isNotNull prepend="," property="updataTime"> updata_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="itemId"> #itemId# </isNotNull>
+		<isNotNull prepend="," property="count"> #count# </isNotNull>
+		<isNotNull prepend="," property="updataTime"> #updataTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleJingjiDuihuan">
+		delete from role_jingji_duihuan
+		<include refid="queryByKeyRoleJingjiDuihuan"/>
+	</delete>
+	
+	<update id="updateRoleJingjiDuihuan" parameterClass="com.junyou.bus.jingji.entity.RoleJingjiDuihuan">
+		update role_jingji_duihuan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="itemId"> item_id = #itemId# </isNotNull>
+			<isNotNull prepend="," property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="," property="updataTime"> updata_time = #updataTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleJingjiDuihuan"/>
+	</update>
+	
+	<select id="selectSingleRoleJingjiDuihuan" resultMap="roleJingjiDuihuan">
+		select 
+		id
+		,user_role_id
+		,item_id
+		,count
+		,updata_time
+		from role_jingji_duihuan 
+		<include refid="queryByKeyRoleJingjiDuihuan"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleJingjiDuihuan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_jingji_duihuan
+		<include refid="queryConditionRoleJingjiDuihuan"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleJingjiDuihuan" parameterClass="java.util.Map" resultMap="roleJingjiDuihuan">
+		select 
+		id
+		,user_role_id
+		,item_id
+		,count
+		,updata_time
+		from role_jingji_duihuan
+		<include refid="queryConditionRoleJingjiDuihuan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleJingjiDuihuan" parameterClass="java.util.Map" resultMap="roleJingjiDuihuan">
+		select 
+		id
+		,user_role_id
+		,item_id
+		,count
+		,updata_time
+		from role_jingji_duihuan
+		<include refid="queryConditionRoleJingjiDuihuan"/>
+	</select>
+	
+	<select id="selectAllRoleJingjiDuihuan" resultMap="roleJingjiDuihuan">
+		select 
+		id
+		,user_role_id
+		,item_id
+		,count
+		,updata_time
+		from role_jingji_duihuan
+	</select>
+	
+	<select id="selectSingleByParamsRoleJingjiDuihuan" resultMap="roleJingjiDuihuan">
+		select 
+		id
+		,user_role_id
+		,item_id
+		,count
+		,updata_time
+		from role_jingji_duihuan 
+		<include refid="queryConditionRoleJingjiDuihuan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

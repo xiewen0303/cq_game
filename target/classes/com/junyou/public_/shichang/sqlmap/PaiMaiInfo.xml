@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="paiMaiInfo" class="com.junyou.public_.shichang.entity.PaiMaiInfo" >
+		<result property="guid" column="guid"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="price" column="price"/>
+		<result property="roleName" column="role_name"/>
+		<result property="sellTime" column="sell_time"/>
+		<result property="sellType" column="sell_type"/>
+	</resultMap>
+	
+	<sql id="queryConditionPaiMaiInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="guid"> guid = #guid# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="price"> price = #price# </isNotNull>
+			<isNotNull prepend="and" property="roleName"> role_name = #roleName# </isNotNull>
+			<isNotNull prepend="and" property="sellTime"> sell_time = #sellTime# </isNotNull>
+			<isNotNull prepend="and" property="sellType"> sell_type = #sellType# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyPaiMaiInfo">
+		where guid = #guid#
+	</sql>
+	
+	<insert id="insertPaiMaiInfo" parameterClass="com.junyou.public_.shichang.entity.PaiMaiInfo">
+		insert into pai_mai_info(
+		<isNotNull prepend="" property="guid"> guid </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="price"> price </isNotNull> 
+		<isNotNull prepend="," property="roleName"> role_name </isNotNull> 
+		<isNotNull prepend="," property="sellTime"> sell_time </isNotNull> 
+		<isNotNull prepend="," property="sellType"> sell_type </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="guid"> #guid# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="price"> #price# </isNotNull>
+		<isNotNull prepend="," property="roleName"> #roleName# </isNotNull>
+		<isNotNull prepend="," property="sellTime"> #sellTime# </isNotNull>
+		<isNotNull prepend="," property="sellType"> #sellType# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deletePaiMaiInfo">
+		delete from pai_mai_info
+		<include refid="queryByKeyPaiMaiInfo"/>
+	</delete>
+	
+	<update id="updatePaiMaiInfo" parameterClass="com.junyou.public_.shichang.entity.PaiMaiInfo">
+		update pai_mai_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="guid"> guid = #guid# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="price"> price = #price# </isNotNull>
+			<isNotNull prepend="," property="roleName"> role_name = #roleName# </isNotNull>
+			<isNotNull prepend="," property="sellTime"> sell_time = #sellTime# </isNotNull>
+			<isNotNull prepend="," property="sellType"> sell_type = #sellType# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyPaiMaiInfo"/>
+	</update>
+	
+	<select id="selectSinglePaiMaiInfo" resultMap="paiMaiInfo">
+		select 
+		guid
+		,user_role_id
+		,price
+		,role_name
+		,sell_time
+		,sell_type
+		from pai_mai_info 
+		<include refid="queryByKeyPaiMaiInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountPaiMaiInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from pai_mai_info
+		<include refid="queryConditionPaiMaiInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingPaiMaiInfo" parameterClass="java.util.Map" resultMap="paiMaiInfo">
+		select 
+		guid
+		,user_role_id
+		,price
+		,role_name
+		,sell_time
+		,sell_type
+		from pai_mai_info
+		<include refid="queryConditionPaiMaiInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiPaiMaiInfo" parameterClass="java.util.Map" resultMap="paiMaiInfo">
+		select 
+		guid
+		,user_role_id
+		,price
+		,role_name
+		,sell_time
+		,sell_type
+		from pai_mai_info
+		<include refid="queryConditionPaiMaiInfo"/>
+	</select>
+	
+	<select id="selectAllPaiMaiInfo" resultMap="paiMaiInfo">
+		select 
+		guid
+		,user_role_id
+		,price
+		,role_name
+		,sell_time
+		,sell_type
+		from pai_mai_info
+	</select>
+	
+	<select id="selectSingleByParamsPaiMaiInfo" resultMap="paiMaiInfo">
+		select 
+		guid
+		,user_role_id
+		,price
+		,role_name
+		,sell_time
+		,sell_type
+		from pai_mai_info 
+		<include refid="queryConditionPaiMaiInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

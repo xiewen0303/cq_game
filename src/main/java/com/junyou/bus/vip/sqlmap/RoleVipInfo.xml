@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleVipInfo" class="com.junyou.bus.vip.entity.RoleVipInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="vipExp" column="vip_exp"/>
+		<result property="vipLevel" column="vip_level"/>
+		<result property="weekGift" column="week_gift"/>
+		<result property="levelGift" column="level_gift"/>
+		<result property="expireTime" column="expire_time"/>
+		<result property="nextWeekTime" column="next_week_time"/>
+		<result property="vipId" column="vip_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleVipInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="vipExp"> vip_exp = #vipExp# </isNotNull>
+			<isNotNull prepend="and" property="vipLevel"> vip_level = #vipLevel# </isNotNull>
+			<isNotNull prepend="and" property="weekGift"> week_gift = #weekGift# </isNotNull>
+			<isNotNull prepend="and" property="levelGift"> level_gift = #levelGift# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="and" property="nextWeekTime"> next_week_time = #nextWeekTime# </isNotNull>
+			<isNotNull prepend="and" property="vipId"> vip_id = #vipId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleVipInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleVipInfo" parameterClass="com.junyou.bus.vip.entity.RoleVipInfo">
+		insert into role_vip_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="vipExp"> vip_exp </isNotNull> 
+		<isNotNull prepend="," property="vipLevel"> vip_level </isNotNull> 
+		<isNotNull prepend="," property="weekGift"> week_gift </isNotNull> 
+		<isNotNull prepend="," property="levelGift"> level_gift </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull> 
+		<isNotNull prepend="," property="nextWeekTime"> next_week_time </isNotNull> 
+		<isNotNull prepend="," property="vipId"> vip_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="vipExp"> #vipExp# </isNotNull>
+		<isNotNull prepend="," property="vipLevel"> #vipLevel# </isNotNull>
+		<isNotNull prepend="," property="weekGift"> #weekGift# </isNotNull>
+		<isNotNull prepend="," property="levelGift"> #levelGift# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		<isNotNull prepend="," property="nextWeekTime"> #nextWeekTime# </isNotNull>
+		<isNotNull prepend="," property="vipId"> #vipId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleVipInfo">
+		delete from role_vip_info
+		<include refid="queryByKeyRoleVipInfo"/>
+	</delete>
+	
+	<update id="updateRoleVipInfo" parameterClass="com.junyou.bus.vip.entity.RoleVipInfo">
+		update role_vip_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="vipExp"> vip_exp = #vipExp# </isNotNull>
+			<isNotNull prepend="," property="vipLevel"> vip_level = #vipLevel# </isNotNull>
+			<isNotNull prepend="," property="weekGift"> week_gift = #weekGift# </isNotNull>
+			<isNotNull prepend="," property="levelGift"> level_gift = #levelGift# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="," property="nextWeekTime"> next_week_time = #nextWeekTime# </isNotNull>
+			<isNotNull prepend="," property="vipId"> vip_id = #vipId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleVipInfo"/>
+	</update>
+	
+	<select id="selectSingleRoleVipInfo" resultMap="roleVipInfo">
+		select 
+		user_role_id
+		,vip_exp
+		,vip_level
+		,week_gift
+		,level_gift
+		,expire_time
+		,next_week_time
+		,vip_id
+		from role_vip_info 
+		<include refid="queryByKeyRoleVipInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleVipInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_vip_info
+		<include refid="queryConditionRoleVipInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleVipInfo" parameterClass="java.util.Map" resultMap="roleVipInfo">
+		select 
+		user_role_id
+		,vip_exp
+		,vip_level
+		,week_gift
+		,level_gift
+		,expire_time
+		,next_week_time
+		,vip_id
+		from role_vip_info
+		<include refid="queryConditionRoleVipInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleVipInfo" parameterClass="java.util.Map" resultMap="roleVipInfo">
+		select 
+		user_role_id
+		,vip_exp
+		,vip_level
+		,week_gift
+		,level_gift
+		,expire_time
+		,next_week_time
+		,vip_id
+		from role_vip_info
+		<include refid="queryConditionRoleVipInfo"/>
+	</select>
+	
+	<select id="selectAllRoleVipInfo" resultMap="roleVipInfo">
+		select 
+		user_role_id
+		,vip_exp
+		,vip_level
+		,week_gift
+		,level_gift
+		,expire_time
+		,next_week_time
+		,vip_id
+		from role_vip_info
+	</select>
+	
+	<select id="selectSingleByParamsRoleVipInfo" resultMap="roleVipInfo">
+		select 
+		user_role_id
+		,vip_exp
+		,vip_level
+		,week_gift
+		,level_gift
+		,expire_time
+		,next_week_time
+		,vip_id
+		from role_vip_info 
+		<include refid="queryConditionRoleVipInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

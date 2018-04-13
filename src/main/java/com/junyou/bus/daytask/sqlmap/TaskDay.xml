@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="taskDay" class="com.junyou.bus.daytask.entity.TaskDay" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="taskId" column="task_id"/>
+		<result property="times" column="times"/>
+		<result property="lastOptTime" column="last_opt_time"/>
+		<result property="killCount" column="kill_count"/>
+		<result property="loopId" column="loop_id"/>
+		<result property="taskDayType" column="task_day_type"/>
+		<result property="status" column="status"/>
+		<result property="renwuCount" column="renwu_count"/>
+	</resultMap>
+	
+	<sql id="queryConditionTaskDay">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="taskId"> task_id = #taskId# </isNotNull>
+			<isNotNull prepend="and" property="times"> times = #times# </isNotNull>
+			<isNotNull prepend="and" property="lastOptTime"> last_opt_time = #lastOptTime# </isNotNull>
+			<isNotNull prepend="and" property="killCount"> kill_count = #killCount# </isNotNull>
+			<isNotNull prepend="and" property="loopId"> loop_id = #loopId# </isNotNull>
+			<isNotNull prepend="and" property="taskDayType"> task_day_type = #taskDayType# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="renwuCount"> renwu_count = #renwuCount# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTaskDay">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertTaskDay" parameterClass="com.junyou.bus.daytask.entity.TaskDay">
+		insert into task_day(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="taskId"> task_id </isNotNull> 
+		<isNotNull prepend="," property="times"> times </isNotNull> 
+		<isNotNull prepend="," property="lastOptTime"> last_opt_time </isNotNull> 
+		<isNotNull prepend="," property="killCount"> kill_count </isNotNull> 
+		<isNotNull prepend="," property="loopId"> loop_id </isNotNull> 
+		<isNotNull prepend="," property="taskDayType"> task_day_type </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="renwuCount"> renwu_count </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="taskId"> #taskId# </isNotNull>
+		<isNotNull prepend="," property="times"> #times# </isNotNull>
+		<isNotNull prepend="," property="lastOptTime"> #lastOptTime# </isNotNull>
+		<isNotNull prepend="," property="killCount"> #killCount# </isNotNull>
+		<isNotNull prepend="," property="loopId"> #loopId# </isNotNull>
+		<isNotNull prepend="," property="taskDayType"> #taskDayType# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="renwuCount"> #renwuCount# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTaskDay">
+		delete from task_day
+		<include refid="queryByKeyTaskDay"/>
+	</delete>
+	
+	<update id="updateTaskDay" parameterClass="com.junyou.bus.daytask.entity.TaskDay">
+		update task_day 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="taskId"> task_id = #taskId# </isNotNull>
+			<isNotNull prepend="," property="times"> times = #times# </isNotNull>
+			<isNotNull prepend="," property="lastOptTime"> last_opt_time = #lastOptTime# </isNotNull>
+			<isNotNull prepend="," property="killCount"> kill_count = #killCount# </isNotNull>
+			<isNotNull prepend="," property="loopId"> loop_id = #loopId# </isNotNull>
+			<isNotNull prepend="," property="taskDayType"> task_day_type = #taskDayType# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="renwuCount"> renwu_count = #renwuCount# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTaskDay"/>
+	</update>
+	
+	<select id="selectSingleTaskDay" resultMap="taskDay">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,times
+		,last_opt_time
+		,kill_count
+		,loop_id
+		,task_day_type
+		,status
+		,renwu_count
+		from task_day 
+		<include refid="queryByKeyTaskDay"/>
+	</select>
+	
+	<select id="selectRecordsCountTaskDay" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from task_day
+		<include refid="queryConditionTaskDay"/>
+	</select>
+	
+	<select id="selectMultiPagingTaskDay" parameterClass="java.util.Map" resultMap="taskDay">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,times
+		,last_opt_time
+		,kill_count
+		,loop_id
+		,task_day_type
+		,status
+		,renwu_count
+		from task_day
+		<include refid="queryConditionTaskDay"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTaskDay" parameterClass="java.util.Map" resultMap="taskDay">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,times
+		,last_opt_time
+		,kill_count
+		,loop_id
+		,task_day_type
+		,status
+		,renwu_count
+		from task_day
+		<include refid="queryConditionTaskDay"/>
+	</select>
+	
+	<select id="selectAllTaskDay" resultMap="taskDay">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,times
+		,last_opt_time
+		,kill_count
+		,loop_id
+		,task_day_type
+		,status
+		,renwu_count
+		from task_day
+	</select>
+	
+	<select id="selectSingleByParamsTaskDay" resultMap="taskDay">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,times
+		,last_opt_time
+		,kill_count
+		,loop_id
+		,task_day_type
+		,status
+		,renwu_count
+		from task_day 
+		<include refid="queryConditionTaskDay"/>
+	</select>	
+	
+	
+</sqlMap>
+	

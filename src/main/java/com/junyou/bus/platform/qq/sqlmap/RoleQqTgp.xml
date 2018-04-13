@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleQqTgp" class="com.junyou.bus.platform.qq.entity.RoleQqTgp" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="znlVal" column="znl_val"/>
+		<result property="hdCount" column="hd_count"/>
+		<result property="duihuanCount" column="duihuan_count"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleQqTgp">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="znlVal"> znl_val = #znlVal# </isNotNull>
+			<isNotNull prepend="and" property="hdCount"> hd_count = #hdCount# </isNotNull>
+			<isNotNull prepend="and" property="duihuanCount"> duihuan_count = #duihuanCount# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleQqTgp">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleQqTgp" parameterClass="com.junyou.bus.platform.qq.entity.RoleQqTgp">
+		insert into role_qq_tgp(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="znlVal"> znl_val </isNotNull> 
+		<isNotNull prepend="," property="hdCount"> hd_count </isNotNull> 
+		<isNotNull prepend="," property="duihuanCount"> duihuan_count </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="znlVal"> #znlVal# </isNotNull>
+		<isNotNull prepend="," property="hdCount"> #hdCount# </isNotNull>
+		<isNotNull prepend="," property="duihuanCount"> #duihuanCount# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleQqTgp">
+		delete from role_qq_tgp
+		<include refid="queryByKeyRoleQqTgp"/>
+	</delete>
+	
+	<update id="updateRoleQqTgp" parameterClass="com.junyou.bus.platform.qq.entity.RoleQqTgp">
+		update role_qq_tgp 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="znlVal"> znl_val = #znlVal# </isNotNull>
+			<isNotNull prepend="," property="hdCount"> hd_count = #hdCount# </isNotNull>
+			<isNotNull prepend="," property="duihuanCount"> duihuan_count = #duihuanCount# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleQqTgp"/>
+	</update>
+	
+	<select id="selectSingleRoleQqTgp" resultMap="roleQqTgp">
+		select 
+		user_role_id
+		,znl_val
+		,hd_count
+		,duihuan_count
+		,update_time
+		,create_time
+		from role_qq_tgp 
+		<include refid="queryByKeyRoleQqTgp"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleQqTgp" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_qq_tgp
+		<include refid="queryConditionRoleQqTgp"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleQqTgp" parameterClass="java.util.Map" resultMap="roleQqTgp">
+		select 
+		user_role_id
+		,znl_val
+		,hd_count
+		,duihuan_count
+		,update_time
+		,create_time
+		from role_qq_tgp
+		<include refid="queryConditionRoleQqTgp"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleQqTgp" parameterClass="java.util.Map" resultMap="roleQqTgp">
+		select 
+		user_role_id
+		,znl_val
+		,hd_count
+		,duihuan_count
+		,update_time
+		,create_time
+		from role_qq_tgp
+		<include refid="queryConditionRoleQqTgp"/>
+	</select>
+	
+	<select id="selectAllRoleQqTgp" resultMap="roleQqTgp">
+		select 
+		user_role_id
+		,znl_val
+		,hd_count
+		,duihuan_count
+		,update_time
+		,create_time
+		from role_qq_tgp
+	</select>
+	
+	<select id="selectSingleByParamsRoleQqTgp" resultMap="roleQqTgp">
+		select 
+		user_role_id
+		,znl_val
+		,hd_count
+		,duihuan_count
+		,update_time
+		,create_time
+		from role_qq_tgp 
+		<include refid="queryConditionRoleQqTgp"/>
+	</select>	
+	
+	<resultMap id="userRoleVo" class="com.junyou.bus.platform.qq.vo.UserRoleVo" >
+		<result property="id" column="id"/>	
+		<result property="name" column="name"/>
+		<result property="level" column="level"/>
+		<result property="configId" column="config_id"/>
+		<result property="lastOfflineTime" column="offline_time"/>
+	</resultMap>
+	
+	<select id = "selectUserRoleVoByParams" parameterClass="java.util.Map" resultMap="userRoleVo" >
+		select
+		r.id
+		,r.name
+		,r.level
+		,r.config_id
+		,r.offline_time
+		from user_role r where r.`name` = #roleName#
+	</select>	
+</sqlMap>
+	

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="wuxingFuben" class="com.junyou.bus.fuben.entity.WuxingFuben" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="fubenInfo" column="fuben_info"/>
+		<result property="fightCount" column="fight_count"/>
+		<result property="buyCount" column="buy_count"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionWuxingFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="fubenInfo"> fuben_info = #fubenInfo# </isNotNull>
+			<isNotNull prepend="and" property="fightCount"> fight_count = #fightCount# </isNotNull>
+			<isNotNull prepend="and" property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyWuxingFuben">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertWuxingFuben" parameterClass="com.junyou.bus.fuben.entity.WuxingFuben">
+		insert into wuxing_fuben(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="fubenInfo"> fuben_info </isNotNull> 
+		<isNotNull prepend="," property="fightCount"> fight_count </isNotNull> 
+		<isNotNull prepend="," property="buyCount"> buy_count </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="fubenInfo"> #fubenInfo# </isNotNull>
+		<isNotNull prepend="," property="fightCount"> #fightCount# </isNotNull>
+		<isNotNull prepend="," property="buyCount"> #buyCount# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteWuxingFuben">
+		delete from wuxing_fuben
+		<include refid="queryByKeyWuxingFuben"/>
+	</delete>
+	
+	<update id="updateWuxingFuben" parameterClass="com.junyou.bus.fuben.entity.WuxingFuben">
+		update wuxing_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="fubenInfo"> fuben_info = #fubenInfo# </isNotNull>
+			<isNotNull prepend="," property="fightCount"> fight_count = #fightCount# </isNotNull>
+			<isNotNull prepend="," property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyWuxingFuben"/>
+	</update>
+	
+	<select id="selectSingleWuxingFuben" resultMap="wuxingFuben">
+		select 
+		user_role_id
+		,fuben_info
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from wuxing_fuben 
+		<include refid="queryByKeyWuxingFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountWuxingFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from wuxing_fuben
+		<include refid="queryConditionWuxingFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingWuxingFuben" parameterClass="java.util.Map" resultMap="wuxingFuben">
+		select 
+		user_role_id
+		,fuben_info
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from wuxing_fuben
+		<include refid="queryConditionWuxingFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiWuxingFuben" parameterClass="java.util.Map" resultMap="wuxingFuben">
+		select 
+		user_role_id
+		,fuben_info
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from wuxing_fuben
+		<include refid="queryConditionWuxingFuben"/>
+	</select>
+	
+	<select id="selectAllWuxingFuben" resultMap="wuxingFuben">
+		select 
+		user_role_id
+		,fuben_info
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from wuxing_fuben
+	</select>
+	
+	<select id="selectSingleByParamsWuxingFuben" resultMap="wuxingFuben">
+		select 
+		user_role_id
+		,fuben_info
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from wuxing_fuben 
+		<include refid="queryConditionWuxingFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

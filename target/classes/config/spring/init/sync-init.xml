@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+          http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+          http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<bean id="lockManager" class="com.kernel.sync.LockManager"></bean>
+	<bean id="lockKey" class="com.junyou.bus.share.lockKey.BusLockKey"></bean>
+	
+	<bean id="syncaspect" class="com.kernel.sync.aop.SyncAspect">
+		<property name="lockManager" ref="lockManager"></property>
+	</bean>
+
+	<bean id="syncaspect_1_public" class="com.kernel.sync.aop.SyncAspect_1_Component">
+		<property name="lockManager" ref="lockManager"></property>
+	</bean>
+
+	<bean id="syncaspect_bus" class="com.junyou.bus.sync.BusSyncAspect">
+		<property name="lockManager" ref="lockManager"></property>
+	</bean>
+
+	<bean id="syncaspect_public" class="com.junyou.public_.sync.PublicSyncAspect">
+		<property name="lockManager" ref="lockManager"></property>
+	</bean>
+
+	<aop:config>
+	
+		<aop:aspect ref="syncaspect">
+			<aop:pointcut id="sync"
+				expression="@annotation(com.kernel.sync.annotation.Sync) and @annotation(sync)"/>
+			<aop:around pointcut-ref="sync" method="sync" arg-names="sync"/>
+		</aop:aspect>
+	
+		<aop:aspect ref="syncaspect_1_public">
+			<aop:pointcut id="sync_1_public"
+				expression="execution(* com.junyou.public_.*.service..*Service.*(..))"/>
+			<aop:around pointcut-ref="sync_1_public" method="sync"/>
+		</aop:aspect>
+
+		<aop:aspect ref="syncaspect_public">
+			<aop:pointcut id="sync_public"
+				expression="execution(* com.junyou.public_.*.easyaction.*Action.*(..) )"/>
+			<aop:around pointcut-ref="sync_public" method="sync"/>
+		</aop:aspect>
+
+		<aop:aspect ref="syncaspect_bus">
+			<aop:pointcut id="sync_bus"
+				expression="execution(* com.junyou.bus.*.easyaction.*Action.*(..))"/>
+			<aop:around pointcut-ref="sync_bus" method="sync"/>
+		</aop:aspect>
+
+		<aop:aspect ref="syncaspect_bus">
+			<aop:pointcut id="sync_bus_id"
+				expression="execution(* com.junyou.bus.*.io.easyaction.*Action.*(..))"/>
+			<aop:around pointcut-ref="sync_bus_id" method="sync"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>

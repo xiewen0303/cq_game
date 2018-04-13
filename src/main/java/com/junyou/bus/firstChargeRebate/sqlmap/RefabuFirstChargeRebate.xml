@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuFirstChargeRebate" class="com.junyou.bus.firstChargeRebate.entity.RefabuFirstChargeRebate" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="firstGold" column="first_gold"/>
+		<result property="rebateRatio" column="rebate_ratio"/>
+		<result property="rebateGold" column="rebate_gold"/>
+		<result property="activityStatus" column="activity_status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuFirstChargeRebate">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="firstGold"> first_gold = #firstGold# </isNotNull>
+			<isNotNull prepend="and" property="rebateRatio"> rebate_ratio = #rebateRatio# </isNotNull>
+			<isNotNull prepend="and" property="rebateGold"> rebate_gold = #rebateGold# </isNotNull>
+			<isNotNull prepend="and" property="activityStatus"> activity_status = #activityStatus# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuFirstChargeRebate">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuFirstChargeRebate" parameterClass="com.junyou.bus.firstChargeRebate.entity.RefabuFirstChargeRebate">
+		insert into refabu_first_charge_rebate(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="firstGold"> first_gold </isNotNull> 
+		<isNotNull prepend="," property="rebateRatio"> rebate_ratio </isNotNull> 
+		<isNotNull prepend="," property="rebateGold"> rebate_gold </isNotNull> 
+		<isNotNull prepend="," property="activityStatus"> activity_status </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="firstGold"> #firstGold# </isNotNull>
+		<isNotNull prepend="," property="rebateRatio"> #rebateRatio# </isNotNull>
+		<isNotNull prepend="," property="rebateGold"> #rebateGold# </isNotNull>
+		<isNotNull prepend="," property="activityStatus"> #activityStatus# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuFirstChargeRebate">
+		delete from refabu_first_charge_rebate
+		<include refid="queryByKeyRefabuFirstChargeRebate"/>
+	</delete>
+	
+	<update id="updateRefabuFirstChargeRebate" parameterClass="com.junyou.bus.firstChargeRebate.entity.RefabuFirstChargeRebate">
+		update refabu_first_charge_rebate 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="firstGold"> first_gold = #firstGold# </isNotNull>
+			<isNotNull prepend="," property="rebateRatio"> rebate_ratio = #rebateRatio# </isNotNull>
+			<isNotNull prepend="," property="rebateGold"> rebate_gold = #rebateGold# </isNotNull>
+			<isNotNull prepend="," property="activityStatus"> activity_status = #activityStatus# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuFirstChargeRebate"/>
+	</update>
+	
+	<select id="selectSingleRefabuFirstChargeRebate" resultMap="refabuFirstChargeRebate">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,first_gold
+		,rebate_ratio
+		,rebate_gold
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_first_charge_rebate 
+		<include refid="queryByKeyRefabuFirstChargeRebate"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuFirstChargeRebate" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_first_charge_rebate
+		<include refid="queryConditionRefabuFirstChargeRebate"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuFirstChargeRebate" parameterClass="java.util.Map" resultMap="refabuFirstChargeRebate">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,first_gold
+		,rebate_ratio
+		,rebate_gold
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_first_charge_rebate
+		<include refid="queryConditionRefabuFirstChargeRebate"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuFirstChargeRebate" parameterClass="java.util.Map" resultMap="refabuFirstChargeRebate">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,first_gold
+		,rebate_ratio
+		,rebate_gold
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_first_charge_rebate
+		<include refid="queryConditionRefabuFirstChargeRebate"/>
+	</select>
+	
+	<select id="selectAllRefabuFirstChargeRebate" resultMap="refabuFirstChargeRebate">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,first_gold
+		,rebate_ratio
+		,rebate_gold
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_first_charge_rebate
+	</select>
+	
+	<select id="selectSingleByParamsRefabuFirstChargeRebate" resultMap="refabuFirstChargeRebate">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,first_gold
+		,rebate_ratio
+		,rebate_gold
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_first_charge_rebate 
+		<include refid="queryConditionRefabuFirstChargeRebate"/>
+	</select>	
+	
+	
+</sqlMap>
+	

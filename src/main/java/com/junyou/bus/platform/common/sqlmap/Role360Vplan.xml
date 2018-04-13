@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="role360Vplan" class="com.junyou.bus.platform.common.entity.Role360Vplan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="tgGift" column="tg_gift"/>
+		<result property="dayGift" column="day_gift"/>
+		<result property="dayGiftTime" column="day_gift_time"/>
+		<result property="upgradeGift" column="upgrade_gift"/>
+		<result property="consumeTotalGold" column="consume_total_gold"/>
+		<result property="consumeEndTime" column="consume_end_time"/>
+		<result property="consumeGift" column="consume_gift"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRole360Vplan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="tgGift"> tg_gift = #tgGift# </isNotNull>
+			<isNotNull prepend="and" property="dayGift"> day_gift = #dayGift# </isNotNull>
+			<isNotNull prepend="and" property="dayGiftTime"> day_gift_time = #dayGiftTime# </isNotNull>
+			<isNotNull prepend="and" property="upgradeGift"> upgrade_gift = #upgradeGift# </isNotNull>
+			<isNotNull prepend="and" property="consumeTotalGold"> consume_total_gold = #consumeTotalGold# </isNotNull>
+			<isNotNull prepend="and" property="consumeEndTime"> consume_end_time = #consumeEndTime# </isNotNull>
+			<isNotNull prepend="and" property="consumeGift"> consume_gift = #consumeGift# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRole360Vplan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRole360Vplan" parameterClass="com.junyou.bus.platform.common.entity.Role360Vplan">
+		insert into role_360_vplan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="tgGift"> tg_gift </isNotNull> 
+		<isNotNull prepend="," property="dayGift"> day_gift </isNotNull> 
+		<isNotNull prepend="," property="dayGiftTime"> day_gift_time </isNotNull> 
+		<isNotNull prepend="," property="upgradeGift"> upgrade_gift </isNotNull> 
+		<isNotNull prepend="," property="consumeTotalGold"> consume_total_gold </isNotNull> 
+		<isNotNull prepend="," property="consumeEndTime"> consume_end_time </isNotNull> 
+		<isNotNull prepend="," property="consumeGift"> consume_gift </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="tgGift"> #tgGift# </isNotNull>
+		<isNotNull prepend="," property="dayGift"> #dayGift# </isNotNull>
+		<isNotNull prepend="," property="dayGiftTime"> #dayGiftTime# </isNotNull>
+		<isNotNull prepend="," property="upgradeGift"> #upgradeGift# </isNotNull>
+		<isNotNull prepend="," property="consumeTotalGold"> #consumeTotalGold# </isNotNull>
+		<isNotNull prepend="," property="consumeEndTime"> #consumeEndTime# </isNotNull>
+		<isNotNull prepend="," property="consumeGift"> #consumeGift# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRole360Vplan">
+		delete from role_360_vplan
+		<include refid="queryByKeyRole360Vplan"/>
+	</delete>
+	
+	<update id="updateRole360Vplan" parameterClass="com.junyou.bus.platform.common.entity.Role360Vplan">
+		update role_360_vplan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="tgGift"> tg_gift = #tgGift# </isNotNull>
+			<isNotNull prepend="," property="dayGift"> day_gift = #dayGift# </isNotNull>
+			<isNotNull prepend="," property="dayGiftTime"> day_gift_time = #dayGiftTime# </isNotNull>
+			<isNotNull prepend="," property="upgradeGift"> upgrade_gift = #upgradeGift# </isNotNull>
+			<isNotNull prepend="," property="consumeTotalGold"> consume_total_gold = #consumeTotalGold# </isNotNull>
+			<isNotNull prepend="," property="consumeEndTime"> consume_end_time = #consumeEndTime# </isNotNull>
+			<isNotNull prepend="," property="consumeGift"> consume_gift = #consumeGift# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRole360Vplan"/>
+	</update>
+	
+	<select id="selectSingleRole360Vplan" resultMap="role360Vplan">
+		select 
+		user_role_id
+		,tg_gift
+		,day_gift
+		,day_gift_time
+		,upgrade_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_360_vplan 
+		<include refid="queryByKeyRole360Vplan"/>
+	</select>
+	
+	<select id="selectRecordsCountRole360Vplan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_360_vplan
+		<include refid="queryConditionRole360Vplan"/>
+	</select>
+	
+	<select id="selectMultiPagingRole360Vplan" parameterClass="java.util.Map" resultMap="role360Vplan">
+		select 
+		user_role_id
+		,tg_gift
+		,day_gift
+		,day_gift_time
+		,upgrade_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_360_vplan
+		<include refid="queryConditionRole360Vplan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRole360Vplan" parameterClass="java.util.Map" resultMap="role360Vplan">
+		select 
+		user_role_id
+		,tg_gift
+		,day_gift
+		,day_gift_time
+		,upgrade_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_360_vplan
+		<include refid="queryConditionRole360Vplan"/>
+	</select>
+	
+	<select id="selectAllRole360Vplan" resultMap="role360Vplan">
+		select 
+		user_role_id
+		,tg_gift
+		,day_gift
+		,day_gift_time
+		,upgrade_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_360_vplan
+	</select>
+	
+	<select id="selectSingleByParamsRole360Vplan" resultMap="role360Vplan">
+		select 
+		user_role_id
+		,tg_gift
+		,day_gift
+		,day_gift_time
+		,upgrade_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_360_vplan 
+		<include refid="queryConditionRole360Vplan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

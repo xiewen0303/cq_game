@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="guild" class="com.junyou.public_.guild.entity.Guild" >
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="level" column="level"/>
+		<result property="school" column="school"/>
+		<result property="gold" column="gold"/>
+		<result property="item1" column="item1"/>
+		<result property="item2" column="item2"/>
+		<result property="item3" column="item3"/>
+		<result property="item4" column="item4"/>
+		<result property="notice" column="notice"/>
+		<result property="createTime" column="create_time"/>
+		<result property="applyType" column="apply_type"/>
+	</resultMap>
+	
+	<sql id="queryConditionGuild">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="school"> school = #school# </isNotNull>
+			<isNotNull prepend="and" property="gold"> gold = #gold# </isNotNull>
+			<isNotNull prepend="and" property="item1"> item1 = #item1# </isNotNull>
+			<isNotNull prepend="and" property="item2"> item2 = #item2# </isNotNull>
+			<isNotNull prepend="and" property="item3"> item3 = #item3# </isNotNull>
+			<isNotNull prepend="and" property="item4"> item4 = #item4# </isNotNull>
+			<isNotNull prepend="and" property="notice"> notice = #notice# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="applyType"> apply_type = #applyType# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyGuild">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertGuild" parameterClass="com.junyou.public_.guild.entity.Guild">
+		insert into guild(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="name"> name </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="school"> school </isNotNull> 
+		<isNotNull prepend="," property="gold"> gold </isNotNull> 
+		<isNotNull prepend="," property="item1"> item1 </isNotNull> 
+		<isNotNull prepend="," property="item2"> item2 </isNotNull> 
+		<isNotNull prepend="," property="item3"> item3 </isNotNull> 
+		<isNotNull prepend="," property="item4"> item4 </isNotNull> 
+		<isNotNull prepend="," property="notice"> notice </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="applyType"> apply_type </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="name"> #name# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="school"> #school# </isNotNull>
+		<isNotNull prepend="," property="gold"> #gold# </isNotNull>
+		<isNotNull prepend="," property="item1"> #item1# </isNotNull>
+		<isNotNull prepend="," property="item2"> #item2# </isNotNull>
+		<isNotNull prepend="," property="item3"> #item3# </isNotNull>
+		<isNotNull prepend="," property="item4"> #item4# </isNotNull>
+		<isNotNull prepend="," property="notice"> #notice# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="applyType"> #applyType# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteGuild">
+		delete from guild
+		<include refid="queryByKeyGuild"/>
+	</delete>
+	
+	<update id="updateGuild" parameterClass="com.junyou.public_.guild.entity.Guild">
+		update guild 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="school"> school = #school# </isNotNull>
+			<isNotNull prepend="," property="gold"> gold = #gold# </isNotNull>
+			<isNotNull prepend="," property="item1"> item1 = #item1# </isNotNull>
+			<isNotNull prepend="," property="item2"> item2 = #item2# </isNotNull>
+			<isNotNull prepend="," property="item3"> item3 = #item3# </isNotNull>
+			<isNotNull prepend="," property="item4"> item4 = #item4# </isNotNull>
+			<isNotNull prepend="," property="notice"> notice = #notice# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="applyType"> apply_type = #applyType# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyGuild"/>
+	</update>
+	
+	<select id="selectSingleGuild" resultMap="guild">
+		select 
+		id
+		,name
+		,level
+		,school
+		,gold
+		,item1
+		,item2
+		,item3
+		,item4
+		,notice
+		,create_time
+		,apply_type
+		from guild 
+		<include refid="queryByKeyGuild"/>
+	</select>
+	
+	<select id="selectRecordsCountGuild" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from guild
+		<include refid="queryConditionGuild"/>
+	</select>
+	
+	<select id="selectMultiPagingGuild" parameterClass="java.util.Map" resultMap="guild">
+		select 
+		id
+		,name
+		,level
+		,school
+		,gold
+		,item1
+		,item2
+		,item3
+		,item4
+		,notice
+		,create_time
+		,apply_type
+		from guild
+		<include refid="queryConditionGuild"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiGuild" parameterClass="java.util.Map" resultMap="guild">
+		select 
+		id
+		,name
+		,level
+		,school
+		,gold
+		,item1
+		,item2
+		,item3
+		,item4
+		,notice
+		,create_time
+		,apply_type
+		from guild
+		<include refid="queryConditionGuild"/>
+	</select>
+	
+	<select id="selectAllGuild" resultMap="guild">
+		select 
+		id
+		,name
+		,level
+		,school
+		,gold
+		,item1
+		,item2
+		,item3
+		,item4
+		,notice
+		,create_time
+		,apply_type
+		from guild
+	</select>
+	
+	<select id="selectSingleByParamsGuild" resultMap="guild">
+		select 
+		id
+		,name
+		,level
+		,school
+		,gold
+		,item1
+		,item2
+		,item3
+		,item4
+		,notice
+		,create_time
+		,apply_type
+		from guild 
+		<include refid="queryConditionGuild"/>
+	</select>	
+	
+	
+</sqlMap>
+	

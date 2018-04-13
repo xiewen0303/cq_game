@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="shenQiJinjie" class="com.junyou.bus.shenqi.entity.ShenQiJinjie" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="shenQiId" column="shen_qi_id"/>
+		<result property="zfzVal" column="zfz_val"/>
+		<result property="shenqiLevel" column="shenqi_level"/>
+		<result property="lastSjTime" column="last_sj_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionShenQiJinjie">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="shenQiId"> shen_qi_id = #shenQiId# </isNotNull>
+			<isNotNull prepend="and" property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="and" property="shenqiLevel"> shenqi_level = #shenqiLevel# </isNotNull>
+			<isNotNull prepend="and" property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyShenQiJinjie">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertShenQiJinjie" parameterClass="com.junyou.bus.shenqi.entity.ShenQiJinjie">
+		insert into shen_qi_jinjie(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="shenQiId"> shen_qi_id </isNotNull> 
+		<isNotNull prepend="," property="zfzVal"> zfz_val </isNotNull> 
+		<isNotNull prepend="," property="shenqiLevel"> shenqi_level </isNotNull> 
+		<isNotNull prepend="," property="lastSjTime"> last_sj_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="shenQiId"> #shenQiId# </isNotNull>
+		<isNotNull prepend="," property="zfzVal"> #zfzVal# </isNotNull>
+		<isNotNull prepend="," property="shenqiLevel"> #shenqiLevel# </isNotNull>
+		<isNotNull prepend="," property="lastSjTime"> #lastSjTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteShenQiJinjie">
+		delete from shen_qi_jinjie
+		<include refid="queryByKeyShenQiJinjie"/>
+	</delete>
+
+	<delete id="deleteBatchShenQiJinjie">
+		delete from shen_qi_jinjie where id in ($ids$)
+	</delete>
+	
+	<update id="updateShenQiJinjie" parameterClass="com.junyou.bus.shenqi.entity.ShenQiJinjie">
+		update shen_qi_jinjie 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="shenQiId"> shen_qi_id = #shenQiId# </isNotNull>
+			<isNotNull prepend="," property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="," property="shenqiLevel"> shenqi_level = #shenqiLevel# </isNotNull>
+			<isNotNull prepend="," property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyShenQiJinjie"/>
+	</update>
+	
+	<select id="selectSingleShenQiJinjie" resultMap="shenQiJinjie">
+		select 
+		id
+		,user_role_id
+		,shen_qi_id
+		,zfz_val
+		,shenqi_level
+		,last_sj_time
+		,update_time
+		from shen_qi_jinjie 
+		<include refid="queryByKeyShenQiJinjie"/>
+	</select>
+	
+	<select id="selectRecordsCountShenQiJinjie" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from shen_qi_jinjie
+		<include refid="queryConditionShenQiJinjie"/>
+	</select>
+	
+	<select id="selectMultiPagingShenQiJinjie" parameterClass="java.util.Map" resultMap="shenQiJinjie">
+		select 
+		id
+		,user_role_id
+		,shen_qi_id
+		,zfz_val
+		,shenqi_level
+		,last_sj_time
+		,update_time
+		from shen_qi_jinjie
+		<include refid="queryConditionShenQiJinjie"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiShenQiJinjie" parameterClass="java.util.Map" resultMap="shenQiJinjie">
+		select 
+		id
+		,user_role_id
+		,shen_qi_id
+		,zfz_val
+		,shenqi_level
+		,last_sj_time
+		,update_time
+		from shen_qi_jinjie
+		<include refid="queryConditionShenQiJinjie"/>
+	</select>
+	
+	<select id="selectAllShenQiJinjie" resultMap="shenQiJinjie">
+		select 
+		id
+		,user_role_id
+		,shen_qi_id
+		,zfz_val
+		,shenqi_level
+		,last_sj_time
+		,update_time
+		from shen_qi_jinjie
+	</select>
+	
+	<select id="selectSingleByParamsShenQiJinjie" resultMap="shenQiJinjie">
+		select 
+		id
+		,user_role_id
+		,shen_qi_id
+		,zfz_val
+		,shenqi_level
+		,last_sj_time
+		,update_time
+		from shen_qi_jinjie 
+		<include refid="queryConditionShenQiJinjie"/>
+	</select>	
+	
+	
+</sqlMap>
+	

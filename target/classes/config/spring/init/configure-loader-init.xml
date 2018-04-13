@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+     	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+ 	
+<!-- 	<bean id="localLoader" class="com.junyou.configure.loader.LocalFileConfigureLoader"></bean> -->
+	<bean id="remoteReader" class="com.junyou.configure.loader.RemoteConfigureLoader">
+		<property name="gameconfigBaseUrl" value="${config_load_directory_url}"></property>
+	</bean>
+	<bean id="remoteReaderData" class="com.junyou.configure.loader.RemoteConfigureLoaderData">
+		<property name="gameconfigBaseUrl" value="${config_load_directory_url}"></property>
+	</bean>
+	<bean id="remoteReaderByPlatform" class="com.junyou.configure.loader.RemoteConfigureLoaderByPlatform">
+		<property name="gameconfigBaseUrl" value="${config_load_directory_url}"></property>
+	</bean>
+	<bean id="remoteConfigureLoaderByPlatformAndServer" class="com.junyou.configure.loader.RemoteConfigureLoaderByPlatformAndServer">
+		<property name="gameconfigBaseUrl" value="${config_load_directory_url}"></property>
+	</bean>
+</beans>

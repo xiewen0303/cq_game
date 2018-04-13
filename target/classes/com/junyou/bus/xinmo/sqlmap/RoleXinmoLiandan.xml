@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXinmoLiandan" class="com.junyou.bus.xinmo.entity.RoleXinmoLiandan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="liandanId" column="liandan_id"/>
+		<result property="openSolt" column="open_solt"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXinmoLiandan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="liandanId"> liandan_id = #liandanId# </isNotNull>
+			<isNotNull prepend="and" property="openSolt"> open_solt = #openSolt# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXinmoLiandan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleXinmoLiandan" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoLiandan">
+		insert into role_xinmo_liandan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="liandanId"> liandan_id </isNotNull> 
+		<isNotNull prepend="," property="openSolt"> open_solt </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="liandanId"> #liandanId# </isNotNull>
+		<isNotNull prepend="," property="openSolt"> #openSolt# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXinmoLiandan">
+		delete from role_xinmo_liandan
+		<include refid="queryByKeyRoleXinmoLiandan"/>
+	</delete>
+	
+	<update id="updateRoleXinmoLiandan" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoLiandan">
+		update role_xinmo_liandan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="liandanId"> liandan_id = #liandanId# </isNotNull>
+			<isNotNull prepend="," property="openSolt"> open_solt = #openSolt# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXinmoLiandan"/>
+	</update>
+	
+	<select id="selectSingleRoleXinmoLiandan" resultMap="roleXinmoLiandan">
+		select 
+		user_role_id
+		,liandan_id
+		,open_solt
+		,create_time
+		,update_time
+		from role_xinmo_liandan 
+		<include refid="queryByKeyRoleXinmoLiandan"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXinmoLiandan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xinmo_liandan
+		<include refid="queryConditionRoleXinmoLiandan"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXinmoLiandan" parameterClass="java.util.Map" resultMap="roleXinmoLiandan">
+		select 
+		user_role_id
+		,liandan_id
+		,open_solt
+		,create_time
+		,update_time
+		from role_xinmo_liandan
+		<include refid="queryConditionRoleXinmoLiandan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXinmoLiandan" parameterClass="java.util.Map" resultMap="roleXinmoLiandan">
+		select 
+		user_role_id
+		,liandan_id
+		,open_solt
+		,create_time
+		,update_time
+		from role_xinmo_liandan
+		<include refid="queryConditionRoleXinmoLiandan"/>
+	</select>
+	
+	<select id="selectAllRoleXinmoLiandan" resultMap="roleXinmoLiandan">
+		select 
+		user_role_id
+		,liandan_id
+		,open_solt
+		,create_time
+		,update_time
+		from role_xinmo_liandan
+	</select>
+	
+	<select id="selectSingleByParamsRoleXinmoLiandan" resultMap="roleXinmoLiandan">
+		select 
+		user_role_id
+		,liandan_id
+		,open_solt
+		,create_time
+		,update_time
+		from role_xinmo_liandan 
+		<include refid="queryConditionRoleXinmoLiandan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

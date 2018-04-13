@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleHuajuan" class="com.junyou.bus.huajuan.entity.RoleHuajuan" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="huanjuanId" column="huanjuan_id"/>
+		<result property="isUp" column="is_up"/>
+		<result property="createTime" column="create_time"/>
+		<result property="levelId" column="level_id"/>
+		<result property="exp" column="exp"/>
+		<result property="sjUpdateTime" column="sj_update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleHuajuan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="huanjuanId"> huanjuan_id = #huanjuanId# </isNotNull>
+			<isNotNull prepend="and" property="isUp"> is_up = #isUp# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="levelId"> level_id = #levelId# </isNotNull>
+			<isNotNull prepend="and" property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="and" property="sjUpdateTime"> sj_update_time = #sjUpdateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleHuajuan">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleHuajuan" parameterClass="com.junyou.bus.huajuan.entity.RoleHuajuan">
+		insert into role_huajuan(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="huanjuanId"> huanjuan_id </isNotNull> 
+		<isNotNull prepend="," property="isUp"> is_up </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="levelId"> level_id </isNotNull> 
+		<isNotNull prepend="," property="exp"> exp </isNotNull> 
+		<isNotNull prepend="," property="sjUpdateTime"> sj_update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="huanjuanId"> #huanjuanId# </isNotNull>
+		<isNotNull prepend="," property="isUp"> #isUp# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="levelId"> #levelId# </isNotNull>
+		<isNotNull prepend="," property="exp"> #exp# </isNotNull>
+		<isNotNull prepend="," property="sjUpdateTime"> #sjUpdateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleHuajuan">
+		delete from role_huajuan
+		<include refid="queryByKeyRoleHuajuan"/>
+	</delete>
+	
+	<update id="updateRoleHuajuan" parameterClass="com.junyou.bus.huajuan.entity.RoleHuajuan">
+		update role_huajuan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="huanjuanId"> huanjuan_id = #huanjuanId# </isNotNull>
+			<isNotNull prepend="," property="isUp"> is_up = #isUp# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="levelId"> level_id = #levelId# </isNotNull>
+			<isNotNull prepend="," property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="," property="sjUpdateTime"> sj_update_time = #sjUpdateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleHuajuan"/>
+	</update>
+	
+	<select id="selectSingleRoleHuajuan" resultMap="roleHuajuan">
+		select 
+		id
+		,user_role_id
+		,huanjuan_id
+		,is_up
+		,create_time
+		,level_id
+		,exp
+		,sj_update_time
+		from role_huajuan 
+		<include refid="queryByKeyRoleHuajuan"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleHuajuan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_huajuan
+		<include refid="queryConditionRoleHuajuan"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleHuajuan" parameterClass="java.util.Map" resultMap="roleHuajuan">
+		select 
+		id
+		,user_role_id
+		,huanjuan_id
+		,is_up
+		,create_time
+		,level_id
+		,exp
+		,sj_update_time
+		from role_huajuan
+		<include refid="queryConditionRoleHuajuan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleHuajuan" parameterClass="java.util.Map" resultMap="roleHuajuan">
+		select 
+		id
+		,user_role_id
+		,huanjuan_id
+		,is_up
+		,create_time
+		,level_id
+		,exp
+		,sj_update_time
+		from role_huajuan
+		<include refid="queryConditionRoleHuajuan"/>
+	</select>
+	
+	<select id="selectAllRoleHuajuan" resultMap="roleHuajuan">
+		select 
+		id
+		,user_role_id
+		,huanjuan_id
+		,is_up
+		,create_time
+		,level_id
+		,exp
+		,sj_update_time
+		from role_huajuan
+	</select>
+	
+	<select id="selectSingleByParamsRoleHuajuan" resultMap="roleHuajuan">
+		select 
+		id
+		,user_role_id
+		,huanjuan_id
+		,is_up
+		,create_time
+		,level_id
+		,exp
+		,sj_update_time
+		from role_huajuan 
+		<include refid="queryConditionRoleHuajuan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="assign" class="com.junyou.bus.assign.entity.Assign" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="assignDays" column="assign_days"/>
+		<result property="assignTotal" column="assign_total"/>
+		<result property="assignAll" column="assign_all"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="assignCount" column="assign_count"/>
+		<result property="retroactiveCount" column="retroactive_count"/>
+	</resultMap>
+	
+	<sql id="queryConditionAssign">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="assignDays"> assign_days = #assignDays# </isNotNull>
+			<isNotNull prepend="and" property="assignTotal"> assign_total = #assignTotal# </isNotNull>
+			<isNotNull prepend="and" property="assignAll"> assign_all = #assignAll# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="assignCount"> assign_count = #assignCount# </isNotNull>
+			<isNotNull prepend="and" property="retroactiveCount"> retroactive_count = #retroactiveCount# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyAssign">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertAssign" parameterClass="com.junyou.bus.assign.entity.Assign">
+		insert into assign(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="assignDays"> assign_days </isNotNull> 
+		<isNotNull prepend="," property="assignTotal"> assign_total </isNotNull> 
+		<isNotNull prepend="," property="assignAll"> assign_all </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="assignCount"> assign_count </isNotNull> 
+		<isNotNull prepend="," property="retroactiveCount"> retroactive_count </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="assignDays"> #assignDays# </isNotNull>
+		<isNotNull prepend="," property="assignTotal"> #assignTotal# </isNotNull>
+		<isNotNull prepend="," property="assignAll"> #assignAll# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="assignCount"> #assignCount# </isNotNull>
+		<isNotNull prepend="," property="retroactiveCount"> #retroactiveCount# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteAssign">
+		delete from assign
+		<include refid="queryByKeyAssign"/>
+	</delete>
+	
+	<update id="updateAssign" parameterClass="com.junyou.bus.assign.entity.Assign">
+		update assign 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="assignDays"> assign_days = #assignDays# </isNotNull>
+			<isNotNull prepend="," property="assignTotal"> assign_total = #assignTotal# </isNotNull>
+			<isNotNull prepend="," property="assignAll"> assign_all = #assignAll# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="assignCount"> assign_count = #assignCount# </isNotNull>
+			<isNotNull prepend="," property="retroactiveCount"> retroactive_count = #retroactiveCount# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyAssign"/>
+	</update>
+	
+	<select id="selectSingleAssign" resultMap="assign">
+		select 
+		user_role_id
+		,assign_days
+		,assign_total
+		,assign_all
+		,create_time
+		,update_time
+		,assign_count
+		,retroactive_count
+		from assign 
+		<include refid="queryByKeyAssign"/>
+	</select>
+	
+	<select id="selectRecordsCountAssign" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from assign
+		<include refid="queryConditionAssign"/>
+	</select>
+	
+	<select id="selectMultiPagingAssign" parameterClass="java.util.Map" resultMap="assign">
+		select 
+		user_role_id
+		,assign_days
+		,assign_total
+		,assign_all
+		,create_time
+		,update_time
+		,assign_count
+		,retroactive_count
+		from assign
+		<include refid="queryConditionAssign"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiAssign" parameterClass="java.util.Map" resultMap="assign">
+		select 
+		user_role_id
+		,assign_days
+		,assign_total
+		,assign_all
+		,create_time
+		,update_time
+		,assign_count
+		,retroactive_count
+		from assign
+		<include refid="queryConditionAssign"/>
+	</select>
+	
+	<select id="selectAllAssign" resultMap="assign">
+		select 
+		user_role_id
+		,assign_days
+		,assign_total
+		,assign_all
+		,create_time
+		,update_time
+		,assign_count
+		,retroactive_count
+		from assign
+	</select>
+	
+	<select id="selectSingleByParamsAssign" resultMap="assign">
+		select 
+		user_role_id
+		,assign_days
+		,assign_total
+		,assign_all
+		,create_time
+		,update_time
+		,assign_count
+		,retroactive_count
+		from assign 
+		<include refid="queryConditionAssign"/>
+	</select>	
+	
+	
+</sqlMap>
+	

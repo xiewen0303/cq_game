@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="recharge" class="com.junyou.bus.recharge.entity.Recharge" >
+		<result property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="serverId" column="server_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="rmb" column="rmb"/>
+		<result property="yb" column="yb"/>
+		<result property="isCalc" column="is_calc"/>
+		<result property="reType" column="re_type"/>
+		<result property="platformType" column="platform_type"/>
+		<result property="reState" column="re_state"/>
+		<result property="orderId" column="order_id"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRecharge">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="and" property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="rmb"> rmb = #rmb# </isNotNull>
+			<isNotNull prepend="and" property="yb"> yb = #yb# </isNotNull>
+			<isNotNull prepend="and" property="isCalc"> is_calc = #isCalc# </isNotNull>
+			<isNotNull prepend="and" property="reType"> re_type = #reType# </isNotNull>
+			<isNotNull prepend="and" property="platformType"> platform_type = #platformType# </isNotNull>
+			<isNotNull prepend="and" property="reState"> re_state = #reState# </isNotNull>
+			<isNotNull prepend="and" property="reStates"> re_state in ($reStates$) </isNotNull>
+			<isNotNull prepend="and" property="orderId"> order_id = #orderId# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRecharge">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRecharge" parameterClass="com.junyou.bus.recharge.entity.Recharge">
+		insert into recharge(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userId"> user_id </isNotNull> 
+		<isNotNull prepend="," property="serverId"> server_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="rmb"> rmb </isNotNull> 
+		<isNotNull prepend="," property="yb"> yb </isNotNull> 
+		<isNotNull prepend="," property="isCalc"> is_calc </isNotNull> 
+		<isNotNull prepend="," property="reType"> re_type </isNotNull> 
+		<isNotNull prepend="," property="platformType"> platform_type </isNotNull> 
+		<isNotNull prepend="," property="reState"> re_state </isNotNull> 
+		<isNotNull prepend="," property="orderId"> order_id </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userId"> #userId# </isNotNull>
+		<isNotNull prepend="," property="serverId"> #serverId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="rmb"> #rmb# </isNotNull>
+		<isNotNull prepend="," property="yb"> #yb# </isNotNull>
+		<isNotNull prepend="," property="isCalc"> #isCalc# </isNotNull>
+		<isNotNull prepend="," property="reType"> #reType# </isNotNull>
+		<isNotNull prepend="," property="platformType"> #platformType# </isNotNull>
+		<isNotNull prepend="," property="reState"> #reState# </isNotNull>
+		<isNotNull prepend="," property="orderId"> #orderId# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRecharge">
+		delete from recharge
+		<include refid="queryByKeyRecharge"/>
+	</delete>
+	
+	<update id="updateRecharge" parameterClass="com.junyou.bus.recharge.entity.Recharge">
+		update recharge 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="," property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="rmb"> rmb = #rmb# </isNotNull>
+			<isNotNull prepend="," property="yb"> yb = #yb# </isNotNull>
+			<isNotNull prepend="," property="isCalc"> is_calc = #isCalc# </isNotNull>
+			<isNotNull prepend="," property="reType"> re_type = #reType# </isNotNull>
+			<isNotNull prepend="," property="platformType"> platform_type = #platformType# </isNotNull>
+			<isNotNull prepend="," property="reState"> re_state = #reState# </isNotNull>
+			<isNotNull prepend="," property="orderId"> order_id = #orderId# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRecharge"/>
+	</update>
+	
+	<select id="selectSingleRecharge" resultMap="recharge">
+		select 
+		id
+		,user_id
+		,server_id
+		,user_role_id
+		,rmb
+		,yb
+		,is_calc
+		,re_type
+		,platform_type
+		,re_state
+		,order_id
+		,create_time
+		from recharge 
+		<include refid="queryByKeyRecharge"/>
+	</select>
+	
+	<select id="selectRecordsCountRecharge" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from recharge
+		<include refid="queryConditionRecharge"/>
+	</select>
+	
+	<select id="selectMultiPagingRecharge" parameterClass="java.util.Map" resultMap="recharge">
+		select 
+		id
+		,user_id
+		,server_id
+		,user_role_id
+		,rmb
+		,yb
+		,is_calc
+		,re_type
+		,platform_type
+		,re_state
+		,order_id
+		,create_time
+		from recharge
+		<include refid="queryConditionRecharge"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRecharge" parameterClass="java.util.Map" resultMap="recharge">
+		select 
+		id
+		,user_id
+		,server_id
+		,user_role_id
+		,rmb
+		,yb
+		,is_calc
+		,re_type
+		,platform_type
+		,re_state
+		,order_id
+		,create_time
+		from recharge
+		<include refid="queryConditionRecharge"/>
+	</select>
+	
+	<select id="selectAllRecharge" resultMap="recharge">
+		select 
+		id
+		,user_id
+		,server_id
+		,user_role_id
+		,rmb
+		,yb
+		,is_calc
+		,re_type
+		,platform_type
+		,re_state
+		,order_id
+		,create_time
+		from recharge
+	</select>
+	
+	<select id="selectSingleByParamsRecharge" resultMap="recharge">
+		select 
+		id
+		,user_id
+		,server_id
+		,user_role_id
+		,rmb
+		,yb
+		,is_calc
+		,re_type
+		,platform_type
+		,re_state
+		,order_id
+		,create_time
+		from recharge 
+		<include refid="queryConditionRecharge"/>
+	</select>	
+	
+	
+	<select id="selectRechargeByTime" resultClass="java.lang.Long">
+		select 
+		sum(yb)
+		from recharge where user_role_id=#userRoleId# and (re_state=#reState1# or re_state=#reState2#) and <![CDATA[ create_time >= #startTime# and create_time <= #endTime# ]]>    
+	</select>	
+	
+	<resultMap id="allRechargeByTimeVo" class="com.junyou.bus.danfuchargerank.vo.DanfuChargeRankVo" >
+		<result property="rank" column="rank"/>
+		<result property="userRoleId" column="id"/>
+		<result property="name" column="name"/>
+		<result property="yb" column="yb_sum"/>
+		<result property="updateTime" column="create_time"/>
+	</resultMap>
+	
+	<select id="selectAllRechargeByTime" resultMap="allRechargeByTimeVo">
+	select *,(@rowNum:=@rowNum+1) as rank  from (select 
+		user_role.id
+		,name
+		,sum(yb) as yb_sum
+		,recharge.create_time
+		from user_role ,recharge , (Select (@rowNum :=0) ) rank WHERE user_role.id=recharge.user_role_id 
+		and (recharge.re_state=#reState1# or recharge.re_state=#reState2#) and <![CDATA[ recharge.create_time >= #startTime# and recharge.create_time <= #endTime# ]]>
+		group by user_role.id order by yb_sum desc,recharge.create_time asc ) as v where <![CDATA[ v.yb_sum >= #minCharge# ]]> limit #limit# ;
+	
+	</select>
+	
+	<!-- 查询总充值额-->
+	<select id="allRechargeSum" resultClass="java.lang.Long" parameterClass="java.util.Map" >
+		select ifnull(sum(yb),0) from recharge where re_state in (800,801)
+	</select>
+	<!-- 查询时间段内总充值额 -->
+	<select id="selectTimeRechargeSum" resultClass="java.lang.Long" parameterClass="java.util.Map" >
+		select ifnull(sum(yb),0) from recharge where re_state in (800,801) and <![CDATA[ create_time >= #startTime# ]]> and <![CDATA[ create_time < #endTime# ]]>
+	</select>
+</sqlMap>
+	

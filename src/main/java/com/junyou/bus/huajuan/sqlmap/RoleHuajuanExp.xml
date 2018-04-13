@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleHuajuanExp" class="com.junyou.bus.huajuan.entity.RoleHuajuanExp" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="exp" column="exp"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="kucunExp" column="kucun_exp"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleHuajuanExp">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="kucunExp"> kucun_exp = #kucunExp# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleHuajuanExp">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleHuajuanExp" parameterClass="com.junyou.bus.huajuan.entity.RoleHuajuanExp">
+		insert into role_huajuan_exp(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="exp"> exp </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="kucunExp"> kucun_exp </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="exp"> #exp# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="kucunExp"> #kucunExp# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleHuajuanExp">
+		delete from role_huajuan_exp
+		<include refid="queryByKeyRoleHuajuanExp"/>
+	</delete>
+	
+	<update id="updateRoleHuajuanExp" parameterClass="com.junyou.bus.huajuan.entity.RoleHuajuanExp">
+		update role_huajuan_exp 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="kucunExp"> kucun_exp = #kucunExp# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleHuajuanExp"/>
+	</update>
+	
+	<select id="selectSingleRoleHuajuanExp" resultMap="roleHuajuanExp">
+		select 
+		user_role_id
+		,exp
+		,create_time
+		,update_time
+		,kucun_exp
+		from role_huajuan_exp 
+		<include refid="queryByKeyRoleHuajuanExp"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleHuajuanExp" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_huajuan_exp
+		<include refid="queryConditionRoleHuajuanExp"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleHuajuanExp" parameterClass="java.util.Map" resultMap="roleHuajuanExp">
+		select 
+		user_role_id
+		,exp
+		,create_time
+		,update_time
+		,kucun_exp
+		from role_huajuan_exp
+		<include refid="queryConditionRoleHuajuanExp"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleHuajuanExp" parameterClass="java.util.Map" resultMap="roleHuajuanExp">
+		select 
+		user_role_id
+		,exp
+		,create_time
+		,update_time
+		,kucun_exp
+		from role_huajuan_exp
+		<include refid="queryConditionRoleHuajuanExp"/>
+	</select>
+	
+	<select id="selectAllRoleHuajuanExp" resultMap="roleHuajuanExp">
+		select 
+		user_role_id
+		,exp
+		,create_time
+		,update_time
+		,kucun_exp
+		from role_huajuan_exp
+	</select>
+	
+	<select id="selectSingleByParamsRoleHuajuanExp" resultMap="roleHuajuanExp">
+		select 
+		user_role_id
+		,exp
+		,create_time
+		,update_time
+		,kucun_exp
+		from role_huajuan_exp 
+		<include refid="queryConditionRoleHuajuanExp"/>
+	</select>	
+	
+	
+</sqlMap>
+	

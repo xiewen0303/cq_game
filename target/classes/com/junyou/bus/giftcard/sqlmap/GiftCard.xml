@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="giftCard" class="com.junyou.bus.giftcard.entity.GiftCard" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="cardno" column="cardno"/>
+		<result property="useTime" column="use_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionGiftCard">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="cardno"> cardno = #cardno# </isNotNull>
+			<isNotNull prepend="and" property="useTime"> use_time = #useTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyGiftCard">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertGiftCard" parameterClass="com.junyou.bus.giftcard.entity.GiftCard">
+		insert into gift_card(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="cardno"> cardno </isNotNull> 
+		<isNotNull prepend="," property="useTime"> use_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="cardno"> #cardno# </isNotNull>
+		<isNotNull prepend="," property="useTime"> #useTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteGiftCard">
+		delete from gift_card
+		<include refid="queryByKeyGiftCard"/>
+	</delete>
+	
+	<update id="updateGiftCard" parameterClass="com.junyou.bus.giftcard.entity.GiftCard">
+		update gift_card 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="cardno"> cardno = #cardno# </isNotNull>
+			<isNotNull prepend="," property="useTime"> use_time = #useTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyGiftCard"/>
+	</update>
+	
+	<select id="selectSingleGiftCard" resultMap="giftCard">
+		select 
+		id
+		,user_role_id
+		,cardno
+		,use_time
+		from gift_card 
+		<include refid="queryByKeyGiftCard"/>
+	</select>
+	
+	<select id="selectRecordsCountGiftCard" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from gift_card
+		<include refid="queryConditionGiftCard"/>
+	</select>
+	
+	<select id="selectMultiPagingGiftCard" parameterClass="java.util.Map" resultMap="giftCard">
+		select 
+		id
+		,user_role_id
+		,cardno
+		,use_time
+		from gift_card
+		<include refid="queryConditionGiftCard"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiGiftCard" parameterClass="java.util.Map" resultMap="giftCard">
+		select 
+		id
+		,user_role_id
+		,cardno
+		,use_time
+		from gift_card
+		<include refid="queryConditionGiftCard"/>
+	</select>
+	
+	<select id="selectAllGiftCard" resultMap="giftCard">
+		select 
+		id
+		,user_role_id
+		,cardno
+		,use_time
+		from gift_card
+	</select>
+	
+	<select id="selectSingleByParamsGiftCard" resultMap="giftCard">
+		select 
+		id
+		,user_role_id
+		,cardno
+		,use_time
+		from gift_card 
+		<include refid="queryConditionGiftCard"/>
+	</select>	
+	
+	
+</sqlMap>
+	

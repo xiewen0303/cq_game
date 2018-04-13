@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="leichong" class="com.junyou.bus.leichong.entity.Leichong" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="rechargeVal" column="recharge_val"/>
+		<result property="lingquStatus" column="lingqu_status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="subId" column="sub_id"/>
+		<result property="dayRechargeVal" column="day_recharge_val"/>
+		<result property="dayRechargeTime" column="day_recharge_time"/>
+		<result property="rechargeDay" column="recharge_day"/>
+		<result property="dayLingqu" column="day_lingqu"/>
+		<result property="buqianCount" column="buqian_count"/>
+	</resultMap>
+	
+	<sql id="queryConditionLeichong">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="rechargeVal"> recharge_val = #rechargeVal# </isNotNull>
+			<isNotNull prepend="and" property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="dayRechargeVal"> day_recharge_val = #dayRechargeVal# </isNotNull>
+			<isNotNull prepend="and" property="dayRechargeTime"> day_recharge_time = #dayRechargeTime# </isNotNull>
+			<isNotNull prepend="and" property="rechargeDay"> recharge_day = #rechargeDay# </isNotNull>
+			<isNotNull prepend="and" property="dayLingqu"> day_lingqu = #dayLingqu# </isNotNull>
+			<isNotNull prepend="and" property="buqianCount"> buqian_count = #buqianCount# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyLeichong">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertLeichong" parameterClass="com.junyou.bus.leichong.entity.Leichong">
+		insert into leichong(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="rechargeVal"> recharge_val </isNotNull> 
+		<isNotNull prepend="," property="lingquStatus"> lingqu_status </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="dayRechargeVal"> day_recharge_val </isNotNull> 
+		<isNotNull prepend="," property="dayRechargeTime"> day_recharge_time </isNotNull> 
+		<isNotNull prepend="," property="rechargeDay"> recharge_day </isNotNull> 
+		<isNotNull prepend="," property="dayLingqu"> day_lingqu </isNotNull> 
+		<isNotNull prepend="," property="buqianCount"> buqian_count </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="rechargeVal"> #rechargeVal# </isNotNull>
+		<isNotNull prepend="," property="lingquStatus"> #lingquStatus# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="dayRechargeVal"> #dayRechargeVal# </isNotNull>
+		<isNotNull prepend="," property="dayRechargeTime"> #dayRechargeTime# </isNotNull>
+		<isNotNull prepend="," property="rechargeDay"> #rechargeDay# </isNotNull>
+		<isNotNull prepend="," property="dayLingqu"> #dayLingqu# </isNotNull>
+		<isNotNull prepend="," property="buqianCount"> #buqianCount# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteLeichong">
+		delete from leichong
+		<include refid="queryByKeyLeichong"/>
+	</delete>
+	
+	<update id="updateLeichong" parameterClass="com.junyou.bus.leichong.entity.Leichong">
+		update leichong 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="rechargeVal"> recharge_val = #rechargeVal# </isNotNull>
+			<isNotNull prepend="," property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="dayRechargeVal"> day_recharge_val = #dayRechargeVal# </isNotNull>
+			<isNotNull prepend="," property="dayRechargeTime"> day_recharge_time = #dayRechargeTime# </isNotNull>
+			<isNotNull prepend="," property="rechargeDay"> recharge_day = #rechargeDay# </isNotNull>
+			<isNotNull prepend="," property="dayLingqu"> day_lingqu = #dayLingqu# </isNotNull>
+			<isNotNull prepend="," property="buqianCount"> buqian_count = #buqianCount# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyLeichong"/>
+	</update>
+	
+	<select id="selectSingleLeichong" resultMap="leichong">
+		select 
+		id
+		,user_role_id
+		,recharge_val
+		,lingqu_status
+		,create_time
+		,update_time
+		,sub_id
+		,day_recharge_val
+		,day_recharge_time
+		,recharge_day
+		,day_lingqu
+		,buqian_count
+		from leichong 
+		<include refid="queryByKeyLeichong"/>
+	</select>
+	
+	<select id="selectRecordsCountLeichong" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from leichong
+		<include refid="queryConditionLeichong"/>
+	</select>
+	
+	<select id="selectMultiPagingLeichong" parameterClass="java.util.Map" resultMap="leichong">
+		select 
+		id
+		,user_role_id
+		,recharge_val
+		,lingqu_status
+		,create_time
+		,update_time
+		,sub_id
+		,day_recharge_val
+		,day_recharge_time
+		,recharge_day
+		,day_lingqu
+		,buqian_count
+		from leichong
+		<include refid="queryConditionLeichong"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiLeichong" parameterClass="java.util.Map" resultMap="leichong">
+		select 
+		id
+		,user_role_id
+		,recharge_val
+		,lingqu_status
+		,create_time
+		,update_time
+		,sub_id
+		,day_recharge_val
+		,day_recharge_time
+		,recharge_day
+		,day_lingqu
+		,buqian_count
+		from leichong
+		<include refid="queryConditionLeichong"/>
+	</select>
+	
+	<select id="selectAllLeichong" resultMap="leichong">
+		select 
+		id
+		,user_role_id
+		,recharge_val
+		,lingqu_status
+		,create_time
+		,update_time
+		,sub_id
+		,day_recharge_val
+		,day_recharge_time
+		,recharge_day
+		,day_lingqu
+		,buqian_count
+		from leichong
+	</select>
+	
+	<select id="selectSingleByParamsLeichong" resultMap="leichong">
+		select 
+		id
+		,user_role_id
+		,recharge_val
+		,lingqu_status
+		,create_time
+		,update_time
+		,sub_id
+		,day_recharge_val
+		,day_recharge_time
+		,recharge_day
+		,day_lingqu
+		,buqian_count
+		from leichong 
+		<include refid="queryConditionLeichong"/>
+	</select>	
+	
+	
+</sqlMap>
+	

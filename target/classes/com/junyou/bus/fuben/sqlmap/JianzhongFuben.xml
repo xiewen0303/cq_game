@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="jianzhongFuben" class="com.junyou.bus.fuben.entity.JianzhongFuben" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="maxKillMonster" column="max_kill_monster"/>
+		<result property="maxJingqi" column="max_jingqi"/>
+		<result property="state" column="state"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionJianzhongFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="maxKillMonster"> max_kill_monster = #maxKillMonster# </isNotNull>
+			<isNotNull prepend="and" property="maxJingqi"> max_jingqi = #maxJingqi# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyJianzhongFuben">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertJianzhongFuben" parameterClass="com.junyou.bus.fuben.entity.JianzhongFuben">
+		insert into jianzhong_fuben(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="maxKillMonster"> max_kill_monster </isNotNull> 
+		<isNotNull prepend="," property="maxJingqi"> max_jingqi </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="maxKillMonster"> #maxKillMonster# </isNotNull>
+		<isNotNull prepend="," property="maxJingqi"> #maxJingqi# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteJianzhongFuben">
+		delete from jianzhong_fuben
+		<include refid="queryByKeyJianzhongFuben"/>
+	</delete>
+	
+	<update id="updateJianzhongFuben" parameterClass="com.junyou.bus.fuben.entity.JianzhongFuben">
+		update jianzhong_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="maxKillMonster"> max_kill_monster = #maxKillMonster# </isNotNull>
+			<isNotNull prepend="," property="maxJingqi"> max_jingqi = #maxJingqi# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyJianzhongFuben"/>
+	</update>
+	
+	<select id="selectSingleJianzhongFuben" resultMap="jianzhongFuben">
+		select 
+		user_role_id
+		,max_kill_monster
+		,max_jingqi
+		,state
+		,update_time
+		from jianzhong_fuben 
+		<include refid="queryByKeyJianzhongFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountJianzhongFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from jianzhong_fuben
+		<include refid="queryConditionJianzhongFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingJianzhongFuben" parameterClass="java.util.Map" resultMap="jianzhongFuben">
+		select 
+		user_role_id
+		,max_kill_monster
+		,max_jingqi
+		,state
+		,update_time
+		from jianzhong_fuben
+		<include refid="queryConditionJianzhongFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiJianzhongFuben" parameterClass="java.util.Map" resultMap="jianzhongFuben">
+		select 
+		user_role_id
+		,max_kill_monster
+		,max_jingqi
+		,state
+		,update_time
+		from jianzhong_fuben
+		<include refid="queryConditionJianzhongFuben"/>
+	</select>
+	
+	<select id="selectAllJianzhongFuben" resultMap="jianzhongFuben">
+		select 
+		user_role_id
+		,max_kill_monster
+		,max_jingqi
+		,state
+		,update_time
+		from jianzhong_fuben
+	</select>
+	
+	<select id="selectSingleByParamsJianzhongFuben" resultMap="jianzhongFuben">
+		select 
+		user_role_id
+		,max_kill_monster
+		,max_jingqi
+		,state
+		,update_time
+		from jianzhong_fuben 
+		<include refid="queryConditionJianzhongFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refbRoleShouchong" class="com.junyou.bus.shouchong.entity.RefbRoleShouchong" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subActivityId" column="sub_activity_id"/>
+		<result property="ljYbVal" column="lj_yb_val"/>
+		<result property="receiveState" column="receive_state"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="expireTime" column="expire_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefbRoleShouchong">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subActivityId"> sub_activity_id = #subActivityId# </isNotNull>
+			<isNotNull prepend="and" property="ljYbVal"> lj_yb_val = #ljYbVal# </isNotNull>
+			<isNotNull prepend="and" property="receiveState"> receive_state = #receiveState# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefbRoleShouchong">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefbRoleShouchong" parameterClass="com.junyou.bus.shouchong.entity.RefbRoleShouchong">
+		insert into refb_role_shouchong(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subActivityId"> sub_activity_id </isNotNull> 
+		<isNotNull prepend="," property="ljYbVal"> lj_yb_val </isNotNull> 
+		<isNotNull prepend="," property="receiveState"> receive_state </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subActivityId"> #subActivityId# </isNotNull>
+		<isNotNull prepend="," property="ljYbVal"> #ljYbVal# </isNotNull>
+		<isNotNull prepend="," property="receiveState"> #receiveState# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefbRoleShouchong">
+		delete from refb_role_shouchong
+		<include refid="queryByKeyRefbRoleShouchong"/>
+	</delete>
+	
+	<update id="updateRefbRoleShouchong" parameterClass="com.junyou.bus.shouchong.entity.RefbRoleShouchong">
+		update refb_role_shouchong 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subActivityId"> sub_activity_id = #subActivityId# </isNotNull>
+			<isNotNull prepend="," property="ljYbVal"> lj_yb_val = #ljYbVal# </isNotNull>
+			<isNotNull prepend="," property="receiveState"> receive_state = #receiveState# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefbRoleShouchong"/>
+	</update>
+	
+	<select id="selectSingleRefbRoleShouchong" resultMap="refbRoleShouchong">
+		select 
+		id
+		,user_role_id
+		,sub_activity_id
+		,lj_yb_val
+		,receive_state
+		,update_time
+		,expire_time
+		from refb_role_shouchong 
+		<include refid="queryByKeyRefbRoleShouchong"/>
+	</select>
+	
+	<select id="selectRecordsCountRefbRoleShouchong" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refb_role_shouchong
+		<include refid="queryConditionRefbRoleShouchong"/>
+	</select>
+	
+	<select id="selectMultiPagingRefbRoleShouchong" parameterClass="java.util.Map" resultMap="refbRoleShouchong">
+		select 
+		id
+		,user_role_id
+		,sub_activity_id
+		,lj_yb_val
+		,receive_state
+		,update_time
+		,expire_time
+		from refb_role_shouchong
+		<include refid="queryConditionRefbRoleShouchong"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefbRoleShouchong" parameterClass="java.util.Map" resultMap="refbRoleShouchong">
+		select 
+		id
+		,user_role_id
+		,sub_activity_id
+		,lj_yb_val
+		,receive_state
+		,update_time
+		,expire_time
+		from refb_role_shouchong
+		<include refid="queryConditionRefbRoleShouchong"/>
+	</select>
+	
+	<select id="selectAllRefbRoleShouchong" resultMap="refbRoleShouchong">
+		select 
+		id
+		,user_role_id
+		,sub_activity_id
+		,lj_yb_val
+		,receive_state
+		,update_time
+		,expire_time
+		from refb_role_shouchong
+	</select>
+	
+	<select id="selectSingleByParamsRefbRoleShouchong" resultMap="refbRoleShouchong">
+		select 
+		id
+		,user_role_id
+		,sub_activity_id
+		,lj_yb_val
+		,receive_state
+		,update_time
+		,expire_time
+		from refb_role_shouchong 
+		<include refid="queryConditionRefbRoleShouchong"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refbRoleXiuxian" class="com.junyou.bus.xiuxian.entity.RefbRoleXiuxian" >
+		<result property="id" column="id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="configId" column="config_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="buyCount" column="buy_count"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefbRoleXiuxian">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefbRoleXiuxian">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefbRoleXiuxian" parameterClass="com.junyou.bus.xiuxian.entity.RefbRoleXiuxian">
+		insert into refb_role_xiuxian(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="buyCount"> buy_count </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="buyCount"> #buyCount# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefbRoleXiuxian">
+		delete from refb_role_xiuxian
+		<include refid="queryByKeyRefbRoleXiuxian"/>
+	</delete>
+	
+	<update id="updateRefbRoleXiuxian" parameterClass="com.junyou.bus.xiuxian.entity.RefbRoleXiuxian">
+		update refb_role_xiuxian 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefbRoleXiuxian"/>
+	</update>
+	
+	<select id="selectSingleRefbRoleXiuxian" resultMap="refbRoleXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,user_role_id
+		,buy_count
+		,update_time
+		from refb_role_xiuxian 
+		<include refid="queryByKeyRefbRoleXiuxian"/>
+	</select>
+	
+	<select id="selectRecordsCountRefbRoleXiuxian" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refb_role_xiuxian
+		<include refid="queryConditionRefbRoleXiuxian"/>
+	</select>
+	
+	<select id="selectMultiPagingRefbRoleXiuxian" parameterClass="java.util.Map" resultMap="refbRoleXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,user_role_id
+		,buy_count
+		,update_time
+		from refb_role_xiuxian
+		<include refid="queryConditionRefbRoleXiuxian"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefbRoleXiuxian" parameterClass="java.util.Map" resultMap="refbRoleXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,user_role_id
+		,buy_count
+		,update_time
+		from refb_role_xiuxian
+		<include refid="queryConditionRefbRoleXiuxian"/>
+	</select>
+	
+	<select id="selectAllRefbRoleXiuxian" resultMap="refbRoleXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,user_role_id
+		,buy_count
+		,update_time
+		from refb_role_xiuxian
+	</select>
+	
+	<select id="selectSingleByParamsRefbRoleXiuxian" resultMap="refbRoleXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,user_role_id
+		,buy_count
+		,update_time
+		from refb_role_xiuxian 
+		<include refid="queryConditionRefbRoleXiuxian"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="tangbao" class="com.junyou.bus.role.entity.Tangbao" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="zzdan" column="zzdan"/>
+		<result property="czdan" column="czdan"/>
+		<result property="eatInfo" column="eat_info"/>
+		<result property="progress" column="progress"/>
+	</resultMap>
+	
+	<sql id="queryConditionTangbao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="zzdan"> zzdan = #zzdan# </isNotNull>
+			<isNotNull prepend="and" property="czdan"> czdan = #czdan# </isNotNull>
+			<isNotNull prepend="and" property="eatInfo"> eat_info = #eatInfo# </isNotNull>
+			<isNotNull prepend="and" property="progress"> progress = #progress# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTangbao">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertTangbao" parameterClass="com.junyou.bus.role.entity.Tangbao">
+		insert into tangbao(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="zzdan"> zzdan </isNotNull> 
+		<isNotNull prepend="," property="czdan"> czdan </isNotNull> 
+		<isNotNull prepend="," property="eatInfo"> eat_info </isNotNull>
+		<isNotNull prepend="," property="progress"> progress </isNotNull>
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="zzdan"> #zzdan# </isNotNull>
+		<isNotNull prepend="," property="czdan"> #czdan# </isNotNull>
+		<isNotNull prepend="," property="eatInfo"> #eatInfo# </isNotNull>
+		<isNotNull prepend="," property="progress"> #progress# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTangbao">
+		delete from tangbao
+		<include refid="queryByKeyTangbao"/>
+	</delete>
+	
+	<update id="updateTangbao" parameterClass="com.junyou.bus.role.entity.Tangbao">
+		update tangbao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="zzdan"> zzdan = #zzdan# </isNotNull>
+			<isNotNull prepend="," property="czdan"> czdan = #czdan# </isNotNull>
+			<isNotNull prepend="," property="eatInfo"> eat_info = #eatInfo# </isNotNull>
+			<isNotNull prepend="," property="progress"> progress = #progress# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTangbao"/>
+	</update>
+	
+	<select id="selectSingleTangbao" resultMap="tangbao">
+		select 
+		user_role_id
+		,zzdan
+		,czdan
+		,eat_info
+		,progress
+		from tangbao 
+		<include refid="queryByKeyTangbao"/>
+	</select>
+	
+	<select id="selectRecordsCountTangbao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from tangbao
+		<include refid="queryConditionTangbao"/>
+	</select>
+	
+	<select id="selectMultiPagingTangbao" parameterClass="java.util.Map" resultMap="tangbao">
+		select 
+		user_role_id
+		,zzdan
+		,czdan
+		,eat_info
+		,progress
+		from tangbao
+		<include refid="queryConditionTangbao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTangbao" parameterClass="java.util.Map" resultMap="tangbao">
+		select 
+		user_role_id
+		,zzdan
+		,czdan
+		,eat_info
+		,progress
+		from tangbao
+		<include refid="queryConditionTangbao"/>
+	</select>
+	
+	<select id="selectAllTangbao" resultMap="tangbao">
+		select 
+		user_role_id
+		,zzdan
+		,czdan
+		,eat_info
+		,progress
+		from tangbao
+	</select>
+	
+	<select id="selectSingleByParamsTangbao" resultMap="tangbao">
+		select 
+		user_role_id
+		,zzdan
+		,czdan
+		,eat_info
+		,progress
+		from tangbao 
+		<include refid="queryConditionTangbao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

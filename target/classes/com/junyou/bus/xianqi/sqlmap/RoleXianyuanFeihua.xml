@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXianyuanFeihua" class="com.junyou.bus.xianqi.entity.RoleXianyuanFeihua" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="feihuaLevel" column="feihua_level"/>
+		<result property="zfzVal" column="zfz_val"/>
+		<result property="lastSjTime" column="last_sj_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXianyuanFeihua">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="feihuaLevel"> feihua_level = #feihuaLevel# </isNotNull>
+			<isNotNull prepend="and" property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="and" property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXianyuanFeihua">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleXianyuanFeihua" parameterClass="com.junyou.bus.xianqi.entity.RoleXianyuanFeihua">
+		insert into role_xianyuan_feihua(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="feihuaLevel"> feihua_level </isNotNull> 
+		<isNotNull prepend="," property="zfzVal"> zfz_val </isNotNull> 
+		<isNotNull prepend="," property="lastSjTime"> last_sj_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="feihuaLevel"> #feihuaLevel# </isNotNull>
+		<isNotNull prepend="," property="zfzVal"> #zfzVal# </isNotNull>
+		<isNotNull prepend="," property="lastSjTime"> #lastSjTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXianyuanFeihua">
+		delete from role_xianyuan_feihua
+		<include refid="queryByKeyRoleXianyuanFeihua"/>
+	</delete>
+
+	<delete id="deleteBatchRoleXianyuanFeihua">
+		delete from role_xianyuan_feihua where id in ($ids$)
+	</delete>
+	
+	<update id="updateRoleXianyuanFeihua" parameterClass="com.junyou.bus.xianqi.entity.RoleXianyuanFeihua">
+		update role_xianyuan_feihua 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="feihuaLevel"> feihua_level = #feihuaLevel# </isNotNull>
+			<isNotNull prepend="," property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="," property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXianyuanFeihua"/>
+	</update>
+	
+	<select id="selectSingleRoleXianyuanFeihua" resultMap="roleXianyuanFeihua">
+		select 
+		user_role_id
+		,feihua_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		from role_xianyuan_feihua 
+		<include refid="queryByKeyRoleXianyuanFeihua"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXianyuanFeihua" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xianyuan_feihua
+		<include refid="queryConditionRoleXianyuanFeihua"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXianyuanFeihua" parameterClass="java.util.Map" resultMap="roleXianyuanFeihua">
+		select 
+		user_role_id
+		,feihua_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		from role_xianyuan_feihua
+		<include refid="queryConditionRoleXianyuanFeihua"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXianyuanFeihua" parameterClass="java.util.Map" resultMap="roleXianyuanFeihua">
+		select 
+		user_role_id
+		,feihua_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		from role_xianyuan_feihua
+		<include refid="queryConditionRoleXianyuanFeihua"/>
+	</select>
+	
+	<select id="selectAllRoleXianyuanFeihua" resultMap="roleXianyuanFeihua">
+		select 
+		user_role_id
+		,feihua_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		from role_xianyuan_feihua
+	</select>
+	
+	<select id="selectSingleByParamsRoleXianyuanFeihua" resultMap="roleXianyuanFeihua">
+		select 
+		user_role_id
+		,feihua_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		from role_xianyuan_feihua 
+		<include refid="queryConditionRoleXianyuanFeihua"/>
+	</select>	
+	
+	
+</sqlMap>
+	

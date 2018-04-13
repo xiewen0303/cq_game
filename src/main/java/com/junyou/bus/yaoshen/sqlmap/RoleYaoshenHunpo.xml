@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleYaoshenHunpo" class="com.junyou.bus.yaoshen.entity.RoleYaoshenHunpo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="jieLevel" column="jie_level"/>
+		<result property="cengLevel" column="ceng_level"/>
+		<result property="qndNum" column="qnd_num"/>
+		<result property="czdNum" column="czd_num"/>
+		<result property="taiGuang" column="tai_guang"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleYaoshenHunpo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="jieLevel"> jie_level = #jieLevel# </isNotNull>
+			<isNotNull prepend="and" property="cengLevel"> ceng_level = #cengLevel# </isNotNull>
+			<isNotNull prepend="and" property="qndNum"> qnd_num = #qndNum# </isNotNull>
+			<isNotNull prepend="and" property="czdNum"> czd_num = #czdNum# </isNotNull>
+			<isNotNull prepend="and" property="taiGuang"> tai_guang = #taiGuang# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<resultMap id="yaoshenHunpoRankVo" class="com.junyou.bus.yaoshen.vo.YaoShenHunpoRankVo" >
+		<result property="rank" column="rank"/>
+		<result property="userRoleId" column="id"/>
+		<result property="configId" column="config_id"/>
+		<result property="name" column="name"/>
+		<result property="yaoshenLevel" column="jie_level"/>
+		<result property="cengLevel" column="ceng_level"/>
+		<result property="level" column="level"/>
+		<result property="zplus" column="zplus"/>
+		<result property="guildName" column="guildname"/>
+		<result property="vipLevel" column="vip_level"/>
+	</resultMap>
+	
+	<sql id="queryByKeyRoleYaoshenHunpo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleYaoshenHunpo" parameterClass="com.junyou.bus.yaoshen.entity.RoleYaoshenHunpo">
+		insert into role_yaoshen_hunpo(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="jieLevel"> jie_level </isNotNull> 
+		<isNotNull prepend="," property="cengLevel"> ceng_level </isNotNull> 
+		<isNotNull prepend="," property="qndNum"> qnd_num </isNotNull> 
+		<isNotNull prepend="," property="czdNum"> czd_num </isNotNull> 
+		<isNotNull prepend="," property="taiGuang"> tai_guang </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="jieLevel"> #jieLevel# </isNotNull>
+		<isNotNull prepend="," property="cengLevel"> #cengLevel# </isNotNull>
+		<isNotNull prepend="," property="qndNum"> #qndNum# </isNotNull>
+		<isNotNull prepend="," property="czdNum"> #czdNum# </isNotNull>
+		<isNotNull prepend="," property="taiGuang"> #taiGuang# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleYaoshenHunpo">
+		delete from role_yaoshen_hunpo
+		<include refid="queryByKeyRoleYaoshenHunpo"/>
+	</delete>
+	
+	<update id="updateRoleYaoshenHunpo" parameterClass="com.junyou.bus.yaoshen.entity.RoleYaoshenHunpo">
+		update role_yaoshen_hunpo 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="jieLevel"> jie_level = #jieLevel# </isNotNull>
+			<isNotNull prepend="," property="cengLevel"> ceng_level = #cengLevel# </isNotNull>
+			<isNotNull prepend="," property="qndNum"> qnd_num = #qndNum# </isNotNull>
+			<isNotNull prepend="," property="czdNum"> czd_num = #czdNum# </isNotNull>
+			<isNotNull prepend="," property="taiGuang"> tai_guang = #taiGuang# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleYaoshenHunpo"/>
+	</update>
+	
+	<select id="selectSingleRoleYaoshenHunpo" resultMap="roleYaoshenHunpo">
+		select 
+		user_role_id
+		,jie_level
+		,ceng_level
+		,qnd_num
+		,czd_num
+		,tai_guang
+		,update_time
+		from role_yaoshen_hunpo 
+		<include refid="queryByKeyRoleYaoshenHunpo"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleYaoshenHunpo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_yaoshen_hunpo
+		<include refid="queryConditionRoleYaoshenHunpo"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleYaoshenHunpo" parameterClass="java.util.Map" resultMap="roleYaoshenHunpo">
+		select 
+		user_role_id
+		,jie_level
+		,ceng_level
+		,qnd_num
+		,czd_num
+		,tai_guang
+		,update_time
+		from role_yaoshen_hunpo
+		<include refid="queryConditionRoleYaoshenHunpo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleYaoshenHunpo" parameterClass="java.util.Map" resultMap="roleYaoshenHunpo">
+		select 
+		user_role_id
+		,jie_level
+		,ceng_level
+		,qnd_num
+		,czd_num
+		,tai_guang
+		,update_time
+		from role_yaoshen_hunpo
+		<include refid="queryConditionRoleYaoshenHunpo"/>
+	</select>
+	
+	<select id="selectAllRoleYaoshenHunpo" resultMap="roleYaoshenHunpo">
+		select 
+		user_role_id
+		,jie_level
+		,ceng_level
+		,qnd_num
+		,czd_num
+		,tai_guang
+		,update_time
+		from role_yaoshen_hunpo
+	</select>
+	
+	<select id="selectSingleByParamsRoleYaoshenHunpo" resultMap="roleYaoshenHunpo">
+		select 
+		user_role_id
+		,jie_level
+		,ceng_level
+		,qnd_num
+		,czd_num
+		,tai_guang
+		,update_time
+		from role_yaoshen_hunpo 
+		<include refid="queryConditionRoleYaoshenHunpo"/>
+	</select>	
+	
+	<select id="selectYaoShenHunpoRankToYaoShenHunpoRankVo" resultMap="yaoshenHunpoRankVo">
+		select
+		(@rownum :=@rownum + 1)as rank,
+			r.*
+		from
+			(
+				select
+					gz.*,
+					gl. name guildname
+				from
+					(
+						select
+							zhu.*, gu.guild_id
+						from
+							(
+select role_vip_info.vip_level,s1.* from (
+					select
+					id,
+					name,
+					config_id,
+					jie_level,
+					ceng_level,
+					level,
+					role_business_info.cur_fighter as zplus
+				from
+					user_role,
+					role_yaoshen_hunpo,
+					role_business_info
+				where
+					user_role.id = role_business_info.user_role_id
+				and user_role.id = role_yaoshen_hunpo.user_role_id
+				order by
+					jie_level desc,
+					ceng_level desc,
+					role_yaoshen_hunpo.update_time
+				limit #limit#
+) s1 left join role_vip_info on s1.id = role_vip_info.user_role_id
+							)zhu
+						left join guild_member gu on zhu.id = gu.user_role_id
+					)gz
+				left join guild gl on gz.guild_id = gl.id
+			)r,
+			(select(@rownum := 0))rank
+	</select>
+	
+</sqlMap>
+	

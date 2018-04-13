@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="friend" class="com.junyou.bus.friend.entity.Friend" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="friendIds" column="friend_ids"/>
+		<result property="blackIds" column="black_ids"/>
+		<result property="enemyIds" column="enemy_ids"/>
+		<result property="createTime" column="create_time"/>
+		<result property="isAccept" column="is_accept"/>
+		<result property="replyState" column="reply_state"/>
+	</resultMap>
+
+	<resultMap id="friendVo" class="com.junyou.bus.friend.vo.FriendVo" >
+		<result property="id" column="id"/>	
+		<result property="name" column="name"/>
+		<result property="level" column="level"/>
+		<result property="configId" column="config_id"/>
+		<result property="lastOfflineTime" column="offline_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionFriend">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="friendIds"> friend_ids = #friendIds# </isNotNull>
+			<isNotNull prepend="and" property="blackIds"> black_ids = #blackIds# </isNotNull>
+			<isNotNull prepend="and" property="enemyIds"> enemy_ids = #enemyIds# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="isAccept"> is_accept = #isAccept# </isNotNull>
+			<isNotNull prepend="and" property="replyState"> reply_state = #replyState# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyFriend">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertFriend" parameterClass="com.junyou.bus.friend.entity.Friend">
+		insert into friend(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="friendIds"> friend_ids </isNotNull> 
+		<isNotNull prepend="," property="blackIds"> black_ids </isNotNull> 
+		<isNotNull prepend="," property="enemyIds"> enemy_ids </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="isAccept"> is_accept </isNotNull> 
+		<isNotNull prepend="," property="replyState"> reply_state </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="friendIds"> #friendIds# </isNotNull>
+		<isNotNull prepend="," property="blackIds"> #blackIds# </isNotNull>
+		<isNotNull prepend="," property="enemyIds"> #enemyIds# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="isAccept"> #isAccept# </isNotNull>
+		<isNotNull prepend="," property="replyState"> #replyState# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteFriend">
+		delete from friend
+		<include refid="queryByKeyFriend"/>
+	</delete>
+	
+	<update id="updateFriend" parameterClass="com.junyou.bus.friend.entity.Friend">
+		update friend 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="friendIds"> friend_ids = #friendIds# </isNotNull>
+			<isNotNull prepend="," property="blackIds"> black_ids = #blackIds# </isNotNull>
+			<isNotNull prepend="," property="enemyIds"> enemy_ids = #enemyIds# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="isAccept"> is_accept = #isAccept# </isNotNull>
+			<isNotNull prepend="," property="replyState"> reply_state = #replyState# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyFriend"/>
+	</update>
+	
+	<select id="selectSingleFriend" resultMap="friend">
+		select 
+		user_role_id
+		,friend_ids
+		,black_ids
+		,enemy_ids
+		,create_time
+		,is_accept
+		,reply_state
+		from friend 
+		<include refid="queryByKeyFriend"/>
+	</select>
+	
+	<select id="selectRecordsCountFriend" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from friend
+		<include refid="queryConditionFriend"/>
+	</select>
+	
+	<select id="selectMultiPagingFriend" parameterClass="java.util.Map" resultMap="friend">
+		select 
+		user_role_id
+		,friend_ids
+		,black_ids
+		,enemy_ids
+		,create_time
+		,is_accept
+		,reply_state
+		from friend
+		<include refid="queryConditionFriend"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiFriend" parameterClass="java.util.Map" resultMap="friend">
+		select 
+		user_role_id
+		,friend_ids
+		,black_ids
+		,enemy_ids
+		,create_time
+		,is_accept
+		,reply_state
+		from friend
+		<include refid="queryConditionFriend"/>
+	</select>
+	
+	<select id="selectAllFriend" resultMap="friend">
+		select 
+		user_role_id
+		,friend_ids
+		,black_ids
+		,enemy_ids
+		,create_time
+		,is_accept
+		,reply_state
+		from friend
+	</select>
+	
+	<select id="selectSingleByParamsFriend" resultMap="friend">
+		select 
+		user_role_id
+		,friend_ids
+		,black_ids
+		,enemy_ids
+		,create_time
+		,is_accept
+		,reply_state
+		from friend 
+		<include refid="queryConditionFriend"/>
+	</select>	
+	
+
+	<select id = "selectFriendsVoByParams" parameterClass="java.util.Map" resultMap="friendVo" >
+		select
+		r.id
+		,r.name
+		,r.level
+		,r.config_id
+		,r.offline_time
+		from user_role r where  r.id in ($roleList$)  
+	</select>	
+	
+	
+	<select id = "selectFriendVoByParams" parameterClass="java.util.Map" resultMap="friendVo" >
+		select
+		r.id
+		,r.name
+		,r.level
+		,r.config_id
+		,r.offline_time
+		from user_role r where r.`name` = #roleName#
+	</select>	
+	
+</sqlMap>
+	

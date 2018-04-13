@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleWuxingFuti" class="com.junyou.bus.wuxing.entity.RoleWuxingFuti" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="wuxingId" column="wuxing_id"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleWuxingFuti">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="wuxingId"> wuxing_id = #wuxingId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleWuxingFuti">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleWuxingFuti" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingFuti">
+		insert into role_wuxing_futi(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="wuxingId"> wuxing_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="wuxingId"> #wuxingId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleWuxingFuti">
+		delete from role_wuxing_futi
+		<include refid="queryByKeyRoleWuxingFuti"/>
+	</delete>
+	
+	<update id="updateRoleWuxingFuti" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingFuti">
+		update role_wuxing_futi 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="wuxingId"> wuxing_id = #wuxingId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleWuxingFuti"/>
+	</update>
+	
+	<select id="selectSingleRoleWuxingFuti" resultMap="roleWuxingFuti">
+		select 
+		user_role_id
+		,wuxing_id
+		,update_time
+		,create_time
+		from role_wuxing_futi 
+		<include refid="queryByKeyRoleWuxingFuti"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleWuxingFuti" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_wuxing_futi
+		<include refid="queryConditionRoleWuxingFuti"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleWuxingFuti" parameterClass="java.util.Map" resultMap="roleWuxingFuti">
+		select 
+		user_role_id
+		,wuxing_id
+		,update_time
+		,create_time
+		from role_wuxing_futi
+		<include refid="queryConditionRoleWuxingFuti"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleWuxingFuti" parameterClass="java.util.Map" resultMap="roleWuxingFuti">
+		select 
+		user_role_id
+		,wuxing_id
+		,update_time
+		,create_time
+		from role_wuxing_futi
+		<include refid="queryConditionRoleWuxingFuti"/>
+	</select>
+	
+	<select id="selectAllRoleWuxingFuti" resultMap="roleWuxingFuti">
+		select 
+		user_role_id
+		,wuxing_id
+		,update_time
+		,create_time
+		from role_wuxing_futi
+	</select>
+	
+	<select id="selectSingleByParamsRoleWuxingFuti" resultMap="roleWuxingFuti">
+		select 
+		user_role_id
+		,wuxing_id
+		,update_time
+		,create_time
+		from role_wuxing_futi 
+		<include refid="queryConditionRoleWuxingFuti"/>
+	</select>	
+	
+	
+</sqlMap>
+	

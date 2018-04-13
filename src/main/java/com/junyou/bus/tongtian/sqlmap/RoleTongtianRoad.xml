@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleTongtianRoad" class="com.junyou.bus.tongtian.entity.RoleTongtianRoad" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="value" column="value"/>
+		<result property="position" column="position"/>
+		<result property="attribute" column="attribute"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleTongtianRoad">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="value"> value = #value# </isNotNull>
+			<isNotNull prepend="and" property="position"> position = #position# </isNotNull>
+			<isNotNull prepend="and" property="attribute"> attribute = #attribute# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleTongtianRoad">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleTongtianRoad" parameterClass="com.junyou.bus.tongtian.entity.RoleTongtianRoad">
+		insert into role_tongtian_road(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="value"> value </isNotNull> 
+		<isNotNull prepend="," property="position"> position </isNotNull> 
+		<isNotNull prepend="," property="attribute"> attribute </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="value"> #value# </isNotNull>
+		<isNotNull prepend="," property="position"> #position# </isNotNull>
+		<isNotNull prepend="," property="attribute"> #attribute# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleTongtianRoad">
+		delete from role_tongtian_road
+		<include refid="queryByKeyRoleTongtianRoad"/>
+	</delete>
+	
+	<update id="updateRoleTongtianRoad" parameterClass="com.junyou.bus.tongtian.entity.RoleTongtianRoad">
+		update role_tongtian_road 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="value"> value = #value# </isNotNull>
+			<isNotNull prepend="," property="position"> position = #position# </isNotNull>
+			<isNotNull prepend="," property="attribute"> attribute = #attribute# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleTongtianRoad"/>
+	</update>
+	
+	<select id="selectSingleRoleTongtianRoad" resultMap="roleTongtianRoad">
+		select 
+		user_role_id
+		,value
+		,position
+		,attribute
+		,update_time
+		,create_time
+		from role_tongtian_road 
+		<include refid="queryByKeyRoleTongtianRoad"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleTongtianRoad" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_tongtian_road
+		<include refid="queryConditionRoleTongtianRoad"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleTongtianRoad" parameterClass="java.util.Map" resultMap="roleTongtianRoad">
+		select 
+		user_role_id
+		,value
+		,position
+		,attribute
+		,update_time
+		,create_time
+		from role_tongtian_road
+		<include refid="queryConditionRoleTongtianRoad"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleTongtianRoad" parameterClass="java.util.Map" resultMap="roleTongtianRoad">
+		select 
+		user_role_id
+		,value
+		,position
+		,attribute
+		,update_time
+		,create_time
+		from role_tongtian_road
+		<include refid="queryConditionRoleTongtianRoad"/>
+	</select>
+	
+	<select id="selectAllRoleTongtianRoad" resultMap="roleTongtianRoad">
+		select 
+		user_role_id
+		,value
+		,position
+		,attribute
+		,update_time
+		,create_time
+		from role_tongtian_road
+	</select>
+	
+	<select id="selectSingleByParamsRoleTongtianRoad" resultMap="roleTongtianRoad">
+		select 
+		user_role_id
+		,value
+		,position
+		,attribute
+		,update_time
+		,create_time
+		from role_tongtian_road 
+		<include refid="queryConditionRoleTongtianRoad"/>
+	</select>	
+	
+	
+</sqlMap>
+	

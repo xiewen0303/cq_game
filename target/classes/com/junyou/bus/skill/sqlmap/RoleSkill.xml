@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleSkill" class="com.junyou.bus.skill.entity.RoleSkill" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="skillId" column="skill_id"/>
+		<result property="level" column="level"/>
+		<result property="shulian" column="shulian"/>
+		<result property="type" column="type"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleSkill">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="skillId"> skill_id = #skillId# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="shulian"> shulian = #shulian# </isNotNull>
+			<isNotNull prepend="and" property="type"> type = #type# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleSkill">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleSkill" parameterClass="com.junyou.bus.skill.entity.RoleSkill">
+		insert into role_skill(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="skillId"> skill_id </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="shulian"> shulian </isNotNull> 
+		<isNotNull prepend="," property="type"> type </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="skillId"> #skillId# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="shulian"> #shulian# </isNotNull>
+		<isNotNull prepend="," property="type"> #type# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleSkill">
+		delete from role_skill
+		<include refid="queryByKeyRoleSkill"/>
+	</delete>
+	
+	<update id="updateRoleSkill" parameterClass="com.junyou.bus.skill.entity.RoleSkill">
+		update role_skill 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="skillId"> skill_id = #skillId# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="shulian"> shulian = #shulian# </isNotNull>
+			<isNotNull prepend="," property="type"> type = #type# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleSkill"/>
+	</update>
+	
+	<select id="selectSingleRoleSkill" resultMap="roleSkill">
+		select 
+		id
+		,user_role_id
+		,skill_id
+		,level
+		,shulian
+		,type
+		from role_skill 
+		<include refid="queryByKeyRoleSkill"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleSkill" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_skill
+		<include refid="queryConditionRoleSkill"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleSkill" parameterClass="java.util.Map" resultMap="roleSkill">
+		select 
+		id
+		,user_role_id
+		,skill_id
+		,level
+		,shulian
+		,type
+		from role_skill
+		<include refid="queryConditionRoleSkill"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleSkill" parameterClass="java.util.Map" resultMap="roleSkill">
+		select 
+		id
+		,user_role_id
+		,skill_id
+		,level
+		,shulian
+		,type
+		from role_skill
+		<include refid="queryConditionRoleSkill"/>
+	</select>
+	
+	<select id="selectAllRoleSkill" resultMap="roleSkill">
+		select 
+		id
+		,user_role_id
+		,skill_id
+		,level
+		,shulian
+		,type
+		from role_skill
+	</select>
+	
+	<select id="selectSingleByParamsRoleSkill" resultMap="roleSkill">
+		select 
+		id
+		,user_role_id
+		,skill_id
+		,level
+		,shulian
+		,type
+		from role_skill 
+		<include refid="queryConditionRoleSkill"/>
+	</select>	
+	
+	
+</sqlMap>
+	

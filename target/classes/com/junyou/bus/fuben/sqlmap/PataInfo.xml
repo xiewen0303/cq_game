@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="pataInfo" class="com.junyou.bus.fuben.entity.PataInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="maxCeng" column="max_ceng"/>
+		<result property="count" column="count"/>
+		<result property="buyCount" column="buy_count"/>
+		<result property="yuanzhuCount" column="yuanzhu_count"/>
+		<result property="bestTime" column="best_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionPataInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="maxCeng"> max_ceng = #maxCeng# </isNotNull>
+			<isNotNull prepend="and" property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="and" property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="and" property="yuanzhuCount"> yuanzhu_count = #yuanzhuCount# </isNotNull>
+			<isNotNull prepend="and" property="bestTime"> best_time = #bestTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyPataInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertPataInfo" parameterClass="com.junyou.bus.fuben.entity.PataInfo">
+		insert into pata_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="maxCeng"> max_ceng </isNotNull> 
+		<isNotNull prepend="," property="count"> count </isNotNull> 
+		<isNotNull prepend="," property="buyCount"> buy_count </isNotNull> 
+		<isNotNull prepend="," property="yuanzhuCount"> yuanzhu_count </isNotNull> 
+		<isNotNull prepend="," property="bestTime"> best_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="maxCeng"> #maxCeng# </isNotNull>
+		<isNotNull prepend="," property="count"> #count# </isNotNull>
+		<isNotNull prepend="," property="buyCount"> #buyCount# </isNotNull>
+		<isNotNull prepend="," property="yuanzhuCount"> #yuanzhuCount# </isNotNull>
+		<isNotNull prepend="," property="bestTime"> #bestTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deletePataInfo">
+		delete from pata_info
+		<include refid="queryByKeyPataInfo"/>
+	</delete>
+	
+	<update id="updatePataInfo" parameterClass="com.junyou.bus.fuben.entity.PataInfo">
+		update pata_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="maxCeng"> max_ceng = #maxCeng# </isNotNull>
+			<isNotNull prepend="," property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="," property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="," property="yuanzhuCount"> yuanzhu_count = #yuanzhuCount# </isNotNull>
+			<isNotNull prepend="," property="bestTime"> best_time = #bestTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyPataInfo"/>
+	</update>
+	
+	<select id="selectSinglePataInfo" resultMap="pataInfo">
+		select 
+		user_role_id
+		,max_ceng
+		,count
+		,buy_count
+		,yuanzhu_count
+		,best_time
+		,update_time
+		from pata_info 
+		<include refid="queryByKeyPataInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountPataInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from pata_info
+		<include refid="queryConditionPataInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingPataInfo" parameterClass="java.util.Map" resultMap="pataInfo">
+		select 
+		user_role_id
+		,max_ceng
+		,count
+		,buy_count
+		,yuanzhu_count
+		,best_time
+		,update_time
+		from pata_info
+		<include refid="queryConditionPataInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiPataInfo" parameterClass="java.util.Map" resultMap="pataInfo">
+		select 
+		user_role_id
+		,max_ceng
+		,count
+		,buy_count
+		,yuanzhu_count
+		,best_time
+		,update_time
+		from pata_info
+		<include refid="queryConditionPataInfo"/>
+	</select>
+	
+	<select id="selectAllPataInfo" resultMap="pataInfo">
+		select 
+		user_role_id
+		,max_ceng
+		,count
+		,buy_count
+		,yuanzhu_count
+		,best_time
+		,update_time
+		from pata_info
+	</select>
+	
+	<select id="selectSingleByParamsPataInfo" resultMap="pataInfo">
+		select 
+		user_role_id
+		,max_ceng
+		,count
+		,buy_count
+		,yuanzhu_count
+		,best_time
+		,update_time
+		from pata_info 
+		<include refid="queryConditionPataInfo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

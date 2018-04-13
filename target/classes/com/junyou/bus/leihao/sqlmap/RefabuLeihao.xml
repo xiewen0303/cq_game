@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuLeihao" class="com.junyou.bus.leihao.entity.RefabuLeihao" >
+		<result property="id" column="id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="ybCount" column="yb_count"/>
+		<result property="pickStr" column="pick_str"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="ybDayCount" column="yb_day_count"/>
+		<result property="ybDayId" column="yb_day_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuLeihao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="ybCount"> yb_count = #ybCount# </isNotNull>
+			<isNotNull prepend="and" property="pickStr"> pick_str = #pickStr# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="ybDayCount"> yb_day_count = #ybDayCount# </isNotNull>
+			<isNotNull prepend="and" property="ybDayId"> yb_day_id = #ybDayId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuLeihao">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuLeihao" parameterClass="com.junyou.bus.leihao.entity.RefabuLeihao">
+		insert into refabu_leihao(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="ybCount"> yb_count </isNotNull> 
+		<isNotNull prepend="," property="pickStr"> pick_str </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="ybDayCount"> yb_day_count </isNotNull> 
+		<isNotNull prepend="," property="ybDayId"> yb_day_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="ybCount"> #ybCount# </isNotNull>
+		<isNotNull prepend="," property="pickStr"> #pickStr# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="ybDayCount"> #ybDayCount# </isNotNull>
+		<isNotNull prepend="," property="ybDayId"> #ybDayId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuLeihao">
+		delete from refabu_leihao
+		<include refid="queryByKeyRefabuLeihao"/>
+	</delete>
+	
+	<update id="updateRefabuLeihao" parameterClass="com.junyou.bus.leihao.entity.RefabuLeihao">
+		update refabu_leihao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="ybCount"> yb_count = #ybCount# </isNotNull>
+			<isNotNull prepend="," property="pickStr"> pick_str = #pickStr# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="ybDayCount"> yb_day_count = #ybDayCount# </isNotNull>
+			<isNotNull prepend="," property="ybDayId"> yb_day_id = #ybDayId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuLeihao"/>
+	</update>
+	
+	<select id="selectSingleRefabuLeihao" resultMap="refabuLeihao">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,yb_count
+		,pick_str
+		,update_time
+		,yb_day_count
+		,yb_day_id
+		from refabu_leihao 
+		<include refid="queryByKeyRefabuLeihao"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuLeihao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_leihao
+		<include refid="queryConditionRefabuLeihao"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuLeihao" parameterClass="java.util.Map" resultMap="refabuLeihao">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,yb_count
+		,pick_str
+		,update_time
+		,yb_day_count
+		,yb_day_id
+		from refabu_leihao
+		<include refid="queryConditionRefabuLeihao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuLeihao" parameterClass="java.util.Map" resultMap="refabuLeihao">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,yb_count
+		,pick_str
+		,update_time
+		,yb_day_count
+		,yb_day_id
+		from refabu_leihao
+		<include refid="queryConditionRefabuLeihao"/>
+	</select>
+	
+	<select id="selectAllRefabuLeihao" resultMap="refabuLeihao">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,yb_count
+		,pick_str
+		,update_time
+		,yb_day_count
+		,yb_day_id
+		from refabu_leihao
+	</select>
+	
+	<select id="selectSingleByParamsRefabuLeihao" resultMap="refabuLeihao">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,yb_count
+		,pick_str
+		,update_time
+		,yb_day_count
+		,yb_day_id
+		from refabu_leihao 
+		<include refid="queryConditionRefabuLeihao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

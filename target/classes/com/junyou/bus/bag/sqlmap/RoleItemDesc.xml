@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleItemDesc" class="com.junyou.bus.bag.entity.RoleItemDesc" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="bagOpeningSlot" column="bag_opening_slot"/>
+		<result property="bagKyTime" column="bag_ky_time"/>
+		<result property="bagUpdateTime" column="bag_update_time"/>
+		<result property="storageOpeningSlot" column="storage_opening_slot"/>
+		<result property="storageKyTime" column="storage_ky_time"/>
+		<result property="storageUpdateTime" column="storage_update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleItemDesc">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="bagOpeningSlot"> bag_opening_slot = #bagOpeningSlot# </isNotNull>
+			<isNotNull prepend="and" property="bagKyTime"> bag_ky_time = #bagKyTime# </isNotNull>
+			<isNotNull prepend="and" property="bagUpdateTime"> bag_update_time = #bagUpdateTime# </isNotNull>
+			<isNotNull prepend="and" property="storageOpeningSlot"> storage_opening_slot = #storageOpeningSlot# </isNotNull>
+			<isNotNull prepend="and" property="storageKyTime"> storage_ky_time = #storageKyTime# </isNotNull>
+			<isNotNull prepend="and" property="storageUpdateTime"> storage_update_time = #storageUpdateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleItemDesc">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleItemDesc" parameterClass="com.junyou.bus.bag.entity.RoleItemDesc">
+		insert into role_item_desc(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="bagOpeningSlot"> bag_opening_slot </isNotNull> 
+		<isNotNull prepend="," property="bagKyTime"> bag_ky_time </isNotNull> 
+		<isNotNull prepend="," property="bagUpdateTime"> bag_update_time </isNotNull> 
+		<isNotNull prepend="," property="storageOpeningSlot"> storage_opening_slot </isNotNull> 
+		<isNotNull prepend="," property="storageKyTime"> storage_ky_time </isNotNull> 
+		<isNotNull prepend="," property="storageUpdateTime"> storage_update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="bagOpeningSlot"> #bagOpeningSlot# </isNotNull>
+		<isNotNull prepend="," property="bagKyTime"> #bagKyTime# </isNotNull>
+		<isNotNull prepend="," property="bagUpdateTime"> #bagUpdateTime# </isNotNull>
+		<isNotNull prepend="," property="storageOpeningSlot"> #storageOpeningSlot# </isNotNull>
+		<isNotNull prepend="," property="storageKyTime"> #storageKyTime# </isNotNull>
+		<isNotNull prepend="," property="storageUpdateTime"> #storageUpdateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleItemDesc">
+		delete from role_item_desc
+		<include refid="queryByKeyRoleItemDesc"/>
+	</delete>
+	
+	<update id="updateRoleItemDesc" parameterClass="com.junyou.bus.bag.entity.RoleItemDesc">
+		update role_item_desc 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="bagOpeningSlot"> bag_opening_slot = #bagOpeningSlot# </isNotNull>
+			<isNotNull prepend="," property="bagKyTime"> bag_ky_time = #bagKyTime# </isNotNull>
+			<isNotNull prepend="," property="bagUpdateTime"> bag_update_time = #bagUpdateTime# </isNotNull>
+			<isNotNull prepend="," property="storageOpeningSlot"> storage_opening_slot = #storageOpeningSlot# </isNotNull>
+			<isNotNull prepend="," property="storageKyTime"> storage_ky_time = #storageKyTime# </isNotNull>
+			<isNotNull prepend="," property="storageUpdateTime"> storage_update_time = #storageUpdateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleItemDesc"/>
+	</update>
+	
+	<select id="selectSingleRoleItemDesc" resultMap="roleItemDesc">
+		select 
+		user_role_id
+		,bag_opening_slot
+		,bag_ky_time
+		,bag_update_time
+		,storage_opening_slot
+		,storage_ky_time
+		,storage_update_time
+		from role_item_desc 
+		<include refid="queryByKeyRoleItemDesc"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleItemDesc" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_item_desc
+		<include refid="queryConditionRoleItemDesc"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleItemDesc" parameterClass="java.util.Map" resultMap="roleItemDesc">
+		select 
+		user_role_id
+		,bag_opening_slot
+		,bag_ky_time
+		,bag_update_time
+		,storage_opening_slot
+		,storage_ky_time
+		,storage_update_time
+		from role_item_desc
+		<include refid="queryConditionRoleItemDesc"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleItemDesc" parameterClass="java.util.Map" resultMap="roleItemDesc">
+		select 
+		user_role_id
+		,bag_opening_slot
+		,bag_ky_time
+		,bag_update_time
+		,storage_opening_slot
+		,storage_ky_time
+		,storage_update_time
+		from role_item_desc
+		<include refid="queryConditionRoleItemDesc"/>
+	</select>
+	
+	<select id="selectAllRoleItemDesc" resultMap="roleItemDesc">
+		select 
+		user_role_id
+		,bag_opening_slot
+		,bag_ky_time
+		,bag_update_time
+		,storage_opening_slot
+		,storage_ky_time
+		,storage_update_time
+		from role_item_desc
+	</select>
+	
+	<select id="selectSingleByParamsRoleItemDesc" resultMap="roleItemDesc">
+		select 
+		user_role_id
+		,bag_opening_slot
+		,bag_ky_time
+		,bag_update_time
+		,storage_opening_slot
+		,storage_ky_time
+		,storage_update_time
+		from role_item_desc 
+		<include refid="queryConditionRoleItemDesc"/>
+	</select>	
+	
+	
+</sqlMap>
+	

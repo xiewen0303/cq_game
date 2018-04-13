@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleWuxing" class="com.junyou.bus.wuxing.entity.RoleWuxing" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="wuxingType" column="wuxing_type"/>
+		<result property="wuxingLevel" column="wuxing_level"/>
+		<result property="zfzVal" column="zfz_val"/>
+		<result property="lastSjTime" column="last_sj_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleWuxing">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="wuxingType"> wuxing_type = #wuxingType# </isNotNull>
+			<isNotNull prepend="and" property="wuxingLevel"> wuxing_level = #wuxingLevel# </isNotNull>
+			<isNotNull prepend="and" property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="and" property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleWuxing">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleWuxing" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxing">
+		insert into role_wuxing(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="wuxingType"> wuxing_type </isNotNull> 
+		<isNotNull prepend="," property="wuxingLevel"> wuxing_level </isNotNull> 
+		<isNotNull prepend="," property="zfzVal"> zfz_val </isNotNull> 
+		<isNotNull prepend="," property="lastSjTime"> last_sj_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="wuxingType"> #wuxingType# </isNotNull>
+		<isNotNull prepend="," property="wuxingLevel"> #wuxingLevel# </isNotNull>
+		<isNotNull prepend="," property="zfzVal"> #zfzVal# </isNotNull>
+		<isNotNull prepend="," property="lastSjTime"> #lastSjTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleWuxing">
+		delete from role_wuxing
+		<include refid="queryByKeyRoleWuxing"/>
+	</delete>
+	
+	<update id="updateRoleWuxing" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxing">
+		update role_wuxing 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="wuxingType"> wuxing_type = #wuxingType# </isNotNull>
+			<isNotNull prepend="," property="wuxingLevel"> wuxing_level = #wuxingLevel# </isNotNull>
+			<isNotNull prepend="," property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="," property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleWuxing"/>
+	</update>
+	
+	<select id="selectSingleRoleWuxing" resultMap="roleWuxing">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,wuxing_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		,create_time
+		from role_wuxing 
+		<include refid="queryByKeyRoleWuxing"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleWuxing" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_wuxing
+		<include refid="queryConditionRoleWuxing"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleWuxing" parameterClass="java.util.Map" resultMap="roleWuxing">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,wuxing_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		,create_time
+		from role_wuxing
+		<include refid="queryConditionRoleWuxing"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleWuxing" parameterClass="java.util.Map" resultMap="roleWuxing">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,wuxing_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		,create_time
+		from role_wuxing
+		<include refid="queryConditionRoleWuxing"/>
+	</select>
+	
+	<select id="selectAllRoleWuxing" resultMap="roleWuxing">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,wuxing_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		,create_time
+		from role_wuxing
+	</select>
+	
+	<select id="selectSingleByParamsRoleWuxing" resultMap="roleWuxing">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,wuxing_level
+		,zfz_val
+		,last_sj_time
+		,update_time
+		,create_time
+		from role_wuxing 
+		<include refid="queryConditionRoleWuxing"/>
+	</select>	
+	
+	
+</sqlMap>
+	

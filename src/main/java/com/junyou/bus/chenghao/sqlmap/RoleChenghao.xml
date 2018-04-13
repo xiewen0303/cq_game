@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleChenghao" class="com.junyou.bus.chenghao.entity.RoleChenghao" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="chenghaoId" column="chenghao_id"/>
+		<result property="res" column="res"/>
+		<result property="name" column="name"/>
+		<result property="wearStatus" column="wear_status"/>
+		<result property="expireTime" column="expire_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleChenghao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="chenghaoId"> chenghao_id = #chenghaoId# </isNotNull>
+			<isNotNull prepend="and" property="res"> res = #res# </isNotNull>
+			<isNotNull prepend="and" property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="and" property="wearStatus"> wear_status = #wearStatus# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleChenghao">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleChenghao" parameterClass="com.junyou.bus.chenghao.entity.RoleChenghao">
+		insert into role_chenghao(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="chenghaoId"> chenghao_id </isNotNull> 
+		<isNotNull prepend="," property="res"> res </isNotNull> 
+		<isNotNull prepend="," property="name"> name </isNotNull> 
+		<isNotNull prepend="," property="wearStatus"> wear_status </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="chenghaoId"> #chenghaoId# </isNotNull>
+		<isNotNull prepend="," property="res"> #res# </isNotNull>
+		<isNotNull prepend="," property="name"> #name# </isNotNull>
+		<isNotNull prepend="," property="wearStatus"> #wearStatus# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleChenghao">
+		delete from role_chenghao
+		<include refid="queryByKeyRoleChenghao"/>
+	</delete>
+	
+	<update id="updateRoleChenghao" parameterClass="com.junyou.bus.chenghao.entity.RoleChenghao">
+		update role_chenghao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="chenghaoId"> chenghao_id = #chenghaoId# </isNotNull>
+			<isNotNull prepend="," property="res"> res = #res# </isNotNull>
+			<isNotNull prepend="," property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="," property="wearStatus"> wear_status = #wearStatus# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleChenghao"/>
+	</update>
+	
+	<select id="selectSingleRoleChenghao" resultMap="roleChenghao">
+		select 
+		id
+		,user_role_id
+		,chenghao_id
+		,res
+		,name
+		,wear_status
+		,expire_time
+		,update_time
+		from role_chenghao 
+		<include refid="queryByKeyRoleChenghao"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleChenghao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_chenghao
+		<include refid="queryConditionRoleChenghao"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleChenghao" parameterClass="java.util.Map" resultMap="roleChenghao">
+		select 
+		id
+		,user_role_id
+		,chenghao_id
+		,res
+		,name
+		,wear_status
+		,expire_time
+		,update_time
+		from role_chenghao
+		<include refid="queryConditionRoleChenghao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleChenghao" parameterClass="java.util.Map" resultMap="roleChenghao">
+		select 
+		id
+		,user_role_id
+		,chenghao_id
+		,res
+		,name
+		,wear_status
+		,expire_time
+		,update_time
+		from role_chenghao
+		<include refid="queryConditionRoleChenghao"/>
+	</select>
+	
+	<select id="selectAllRoleChenghao" resultMap="roleChenghao">
+		select 
+		id
+		,user_role_id
+		,chenghao_id
+		,res
+		,name
+		,wear_status
+		,expire_time
+		,update_time
+		from role_chenghao
+	</select>
+	
+	<select id="selectSingleByParamsRoleChenghao" resultMap="roleChenghao">
+		select 
+		id
+		,user_role_id
+		,chenghao_id
+		,res
+		,name
+		,wear_status
+		,expire_time
+		,update_time
+		from role_chenghao 
+		<include refid="queryConditionRoleChenghao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

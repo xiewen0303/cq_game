@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="qiriLevel" class="com.junyou.bus.kaifuactivity.entity.QiriLevel">
+		<result property="id" column="id"/>
+		<result property="configId" column="config_id"/>
+		<result property="maxNumber" column="max_number"/>
+		<result property="lingquNumber" column="lingqu_number"/>
+		<result property="createTime" column="create_time"/>
+		<result property="subId" column="sub_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionQiriLevel">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="maxNumber"> max_number = #maxNumber# </isNotNull>
+			<isNotNull prepend="and" property="lingquNumber"> lingqu_number = #lingquNumber# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyQiriLevel">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertQiriLevel" parameterClass="com.junyou.bus.kaifuactivity.entity.QiriLevel">
+		insert into qiri_level(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="maxNumber"> max_number </isNotNull> 
+		<isNotNull prepend="," property="lingquNumber"> lingqu_number </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="maxNumber"> #maxNumber# </isNotNull>
+		<isNotNull prepend="," property="lingquNumber"> #lingquNumber# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteQiriLevel">
+		delete from qiri_level
+		<include refid="queryByKeyQiriLevel"/>
+	</delete>
+	
+	<update id="updateQiriLevel" parameterClass="com.junyou.bus.kaifuactivity.entity.QiriLevel">
+		update qiri_level 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="maxNumber"> max_number = #maxNumber# </isNotNull>
+			<isNotNull prepend="," property="lingquNumber"> lingqu_number = #lingquNumber# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyQiriLevel"/>
+	</update>
+	
+	<select id="selectSingleQiriLevel" resultMap="qiriLevel">
+		select 
+		id
+		,config_id
+		,max_number
+		,lingqu_number
+		,create_time
+		,sub_id
+		from qiri_level 
+		<include refid="queryByKeyQiriLevel"/>
+		order by config_id asc
+	</select>
+	
+	<select id="selectRecordsCountQiriLevel" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from qiri_level
+		<include refid="queryConditionQiriLevel"/>
+	</select>
+	
+	<select id="selectMultiPagingQiriLevel" parameterClass="java.util.Map" resultMap="qiriLevel">
+		select 
+		id
+		,config_id
+		,max_number
+		,lingqu_number
+		,create_time
+		,sub_id
+		from qiri_level
+		<include refid="queryConditionQiriLevel"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiQiriLevel" parameterClass="java.util.Map" resultMap="qiriLevel">
+		select 
+		id
+		,config_id
+		,max_number
+		,lingqu_number
+		,create_time
+		,sub_id
+		from qiri_level
+		<include refid="queryConditionQiriLevel"/>
+		order by config_id asc
+	</select>
+	
+	<select id="selectAllQiriLevel" resultMap="qiriLevel">
+		select 
+		id
+		,config_id
+		,max_number
+		,lingqu_number
+		,create_time
+		,sub_id
+		from qiri_level
+		order by config_id asc
+	</select>
+	
+	<select id="selectSingleByParamsQiriLevel" resultMap="qiriLevel">
+		select 
+		id
+		,config_id
+		,max_number
+		,lingqu_number
+		,create_time
+		,sub_id
+		from qiri_level 
+		order by config_id asc
+		<include refid="queryConditionQiriLevel"/>
+	</select>	
+	
+	
+</sqlMap>
+	

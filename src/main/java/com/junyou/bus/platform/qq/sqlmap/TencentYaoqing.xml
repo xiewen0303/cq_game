@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="tencentYaoqing" class="com.junyou.bus.platform.qq.entity.TencentYaoqing" >
+		<result property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="iopenId" column="iopen_id"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionTencentYaoqing">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="and" property="iopenId"> iopen_id = #iopenId# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTencentYaoqing">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertTencentYaoqing" parameterClass="com.junyou.bus.platform.qq.entity.TencentYaoqing">
+		insert into tencent_yaoqing(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userId"> user_id </isNotNull> 
+		<isNotNull prepend="," property="iopenId"> iopen_id </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userId"> #userId# </isNotNull>
+		<isNotNull prepend="," property="iopenId"> #iopenId# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTencentYaoqing">
+		delete from tencent_yaoqing
+		<include refid="queryByKeyTencentYaoqing"/>
+	</delete>
+	
+	<update id="updateTencentYaoqing" parameterClass="com.junyou.bus.platform.qq.entity.TencentYaoqing">
+		update tencent_yaoqing 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="," property="iopenId"> iopen_id = #iopenId# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTencentYaoqing"/>
+	</update>
+	
+	<select id="selectSingleTencentYaoqing" resultMap="tencentYaoqing">
+		select 
+		id
+		,user_id
+		,iopen_id
+		,create_time
+		from tencent_yaoqing 
+		<include refid="queryByKeyTencentYaoqing"/>
+	</select>
+	
+	<select id="selectRecordsCountTencentYaoqing" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from tencent_yaoqing
+		<include refid="queryConditionTencentYaoqing"/>
+	</select>
+	
+	<select id="selectMultiPagingTencentYaoqing" parameterClass="java.util.Map" resultMap="tencentYaoqing">
+		select 
+		id
+		,user_id
+		,iopen_id
+		,create_time
+		from tencent_yaoqing
+		<include refid="queryConditionTencentYaoqing"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTencentYaoqing" parameterClass="java.util.Map" resultMap="tencentYaoqing">
+		select 
+		id
+		,user_id
+		,iopen_id
+		,create_time
+		from tencent_yaoqing
+		<include refid="queryConditionTencentYaoqing"/>
+	</select>
+	
+	<select id="selectAllTencentYaoqing" resultMap="tencentYaoqing">
+		select 
+		id
+		,user_id
+		,iopen_id
+		,create_time
+		from tencent_yaoqing
+	</select>
+	
+	<select id="selectSingleByParamsTencentYaoqing" resultMap="tencentYaoqing">
+		select 
+		id
+		,user_id
+		,iopen_id
+		,create_time
+		from tencent_yaoqing 
+		<include refid="queryConditionTencentYaoqing"/>
+	</select>	
+	
+	<select id="selectSeccessYaoQingCount" parameterClass="java.util.Map" resultMap="tencentYaoqing">
+		select distinct ty.* from 
+		tencent_yaoqing ty,user_role ur 
+		where 
+		ty.user_id = ur.user_id 
+		and ur.`level` >= #level# 
+		and ty.iopen_id = #iopenId#;
+	</select>
+	
+</sqlMap>
+	

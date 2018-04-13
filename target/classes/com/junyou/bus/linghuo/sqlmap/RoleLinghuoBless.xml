@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleLinghuoBless" class="com.junyou.bus.linghuo.entity.RoleLinghuoBless" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="linghuoId" column="linghuo_id"/>
+		<result property="linghuoSlot" column="linghuo_slot"/>
+		<result property="blessValue" column="bless_value"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleLinghuoBless">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="linghuoId"> linghuo_id = #linghuoId# </isNotNull>
+			<isNotNull prepend="and" property="linghuoSlot"> linghuo_slot = #linghuoSlot# </isNotNull>
+			<isNotNull prepend="and" property="blessValue"> bless_value = #blessValue# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleLinghuoBless">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleLinghuoBless" parameterClass="com.junyou.bus.linghuo.entity.RoleLinghuoBless">
+		insert into role_linghuo_bless(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="linghuoId"> linghuo_id </isNotNull> 
+		<isNotNull prepend="," property="linghuoSlot"> linghuo_slot </isNotNull> 
+		<isNotNull prepend="," property="blessValue"> bless_value </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="linghuoId"> #linghuoId# </isNotNull>
+		<isNotNull prepend="," property="linghuoSlot"> #linghuoSlot# </isNotNull>
+		<isNotNull prepend="," property="blessValue"> #blessValue# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleLinghuoBless">
+		delete from role_linghuo_bless
+		<include refid="queryByKeyRoleLinghuoBless"/>
+	</delete>
+	
+	<update id="updateRoleLinghuoBless" parameterClass="com.junyou.bus.linghuo.entity.RoleLinghuoBless">
+		update role_linghuo_bless 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="linghuoId"> linghuo_id = #linghuoId# </isNotNull>
+			<isNotNull prepend="," property="linghuoSlot"> linghuo_slot = #linghuoSlot# </isNotNull>
+			<isNotNull prepend="," property="blessValue"> bless_value = #blessValue# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleLinghuoBless"/>
+	</update>
+	
+	<select id="selectSingleRoleLinghuoBless" resultMap="roleLinghuoBless">
+		select 
+		id
+		,user_role_id
+		,linghuo_id
+		,linghuo_slot
+		,bless_value
+		,create_time
+		,update_time
+		from role_linghuo_bless 
+		<include refid="queryByKeyRoleLinghuoBless"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleLinghuoBless" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_linghuo_bless
+		<include refid="queryConditionRoleLinghuoBless"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleLinghuoBless" parameterClass="java.util.Map" resultMap="roleLinghuoBless">
+		select 
+		id
+		,user_role_id
+		,linghuo_id
+		,linghuo_slot
+		,bless_value
+		,create_time
+		,update_time
+		from role_linghuo_bless
+		<include refid="queryConditionRoleLinghuoBless"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleLinghuoBless" parameterClass="java.util.Map" resultMap="roleLinghuoBless">
+		select 
+		id
+		,user_role_id
+		,linghuo_id
+		,linghuo_slot
+		,bless_value
+		,create_time
+		,update_time
+		from role_linghuo_bless
+		<include refid="queryConditionRoleLinghuoBless"/>
+	</select>
+	
+	<select id="selectAllRoleLinghuoBless" resultMap="roleLinghuoBless">
+		select 
+		id
+		,user_role_id
+		,linghuo_id
+		,linghuo_slot
+		,bless_value
+		,create_time
+		,update_time
+		from role_linghuo_bless
+	</select>
+	
+	<select id="selectSingleByParamsRoleLinghuoBless" resultMap="roleLinghuoBless">
+		select 
+		id
+		,user_role_id
+		,linghuo_id
+		,linghuo_slot
+		,bless_value
+		,create_time
+		,update_time
+		from role_linghuo_bless 
+		<include refid="queryConditionRoleLinghuoBless"/>
+	</select>	
+	
+	
+</sqlMap>
+	

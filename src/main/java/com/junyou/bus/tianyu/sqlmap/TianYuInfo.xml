@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="tianYuInfo" class="com.junyou.bus.tianyu.entity.TianYuInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="skillIds" column="skill_ids"/>
+		<result property="qndCount" column="qnd_count"/>
+		<result property="czdcount" column="czdCount"/>
+		<result property="tianyuLevel" column="tianyu_level"/>
+		<result property="showId" column="show_id"/>
+		<result property="isGetOn" column="is_get_on"/>
+		<result property="zfzVal" column="zfz_val"/>
+		<result property="zplus" column="zplus"/>
+		<result property="lastSjTime" column="last_sj_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionTianYuInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="skillIds"> skill_ids = #skillIds# </isNotNull>
+			<isNotNull prepend="and" property="qndCount"> qnd_count = #qndCount# </isNotNull>
+			<isNotNull prepend="and" property="czdcount"> czdCount = #czdcount# </isNotNull>
+			<isNotNull prepend="and" property="tianyuLevel"> tianyu_level = #tianyuLevel# </isNotNull>
+			<isNotNull prepend="and" property="showId"> show_id = #showId# </isNotNull>
+			<isNotNull prepend="and" property="isGetOn"> is_get_on = #isGetOn# </isNotNull>
+			<isNotNull prepend="and" property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="and" property="zplus"> zplus = #zplus# </isNotNull>
+			<isNotNull prepend="and" property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTianYuInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertTianYuInfo" parameterClass="com.junyou.bus.tianyu.entity.TianYuInfo">
+		insert into tian_yu_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="skillIds"> skill_ids </isNotNull> 
+		<isNotNull prepend="," property="qndCount"> qnd_count </isNotNull> 
+		<isNotNull prepend="," property="czdcount"> czdCount </isNotNull> 
+		<isNotNull prepend="," property="tianyuLevel"> tianyu_level </isNotNull> 
+		<isNotNull prepend="," property="showId"> show_id </isNotNull> 
+		<isNotNull prepend="," property="isGetOn"> is_get_on </isNotNull> 
+		<isNotNull prepend="," property="zfzVal"> zfz_val </isNotNull> 
+		<isNotNull prepend="," property="zplus"> zplus </isNotNull> 
+		<isNotNull prepend="," property="lastSjTime"> last_sj_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="skillIds"> #skillIds# </isNotNull>
+		<isNotNull prepend="," property="qndCount"> #qndCount# </isNotNull>
+		<isNotNull prepend="," property="czdcount"> #czdcount# </isNotNull>
+		<isNotNull prepend="," property="tianyuLevel"> #tianyuLevel# </isNotNull>
+		<isNotNull prepend="," property="showId"> #showId# </isNotNull>
+		<isNotNull prepend="," property="isGetOn"> #isGetOn# </isNotNull>
+		<isNotNull prepend="," property="zfzVal"> #zfzVal# </isNotNull>
+		<isNotNull prepend="," property="zplus"> #zplus# </isNotNull>
+		<isNotNull prepend="," property="lastSjTime"> #lastSjTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTianYuInfo">
+		delete from tian_yu_info
+		<include refid="queryByKeyTianYuInfo"/>
+	</delete>
+	
+	<update id="updateTianYuInfo" parameterClass="com.junyou.bus.tianyu.entity.TianYuInfo">
+		update tian_yu_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="skillIds"> skill_ids = #skillIds# </isNotNull>
+			<isNotNull prepend="," property="qndCount"> qnd_count = #qndCount# </isNotNull>
+			<isNotNull prepend="," property="czdcount"> czdCount = #czdcount# </isNotNull>
+			<isNotNull prepend="," property="tianyuLevel"> tianyu_level = #tianyuLevel# </isNotNull>
+			<isNotNull prepend="," property="showId"> show_id = #showId# </isNotNull>
+			<isNotNull prepend="," property="isGetOn"> is_get_on = #isGetOn# </isNotNull>
+			<isNotNull prepend="," property="zfzVal"> zfz_val = #zfzVal# </isNotNull>
+			<isNotNull prepend="," property="zplus"> zplus = #zplus# </isNotNull>
+			<isNotNull prepend="," property="lastSjTime"> last_sj_time = #lastSjTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTianYuInfo"/>
+	</update>
+	
+	<select id="selectSingleTianYuInfo" resultMap="tianYuInfo">
+		select 
+		user_role_id
+		,skill_ids
+		,qnd_count
+		,czdCount
+		,tianyu_level
+		,show_id
+		,is_get_on
+		,zfz_val
+		,zplus
+		,last_sj_time
+		,update_time
+		from tian_yu_info 
+		<include refid="queryByKeyTianYuInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountTianYuInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from tian_yu_info
+		<include refid="queryConditionTianYuInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingTianYuInfo" parameterClass="java.util.Map" resultMap="tianYuInfo">
+		select 
+		user_role_id
+		,skill_ids
+		,qnd_count
+		,czdCount
+		,tianyu_level
+		,show_id
+		,is_get_on
+		,zfz_val
+		,zplus
+		,last_sj_time
+		,update_time
+		from tian_yu_info
+		<include refid="queryConditionTianYuInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTianYuInfo" parameterClass="java.util.Map" resultMap="tianYuInfo">
+		select 
+		user_role_id
+		,skill_ids
+		,qnd_count
+		,czdCount
+		,tianyu_level
+		,show_id
+		,is_get_on
+		,zfz_val
+		,zplus
+		,last_sj_time
+		,update_time
+		from tian_yu_info
+		<include refid="queryConditionTianYuInfo"/>
+	</select>
+	
+	<select id="selectAllTianYuInfo" resultMap="tianYuInfo">
+		select 
+		user_role_id
+		,skill_ids
+		,qnd_count
+		,czdCount
+		,tianyu_level
+		,show_id
+		,is_get_on
+		,zfz_val
+		,zplus
+		,last_sj_time
+		,update_time
+		from tian_yu_info
+	</select>
+	
+	<select id="selectSingleByParamsTianYuInfo" resultMap="tianYuInfo">
+		select 
+		user_role_id
+		,skill_ids
+		,qnd_count
+		,czdCount
+		,tianyu_level
+		,show_id
+		,is_get_on
+		,zfz_val
+		,zplus
+		,last_sj_time
+		,update_time
+		from tian_yu_info 
+		<include refid="queryConditionTianYuInfo"/>
+	</select>	
+	
+	<select id="selectTianYuRankToTianYuRankVo" resultMap="qilingRankVo">
+		select 
+		(@rowNum:=@rowNum+1) as rank 
+		,id
+		,name
+		,config_id
+		,tianyu_level
+		,role_business_info.cur_fighter as zplus
+		from user_role ,tian_yu_info ,role_business_info ,(Select (@rowNum :=0) ) rank WHERE  
+		user_role.id=role_business_info.user_role_id and  user_role.id=tian_yu_info.user_role_id 
+		order by tianyu_level desc ,tian_yu_info.update_time limit #limit# ;
+	</select>
+	
+</sqlMap>
+	

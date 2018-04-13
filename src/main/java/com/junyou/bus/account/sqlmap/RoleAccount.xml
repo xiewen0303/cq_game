@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleAccount" class="com.junyou.bus.account.entity.RoleAccount" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="reYb" column="re_yb"/>
+		<result property="noReYb" column="no_re_yb"/>
+		<result property="jb" column="jb"/>
+		<result property="bindYb" column="bind_yb"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="userType" column="user_type"/>
+		<result property="userId" column="user_id"/>
+		<result property="serverId" column="server_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleAccount">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="reYb"> re_yb = #reYb# </isNotNull>
+			<isNotNull prepend="and" property="noReYb"> no_re_yb = #noReYb# </isNotNull>
+			<isNotNull prepend="and" property="jb"> jb = #jb# </isNotNull>
+			<isNotNull prepend="and" property="bindYb"> bind_yb = #bindYb# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="userType"> user_type = #userType# </isNotNull>
+			<isNotNull prepend="and" property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="and" property="serverId"> server_id = #serverId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleAccount">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleAccount" parameterClass="com.junyou.bus.account.entity.RoleAccount">
+		insert into role_account(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="reYb"> re_yb </isNotNull> 
+		<isNotNull prepend="," property="noReYb"> no_re_yb </isNotNull> 
+		<isNotNull prepend="," property="jb"> jb </isNotNull> 
+		<isNotNull prepend="," property="bindYb"> bind_yb </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="userType"> user_type </isNotNull> 
+		<isNotNull prepend="," property="userId"> user_id </isNotNull> 
+		<isNotNull prepend="," property="serverId"> server_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="reYb"> #reYb# </isNotNull>
+		<isNotNull prepend="," property="noReYb"> #noReYb# </isNotNull>
+		<isNotNull prepend="," property="jb"> #jb# </isNotNull>
+		<isNotNull prepend="," property="bindYb"> #bindYb# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="userType"> #userType# </isNotNull>
+		<isNotNull prepend="," property="userId"> #userId# </isNotNull>
+		<isNotNull prepend="," property="serverId"> #serverId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleAccount">
+		delete from role_account
+		<include refid="queryByKeyRoleAccount"/>
+	</delete>
+	
+	<update id="updateRoleAccount" parameterClass="com.junyou.bus.account.entity.RoleAccount">
+		update role_account 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="reYb"> re_yb = #reYb# </isNotNull>
+			<isNotNull prepend="," property="noReYb"> no_re_yb = #noReYb# </isNotNull>
+			<isNotNull prepend="," property="jb"> jb = #jb# </isNotNull>
+			<isNotNull prepend="," property="bindYb"> bind_yb = #bindYb# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="userType"> user_type = #userType# </isNotNull>
+			<isNotNull prepend="," property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="," property="serverId"> server_id = #serverId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleAccount"/>
+	</update>
+	
+	<select id="selectSingleRoleAccount" resultMap="roleAccount">
+		select 
+		user_role_id
+		,re_yb
+		,no_re_yb
+		,jb
+		,bind_yb
+		,update_time
+		,create_time
+		,user_type
+		,user_id
+		,server_id
+		from role_account 
+		<include refid="queryByKeyRoleAccount"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleAccount" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_account
+		<include refid="queryConditionRoleAccount"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleAccount" parameterClass="java.util.Map" resultMap="roleAccount">
+		select 
+		user_role_id
+		,re_yb
+		,no_re_yb
+		,jb
+		,bind_yb
+		,update_time
+		,create_time
+		,user_type
+		,user_id
+		,server_id
+		from role_account
+		<include refid="queryConditionRoleAccount"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleAccount" parameterClass="java.util.Map" resultMap="roleAccount">
+		select 
+		user_role_id
+		,re_yb
+		,no_re_yb
+		,jb
+		,bind_yb
+		,update_time
+		,create_time
+		,user_type
+		,user_id
+		,server_id
+		from role_account
+		<include refid="queryConditionRoleAccount"/>
+	</select>
+	
+	<select id="selectAllRoleAccount" resultMap="roleAccount">
+		select 
+		user_role_id
+		,re_yb
+		,no_re_yb
+		,jb
+		,bind_yb
+		,update_time
+		,create_time
+		,user_type
+		,user_id
+		,server_id
+		from role_account
+	</select>
+	
+	<select id="selectSingleByParamsRoleAccount" resultMap="roleAccount">
+		select 
+		user_role_id
+		,re_yb
+		,no_re_yb
+		,jb
+		,bind_yb
+		,update_time
+		,create_time
+		,user_type
+		,user_id
+		,server_id
+		from role_account 
+		<include refid="queryConditionRoleAccount"/>
+	</select>	
+	
+	
+</sqlMap>
+	

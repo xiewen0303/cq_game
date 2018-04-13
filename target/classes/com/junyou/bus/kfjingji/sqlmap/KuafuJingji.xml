@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="kuafuJingji" class="com.junyou.bus.kfjingji.entity.KuafuJingji" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="changeCount" column="change_count"/>
+		<result property="cdTime" column="cd_time"/>
+		<result property="tiaozhanCount" column="tiaozhan_count"/>
+		<result property="rank" column="rank"/>
+		<result property="lastRank" column="last_rank"/>
+		<result property="gift" column="gift"/>
+		<result property="fight1" column="fight1"/>
+		<result property="fight2" column="fight2"/>
+		<result property="fight3" column="fight3"/>
+		<result property="fight4" column="fight4"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionKuafuJingji">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="changeCount"> change_count = #changeCount# </isNotNull>
+			<isNotNull prepend="and" property="cdTime"> cd_time = #cdTime# </isNotNull>
+			<isNotNull prepend="and" property="tiaozhanCount"> tiaozhan_count = #tiaozhanCount# </isNotNull>
+			<isNotNull prepend="and" property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="and" property="lastRank"> last_rank = #lastRank# </isNotNull>
+			<isNotNull prepend="and" property="gift"> gift = #gift# </isNotNull>
+			<isNotNull prepend="and" property="fight1"> fight1 = #fight1# </isNotNull>
+			<isNotNull prepend="and" property="fight2"> fight2 = #fight2# </isNotNull>
+			<isNotNull prepend="and" property="fight3"> fight3 = #fight3# </isNotNull>
+			<isNotNull prepend="and" property="fight4"> fight4 = #fight4# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyKuafuJingji">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertKuafuJingji" parameterClass="com.junyou.bus.kfjingji.entity.KuafuJingji">
+		insert into kuafu_jingji(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="changeCount"> change_count </isNotNull> 
+		<isNotNull prepend="," property="cdTime"> cd_time </isNotNull> 
+		<isNotNull prepend="," property="tiaozhanCount"> tiaozhan_count </isNotNull> 
+		<isNotNull prepend="," property="rank"> rank </isNotNull> 
+		<isNotNull prepend="," property="lastRank"> last_rank </isNotNull> 
+		<isNotNull prepend="," property="gift"> gift </isNotNull> 
+		<isNotNull prepend="," property="fight1"> fight1 </isNotNull> 
+		<isNotNull prepend="," property="fight2"> fight2 </isNotNull> 
+		<isNotNull prepend="," property="fight3"> fight3 </isNotNull> 
+		<isNotNull prepend="," property="fight4"> fight4 </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="changeCount"> #changeCount# </isNotNull>
+		<isNotNull prepend="," property="cdTime"> #cdTime# </isNotNull>
+		<isNotNull prepend="," property="tiaozhanCount"> #tiaozhanCount# </isNotNull>
+		<isNotNull prepend="," property="rank"> #rank# </isNotNull>
+		<isNotNull prepend="," property="lastRank"> #lastRank# </isNotNull>
+		<isNotNull prepend="," property="gift"> #gift# </isNotNull>
+		<isNotNull prepend="," property="fight1"> #fight1# </isNotNull>
+		<isNotNull prepend="," property="fight2"> #fight2# </isNotNull>
+		<isNotNull prepend="," property="fight3"> #fight3# </isNotNull>
+		<isNotNull prepend="," property="fight4"> #fight4# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteKuafuJingji">
+		delete from kuafu_jingji
+		<include refid="queryByKeyKuafuJingji"/>
+	</delete>
+	
+	<update id="updateKuafuJingji" parameterClass="com.junyou.bus.kfjingji.entity.KuafuJingji">
+		update kuafu_jingji 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="changeCount"> change_count = #changeCount# </isNotNull>
+			<isNotNull prepend="," property="cdTime"> cd_time = #cdTime# </isNotNull>
+			<isNotNull prepend="," property="tiaozhanCount"> tiaozhan_count = #tiaozhanCount# </isNotNull>
+			<isNotNull prepend="," property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="," property="lastRank"> last_rank = #lastRank# </isNotNull>
+			<isNotNull prepend="," property="gift"> gift = #gift# </isNotNull>
+			<isNotNull prepend="," property="fight1"> fight1 = #fight1# </isNotNull>
+			<isNotNull prepend="," property="fight2"> fight2 = #fight2# </isNotNull>
+			<isNotNull prepend="," property="fight3"> fight3 = #fight3# </isNotNull>
+			<isNotNull prepend="," property="fight4"> fight4 = #fight4# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyKuafuJingji"/>
+	</update>
+	
+	<select id="selectSingleKuafuJingji" resultMap="kuafuJingji">
+		select 
+		user_role_id
+		,change_count
+		,cd_time
+		,tiaozhan_count
+		,rank
+		,last_rank
+		,gift
+		,fight1
+		,fight2
+		,fight3
+		,fight4
+		,update_time
+		from kuafu_jingji 
+		<include refid="queryByKeyKuafuJingji"/>
+	</select>
+	
+	<select id="selectRecordsCountKuafuJingji" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from kuafu_jingji
+		<include refid="queryConditionKuafuJingji"/>
+	</select>
+	
+	<select id="selectMultiPagingKuafuJingji" parameterClass="java.util.Map" resultMap="kuafuJingji">
+		select 
+		user_role_id
+		,change_count
+		,cd_time
+		,tiaozhan_count
+		,rank
+		,last_rank
+		,gift
+		,fight1
+		,fight2
+		,fight3
+		,fight4
+		,update_time
+		from kuafu_jingji
+		<include refid="queryConditionKuafuJingji"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiKuafuJingji" parameterClass="java.util.Map" resultMap="kuafuJingji">
+		select 
+		user_role_id
+		,change_count
+		,cd_time
+		,tiaozhan_count
+		,rank
+		,last_rank
+		,gift
+		,fight1
+		,fight2
+		,fight3
+		,fight4
+		,update_time
+		from kuafu_jingji
+		<include refid="queryConditionKuafuJingji"/>
+	</select>
+	
+	<select id="selectAllKuafuJingji" resultMap="kuafuJingji">
+		select 
+		user_role_id
+		,change_count
+		,cd_time
+		,tiaozhan_count
+		,rank
+		,last_rank
+		,gift
+		,fight1
+		,fight2
+		,fight3
+		,fight4
+		,update_time
+		from kuafu_jingji
+	</select>
+	
+	<select id="selectSingleByParamsKuafuJingji" resultMap="kuafuJingji">
+		select 
+		user_role_id
+		,change_count
+		,cd_time
+		,tiaozhan_count
+		,rank
+		,last_rank
+		,gift
+		,fight1
+		,fight2
+		,fight3
+		,fight4
+		,update_time
+		from kuafu_jingji 
+		<include refid="queryConditionKuafuJingji"/>
+	</select>	
+	
+	
+</sqlMap>
+	

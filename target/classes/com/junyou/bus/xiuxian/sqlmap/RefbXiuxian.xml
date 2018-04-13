@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refbXiuxian" class="com.junyou.bus.xiuxian.entity.RefbXiuxian" >
+		<result property="id" column="id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="configId" column="config_id"/>
+		<result property="buyCount" column="buy_count"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefbXiuxian">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefbXiuxian">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefbXiuxian" parameterClass="com.junyou.bus.xiuxian.entity.RefbXiuxian">
+		insert into refb_xiuxian(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="buyCount"> buy_count </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="buyCount"> #buyCount# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefbXiuxian">
+		delete from refb_xiuxian
+		<include refid="queryByKeyRefbXiuxian"/>
+	</delete>
+	
+	<update id="updateRefbXiuxian" parameterClass="com.junyou.bus.xiuxian.entity.RefbXiuxian">
+		update refb_xiuxian 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefbXiuxian"/>
+	</update>
+	
+	<select id="selectSingleRefbXiuxian" resultMap="refbXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,buy_count
+		,update_time
+		from refb_xiuxian 
+		<include refid="queryByKeyRefbXiuxian"/>
+	</select>
+	
+	<select id="selectRecordsCountRefbXiuxian" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refb_xiuxian
+		<include refid="queryConditionRefbXiuxian"/>
+	</select>
+	
+	<select id="selectMultiPagingRefbXiuxian" parameterClass="java.util.Map" resultMap="refbXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,buy_count
+		,update_time
+		from refb_xiuxian
+		<include refid="queryConditionRefbXiuxian"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefbXiuxian" parameterClass="java.util.Map" resultMap="refbXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,buy_count
+		,update_time
+		from refb_xiuxian
+		<include refid="queryConditionRefbXiuxian"/>
+	</select>
+	
+	<select id="selectAllRefbXiuxian" resultMap="refbXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,buy_count
+		,update_time
+		from refb_xiuxian
+	</select>
+	
+	<select id="selectSingleByParamsRefbXiuxian" resultMap="refbXiuxian">
+		select 
+		id
+		,sub_id
+		,config_id
+		,buy_count
+		,update_time
+		from refb_xiuxian 
+		<include refid="queryConditionRefbXiuxian"/>
+	</select>	
+	
+	
+</sqlMap>
+	

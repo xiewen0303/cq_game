@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXinmoSkill" class="com.junyou.bus.xinmo.entity.RoleXinmoSkill" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xinmoType" column="xinmo_type"/>
+		<result property="skillId1" column="skill_id1"/>
+		<result property="skillId2" column="skill_id2"/>
+		<result property="skillId3" column="skill_id3"/>
+		<result property="skillId4" column="skill_id4"/>
+		<result property="skillId5" column="skill_id5"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXinmoSkill">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xinmoType"> xinmo_type = #xinmoType# </isNotNull>
+			<isNotNull prepend="and" property="skillId1"> skill_id1 = #skillId1# </isNotNull>
+			<isNotNull prepend="and" property="skillId2"> skill_id2 = #skillId2# </isNotNull>
+			<isNotNull prepend="and" property="skillId3"> skill_id3 = #skillId3# </isNotNull>
+			<isNotNull prepend="and" property="skillId4"> skill_id4 = #skillId4# </isNotNull>
+			<isNotNull prepend="and" property="skillId5"> skill_id5 = #skillId5# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXinmoSkill">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleXinmoSkill" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoSkill">
+		insert into role_xinmo_skill(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xinmoType"> xinmo_type </isNotNull> 
+		<isNotNull prepend="," property="skillId1"> skill_id1 </isNotNull> 
+		<isNotNull prepend="," property="skillId2"> skill_id2 </isNotNull> 
+		<isNotNull prepend="," property="skillId3"> skill_id3 </isNotNull> 
+		<isNotNull prepend="," property="skillId4"> skill_id4 </isNotNull> 
+		<isNotNull prepend="," property="skillId5"> skill_id5 </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xinmoType"> #xinmoType# </isNotNull>
+		<isNotNull prepend="," property="skillId1"> #skillId1# </isNotNull>
+		<isNotNull prepend="," property="skillId2"> #skillId2# </isNotNull>
+		<isNotNull prepend="," property="skillId3"> #skillId3# </isNotNull>
+		<isNotNull prepend="," property="skillId4"> #skillId4# </isNotNull>
+		<isNotNull prepend="," property="skillId5"> #skillId5# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXinmoSkill">
+		delete from role_xinmo_skill
+		<include refid="queryByKeyRoleXinmoSkill"/>
+	</delete>
+	
+	<update id="updateRoleXinmoSkill" parameterClass="com.junyou.bus.xinmo.entity.RoleXinmoSkill">
+		update role_xinmo_skill 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xinmoType"> xinmo_type = #xinmoType# </isNotNull>
+			<isNotNull prepend="," property="skillId1"> skill_id1 = #skillId1# </isNotNull>
+			<isNotNull prepend="," property="skillId2"> skill_id2 = #skillId2# </isNotNull>
+			<isNotNull prepend="," property="skillId3"> skill_id3 = #skillId3# </isNotNull>
+			<isNotNull prepend="," property="skillId4"> skill_id4 = #skillId4# </isNotNull>
+			<isNotNull prepend="," property="skillId5"> skill_id5 = #skillId5# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXinmoSkill"/>
+	</update>
+	
+	<select id="selectSingleRoleXinmoSkill" resultMap="roleXinmoSkill">
+		select 
+		id
+		,user_role_id
+		,xinmo_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,skill_id5
+		,create_time
+		,update_time
+		from role_xinmo_skill 
+		<include refid="queryByKeyRoleXinmoSkill"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXinmoSkill" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xinmo_skill
+		<include refid="queryConditionRoleXinmoSkill"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXinmoSkill" parameterClass="java.util.Map" resultMap="roleXinmoSkill">
+		select 
+		id
+		,user_role_id
+		,xinmo_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,skill_id5
+		,create_time
+		,update_time
+		from role_xinmo_skill
+		<include refid="queryConditionRoleXinmoSkill"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXinmoSkill" parameterClass="java.util.Map" resultMap="roleXinmoSkill">
+		select 
+		id
+		,user_role_id
+		,xinmo_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,skill_id5
+		,create_time
+		,update_time
+		from role_xinmo_skill
+		<include refid="queryConditionRoleXinmoSkill"/>
+	</select>
+	
+	<select id="selectAllRoleXinmoSkill" resultMap="roleXinmoSkill">
+		select 
+		id
+		,user_role_id
+		,xinmo_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,skill_id5
+		,create_time
+		,update_time
+		from role_xinmo_skill
+	</select>
+	
+	<select id="selectSingleByParamsRoleXinmoSkill" resultMap="roleXinmoSkill">
+		select 
+		id
+		,user_role_id
+		,xinmo_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,skill_id5
+		,create_time
+		,update_time
+		from role_xinmo_skill 
+		<include refid="queryConditionRoleXinmoSkill"/>
+	</select>	
+	
+	
+</sqlMap>
+	

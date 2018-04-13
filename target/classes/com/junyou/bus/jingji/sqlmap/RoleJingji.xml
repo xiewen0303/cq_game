@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleJingji" class="com.junyou.bus.jingji.entity.RoleJingji" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="rank" column="rank"/>
+		<result property="lastRank" column="last_rank"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="gift" column="gift"/>
+		<result property="name" column="name"/>
+		<result property="level" column="level"/>
+		<result property="zplus" column="zplus"/>
+		<result property="tzCount" column="tz_count"/>
+		<result property="cdTime" column="cd_time"/>
+		<result property="configId" column="config_id"/>
+		<result property="zuoqi" column="zuoqi"/>
+		<result property="chibang" column="chibang"/>
+		<result property="used" column="used"/>
+		<result property="historyrank" column="historyrank"/>
+		<result property="lastrefreshtime" column="lastrefreshtime"/>
+
+	</resultMap>
+	
+	<sql id="queryConditionRoleJingji">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="and" property="lastRank"> last_rank = #lastRank# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="gift"> gift = #gift# </isNotNull>
+			<isNotNull prepend="and" property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="zplus"> zplus = #zplus# </isNotNull>
+			<isNotNull prepend="and" property="tzCount"> tz_count = #zplus# </isNotNull>
+			<isNotNull prepend="and" property="cdTime"> cd_time = #cdTime# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="chibang"> chibang = #chibang# </isNotNull>
+			<isNotNull prepend="and" property="used"> used = #used# </isNotNull>
+			<isNotNull prepend="and" property="historyrank"> historyrank = #historyrank# </isNotNull>
+			<isNotNull prepend="and" property="lastrefreshtime"> lastrefreshtime = #lastrefreshtime# </isNotNull>
+
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleJingji">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleJingji" parameterClass="com.junyou.bus.jingji.entity.RoleJingji">
+		insert into role_jingji(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="rank"> rank </isNotNull> 
+		<isNotNull prepend="," property="lastRank"> last_rank </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="gift"> gift </isNotNull> 
+		<isNotNull prepend="," property="name"> name </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="zplus"> zplus </isNotNull> 
+		<isNotNull prepend="," property="tzCount"> tz_count </isNotNull> 
+		<isNotNull prepend="," property="cdTime"> cd_time </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="zuoqi"> zuoqi </isNotNull> 
+		<isNotNull prepend="," property="chibang"> chibang </isNotNull>
+		<isNotNull prepend="," property="used"> used </isNotNull>
+		<isNotNull prepend="," property="historyrank"> historyrank </isNotNull>
+		<isNotNull prepend="," property="lastrefreshtime"> lastrefreshtime </isNotNull>
+
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="rank"> #rank# </isNotNull>
+		<isNotNull prepend="," property="lastRank"> #lastRank# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="gift"> #gift# </isNotNull>
+		<isNotNull prepend="," property="name"> #name# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="zplus"> #zplus# </isNotNull>
+		<isNotNull prepend="," property="tzCount"> #tzCount# </isNotNull>
+		<isNotNull prepend="," property="cdTime"> #cdTime# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="zuoqi"> #zuoqi# </isNotNull>
+		<isNotNull prepend="," property="chibang"> #chibang# </isNotNull>
+		<isNotNull prepend="," property="used"> #used# </isNotNull>
+		<isNotNull prepend="," property="historyrank"> #historyrank# </isNotNull>
+		<isNotNull prepend="," property="lastrefreshtime"> #lastrefreshtime# </isNotNull>
+
+		)
+	</insert>
+	
+	<delete id="deleteRoleJingji">
+		delete from role_jingji
+		<include refid="queryByKeyRoleJingji"/>
+	</delete>
+	
+	<update id="updateRoleJingji" parameterClass="com.junyou.bus.jingji.entity.RoleJingji">
+		update role_jingji 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="rank"> rank = #rank# </isNotNull>
+			<isNotNull prepend="," property="lastRank"> last_rank = #lastRank# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="gift"> gift = #gift# </isNotNull>
+			<isNotNull prepend="," property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="zplus"> zplus = #zplus# </isNotNull>
+			<isNotNull prepend="," property="tzCount"> tz_count = #tzCount# </isNotNull>
+			<isNotNull prepend="," property="cdTime"> cd_time = #cdTime# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="zuoqi"> zuoqi = #zuoqi# </isNotNull>
+			<isNotNull prepend="," property="chibang"> chibang = #chibang# </isNotNull>
+			<isNotNull prepend="," property="used"> used = #used# </isNotNull>
+			<isNotNull prepend="," property="historyrank"> historyrank = #historyrank# </isNotNull>
+			<isNotNull prepend="," property="lastrefreshtime"> lastrefreshtime = #lastrefreshtime# </isNotNull>
+
+		</dynamic>
+		<include refid="queryByKeyRoleJingji"/>
+	</update>
+	
+	<select id="selectSingleRoleJingji" resultMap="roleJingji">
+		select 
+		user_role_id
+		,rank
+		,last_rank
+		,update_time
+		,gift
+		,name
+		,level
+		,zplus
+		,tz_count
+		,cd_time
+		,config_id
+		,zuoqi
+		,chibang
+		,used
+		,historyrank
+		,lastrefreshtime
+		from role_jingji
+		<include refid="queryByKeyRoleJingji"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleJingji" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_jingji
+		<include refid="queryConditionRoleJingji"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleJingji" parameterClass="java.util.Map" resultMap="roleJingji">
+		select 
+		user_role_id
+		,rank
+		,last_rank
+		,update_time
+		,gift
+		,name
+		,level
+		,zplus
+		,tz_count
+		,cd_time
+		,config_id
+		,zuoqi
+		,chibang
+		,used
+		,historyrank
+		,lastrefreshtime
+		from role_jingji
+		<include refid="queryConditionRoleJingji"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleJingji" parameterClass="java.util.Map" resultMap="roleJingji">
+		select 
+		user_role_id
+		,rank
+		,last_rank
+		,update_time
+		,gift
+		,name
+		,level
+		,zplus
+		,tz_count
+		,cd_time
+		,config_id
+		,zuoqi
+		,chibang
+		,used
+		,historyrank
+		,lastrefreshtime
+		from role_jingji
+		<include refid="queryConditionRoleJingji"/>
+		order by rank
+	</select>
+	
+	<select id="selectAllRoleJingji" resultMap="roleJingji">
+		select 
+		user_role_id
+		,rank
+		,last_rank
+		,update_time
+		,gift
+		,name
+		,level
+		,zplus
+		,tz_count
+		,cd_time
+		,config_id
+		,zuoqi
+		,chibang
+		,used
+		,historyrank
+		,lastrefreshtime
+		from role_jingji
+	</select>
+	
+	<select id="selectSingleByParamsRoleJingji" resultMap="roleJingji">
+		select 
+		user_role_id
+		,rank
+		,last_rank
+		,update_time
+		,gift
+		,name
+		,level
+		,zplus
+		,tz_count
+		,cd_time
+		,config_id
+		,zuoqi
+		,chibang
+		,used
+		,historyrank
+		,lastrefreshtime
+		from role_jingji
+		<include refid="queryConditionRoleJingji"/>
+	</select>	
+	
+	
+</sqlMap>
+	

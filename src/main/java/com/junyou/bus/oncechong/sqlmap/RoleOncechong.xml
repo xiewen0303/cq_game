@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleOncechong" class="com.junyou.bus.oncechong.entity.RoleOncechong" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="configId" column="config_id"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="subId" column="sub_id"/>
+		<result property="chongCount" column="chong_count"/>
+		<result property="receiveCount" column="receive_count"/>
+		
+	</resultMap>
+	
+	<sql id="queryConditionRoleOncechong">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="chongCount"> chong_count = #chongCount# </isNotNull>
+			<isNotNull prepend="and" property="receiveCount"> receive_count = #receiveCount# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleOncechong">
+		where id = #id#
+	</sql>
+	
+	
+	<insert id="insertRoleOncechong" parameterClass="com.junyou.bus.oncechong.entity.RoleOncechong">
+		insert into role_oncechong(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="chongCount"> chong_count </isNotNull> 
+		<isNotNull prepend="," property="receiveCount"> receive_count </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="chongCount"> #chongCount# </isNotNull>
+		<isNotNull prepend="," property="receiveCount"> #receiveCount# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		)
+	</insert>
+	 
+	
+	<delete id="deleteRoleOncechong">
+		delete from role_oncechong
+		<include refid="queryByKeyRoleOncechong"/>
+	</delete>
+	
+	<update id="updateRoleOncechong" parameterClass="com.junyou.bus.oncechong.entity.RoleOncechong">
+		update role_oncechong 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="chongCount"> chong_count = #chongCount# </isNotNull>
+			<isNotNull prepend="," property="receiveCount"> receive_count = #receiveCount# </isNotNull>
+			
+		</dynamic>
+		<include refid="queryByKeyRoleOncechong"/>
+	</update>
+	
+	<select id="selectSingleRoleOncechong" resultMap="roleOncechong">
+		select 
+		id
+		,user_role_id
+		,update_time
+		,sub_id
+		,chong_count
+		,receive_count
+		,config_id
+		from role_oncechong 
+		<include refid="queryByKeyRoleOncechong"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleOncechong" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_oncechong
+		<include refid="queryConditionRoleOncechong"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleOncechong" parameterClass="java.util.Map" resultMap="roleOncechong">
+		select 
+		id
+		,user_role_id
+		,update_time
+		,sub_id
+		,chong_count
+		,receive_count
+		,config_id
+		from role_oncechong
+		<include refid="queryConditionRoleOncechong"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleOncechong" parameterClass="java.util.Map" resultMap="roleOncechong">
+		select 
+		id
+		,user_role_id
+		,update_time
+		,sub_id
+		,chong_count
+		,receive_count
+		,config_id
+		from role_oncechong
+		<include refid="queryConditionRoleOncechong"/>
+	</select>
+	
+	<select id="selectAllRoleOncechong" resultMap="roleOncechong">
+		select 
+		id
+		,user_role_id
+		,update_time
+		,sub_id
+		,chong_count
+		,receive_count
+		,config_id
+		from role_oncechong
+	</select>
+	
+	<select id="selectSingleByParamsRoleOncechong" resultMap="roleOncechong">
+		select 
+		id
+		,user_role_id
+		,update_time
+		,sub_id
+		,chong_count
+		,receive_count
+		,config_id
+		from role_oncechong 
+		<include refid="queryConditionRoleOncechong"/>
+	</select>	
+	
+	
+</sqlMap>
+	

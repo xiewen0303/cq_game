@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="shopLimitInfo" class="com.junyou.bus.shoplimit.entity.ShopLimitInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="configId" column="config_id"/>
+		<result property="rechargeTotal" column="recharge_total"/>
+		<result property="state" column="state"/>
+		<result property="openTime" column="open_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionShopLimitInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="rechargeTotal"> recharge_total = #rechargeTotal# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="openTime"> open_time = #openTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyShopLimitInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertShopLimitInfo" parameterClass="com.junyou.bus.shoplimit.entity.ShopLimitInfo">
+		insert into shop_limit_info(
+			<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id </isNotNull>
+			<isNotNull prepend="," property="rechargeTotal"> recharge_total </isNotNull>
+			<isNotNull prepend="," property="state"> state </isNotNull>
+			<isNotNull prepend="," property="openTime"> open_time </isNotNull>
+		)
+		values(
+			<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+			<isNotNull prepend="," property="rechargeTotal"> #rechargeTotal# </isNotNull>
+			<isNotNull prepend="," property="state"> #state# </isNotNull>
+			<isNotNull prepend="," property="openTime"> #openTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteShopLimitInfo">
+		delete from shop_limit_info
+		<include refid="queryByKeyShopLimitInfo"/>
+	</delete>
+	
+	<update id="updateShopLimitInfo" parameterClass="com.junyou.bus.shoplimit.entity.ShopLimitInfo">
+		update shop_limit_info
+		<dynamic prepend="set">
+				<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+				<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+				<isNotNull prepend="," property="rechargeTotal"> recharge_total = #rechargeTotal# </isNotNull>
+				<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+				<isNotNull prepend="," property="openTime"> open_time = #openTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyShopLimitInfo"/>
+	</update>
+	
+	<select id="selectSingleShopLimitInfo" resultMap="shopLimitInfo">
+		select 
+		  user_role_id  
+		  ,config_id  
+		  ,recharge_total  
+		  ,state 
+		  ,open_time  
+		  from shop_limit_info 
+		<include refid="queryByKeyShopLimitInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountShopLimitInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from shop_limit_info
+		<include refid="queryConditionShopLimitInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingShopLimitInfo" parameterClass="java.util.Map" resultMap="shopLimitInfo">
+		select 
+		 user_role_id  
+		  ,config_id  
+		  ,recharge_total  
+		  ,state 
+		  ,open_time
+		from shop_limit_info
+		<include refid="queryConditionShopLimitInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiShopLimitInfo" parameterClass="java.util.Map" resultMap="shopLimitInfo">
+		select 
+		  user_role_id  
+		  ,config_id  
+		  ,recharge_total  
+		  ,state 
+		  ,open_time 
+		from shop_limit_info
+		<include refid="queryConditionShopLimitInfo"/>
+	</select>
+	
+	<select id="selectAllShopLimitInfo" resultMap="shopLimitInfo">
+		select 
+		  user_role_id  
+		  ,config_id  
+		  ,recharge_total  
+		  ,state 
+		  ,open_time 
+		from shop_limit_info
+	</select>
+	
+	<select id="selectSingleByParamsShopLimitInfo" resultMap="shopLimitInfo">
+		select 
+		  user_role_id  
+		  ,config_id  
+		  ,recharge_total  
+		  ,state 
+		  ,open_time
+		from shop_limit_info 
+		<include refid="queryConditionShopLimitInfo"/>
+	</select>	
+	
+</sqlMap>
+	

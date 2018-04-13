@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refbCaidan" class="com.junyou.bus.caidan.entity.RefbCaidan" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="jifen" column="jifen"/>
+		<result property="time" column="time"/>
+		<result property="lucky" column="lucky"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="danInfo" column="dan_info"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefbCaidan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="jifen"> jifen = #jifen# </isNotNull>
+			<isNotNull prepend="and" property="time"> time = #time# </isNotNull>
+			<isNotNull prepend="and" property="lucky"> lucky = #lucky# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="danInfo"> dan_info = #danInfo# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefbCaidan">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefbCaidan" parameterClass="com.junyou.bus.caidan.entity.RefbCaidan">
+		insert into refb_caidan(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="jifen"> jifen </isNotNull> 
+		<isNotNull prepend="," property="time"> time </isNotNull> 
+		<isNotNull prepend="," property="lucky"> lucky </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="danInfo"> dan_info </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="jifen"> #jifen# </isNotNull>
+		<isNotNull prepend="," property="time"> #time# </isNotNull>
+		<isNotNull prepend="," property="lucky"> #lucky# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="danInfo"> #danInfo# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefbCaidan">
+		delete from refb_caidan
+		<include refid="queryByKeyRefbCaidan"/>
+	</delete>
+	
+	<update id="updateRefbCaidan" parameterClass="com.junyou.bus.caidan.entity.RefbCaidan">
+		update refb_caidan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="jifen"> jifen = #jifen# </isNotNull>
+			<isNotNull prepend="," property="time"> time = #time# </isNotNull>
+			<isNotNull prepend="," property="lucky"> lucky = #lucky# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="danInfo"> dan_info = #danInfo# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefbCaidan"/>
+	</update>
+	
+	<select id="selectSingleRefbCaidan" resultMap="refbCaidan">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,jifen
+		,time
+		,lucky
+		,update_time
+		,dan_info
+		from refb_caidan 
+		<include refid="queryByKeyRefbCaidan"/>
+	</select>
+	
+	<select id="selectRecordsCountRefbCaidan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refb_caidan
+		<include refid="queryConditionRefbCaidan"/>
+	</select>
+	
+	<select id="selectMultiPagingRefbCaidan" parameterClass="java.util.Map" resultMap="refbCaidan">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,jifen
+		,time
+		,lucky
+		,update_time
+		,dan_info
+		from refb_caidan
+		<include refid="queryConditionRefbCaidan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefbCaidan" parameterClass="java.util.Map" resultMap="refbCaidan">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,jifen
+		,time
+		,lucky
+		,update_time
+		,dan_info
+		from refb_caidan
+		<include refid="queryConditionRefbCaidan"/>
+	</select>
+	
+	<select id="selectAllRefbCaidan" resultMap="refbCaidan">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,jifen
+		,time
+		,lucky
+		,update_time
+		,dan_info
+		from refb_caidan
+	</select>
+	
+	<select id="selectSingleByParamsRefbCaidan" resultMap="refbCaidan">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,jifen
+		,time
+		,lucky
+		,update_time
+		,dan_info
+		from refb_caidan 
+		<include refid="queryConditionRefbCaidan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

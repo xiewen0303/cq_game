@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleTafang" class="com.junyou.bus.tafang.entity.RoleTafang" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="exp" column="exp"/>
+		<result property="cal" column="cal"/>
+		<result property="joinTime" column="join_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleTafang">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="and" property="cal"> cal = #cal# </isNotNull>
+			<isNotNull prepend="and" property="joinTime"> join_time = #joinTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleTafang">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleTafang" parameterClass="com.junyou.bus.tafang.entity.RoleTafang">
+		insert into role_tafang(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="exp"> exp </isNotNull> 
+		<isNotNull prepend="," property="cal"> cal </isNotNull> 
+		<isNotNull prepend="," property="joinTime"> join_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="exp"> #exp# </isNotNull>
+		<isNotNull prepend="," property="cal"> #cal# </isNotNull>
+		<isNotNull prepend="," property="joinTime"> #joinTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleTafang">
+		delete from role_tafang
+		<include refid="queryByKeyRoleTafang"/>
+	</delete>
+	
+	<update id="updateRoleTafang" parameterClass="com.junyou.bus.tafang.entity.RoleTafang">
+		update role_tafang 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="," property="cal"> cal = #cal# </isNotNull>
+			<isNotNull prepend="," property="joinTime"> join_time = #joinTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleTafang"/>
+	</update>
+	
+	<select id="selectSingleRoleTafang" resultMap="roleTafang">
+		select 
+		user_role_id
+		,exp
+		,cal
+		,join_time
+		,update_time
+		from role_tafang 
+		<include refid="queryByKeyRoleTafang"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleTafang" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_tafang
+		<include refid="queryConditionRoleTafang"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleTafang" parameterClass="java.util.Map" resultMap="roleTafang">
+		select 
+		user_role_id
+		,exp
+		,cal
+		,join_time
+		,update_time
+		from role_tafang
+		<include refid="queryConditionRoleTafang"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleTafang" parameterClass="java.util.Map" resultMap="roleTafang">
+		select 
+		user_role_id
+		,exp
+		,cal
+		,join_time
+		,update_time
+		from role_tafang
+		<include refid="queryConditionRoleTafang"/>
+	</select>
+	
+	<select id="selectAllRoleTafang" resultMap="roleTafang">
+		select 
+		user_role_id
+		,exp
+		,join_time
+		,update_time
+		from role_tafang
+	</select>
+	
+	<select id="selectSingleByParamsRoleTafang" resultMap="roleTafang">
+		select 
+		user_role_id
+		,exp
+		,cal
+		,join_time
+		,update_time
+		from role_tafang 
+		<include refid="queryConditionRoleTafang"/>
+	</select>	
+	
+	
+</sqlMap>
+	

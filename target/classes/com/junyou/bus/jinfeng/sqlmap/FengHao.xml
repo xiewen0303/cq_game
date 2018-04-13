@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="fengHao" class="com.junyou.bus.jinfeng.entity.FengHao" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="reasons" column="reasons"/>
+		<result property="expireTime" column="expire_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionFengHao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="reasons"> reasons = #reasons# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyFengHao">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertFengHao" parameterClass="com.junyou.bus.jinfeng.entity.FengHao">
+		insert into feng_hao(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="reasons"> reasons </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="reasons"> #reasons# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteFengHao">
+		delete from feng_hao
+		<include refid="queryByKeyFengHao"/>
+	</delete>
+	
+	<update id="updateFengHao" parameterClass="com.junyou.bus.jinfeng.entity.FengHao">
+		update feng_hao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="reasons"> reasons = #reasons# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyFengHao"/>
+	</update>
+	
+	<select id="selectSingleFengHao" resultMap="fengHao">
+		select 
+		user_role_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_hao 
+		<include refid="queryByKeyFengHao"/>
+	</select>
+	
+	<select id="selectRecordsCountFengHao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from feng_hao
+		<include refid="queryConditionFengHao"/>
+	</select>
+	
+	<select id="selectMultiPagingFengHao" parameterClass="java.util.Map" resultMap="fengHao">
+		select 
+		user_role_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_hao
+		<include refid="queryConditionFengHao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiFengHao" parameterClass="java.util.Map" resultMap="fengHao">
+		select 
+		user_role_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_hao
+		<include refid="queryConditionFengHao"/>
+	</select>
+	
+	<select id="selectAllFengHao" resultMap="fengHao">
+		select 
+		user_role_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_hao
+	</select>
+	
+	<select id="selectSingleByParamsFengHao" resultMap="fengHao">
+		select 
+		user_role_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_hao 
+		<include refid="queryConditionFengHao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleFuben" class="com.junyou.bus.fuben.entity.RoleFuben" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="fubenId" column="fuben_id"/>
+		<result property="state" column="state"/>
+		<result property="saodangStart" column="saodang_start"/>
+		<result property="saodangIds" column="saodang_ids"/>
+		<result property="type" column="type"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="fubenId"> fuben_id = #fubenId# </isNotNull>
+			<isNotNull prepend="and" property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="and" property="saodangStart"> saodang_start = #saodangStart# </isNotNull>
+			<isNotNull prepend="and" property="saodangIds"> saodang_ids = #saodangIds# </isNotNull>
+			<isNotNull prepend="and" property="type"> type = #type# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleFuben">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleFuben" parameterClass="com.junyou.bus.fuben.entity.RoleFuben">
+		insert into role_fuben(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="fubenId"> fuben_id </isNotNull> 
+		<isNotNull prepend="," property="state"> state </isNotNull> 
+		<isNotNull prepend="," property="saodangStart"> saodang_start </isNotNull> 
+		<isNotNull prepend="," property="saodangIds"> saodang_ids </isNotNull> 
+		<isNotNull prepend="," property="type"> type </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="fubenId"> #fubenId# </isNotNull>
+		<isNotNull prepend="," property="state"> #state# </isNotNull>
+		<isNotNull prepend="," property="saodangStart"> #saodangStart# </isNotNull>
+		<isNotNull prepend="," property="saodangIds"> #saodangIds# </isNotNull>
+		<isNotNull prepend="," property="type"> #type# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleFuben">
+		delete from role_fuben
+		<include refid="queryByKeyRoleFuben"/>
+	</delete>
+	
+	<update id="updateRoleFuben" parameterClass="com.junyou.bus.fuben.entity.RoleFuben">
+		update role_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="fubenId"> fuben_id = #fubenId# </isNotNull>
+			<isNotNull prepend="," property="state"> state = #state# </isNotNull>
+			<isNotNull prepend="," property="saodangStart"> saodang_start = #saodangStart# </isNotNull>
+			<isNotNull prepend="," property="saodangIds"> saodang_ids = #saodangIds# </isNotNull>
+			<isNotNull prepend="," property="type"> type = #type# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleFuben"/>
+	</update>
+	
+	<select id="selectSingleRoleFuben" resultMap="roleFuben">
+		select 
+		user_role_id
+		,fuben_id
+		,state
+		,saodang_start
+		,saodang_ids
+		,type
+		from role_fuben 
+		<include refid="queryByKeyRoleFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_fuben
+		<include refid="queryConditionRoleFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleFuben" parameterClass="java.util.Map" resultMap="roleFuben">
+		select 
+		user_role_id
+		,fuben_id
+		,state
+		,saodang_start
+		,saodang_ids
+		,type
+		from role_fuben
+		<include refid="queryConditionRoleFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleFuben" parameterClass="java.util.Map" resultMap="roleFuben">
+		select 
+		user_role_id
+		,fuben_id
+		,state
+		,saodang_start
+		,saodang_ids
+		,type
+		from role_fuben
+		<include refid="queryConditionRoleFuben"/>
+	</select>
+	
+	<select id="selectAllRoleFuben" resultMap="roleFuben">
+		select 
+		user_role_id
+		,fuben_id
+		,state
+		,saodang_start
+		,saodang_ids
+		,type
+		from role_fuben
+	</select>
+	
+	<select id="selectSingleByParamsRoleFuben" resultMap="roleFuben">
+		select 
+		user_role_id
+		,fuben_id
+		,state
+		,saodang_start
+		,saodang_ids
+		,type
+		from role_fuben 
+		<include refid="queryConditionRoleFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

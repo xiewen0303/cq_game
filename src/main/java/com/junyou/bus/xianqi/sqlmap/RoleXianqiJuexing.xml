@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleXianqiJuexing" class="com.junyou.bus.xianqi.entity.RoleXianqiJuexing" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xianqiType" column="xianqi_type"/>
+		<result property="juexingLvl" column="juexing_lvl"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleXianqiJuexing">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xianqiType"> xianqi_type = #xianqiType# </isNotNull>
+			<isNotNull prepend="and" property="juexingLvl"> juexing_lvl = #juexingLvl# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleXianqiJuexing">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleXianqiJuexing" parameterClass="com.junyou.bus.xianqi.entity.RoleXianqiJuexing">
+		insert into role_xianqi_juexing(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xianqiType"> xianqi_type </isNotNull> 
+		<isNotNull prepend="," property="juexingLvl"> juexing_lvl </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xianqiType"> #xianqiType# </isNotNull>
+		<isNotNull prepend="," property="juexingLvl"> #juexingLvl# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleXianqiJuexing">
+		delete from role_xianqi_juexing
+		<include refid="queryByKeyRoleXianqiJuexing"/>
+	</delete>
+	
+	<update id="updateRoleXianqiJuexing" parameterClass="com.junyou.bus.xianqi.entity.RoleXianqiJuexing">
+		update role_xianqi_juexing 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xianqiType"> xianqi_type = #xianqiType# </isNotNull>
+			<isNotNull prepend="," property="juexingLvl"> juexing_lvl = #juexingLvl# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleXianqiJuexing"/>
+	</update>
+	
+	<select id="selectSingleRoleXianqiJuexing" resultMap="roleXianqiJuexing">
+		select 
+		id
+		,user_role_id
+		,xianqi_type
+		,juexing_lvl
+		,create_time
+		,update_time
+		from role_xianqi_juexing 
+		<include refid="queryByKeyRoleXianqiJuexing"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleXianqiJuexing" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_xianqi_juexing
+		<include refid="queryConditionRoleXianqiJuexing"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleXianqiJuexing" parameterClass="java.util.Map" resultMap="roleXianqiJuexing">
+		select 
+		id
+		,user_role_id
+		,xianqi_type
+		,juexing_lvl
+		,create_time
+		,update_time
+		from role_xianqi_juexing
+		<include refid="queryConditionRoleXianqiJuexing"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleXianqiJuexing" parameterClass="java.util.Map" resultMap="roleXianqiJuexing">
+		select 
+		id
+		,user_role_id
+		,xianqi_type
+		,juexing_lvl
+		,create_time
+		,update_time
+		from role_xianqi_juexing
+		<include refid="queryConditionRoleXianqiJuexing"/>
+	</select>
+	
+	<select id="selectAllRoleXianqiJuexing" resultMap="roleXianqiJuexing">
+		select 
+		id
+		,user_role_id
+		,xianqi_type
+		,juexing_lvl
+		,create_time
+		,update_time
+		from role_xianqi_juexing
+	</select>
+	
+	<select id="selectSingleByParamsRoleXianqiJuexing" resultMap="roleXianqiJuexing">
+		select 
+		id
+		,user_role_id
+		,xianqi_type
+		,juexing_lvl
+		,create_time
+		,update_time
+		from role_xianqi_juexing 
+		<include refid="queryConditionRoleXianqiJuexing"/>
+	</select>	
+	
+	
+</sqlMap>
+	

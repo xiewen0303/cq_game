@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuXiaofei" class="com.junyou.bus.xiaofei.entity.RefabuXiaofei" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xfGold" column="xf_gold"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="subId" column="sub_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuXiaofei">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xfGold"> xf_gold = #xfGold# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuXiaofei">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuXiaofei" parameterClass="com.junyou.bus.xiaofei.entity.RefabuXiaofei">
+		insert into refabu_xiaofei(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xfGold"> xf_gold </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xfGold"> #xfGold# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuXiaofei">
+		delete from refabu_xiaofei
+		<include refid="queryByKeyRefabuXiaofei"/>
+	</delete>
+	
+	<update id="updateRefabuXiaofei" parameterClass="com.junyou.bus.xiaofei.entity.RefabuXiaofei">
+		update refabu_xiaofei 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xfGold"> xf_gold = #xfGold# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuXiaofei"/>
+	</update>
+	
+	<select id="selectSingleRefabuXiaofei" resultMap="refabuXiaofei">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei 
+		<include refid="queryByKeyRefabuXiaofei"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuXiaofei" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_xiaofei
+		<include refid="queryConditionRefabuXiaofei"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuXiaofei" parameterClass="java.util.Map" resultMap="refabuXiaofei">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei
+		<include refid="queryConditionRefabuXiaofei"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuXiaofei" parameterClass="java.util.Map" resultMap="refabuXiaofei">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei
+		<include refid="queryConditionRefabuXiaofei"/>
+	</select>
+	
+	<select id="selectAllRefabuXiaofei" resultMap="refabuXiaofei">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei
+	</select>
+	
+	<select id="selectSingleByParamsRefabuXiaofei" resultMap="refabuXiaofei">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei 
+		<include refid="queryConditionRefabuXiaofei"/>
+	</select>	
+	
+	
+	<!-- 消费排行榜 -->
+	<select id="selectXiaoFeiRank" parameterClass="java.util.Map" resultMap="refabuXiaofei">
+		select
+		id 
+		,user_role_id
+		,xf_gold
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xiaofei 
+		where xf_gold > 0  and sub_id = #subId#
+		order by xf_gold desc,update_time
+		 limit #maxSize#
+	</select>	
+	
+	<delete id="deleteRefabuXiaofeiBySubId">
+		delete from refabu_xiaofei where sub_id = #subId#
+	</delete>
+	
+</sqlMap>
+	

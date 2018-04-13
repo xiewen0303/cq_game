@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="xinmoDouchangFuben" class="com.junyou.bus.fuben.entity.XinmoDouchangFuben" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="fightCount" column="fight_count"/>
+		<result property="buyCount" column="buy_count"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionXinmoDouchangFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="fightCount"> fight_count = #fightCount# </isNotNull>
+			<isNotNull prepend="and" property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyXinmoDouchangFuben">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertXinmoDouchangFuben" parameterClass="com.junyou.bus.fuben.entity.XinmoDouchangFuben">
+		insert into xinmo_douchang_fuben(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="fightCount"> fight_count </isNotNull> 
+		<isNotNull prepend="," property="buyCount"> buy_count </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="fightCount"> #fightCount# </isNotNull>
+		<isNotNull prepend="," property="buyCount"> #buyCount# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteXinmoDouchangFuben">
+		delete from xinmo_douchang_fuben
+		<include refid="queryByKeyXinmoDouchangFuben"/>
+	</delete>
+	
+	<update id="updateXinmoDouchangFuben" parameterClass="com.junyou.bus.fuben.entity.XinmoDouchangFuben">
+		update xinmo_douchang_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="fightCount"> fight_count = #fightCount# </isNotNull>
+			<isNotNull prepend="," property="buyCount"> buy_count = #buyCount# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyXinmoDouchangFuben"/>
+	</update>
+	
+	<select id="selectSingleXinmoDouchangFuben" resultMap="xinmoDouchangFuben">
+		select 
+		user_role_id
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from xinmo_douchang_fuben 
+		<include refid="queryByKeyXinmoDouchangFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountXinmoDouchangFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from xinmo_douchang_fuben
+		<include refid="queryConditionXinmoDouchangFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingXinmoDouchangFuben" parameterClass="java.util.Map" resultMap="xinmoDouchangFuben">
+		select 
+		user_role_id
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from xinmo_douchang_fuben
+		<include refid="queryConditionXinmoDouchangFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiXinmoDouchangFuben" parameterClass="java.util.Map" resultMap="xinmoDouchangFuben">
+		select 
+		user_role_id
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from xinmo_douchang_fuben
+		<include refid="queryConditionXinmoDouchangFuben"/>
+	</select>
+	
+	<select id="selectAllXinmoDouchangFuben" resultMap="xinmoDouchangFuben">
+		select 
+		user_role_id
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from xinmo_douchang_fuben
+	</select>
+	
+	<select id="selectSingleByParamsXinmoDouchangFuben" resultMap="xinmoDouchangFuben">
+		select 
+		user_role_id
+		,fight_count
+		,buy_count
+		,create_time
+		,update_time
+		from xinmo_douchang_fuben 
+		<include refid="queryConditionXinmoDouchangFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

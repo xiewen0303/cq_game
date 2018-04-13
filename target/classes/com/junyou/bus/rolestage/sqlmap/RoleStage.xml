@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleStage" class="com.junyou.bus.rolestage.entity.RoleStage" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="mapId" column="map_id"/>
+		<result property="mapX" column="map_x"/>
+		<result property="mapY" column="map_y"/>
+		<result property="hp" column="hp"/>
+		<result property="buff" column="buff"/>
+		<result property="shenqi" column="shenqi"/>
+		<result property="mapNode" column="map_node"/>
+		<result property="tiLi" column="ti_li"/>
+		<result property="lineNo" column="line_no"/>
+		<result property="prop" column="prop"/>
+		<result property="lastMainMap" column="last_main_map"/>
+		<result property="nuqi" column="nuqi"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleStage">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="mapId"> map_id = #mapId# </isNotNull>
+			<isNotNull prepend="and" property="mapX"> map_x = #mapX# </isNotNull>
+			<isNotNull prepend="and" property="mapY"> map_y = #mapY# </isNotNull>
+			<isNotNull prepend="and" property="hp"> hp = #hp# </isNotNull>
+			<isNotNull prepend="and" property="buff"> buff = #buff# </isNotNull>
+			<isNotNull prepend="and" property="shenqi"> shenqi = #shenqi# </isNotNull>
+			<isNotNull prepend="and" property="mapNode"> map_node = #mapNode# </isNotNull>
+			<isNotNull prepend="and" property="tiLi"> ti_li = #tiLi# </isNotNull>
+			<isNotNull prepend="and" property="lineNo"> line_no = #lineNo# </isNotNull>
+			<isNotNull prepend="and" property="prop"> prop = #prop# </isNotNull>
+			<isNotNull prepend="and" property="lastMainMap"> last_main_map = #lastMainMap# </isNotNull>
+			<isNotNull prepend="and" property="nuqi"> nuqi = #nuqi# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleStage">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleStage" parameterClass="com.junyou.bus.rolestage.entity.RoleStage">
+		insert into role_stage(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="mapId"> map_id </isNotNull> 
+		<isNotNull prepend="," property="mapX"> map_x </isNotNull> 
+		<isNotNull prepend="," property="mapY"> map_y </isNotNull> 
+		<isNotNull prepend="," property="hp"> hp </isNotNull> 
+		<isNotNull prepend="," property="buff"> buff </isNotNull> 
+		<isNotNull prepend="," property="shenqi"> shenqi </isNotNull> 
+		<isNotNull prepend="," property="mapNode"> map_node </isNotNull> 
+		<isNotNull prepend="," property="tiLi"> ti_li </isNotNull> 
+		<isNotNull prepend="," property="lineNo"> line_no </isNotNull> 
+		<isNotNull prepend="," property="prop"> prop </isNotNull> 
+		<isNotNull prepend="," property="lastMainMap"> last_main_map </isNotNull> 
+		<isNotNull prepend="," property="nuqi"> nuqi </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="mapId"> #mapId# </isNotNull>
+		<isNotNull prepend="," property="mapX"> #mapX# </isNotNull>
+		<isNotNull prepend="," property="mapY"> #mapY# </isNotNull>
+		<isNotNull prepend="," property="hp"> #hp# </isNotNull>
+		<isNotNull prepend="," property="buff"> #buff# </isNotNull>
+		<isNotNull prepend="," property="shenqi"> #shenqi# </isNotNull>
+		<isNotNull prepend="," property="mapNode"> #mapNode# </isNotNull>
+		<isNotNull prepend="," property="tiLi"> #tiLi# </isNotNull>
+		<isNotNull prepend="," property="lineNo"> #lineNo# </isNotNull>
+		<isNotNull prepend="," property="prop"> #prop# </isNotNull>
+		<isNotNull prepend="," property="lastMainMap"> #lastMainMap# </isNotNull>
+		<isNotNull prepend="," property="nuqi"> #nuqi# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleStage">
+		delete from role_stage
+		<include refid="queryByKeyRoleStage"/>
+	</delete>
+	
+	<update id="updateRoleStage" parameterClass="com.junyou.bus.rolestage.entity.RoleStage">
+		update role_stage 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="mapId"> map_id = #mapId# </isNotNull>
+			<isNotNull prepend="," property="mapX"> map_x = #mapX# </isNotNull>
+			<isNotNull prepend="," property="mapY"> map_y = #mapY# </isNotNull>
+			<isNotNull prepend="," property="hp"> hp = #hp# </isNotNull>
+			<isNotNull prepend="," property="buff"> buff = #buff# </isNotNull>
+			<isNotNull prepend="," property="shenqi"> shenqi = #shenqi# </isNotNull>
+			<isNotNull prepend="," property="mapNode"> map_node = #mapNode# </isNotNull>
+			<isNotNull prepend="," property="tiLi"> ti_li = #tiLi# </isNotNull>
+			<isNotNull prepend="," property="lineNo"> line_no = #lineNo# </isNotNull>
+			<isNotNull prepend="," property="prop"> prop = #prop# </isNotNull>
+			<isNotNull prepend="," property="lastMainMap"> last_main_map = #lastMainMap# </isNotNull>
+			<isNotNull prepend="," property="nuqi"> nuqi = #nuqi# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleStage"/>
+	</update>
+	
+	<select id="selectSingleRoleStage" resultMap="roleStage">
+		select 
+		user_role_id
+		,map_id
+		,map_x
+		,map_y
+		,hp
+		,buff
+		,shenqi
+		,map_node
+		,ti_li
+		,line_no
+		,prop
+		,last_main_map
+		,nuqi
+		from role_stage 
+		<include refid="queryByKeyRoleStage"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleStage" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_stage
+		<include refid="queryConditionRoleStage"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleStage" parameterClass="java.util.Map" resultMap="roleStage">
+		select 
+		user_role_id
+		,map_id
+		,map_x
+		,map_y
+		,hp
+		,buff
+		,shenqi
+		,map_node
+		,ti_li
+		,line_no
+		,prop
+		,last_main_map
+		,nuqi
+		from role_stage
+		<include refid="queryConditionRoleStage"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleStage" parameterClass="java.util.Map" resultMap="roleStage">
+		select 
+		user_role_id
+		,map_id
+		,map_x
+		,map_y
+		,hp
+		,buff
+		,shenqi
+		,map_node
+		,ti_li
+		,line_no
+		,prop
+		,last_main_map
+		,nuqi
+		from role_stage
+		<include refid="queryConditionRoleStage"/>
+	</select>
+	
+	<select id="selectAllRoleStage" resultMap="roleStage">
+		select 
+		user_role_id
+		,map_id
+		,map_x
+		,map_y
+		,hp
+		,buff
+		,shenqi
+		,map_node
+		,ti_li
+		,line_no
+		,prop
+		,last_main_map
+		,nuqi
+		from role_stage
+	</select>
+	
+	<select id="selectSingleByParamsRoleStage" resultMap="roleStage">
+		select 
+		user_role_id
+		,map_id
+		,map_x
+		,map_y
+		,hp
+		,buff
+		,shenqi
+		,map_node
+		,ti_li
+		,line_no
+		,prop
+		,last_main_map
+		,nuqi
+		from role_stage 
+		<include refid="queryConditionRoleStage"/>
+	</select>	
+</sqlMap>

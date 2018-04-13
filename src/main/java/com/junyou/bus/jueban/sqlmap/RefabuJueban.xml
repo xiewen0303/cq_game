@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuJueban" class="com.junyou.bus.jueban.entity.RefabuJueban" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="activityStatus" column="activity_status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuJueban">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="activityStatus"> activity_status = #activityStatus# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuJueban">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuJueban" parameterClass="com.junyou.bus.jueban.entity.RefabuJueban">
+		insert into refabu_jueban(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="activityStatus"> activity_status </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="activityStatus"> #activityStatus# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuJueban">
+		delete from refabu_jueban
+		<include refid="queryByKeyRefabuJueban"/>
+	</delete>
+	
+	<update id="updateRefabuJueban" parameterClass="com.junyou.bus.jueban.entity.RefabuJueban">
+		update refabu_jueban 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="activityStatus"> activity_status = #activityStatus# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuJueban"/>
+	</update>
+	
+	<select id="selectSingleRefabuJueban" resultMap="refabuJueban">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_jueban 
+		<include refid="queryByKeyRefabuJueban"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuJueban" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_jueban
+		<include refid="queryConditionRefabuJueban"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuJueban" parameterClass="java.util.Map" resultMap="refabuJueban">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_jueban
+		<include refid="queryConditionRefabuJueban"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuJueban" parameterClass="java.util.Map" resultMap="refabuJueban">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_jueban
+		<include refid="queryConditionRefabuJueban"/>
+	</select>
+	
+	<select id="selectAllRefabuJueban" resultMap="refabuJueban">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_jueban
+	</select>
+	
+	<select id="selectSingleByParamsRefabuJueban" resultMap="refabuJueban">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,activity_status
+		,create_time
+		,update_time
+		from refabu_jueban 
+		<include refid="queryConditionRefabuJueban"/>
+	</select>	
+	
+	
+</sqlMap>
+	

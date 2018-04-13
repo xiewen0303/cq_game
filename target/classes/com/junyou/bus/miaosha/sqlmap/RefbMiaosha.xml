@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refbMiaosha" class="com.junyou.bus.miaosha.entity.RefbMiaosha" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="endTime" column="end_time"/>
+		<result property="boxId" column="box_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefbMiaosha">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="endTime"> end_time = #endTime# </isNotNull>
+			<isNotNull prepend="and" property="boxId"> box_id = #boxId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefbMiaosha">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefbMiaosha" parameterClass="com.junyou.bus.miaosha.entity.RefbMiaosha">
+		insert into refb_miaosha(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="endTime"> end_time </isNotNull> 
+		<isNotNull prepend="," property="boxId"> box_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="endTime"> #endTime# </isNotNull>
+		<isNotNull prepend="," property="boxId"> #boxId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefbMiaosha">
+		delete from refb_miaosha
+		<include refid="queryByKeyRefbMiaosha"/>
+	</delete>
+	
+	<update id="updateRefbMiaosha" parameterClass="com.junyou.bus.miaosha.entity.RefbMiaosha">
+		update refb_miaosha 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="endTime"> end_time = #endTime# </isNotNull>
+			<isNotNull prepend="," property="boxId"> box_id = #boxId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefbMiaosha"/>
+	</update>
+	
+	<select id="selectSingleRefbMiaosha" resultMap="refbMiaosha">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,end_time
+		,box_id
+		from refb_miaosha 
+		<include refid="queryByKeyRefbMiaosha"/>
+	</select>
+	
+	<select id="selectRecordsCountRefbMiaosha" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refb_miaosha
+		<include refid="queryConditionRefbMiaosha"/>
+	</select>
+	
+	<select id="selectMultiPagingRefbMiaosha" parameterClass="java.util.Map" resultMap="refbMiaosha">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,end_time
+		,box_id
+		from refb_miaosha
+		<include refid="queryConditionRefbMiaosha"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefbMiaosha" parameterClass="java.util.Map" resultMap="refbMiaosha">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,end_time
+		,box_id
+		from refb_miaosha
+		<include refid="queryConditionRefbMiaosha"/>
+	</select>
+	
+	<select id="selectAllRefbMiaosha" resultMap="refbMiaosha">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,end_time
+		,box_id
+		from refb_miaosha
+	</select>
+	
+	<select id="selectSingleByParamsRefbMiaosha" resultMap="refbMiaosha">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,end_time
+		,box_id
+		from refb_miaosha 
+		<include refid="queryConditionRefbMiaosha"/>
+	</select>	
+	
+	
+</sqlMap>
+	

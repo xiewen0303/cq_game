@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="userRole" class="com.junyou.bus.role.entity.UserRole" >
+		<result property="id" column="id"/>
+		<result property="configId" column="config_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="name" column="name"/>
+		<result property="exp" column="exp"/>
+		<result property="level" column="level"/>
+		<result property="createTime" column="create_time"/>
+		<result property="onlineTime" column="online_time"/>
+		<result property="offlineTime" column="offline_time"/>
+		<result property="isFangchenmi" column="is_fangchenmi"/>
+		<result property="chenmiAddOnline" column="chenmi_add_online"/>
+		<result property="chenmiAddOffline" column="chenmi_add_offline"/>
+		<result property="serverId" column="server_id"/>
+		<result property="lastLoginIp" column="last_login_ip"/>
+		<result property="isCm" column="is_cm"/>
+		<result property="isGm" column="is_gm"/>
+		<result property="userType" column="user_type"/>
+		<result property="onceData" column="once_data"/>
+		<result property="zhenqi" column="zhenqi"/>
+		<result property="isAutoCreate" column="is_auto_create"/>
+		<result property="phoneRewardStatus" column="phone_reward_status"/>
+		<result property="lastModifyNameTime" column="last_modify_name_time"/>
+	</resultMap>
+	
+	<resultMap id="levelRankVo" class="com.junyou.bus.role.vo.LevelRankVo" >
+		<result property="rank" column="rank"/>
+		<result property="userRoleId" column="id"/>
+		<result property="configId" column="config_id"/>
+		<result property="name" column="name"/>
+		<result property="level" column="level"/>
+		<result property="userGuildName" column="guildName"/>
+		<result property="chibang_level" column="chibang_level"/>
+		<result property="zuoqi_level" column="zuoqi_level"/>
+		<result property="fighting" column="cur_fighter"/>
+		<result property="vipLevel" column="vip_level"/>
+		<result property="wuQiLevel" column="wq_level"/>
+	</resultMap>
+	
+	
+	<sql id="queryConditionUserRole">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="and" property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="and" property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="and" property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="onlineTime"> online_time = #onlineTime# </isNotNull>
+			<isNotNull prepend="and" property="offlineTime"> offline_time = #offlineTime# </isNotNull>
+			<isNotNull prepend="and" property="isFangchenmi"> is_fangchenmi = #isFangchenmi# </isNotNull>
+			<isNotNull prepend="and" property="chenmiAddOnline"> chenmi_add_online = #chenmiAddOnline# </isNotNull>
+			<isNotNull prepend="and" property="chenmiAddOffline"> chenmi_add_offline = #chenmiAddOffline# </isNotNull>
+			<isNotNull prepend="and" property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="and" property="lastLoginIp"> last_login_ip = #lastLoginIp# </isNotNull>
+			<isNotNull prepend="and" property="isCm"> is_cm = #isCm# </isNotNull>
+			<isNotNull prepend="and" property="isGm"> is_gm = #isGm# </isNotNull>
+			<isNotNull prepend="and" property="userType"> user_type = #userType# </isNotNull>
+			<isNotNull prepend="and" property="onceData"> once_data = #onceData# </isNotNull>
+			<isNotNull prepend="and" property="zhenqi"> zhenqi = #zhenqi# </isNotNull>
+			<isNotNull prepend="and" property="isAutoCreate"> is_auto_create = #isAutoCreate# </isNotNull>
+			<isNotNull prepend="and" property="phoneRewardStatus"> phone_reward_status = #phoneRewardStatus# </isNotNull>
+			<isNotNull prepend="and" property="lastModifyNameTime"> last_modify_name_time = #lastModifyNameTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyUserRole">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertUserRole" parameterClass="com.junyou.bus.role.entity.UserRole">
+		insert into user_role(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="userId"> user_id </isNotNull> 
+		<isNotNull prepend="," property="name"> name </isNotNull> 
+		<isNotNull prepend="," property="exp"> exp </isNotNull> 
+		<isNotNull prepend="," property="level"> level </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="onlineTime"> online_time </isNotNull> 
+		<isNotNull prepend="," property="offlineTime"> offline_time </isNotNull> 
+		<isNotNull prepend="," property="isFangchenmi"> is_fangchenmi </isNotNull> 
+		<isNotNull prepend="," property="chenmiAddOnline"> chenmi_add_online </isNotNull> 
+		<isNotNull prepend="," property="chenmiAddOffline"> chenmi_add_offline </isNotNull> 
+		<isNotNull prepend="," property="serverId"> server_id </isNotNull> 
+		<isNotNull prepend="," property="lastLoginIp"> last_login_ip </isNotNull> 
+		<isNotNull prepend="," property="isCm"> is_cm </isNotNull> 
+		<isNotNull prepend="," property="isGm"> is_gm </isNotNull> 
+		<isNotNull prepend="," property="userType"> user_type </isNotNull> 
+		<isNotNull prepend="," property="onceData"> once_data </isNotNull> 
+		<isNotNull prepend="," property="zhenqi"> zhenqi </isNotNull> 
+		<isNotNull prepend="," property="isAutoCreate"> is_auto_create </isNotNull> 
+		<isNotNull prepend="," property="phoneRewardStatus"> phone_reward_status </isNotNull> 
+		<isNotNull prepend="," property="lastModifyNameTime"> last_modify_name_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="userId"> #userId# </isNotNull>
+		<isNotNull prepend="," property="name"> #name# </isNotNull>
+		<isNotNull prepend="," property="exp"> #exp# </isNotNull>
+		<isNotNull prepend="," property="level"> #level# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="onlineTime"> #onlineTime# </isNotNull>
+		<isNotNull prepend="," property="offlineTime"> #offlineTime# </isNotNull>
+		<isNotNull prepend="," property="isFangchenmi"> #isFangchenmi# </isNotNull>
+		<isNotNull prepend="," property="chenmiAddOnline"> #chenmiAddOnline# </isNotNull>
+		<isNotNull prepend="," property="chenmiAddOffline"> #chenmiAddOffline# </isNotNull>
+		<isNotNull prepend="," property="serverId"> #serverId# </isNotNull>
+		<isNotNull prepend="," property="lastLoginIp"> #lastLoginIp# </isNotNull>
+		<isNotNull prepend="," property="isCm"> #isCm# </isNotNull>
+		<isNotNull prepend="," property="isGm"> #isGm# </isNotNull>
+		<isNotNull prepend="," property="userType"> #userType# </isNotNull>
+		<isNotNull prepend="," property="onceData"> #onceData# </isNotNull>
+		<isNotNull prepend="," property="zhenqi"> #zhenqi# </isNotNull>
+		<isNotNull prepend="," property="isAutoCreate"> #isAutoCreate# </isNotNull>
+		<isNotNull prepend="," property="phoneRewardStatus"> #phoneRewardStatus# </isNotNull>
+		<isNotNull prepend="," property="lastModifyNameTime"> #lastModifyNameTime# </isNotNull> 
+		)
+	</insert>
+	
+	<delete id="deleteUserRole">
+		delete from user_role
+		<include refid="queryByKeyUserRole"/>
+	</delete>
+	
+	<update id="updateUserRole" parameterClass="com.junyou.bus.role.entity.UserRole">
+		update user_role 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="userId"> user_id = #userId# </isNotNull>
+			<isNotNull prepend="," property="name"> name = #name# </isNotNull>
+			<isNotNull prepend="," property="exp"> exp = #exp# </isNotNull>
+			<isNotNull prepend="," property="level"> level = #level# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="onlineTime"> online_time = #onlineTime# </isNotNull>
+			<isNotNull prepend="," property="offlineTime"> offline_time = #offlineTime# </isNotNull>
+			<isNotNull prepend="," property="isFangchenmi"> is_fangchenmi = #isFangchenmi# </isNotNull>
+			<isNotNull prepend="," property="chenmiAddOnline"> chenmi_add_online = #chenmiAddOnline# </isNotNull>
+			<isNotNull prepend="," property="chenmiAddOffline"> chenmi_add_offline = #chenmiAddOffline# </isNotNull>
+			<isNotNull prepend="," property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="," property="lastLoginIp"> last_login_ip = #lastLoginIp# </isNotNull>
+			<isNotNull prepend="," property="isCm"> is_cm = #isCm# </isNotNull>
+			<isNotNull prepend="," property="isGm"> is_gm = #isGm# </isNotNull>
+			<isNotNull prepend="," property="userType"> user_type = #userType# </isNotNull>
+			<isNotNull prepend="," property="onceData"> once_data = #onceData# </isNotNull>
+			<isNotNull prepend="," property="zhenqi"> zhenqi = #zhenqi# </isNotNull>
+			<isNotNull prepend="," property="isAutoCreate"> is_auto_create = #isAutoCreate# </isNotNull>
+			<isNotNull prepend="," property="phoneRewardStatus"> phone_reward_status = #phoneRewardStatus# </isNotNull>
+			<isNotNull prepend="," property="lastModifyNameTime"> last_modify_name_time = #lastModifyNameTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyUserRole"/>
+	</update>
+	
+	<select id="selectSingleUserRole" resultMap="userRole">
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,exp
+		,level
+		,create_time
+		,online_time
+		,offline_time
+		,is_fangchenmi
+		,chenmi_add_online
+		,chenmi_add_offline
+		,server_id
+		,last_login_ip
+		,is_cm
+		,is_gm
+		,user_type
+		,once_data
+		,zhenqi
+		,is_auto_create
+		,phone_reward_status
+		,last_modify_name_time
+		from user_role 
+		<include refid="queryByKeyUserRole"/>
+	</select>
+	
+	<select id="selectRecordsCountUserRole" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from user_role
+		<include refid="queryConditionUserRole"/>
+	</select>
+	
+	<select id="selectMultiPagingUserRole" parameterClass="java.util.Map" resultMap="userRole">
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,exp
+		,level
+		,create_time
+		,online_time
+		,offline_time
+		,is_fangchenmi
+		,chenmi_add_online
+		,chenmi_add_offline
+		,server_id
+		,last_login_ip
+		,is_cm
+		,is_gm
+		,user_type
+		,once_data
+		,zhenqi
+		,is_auto_create
+		,phone_reward_status
+		,last_modify_name_time		
+		from user_role
+		<include refid="queryConditionUserRole"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiUserRole" parameterClass="java.util.Map" resultMap="userRole">
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,exp
+		,level
+		,create_time
+		,online_time
+		,offline_time
+		,is_fangchenmi
+		,chenmi_add_online
+		,chenmi_add_offline
+		,server_id
+		,last_login_ip
+		,is_cm
+		,is_gm
+		,user_type
+		,once_data
+		,zhenqi
+		,is_auto_create
+		,phone_reward_status
+		,last_modify_name_time	
+		from user_role
+		<include refid="queryConditionUserRole"/>
+	</select>
+	
+	<select id="selectAllUserRole" resultMap="userRole">
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,exp
+		,level
+		,create_time
+		,online_time
+		,offline_time
+		,is_fangchenmi
+		,chenmi_add_online
+		,chenmi_add_offline
+		,server_id
+		,last_login_ip
+		,is_cm
+		,is_gm
+		,user_type
+		,once_data
+		,zhenqi
+		,is_auto_create
+		,phone_reward_status
+		,last_modify_name_time	
+		from user_role
+	</select>
+	
+	<select id="selectSingleByParamsUserRole" resultMap="userRole">
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,exp
+		,level
+		,create_time
+		,online_time
+		,offline_time
+		,is_fangchenmi
+		,chenmi_add_online
+		,chenmi_add_offline
+		,server_id
+		,last_login_ip
+		,is_cm
+		,is_gm
+		,user_type
+		,once_data
+		,zhenqi
+		,is_auto_create
+		,phone_reward_status
+		,last_modify_name_time	
+		from user_role 
+		<include refid="queryConditionUserRole"/>
+	</select>	
+	
+	<select id="selectLevelRankToLevelRankVo" resultMap="levelRankVo">
+		select
+		(@rownum :=@rownum + 1)as rank,
+			r.*
+		from
+			(
+				select
+					gz.id,
+					gz. name,
+					gz.config_id,
+					gz.cur_fighter,
+					gz. level,
+					gz.exp,
+					gl. name guildname,
+					gz.zuoqi_level,
+					gz.chibang_level,
+					gz.vip_level,
+					gz.wq_level
+				from
+					(
+select wq.zuoqi_level as wq_level,wqs.* from  (
+						select
+							zhu.*, gu.guild_id
+						from
+							(
+								select
+									uz.*, chi_bang_info.chibang_level
+								from
+									(
+										select
+											us.*, zuo_qi_info.zuoqi_level
+										from
+											(
+select role_vip_info.vip_level,s1.* from 
+											( 
+												select
+													user_role.id,
+													name,
+													config_id,
+													cur_fighter,
+													user_role. level,
+													user_role.exp
+												from
+													user_role,
+													role_business_info
+												where
+													user_role.id = role_business_info.user_role_id
+												order by
+													level desc,
+													exp desc
+												limit #limit#
+) s1 left join role_vip_info on s1.id = role_vip_info.user_role_id
+											)as us
+										left join zuo_qi_info on us.id = zuo_qi_info.user_role_id
+									)as uz
+								left join chi_bang_info on uz.id = chi_bang_info.user_role_id
+							)zhu
+						left join guild_member gu on zhu.id = gu.user_role_id
+
+	)wqs  left join wu_qi_info wq on wqs.id = wq.user_role_id
+					)gz
+				left join guild gl on gz.guild_id = gl.id
+			)r,
+			(select(@rownum := 0))rank
+	</select>
+	
+	<!-- pps单服激活玩家数据 (获取各个服务器24小时内的新创角人数，新创角的角色信息列表)-->
+	<select id="selectPpsJHRole" resultClass="java.util.HashMap" parameterClass="java.util.Map" >
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,level
+		,create_time
+		from user_role 
+		where DATE_FORMAT(create_time,'%Y-%m-%d') = DATE_FORMAT(#createTime#,'%Y-%m-%d')
+	</select>
+	
+	<!-- pps单服活跃玩家数据 (获取各个服务器24小时内的进入游戏游玩的有效用户数)-->
+	<select id="selectPpsHYRole" resultClass="java.util.HashMap" parameterClass="java.util.Map" >
+		select 
+		id
+		,config_id
+		,user_id
+		,name
+		,level
+		,online_time
+		from user_role 
+		where FROM_UNIXTIME( online_time / 1000, '%Y-%m-%d') = #hyTime# or  <![CDATA[ online_time > offline_time ]]>
+	</select>
+	<!-- 全服统计单小时创号数 -->
+	<select id="selectHourCreateRoleCount" resultClass="java.lang.Integer" parameterClass="java.util.Map" >
+		select count(*) from user_role where <![CDATA[ create_time >= #startTime# ]]> and <![CDATA[ create_time < #endTime# ]]>
+	</select>
+	<!-- 查询名字是否存在-->
+	<select id="countByName" resultClass="java.lang.Long" parameterClass="java.util.Map" >
+		select count(*) from user_role where name = #name# 
+	</select>
+	<!-- 查询角色自己的全服等级排名-->
+	<select id="getUserServerLeveRank" resultClass="java.lang.Long" parameterClass="java.util.Map" >
+		select count(*) from user_role where `level` > (select MAX(level) from user_role where user_id = #userId# and server_id = #serverId#);
+	</select>
+	<!-- 查询总注册人数-->
+	<select id="allRegistCount" resultClass="java.lang.Integer" parameterClass="java.util.Map" >
+		select count(*) from user_role
+	</select>
+</sqlMap>
+	

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleHuanhua" class="com.junyou.bus.huanhua.entity.RoleHuanhua" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="type" column="type"/>
+		<result property="configId" column="config_id"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleHuanhua">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="type"> type = #type# </isNotNull>
+			<isNotNull prepend="and" property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleHuanhua">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleHuanhua" parameterClass="com.junyou.bus.huanhua.entity.RoleHuanhua">
+		insert into role_huanhua(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="type"> type </isNotNull> 
+		<isNotNull prepend="," property="configId"> config_id </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="type"> #type# </isNotNull>
+		<isNotNull prepend="," property="configId"> #configId# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleHuanhua">
+		delete from role_huanhua
+		<include refid="queryByKeyRoleHuanhua"/>
+	</delete>
+	
+	<update id="updateRoleHuanhua" parameterClass="com.junyou.bus.huanhua.entity.RoleHuanhua">
+		update role_huanhua 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="type"> type = #type# </isNotNull>
+			<isNotNull prepend="," property="configId"> config_id = #configId# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleHuanhua"/>
+	</update>
+	
+	<select id="selectSingleRoleHuanhua" resultMap="roleHuanhua">
+		select 
+		id
+		,user_role_id
+		,type
+		,config_id
+		,create_time
+		from role_huanhua 
+		<include refid="queryByKeyRoleHuanhua"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleHuanhua" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_huanhua
+		<include refid="queryConditionRoleHuanhua"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleHuanhua" parameterClass="java.util.Map" resultMap="roleHuanhua">
+		select 
+		id
+		,user_role_id
+		,type
+		,config_id
+		,create_time
+		from role_huanhua
+		<include refid="queryConditionRoleHuanhua"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleHuanhua" parameterClass="java.util.Map" resultMap="roleHuanhua">
+		select 
+		id
+		,user_role_id
+		,type
+		,config_id
+		,create_time
+		from role_huanhua
+		<include refid="queryConditionRoleHuanhua"/>
+	</select>
+	
+	<select id="selectAllRoleHuanhua" resultMap="roleHuanhua">
+		select 
+		id
+		,user_role_id
+		,type
+		,config_id
+		,create_time
+		from role_huanhua
+	</select>
+	
+	<select id="selectSingleByParamsRoleHuanhua" resultMap="roleHuanhua">
+		select 
+		id
+		,user_role_id
+		,type
+		,config_id
+		,create_time
+		from role_huanhua 
+		<include refid="queryConditionRoleHuanhua"/>
+	</select>	
+	
+	
+</sqlMap>
+	

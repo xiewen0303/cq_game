@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="renwujishi" class="com.junyou.bus.platform.qq.entity.Renwujishi" >
+		<result property="userroleid" column="userRoleId"/>
+		<result property="lingquStatus" column="lingqu_status"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRenwujishi">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userroleid"> userRoleId = #userroleid# </isNotNull>
+			<isNotNull prepend="and" property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRenwujishi">
+		where userRoleId = #userroleid#
+	</sql>
+	
+	<insert id="insertRenwujishi" parameterClass="com.junyou.bus.platform.qq.entity.Renwujishi">
+		insert into renwujishi(
+		<isNotNull prepend="" property="userroleid"> userRoleId </isNotNull> 
+		<isNotNull prepend="," property="lingquStatus"> lingqu_status </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userroleid"> #userroleid# </isNotNull>
+		<isNotNull prepend="," property="lingquStatus"> #lingquStatus# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRenwujishi">
+		delete from renwujishi
+		<include refid="queryByKeyRenwujishi"/>
+	</delete>
+	
+	<update id="updateRenwujishi" parameterClass="com.junyou.bus.platform.qq.entity.Renwujishi">
+		update renwujishi 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userroleid"> userRoleId = #userroleid# </isNotNull>
+			<isNotNull prepend="," property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRenwujishi"/>
+	</update>
+	
+	<select id="selectSingleRenwujishi" resultMap="renwujishi">
+		select 
+		userRoleId
+		,lingqu_status
+		,create_time
+		,update_time
+		from renwujishi 
+		<include refid="queryByKeyRenwujishi"/>
+	</select>
+	
+	<select id="selectRecordsCountRenwujishi" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from renwujishi
+		<include refid="queryConditionRenwujishi"/>
+	</select>
+	
+	<select id="selectMultiPagingRenwujishi" parameterClass="java.util.Map" resultMap="renwujishi">
+		select 
+		userRoleId
+		,lingqu_status
+		,create_time
+		,update_time
+		from renwujishi
+		<include refid="queryConditionRenwujishi"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRenwujishi" parameterClass="java.util.Map" resultMap="renwujishi">
+		select 
+		userRoleId
+		,lingqu_status
+		,create_time
+		,update_time
+		from renwujishi
+		<include refid="queryConditionRenwujishi"/>
+	</select>
+	
+	<select id="selectAllRenwujishi" resultMap="renwujishi">
+		select 
+		userRoleId
+		,lingqu_status
+		,create_time
+		,update_time
+		from renwujishi
+	</select>
+	
+	<select id="selectSingleByParamsRenwujishi" resultMap="renwujishi">
+		select 
+		userRoleId
+		,lingqu_status
+		,create_time
+		,update_time
+		from renwujishi 
+		<include refid="queryConditionRenwujishi"/>
+	</select>	
+	
+	
+</sqlMap>
+	

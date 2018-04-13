@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuTanbao" class="com.junyou.bus.tanbao.entity.RefabuTanbao" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="wangchengCount" column="wangcheng_count"/>
+		<result property="subId" column="sub_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuTanbao">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="wangchengCount"> wangcheng_count = #wangchengCount# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuTanbao">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuTanbao" parameterClass="com.junyou.bus.tanbao.entity.RefabuTanbao">
+		insert into refabu_tanbao(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="wangchengCount"> wangcheng_count </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="wangchengCount"> #wangchengCount# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuTanbao">
+		delete from refabu_tanbao
+		<include refid="queryByKeyRefabuTanbao"/>
+	</delete>
+	
+	<update id="updateRefabuTanbao" parameterClass="com.junyou.bus.tanbao.entity.RefabuTanbao">
+		update refabu_tanbao 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="wangchengCount"> wangcheng_count = #wangchengCount# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuTanbao"/>
+	</update>
+	
+	<select id="selectSingleRefabuTanbao" resultMap="refabuTanbao">
+		select 
+		id
+		,user_role_id
+		,status
+		,update_time
+		,create_time
+		,wangcheng_count
+		,sub_id
+		from refabu_tanbao 
+		<include refid="queryByKeyRefabuTanbao"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuTanbao" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_tanbao
+		<include refid="queryConditionRefabuTanbao"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuTanbao" parameterClass="java.util.Map" resultMap="refabuTanbao">
+		select 
+		id
+		,user_role_id
+		,status
+		,update_time
+		,create_time
+		,wangcheng_count
+		,sub_id
+		from refabu_tanbao
+		<include refid="queryConditionRefabuTanbao"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuTanbao" parameterClass="java.util.Map" resultMap="refabuTanbao">
+		select 
+		id
+		,user_role_id
+		,status
+		,update_time
+		,create_time
+		,wangcheng_count
+		,sub_id
+		from refabu_tanbao
+		<include refid="queryConditionRefabuTanbao"/>
+	</select>
+	
+	<select id="selectAllRefabuTanbao" resultMap="refabuTanbao">
+		select 
+		id
+		,user_role_id
+		,status
+		,update_time
+		,create_time
+		,wangcheng_count
+		,sub_id
+		from refabu_tanbao
+	</select>
+	
+	<select id="selectSingleByParamsRefabuTanbao" resultMap="refabuTanbao">
+		select 
+		id
+		,user_role_id
+		,status
+		,update_time
+		,create_time
+		,wangcheng_count
+		,sub_id
+		from refabu_tanbao 
+		<include refid="queryConditionRefabuTanbao"/>
+	</select>	
+	
+	
+</sqlMap>
+	

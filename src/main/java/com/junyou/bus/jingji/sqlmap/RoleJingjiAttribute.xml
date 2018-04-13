@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleJingjiAttribute" class="com.junyou.bus.jingji.entity.RoleJingjiAttribute" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="attribute" column="attribute"/>
+		<result property="attribute2" column="attribute2"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleJingjiAttribute">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="attribute"> attribute = #attribute# </isNotNull>
+			<isNotNull prepend="and" property="attribute2"> attribute2 = #attribute2# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleJingjiAttribute">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleJingjiAttribute" parameterClass="com.junyou.bus.jingji.entity.RoleJingjiAttribute">
+		insert into role_jingji_attribute(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="attribute"> attribute </isNotNull> 
+		<isNotNull prepend="," property="attribute2"> attribute2 </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="attribute"> #attribute# </isNotNull>
+		<isNotNull prepend="," property="attribute2"> #attribute2# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleJingjiAttribute">
+		delete from role_jingji_attribute
+		<include refid="queryByKeyRoleJingjiAttribute"/>
+	</delete>
+	
+	<update id="updateRoleJingjiAttribute" parameterClass="com.junyou.bus.jingji.entity.RoleJingjiAttribute">
+		update role_jingji_attribute 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="attribute"> attribute = #attribute# </isNotNull>
+			<isNotNull prepend="," property="attribute2"> attribute2 = #attribute2# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleJingjiAttribute"/>
+	</update>
+	
+	<select id="selectSingleRoleJingjiAttribute" resultMap="roleJingjiAttribute">
+		select 
+		user_role_id
+		,attribute
+		,attribute2
+		from role_jingji_attribute 
+		<include refid="queryByKeyRoleJingjiAttribute"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleJingjiAttribute" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_jingji_attribute
+		<include refid="queryConditionRoleJingjiAttribute"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleJingjiAttribute" parameterClass="java.util.Map" resultMap="roleJingjiAttribute">
+		select 
+		user_role_id
+		,attribute
+		,attribute2
+		from role_jingji_attribute
+		<include refid="queryConditionRoleJingjiAttribute"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleJingjiAttribute" parameterClass="java.util.Map" resultMap="roleJingjiAttribute">
+		select 
+		user_role_id
+		,attribute
+		,attribute2
+		from role_jingji_attribute
+		<include refid="queryConditionRoleJingjiAttribute"/>
+	</select>
+	
+	<select id="selectAllRoleJingjiAttribute" resultMap="roleJingjiAttribute">
+		select 
+		user_role_id
+		,attribute
+		,attribute2
+		from role_jingji_attribute
+	</select>
+	
+	<select id="selectSingleByParamsRoleJingjiAttribute" resultMap="roleJingjiAttribute">
+		select 
+		user_role_id
+		,attribute
+		,attribute2
+		from role_jingji_attribute 
+		<include refid="queryConditionRoleJingjiAttribute"/>
+	</select>	
+	
+	
+</sqlMap>
+	

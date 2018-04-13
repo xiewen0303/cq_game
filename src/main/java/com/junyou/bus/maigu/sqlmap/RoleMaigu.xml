@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleMaigu" class="com.junyou.bus.maigu.entity.RoleMaigu" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="fubenId" column="fuben_id"/>
+		<result property="times" column="times"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleMaigu">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="fubenId"> fuben_id = #fubenId# </isNotNull>
+			<isNotNull prepend="and" property="times"> times = #times# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleMaigu">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleMaigu" parameterClass="com.junyou.bus.maigu.entity.RoleMaigu">
+		insert into role_maigu(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="fubenId"> fuben_id </isNotNull> 
+		<isNotNull prepend="," property="times"> times </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="fubenId"> #fubenId# </isNotNull>
+		<isNotNull prepend="," property="times"> #times# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleMaigu">
+		delete from role_maigu
+		<include refid="queryByKeyRoleMaigu"/>
+	</delete>
+	
+	<update id="updateRoleMaigu" parameterClass="com.junyou.bus.maigu.entity.RoleMaigu">
+		update role_maigu 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="fubenId"> fuben_id = #fubenId# </isNotNull>
+			<isNotNull prepend="," property="times"> times = #times# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleMaigu"/>
+	</update>
+	
+	<select id="selectSingleRoleMaigu" resultMap="roleMaigu">
+		select 
+		id
+		,user_role_id
+		,fuben_id
+		,times
+		,status
+		,update_time
+		from role_maigu 
+		<include refid="queryByKeyRoleMaigu"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleMaigu" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_maigu
+		<include refid="queryConditionRoleMaigu"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleMaigu" parameterClass="java.util.Map" resultMap="roleMaigu">
+		select 
+		id
+		,user_role_id
+		,fuben_id
+		,times
+		,status
+		,update_time
+		from role_maigu
+		<include refid="queryConditionRoleMaigu"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleMaigu" parameterClass="java.util.Map" resultMap="roleMaigu">
+		select 
+		id
+		,user_role_id
+		,fuben_id
+		,times
+		,status
+		,update_time
+		from role_maigu
+		<include refid="queryConditionRoleMaigu"/>
+	</select>
+	
+	<select id="selectAllRoleMaigu" resultMap="roleMaigu">
+		select 
+		id
+		,user_role_id
+		,fuben_id
+		,times
+		,status
+		,update_time
+		from role_maigu
+	</select>
+	
+	<select id="selectSingleByParamsRoleMaigu" resultMap="roleMaigu">
+		select 
+		id
+		,user_role_id
+		,fuben_id
+		,times
+		,status
+		,update_time
+		from role_maigu 
+		<include refid="queryConditionRoleMaigu"/>
+	</select>	
+	
+	
+</sqlMap>
+	

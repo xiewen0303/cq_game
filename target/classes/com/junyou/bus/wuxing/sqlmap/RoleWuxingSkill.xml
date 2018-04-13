@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleWuxingSkill" class="com.junyou.bus.wuxing.entity.RoleWuxingSkill" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="wuxingType" column="wuxing_type"/>
+		<result property="skillId1" column="skill_id1"/>
+		<result property="skillId2" column="skill_id2"/>
+		<result property="skillId3" column="skill_id3"/>
+		<result property="skillId4" column="skill_id4"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleWuxingSkill">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="wuxingType"> wuxing_type = #wuxingType# </isNotNull>
+			<isNotNull prepend="and" property="skillId1"> skill_id1 = #skillId1# </isNotNull>
+			<isNotNull prepend="and" property="skillId2"> skill_id2 = #skillId2# </isNotNull>
+			<isNotNull prepend="and" property="skillId3"> skill_id3 = #skillId3# </isNotNull>
+			<isNotNull prepend="and" property="skillId4"> skill_id4 = #skillId4# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleWuxingSkill">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleWuxingSkill" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingSkill">
+		insert into role_wuxing_skill(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="wuxingType"> wuxing_type </isNotNull> 
+		<isNotNull prepend="," property="skillId1"> skill_id1 </isNotNull> 
+		<isNotNull prepend="," property="skillId2"> skill_id2 </isNotNull> 
+		<isNotNull prepend="," property="skillId3"> skill_id3 </isNotNull> 
+		<isNotNull prepend="," property="skillId4"> skill_id4 </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="wuxingType"> #wuxingType# </isNotNull>
+		<isNotNull prepend="," property="skillId1"> #skillId1# </isNotNull>
+		<isNotNull prepend="," property="skillId2"> #skillId2# </isNotNull>
+		<isNotNull prepend="," property="skillId3"> #skillId3# </isNotNull>
+		<isNotNull prepend="," property="skillId4"> #skillId4# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleWuxingSkill">
+		delete from role_wuxing_skill
+		<include refid="queryByKeyRoleWuxingSkill"/>
+	</delete>
+	
+	<update id="updateRoleWuxingSkill" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingSkill">
+		update role_wuxing_skill 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="wuxingType"> wuxing_type = #wuxingType# </isNotNull>
+			<isNotNull prepend="," property="skillId1"> skill_id1 = #skillId1# </isNotNull>
+			<isNotNull prepend="," property="skillId2"> skill_id2 = #skillId2# </isNotNull>
+			<isNotNull prepend="," property="skillId3"> skill_id3 = #skillId3# </isNotNull>
+			<isNotNull prepend="," property="skillId4"> skill_id4 = #skillId4# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleWuxingSkill"/>
+	</update>
+	
+	<select id="selectSingleRoleWuxingSkill" resultMap="roleWuxingSkill">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,create_time
+		,update_time
+		from role_wuxing_skill 
+		<include refid="queryByKeyRoleWuxingSkill"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleWuxingSkill" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_wuxing_skill
+		<include refid="queryConditionRoleWuxingSkill"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleWuxingSkill" parameterClass="java.util.Map" resultMap="roleWuxingSkill">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,create_time
+		,update_time
+		from role_wuxing_skill
+		<include refid="queryConditionRoleWuxingSkill"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleWuxingSkill" parameterClass="java.util.Map" resultMap="roleWuxingSkill">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,create_time
+		,update_time
+		from role_wuxing_skill
+		<include refid="queryConditionRoleWuxingSkill"/>
+	</select>
+	
+	<select id="selectAllRoleWuxingSkill" resultMap="roleWuxingSkill">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,create_time
+		,update_time
+		from role_wuxing_skill
+	</select>
+	
+	<select id="selectSingleByParamsRoleWuxingSkill" resultMap="roleWuxingSkill">
+		select 
+		id
+		,user_role_id
+		,wuxing_type
+		,skill_id1
+		,skill_id2
+		,skill_id3
+		,skill_id4
+		,create_time
+		,update_time
+		from role_wuxing_skill 
+		<include refid="queryConditionRoleWuxingSkill"/>
+	</select>	
+	
+	
+</sqlMap>
+	

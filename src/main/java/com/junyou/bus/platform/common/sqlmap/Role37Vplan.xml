@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="role37Vplan" class="com.junyou.bus.platform.common.entity.Role37Vplan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="dayGiftState" column="day_gift_state"/>
+		<result property="dayGiftUptime" column="day_gift_uptime"/>
+		<result property="levelGift" column="level_gift"/>
+		<result property="consumeTotalGold" column="consume_total_gold"/>
+		<result property="consumeEndTime" column="consume_end_time"/>
+		<result property="consumeGift" column="consume_gift"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRole37Vplan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="dayGiftState"> day_gift_state = #dayGiftState# </isNotNull>
+			<isNotNull prepend="and" property="dayGiftUptime"> day_gift_uptime = #dayGiftUptime# </isNotNull>
+			<isNotNull prepend="and" property="levelGift"> level_gift = #levelGift# </isNotNull>
+			<isNotNull prepend="and" property="consumeTotalGold"> consume_total_gold = #consumeTotalGold# </isNotNull>
+			<isNotNull prepend="and" property="consumeEndTime"> consume_end_time = #consumeEndTime# </isNotNull>
+			<isNotNull prepend="and" property="consumeGift"> consume_gift = #consumeGift# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRole37Vplan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRole37Vplan" parameterClass="com.junyou.bus.platform.common.entity.Role37Vplan">
+		insert into role_37_vplan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="dayGiftState"> day_gift_state </isNotNull> 
+		<isNotNull prepend="," property="dayGiftUptime"> day_gift_uptime </isNotNull> 
+		<isNotNull prepend="," property="levelGift"> level_gift </isNotNull> 
+		<isNotNull prepend="," property="consumeTotalGold"> consume_total_gold </isNotNull> 
+		<isNotNull prepend="," property="consumeEndTime"> consume_end_time </isNotNull> 
+		<isNotNull prepend="," property="consumeGift"> consume_gift </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="dayGiftState"> #dayGiftState# </isNotNull>
+		<isNotNull prepend="," property="dayGiftUptime"> #dayGiftUptime# </isNotNull>
+		<isNotNull prepend="," property="levelGift"> #levelGift# </isNotNull>
+		<isNotNull prepend="," property="consumeTotalGold"> #consumeTotalGold# </isNotNull>
+		<isNotNull prepend="," property="consumeEndTime"> #consumeEndTime# </isNotNull>
+		<isNotNull prepend="," property="consumeGift"> #consumeGift# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRole37Vplan">
+		delete from role_37_vplan
+		<include refid="queryByKeyRole37Vplan"/>
+	</delete>
+	
+	<update id="updateRole37Vplan" parameterClass="com.junyou.bus.platform.common.entity.Role37Vplan">
+		update role_37_vplan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="dayGiftState"> day_gift_state = #dayGiftState# </isNotNull>
+			<isNotNull prepend="," property="dayGiftUptime"> day_gift_uptime = #dayGiftUptime# </isNotNull>
+			<isNotNull prepend="," property="levelGift"> level_gift = #levelGift# </isNotNull>
+			<isNotNull prepend="," property="consumeTotalGold"> consume_total_gold = #consumeTotalGold# </isNotNull>
+			<isNotNull prepend="," property="consumeEndTime"> consume_end_time = #consumeEndTime# </isNotNull>
+			<isNotNull prepend="," property="consumeGift"> consume_gift = #consumeGift# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRole37Vplan"/>
+	</update>
+	
+	<select id="selectSingleRole37Vplan" resultMap="role37Vplan">
+		select 
+		user_role_id
+		,day_gift_state
+		,day_gift_uptime
+		,level_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_37_vplan 
+		<include refid="queryByKeyRole37Vplan"/>
+	</select>
+	
+	<select id="selectRecordsCountRole37Vplan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_37_vplan
+		<include refid="queryConditionRole37Vplan"/>
+	</select>
+	
+	<select id="selectMultiPagingRole37Vplan" parameterClass="java.util.Map" resultMap="role37Vplan">
+		select 
+		user_role_id
+		,day_gift_state
+		,day_gift_uptime
+		,level_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_37_vplan
+		<include refid="queryConditionRole37Vplan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRole37Vplan" parameterClass="java.util.Map" resultMap="role37Vplan">
+		select 
+		user_role_id
+		,day_gift_state
+		,day_gift_uptime
+		,level_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_37_vplan
+		<include refid="queryConditionRole37Vplan"/>
+	</select>
+	
+	<select id="selectAllRole37Vplan" resultMap="role37Vplan">
+		select 
+		user_role_id
+		,day_gift_state
+		,day_gift_uptime
+		,level_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_37_vplan
+	</select>
+	
+	<select id="selectSingleByParamsRole37Vplan" resultMap="role37Vplan">
+		select 
+		user_role_id
+		,day_gift_state
+		,day_gift_uptime
+		,level_gift
+		,consume_total_gold
+		,consume_end_time
+		,consume_gift
+		,create_time
+		from role_37_vplan 
+		<include refid="queryConditionRole37Vplan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

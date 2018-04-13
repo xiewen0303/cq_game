@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="fengIp" class="com.junyou.bus.jinfeng.entity.FengIp" >
+		<result property="ip" column="ip"/>
+		<result property="serverId" column="server_id"/>
+		<result property="reasons" column="reasons"/>
+		<result property="expireTime" column="expire_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionFengIp">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="ip"> ip = #ip# </isNotNull>
+			<isNotNull prepend="and" property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="and" property="reasons"> reasons = #reasons# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyFengIp">
+		where ip = #ip#
+	</sql>
+	
+	<insert id="insertFengIp" parameterClass="com.junyou.bus.jinfeng.entity.FengIp">
+		insert into feng_ip(
+		<isNotNull prepend="" property="ip"> ip </isNotNull> 
+		<isNotNull prepend="," property="serverId"> server_id </isNotNull> 
+		<isNotNull prepend="," property="reasons"> reasons </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="ip"> #ip# </isNotNull>
+		<isNotNull prepend="," property="serverId"> #serverId# </isNotNull>
+		<isNotNull prepend="," property="reasons"> #reasons# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteFengIp">
+		delete from feng_ip
+		<include refid="queryByKeyFengIp"/>
+	</delete>
+	
+	<update id="updateFengIp" parameterClass="com.junyou.bus.jinfeng.entity.FengIp">
+		update feng_ip 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="ip"> ip = #ip# </isNotNull>
+			<isNotNull prepend="," property="serverId"> server_id = #serverId# </isNotNull>
+			<isNotNull prepend="," property="reasons"> reasons = #reasons# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyFengIp"/>
+	</update>
+	
+	<select id="selectSingleFengIp" resultMap="fengIp">
+		select 
+		ip
+		,server_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_ip 
+		<include refid="queryByKeyFengIp"/>
+	</select>
+	
+	<select id="selectRecordsCountFengIp" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from feng_ip
+		<include refid="queryConditionFengIp"/>
+	</select>
+	
+	<select id="selectMultiPagingFengIp" parameterClass="java.util.Map" resultMap="fengIp">
+		select 
+		ip
+		,server_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_ip
+		<include refid="queryConditionFengIp"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiFengIp" parameterClass="java.util.Map" resultMap="fengIp">
+		select 
+		ip
+		,server_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_ip
+		<include refid="queryConditionFengIp"/>
+	</select>
+	
+	<select id="selectAllFengIp" resultMap="fengIp">
+		select 
+		ip
+		,server_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_ip
+	</select>
+	
+	<select id="selectSingleByParamsFengIp" resultMap="fengIp">
+		select 
+		ip
+		,server_id
+		,reasons
+		,expire_time
+		,update_time
+		from feng_ip 
+		<include refid="queryConditionFengIp"/>
+	</select>	
+	
+	
+</sqlMap>
+	

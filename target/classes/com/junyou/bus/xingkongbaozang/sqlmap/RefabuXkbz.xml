@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuXkbz" class="com.junyou.bus.xingkongbaozang.entity.RefabuXkbz" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="xfGold" column="xf_gold"/>
+		<result property="xfBgold" column="xf_bgold"/>
+		<result property="jifen" column="jifen"/>
+		<result property="lingquStatus" column="lingqu_status"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="subId" column="sub_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuXkbz">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="xfGold"> xf_gold = #xfGold# </isNotNull>
+			<isNotNull prepend="and" property="xfBgold"> xf_bgold = #xfBgold# </isNotNull>
+			<isNotNull prepend="and" property="jifen">  jifen = #jifen# </isNotNull>
+			<isNotNull prepend="and" property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuXkbz">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuXkbz" parameterClass="com.junyou.bus.xingkongbaozang.entity.RefabuXkbz">
+		insert into refabu_xkbz(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="xfGold"> xf_gold </isNotNull> 
+		<isNotNull prepend="," property="xfBgold"> xf_bgold </isNotNull> 
+		<isNotNull prepend="," property="jifen"> jifen </isNotNull> 
+		<isNotNull prepend="," property="lingquStatus"> lingqu_status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="xfGold"> #xfGold# </isNotNull>
+		<isNotNull prepend="," property="xfBgold"> #xfBgold# </isNotNull>
+		<isNotNull prepend="," property="jifen"> #jifen# </isNotNull>
+		<isNotNull prepend="," property="lingquStatus"> #lingquStatus# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuXkbz">
+		delete from refabu_xkbz
+		<include refid="queryByKeyRefabuXkbz"/>
+	</delete>
+	
+	<update id="updateRefabuXkbz" parameterClass="com.junyou.bus.xingkongbaozang.entity.RefabuXkbz">
+		update refabu_xkbz 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="xfGold"> xf_gold = #xfGold# </isNotNull>
+			<isNotNull prepend="," property="xfBgold"> xf_bgold = #xfBgold# </isNotNull>
+			<isNotNull prepend="," property="jifen"> jifen = #jifen# </isNotNull>
+			<isNotNull prepend="," property="lingquStatus"> lingqu_status = #lingquStatus# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuXkbz"/>
+	</update>
+	
+	<select id="selectSingleRefabuXkbz" resultMap="refabuXkbz">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,xf_bgold
+		,jifen
+		,lingqu_status
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xkbz 
+		<include refid="queryByKeyRefabuXkbz"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuXkbz" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_xkbz
+		<include refid="queryConditionRefabuXkbz"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuXkbz" parameterClass="java.util.Map" resultMap="refabuXkbz">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,xf_bgold
+		,jifen
+		,lingqu_status
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xkbz
+		<include refid="queryConditionRefabuXkbz"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuXkbz" parameterClass="java.util.Map" resultMap="refabuXkbz">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,xf_bgold
+		,jifen
+		,lingqu_status
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xkbz
+		<include refid="queryConditionRefabuXkbz"/>
+	</select>
+	
+	<select id="selectAllRefabuXkbz" resultMap="refabuXkbz">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,xf_bgold
+		,jifen
+		,lingqu_status
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xkbz
+	</select>
+	
+	<select id="selectSingleByParamsRefabuXkbz" resultMap="refabuXkbz">
+		select 
+		id
+		,user_role_id
+		,xf_gold
+		,xf_bgold
+		,jifen
+		,lingqu_status
+		,update_time
+		,create_time
+		,sub_id
+		from refabu_xkbz 
+		<include refid="queryConditionRefabuXkbz"/>
+	</select>	
+	
+</sqlMap>
+	

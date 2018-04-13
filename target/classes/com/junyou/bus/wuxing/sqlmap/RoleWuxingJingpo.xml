@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleWuxingJingpo" class="com.junyou.bus.wuxing.entity.RoleWuxingJingpo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="bodyData" column="body_data"/>
+		<result property="openSlot" column="open_slot"/>
+		<result property="moshenJinghua" column="moshen_jinghua"/>
+		<result property="liemingLevel" column="lieming_level"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleWuxingJingpo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="bodyData"> body_data = #bodyData# </isNotNull>
+			<isNotNull prepend="and" property="openSlot"> open_slot = #openSlot# </isNotNull>
+			<isNotNull prepend="and" property="moshenJinghua"> moshen_jinghua = #moshenJinghua# </isNotNull>
+			<isNotNull prepend="and" property="liemingLevel"> lieming_level = #liemingLevel# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleWuxingJingpo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleWuxingJingpo" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingJingpo">
+		insert into role_wuxing_jingpo(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="bodyData"> body_data </isNotNull> 
+		<isNotNull prepend="," property="openSlot"> open_slot </isNotNull> 
+		<isNotNull prepend="," property="moshenJinghua"> moshen_jinghua </isNotNull> 
+		<isNotNull prepend="," property="liemingLevel"> lieming_level </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="bodyData"> #bodyData# </isNotNull>
+		<isNotNull prepend="," property="openSlot"> #openSlot# </isNotNull>
+		<isNotNull prepend="," property="moshenJinghua"> #moshenJinghua# </isNotNull>
+		<isNotNull prepend="," property="liemingLevel"> #liemingLevel# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleWuxingJingpo">
+		delete from role_wuxing_jingpo
+		<include refid="queryByKeyRoleWuxingJingpo"/>
+	</delete>
+	
+	<update id="updateRoleWuxingJingpo" parameterClass="com.junyou.bus.wuxing.entity.RoleWuxingJingpo">
+		update role_wuxing_jingpo 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="bodyData"> body_data = #bodyData# </isNotNull>
+			<isNotNull prepend="," property="openSlot"> open_slot = #openSlot# </isNotNull>
+			<isNotNull prepend="," property="moshenJinghua"> moshen_jinghua = #moshenJinghua# </isNotNull>
+			<isNotNull prepend="," property="liemingLevel"> lieming_level = #liemingLevel# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleWuxingJingpo"/>
+	</update>
+	
+	<select id="selectSingleRoleWuxingJingpo" resultMap="roleWuxingJingpo">
+		select 
+		user_role_id
+		,body_data
+		,open_slot
+		,moshen_jinghua
+		,lieming_level
+		,create_time
+		,update_time
+		from role_wuxing_jingpo 
+		<include refid="queryByKeyRoleWuxingJingpo"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleWuxingJingpo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_wuxing_jingpo
+		<include refid="queryConditionRoleWuxingJingpo"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleWuxingJingpo" parameterClass="java.util.Map" resultMap="roleWuxingJingpo">
+		select 
+		user_role_id
+		,body_data
+		,open_slot
+		,moshen_jinghua
+		,lieming_level
+		,create_time
+		,update_time
+		from role_wuxing_jingpo
+		<include refid="queryConditionRoleWuxingJingpo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleWuxingJingpo" parameterClass="java.util.Map" resultMap="roleWuxingJingpo">
+		select 
+		user_role_id
+		,body_data
+		,open_slot
+		,moshen_jinghua
+		,lieming_level
+		,create_time
+		,update_time
+		from role_wuxing_jingpo
+		<include refid="queryConditionRoleWuxingJingpo"/>
+	</select>
+	
+	<select id="selectAllRoleWuxingJingpo" resultMap="roleWuxingJingpo">
+		select 
+		user_role_id
+		,body_data
+		,open_slot
+		,moshen_jinghua
+		,lieming_level
+		,create_time
+		,update_time
+		from role_wuxing_jingpo
+	</select>
+	
+	<select id="selectSingleByParamsRoleWuxingJingpo" resultMap="roleWuxingJingpo">
+		select 
+		user_role_id
+		,body_data
+		,open_slot
+		,moshen_jinghua
+		,lieming_level
+		,create_time
+		,update_time
+		from role_wuxing_jingpo 
+		<include refid="queryConditionRoleWuxingJingpo"/>
+	</select>	
+	
+	
+</sqlMap>
+	

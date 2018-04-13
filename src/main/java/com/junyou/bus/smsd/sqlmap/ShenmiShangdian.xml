@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="shenmiShangdian" class="com.junyou.bus.smsd.entity.ShenmiShangdian" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="shuaxiTime" column="shuaxi_time"/>
+		<result property="buyId" column="buy_id"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionShenmiShangdian">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="shuaxiTime"> shuaxi_time = #shuaxiTime# </isNotNull>
+			<isNotNull prepend="and" property="buyId"> buy_id = #buyId# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyShenmiShangdian">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertShenmiShangdian" parameterClass="com.junyou.bus.smsd.entity.ShenmiShangdian">
+		insert into shenmi_shangdian(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="shuaxiTime"> shuaxi_time </isNotNull> 
+		<isNotNull prepend="," property="buyId"> buy_id </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="shuaxiTime"> #shuaxiTime# </isNotNull>
+		<isNotNull prepend="," property="buyId"> #buyId# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteShenmiShangdian">
+		delete from shenmi_shangdian
+		<include refid="queryByKeyShenmiShangdian"/>
+	</delete>
+	
+	<update id="updateShenmiShangdian" parameterClass="com.junyou.bus.smsd.entity.ShenmiShangdian">
+		update shenmi_shangdian 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="shuaxiTime"> shuaxi_time = #shuaxiTime# </isNotNull>
+			<isNotNull prepend="," property="buyId"> buy_id = #buyId# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyShenmiShangdian"/>
+	</update>
+	
+	<select id="selectSingleShenmiShangdian" resultMap="shenmiShangdian">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,shuaxi_time
+		,buy_id
+		,create_time
+		,update_time
+		from shenmi_shangdian 
+		<include refid="queryByKeyShenmiShangdian"/>
+	</select>
+	
+	<select id="selectRecordsCountShenmiShangdian" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from shenmi_shangdian
+		<include refid="queryConditionShenmiShangdian"/>
+	</select>
+	
+	<select id="selectMultiPagingShenmiShangdian" parameterClass="java.util.Map" resultMap="shenmiShangdian">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,shuaxi_time
+		,buy_id
+		,create_time
+		,update_time
+		from shenmi_shangdian
+		<include refid="queryConditionShenmiShangdian"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiShenmiShangdian" parameterClass="java.util.Map" resultMap="shenmiShangdian">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,shuaxi_time
+		,buy_id
+		,create_time
+		,update_time
+		from shenmi_shangdian
+		<include refid="queryConditionShenmiShangdian"/>
+	</select>
+	
+	<select id="selectAllShenmiShangdian" resultMap="shenmiShangdian">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,shuaxi_time
+		,buy_id
+		,create_time
+		,update_time
+		from shenmi_shangdian
+	</select>
+	
+	<select id="selectSingleByParamsShenmiShangdian" resultMap="shenmiShangdian">
+		select 
+		id
+		,user_role_id
+		,sub_id
+		,shuaxi_time
+		,buy_id
+		,create_time
+		,update_time
+		from shenmi_shangdian 
+		<include refid="queryConditionShenmiShangdian"/>
+	</select>	
+	
+	
+</sqlMap>
+	

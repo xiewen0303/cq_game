@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleResourceBack" class="com.junyou.bus.resource.entity.RoleResourceBack" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="typeUpdateTime" column="type_update_time"/>
+		<result property="acceptUpdateTime" column="accept_update_time"/>
+		
+	</resultMap>
+	
+	<sql id="queryConditionRoleResourceBack">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="typeUpdateTime"> type_update_time = #typeUpdateTime# </isNotNull>
+			<isNotNull prepend="and" property="acceptUpdateTime"> accept_update_time = #acceptUpdateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleResourceBack">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleResourceBack" parameterClass="com.junyou.bus.resource.entity.RoleResourceBack">
+		insert into role_resource_back(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="typeUpdateTime"> type_update_time </isNotNull>
+		<isNotNull prepend="," property="acceptUpdateTime"> accept_update_time </isNotNull>  
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="typeUpdateTime"> #typeUpdateTime# </isNotNull>
+		<isNotNull prepend="," property="acceptUpdateTime"> #acceptUpdateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleResourceBack">
+		delete from role_resource_back
+		<include refid="queryByKeyRoleResourceBack"/>
+	</delete>
+	
+	<update id="updateRoleResourceBack" parameterClass="com.junyou.bus.resource.entity.RoleResourceBack">
+		update role_resource_back 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="typeUpdateTime"> type_update_time = #typeUpdateTime# </isNotNull>
+			<isNotNull prepend="," property="acceptUpdateTime"> accept_update_time = #acceptUpdateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleResourceBack"/>
+	</update>
+	
+	<select id="selectSingleRoleResourceBack" resultMap="roleResourceBack">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,type_update_time
+		,accept_update_time
+		from role_resource_back 
+		<include refid="queryByKeyRoleResourceBack"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleResourceBack" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_resource_back
+		<include refid="queryConditionRoleResourceBack"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleResourceBack" parameterClass="java.util.Map" resultMap="roleResourceBack">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,type_update_time
+		,accept_update_time
+		from role_resource_back
+		<include refid="queryConditionRoleResourceBack"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleResourceBack" parameterClass="java.util.Map" resultMap="roleResourceBack">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,type_update_time
+		,accept_update_time
+		from role_resource_back
+		<include refid="queryConditionRoleResourceBack"/>
+	</select>
+	
+	<select id="selectAllRoleResourceBack" resultMap="roleResourceBack">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,type_update_time
+		,accept_update_time
+		from role_resource_back
+	</select>
+	
+	<select id="selectSingleByParamsRoleResourceBack" resultMap="roleResourceBack">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,type_update_time
+		,accept_update_time
+		from role_resource_back 
+		<include refid="queryConditionRoleResourceBack"/>
+	</select>	
+	
+	
+</sqlMap>
+	

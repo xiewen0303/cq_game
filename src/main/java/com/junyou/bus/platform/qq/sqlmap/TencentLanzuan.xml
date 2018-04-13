@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="tencentLanzuan" class="com.junyou.bus.platform.qq.entity.TencentLanzuan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionTencentLanzuan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTencentLanzuan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertTencentLanzuan" parameterClass="com.junyou.bus.platform.qq.entity.TencentLanzuan">
+		insert into tencent_lanzuan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTencentLanzuan">
+		delete from tencent_lanzuan
+		<include refid="queryByKeyTencentLanzuan"/>
+	</delete>
+	
+	<update id="updateTencentLanzuan" parameterClass="com.junyou.bus.platform.qq.entity.TencentLanzuan">
+		update tencent_lanzuan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTencentLanzuan"/>
+	</update>
+	
+	<select id="selectSingleTencentLanzuan" resultMap="tencentLanzuan">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,create_time
+		from tencent_lanzuan 
+		<include refid="queryByKeyTencentLanzuan"/>
+	</select>
+	
+	<select id="selectRecordsCountTencentLanzuan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from tencent_lanzuan
+		<include refid="queryConditionTencentLanzuan"/>
+	</select>
+	
+	<select id="selectMultiPagingTencentLanzuan" parameterClass="java.util.Map" resultMap="tencentLanzuan">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,create_time
+		from tencent_lanzuan
+		<include refid="queryConditionTencentLanzuan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTencentLanzuan" parameterClass="java.util.Map" resultMap="tencentLanzuan">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,create_time
+		from tencent_lanzuan
+		<include refid="queryConditionTencentLanzuan"/>
+	</select>
+	
+	<select id="selectAllTencentLanzuan" resultMap="tencentLanzuan">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,create_time
+		from tencent_lanzuan
+	</select>
+	
+	<select id="selectSingleByParamsTencentLanzuan" resultMap="tencentLanzuan">
+		select 
+		user_role_id
+		,status
+		,update_time
+		,create_time
+		from tencent_lanzuan 
+		<include refid="queryConditionTencentLanzuan"/>
+	</select>	
+	
+	
+</sqlMap>
+	

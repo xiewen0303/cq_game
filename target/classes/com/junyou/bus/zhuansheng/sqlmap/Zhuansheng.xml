@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="zhuansheng" class="com.junyou.bus.zhuansheng.entity.Zhuansheng" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="szLevel" column="sz_level"/>
+	</resultMap>
+	
+	<sql id="queryConditionZhuansheng">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="szLevel"> sz_level = #szLevel# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyZhuansheng">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertZhuansheng" parameterClass="com.junyou.bus.zhuansheng.entity.Zhuansheng">
+		insert into zhuansheng(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="szLevel"> sz_level </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="szLevel"> #szLevel# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteZhuansheng">
+		delete from zhuansheng
+		<include refid="queryByKeyZhuansheng"/>
+	</delete>
+	
+	<update id="updateZhuansheng" parameterClass="com.junyou.bus.zhuansheng.entity.Zhuansheng">
+		update zhuansheng 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="szLevel"> sz_level = #szLevel# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyZhuansheng"/>
+	</update>
+	
+	<select id="selectSingleZhuansheng" resultMap="zhuansheng">
+		select 
+		user_role_id
+		,sz_level
+		from zhuansheng 
+		<include refid="queryByKeyZhuansheng"/>
+	</select>
+	
+	<select id="selectRecordsCountZhuansheng" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from zhuansheng
+		<include refid="queryConditionZhuansheng"/>
+	</select>
+	
+	<select id="selectMultiPagingZhuansheng" parameterClass="java.util.Map" resultMap="zhuansheng">
+		select 
+		user_role_id
+		,sz_level
+		from zhuansheng
+		<include refid="queryConditionZhuansheng"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiZhuansheng" parameterClass="java.util.Map" resultMap="zhuansheng">
+		select 
+		user_role_id
+		,sz_level
+		from zhuansheng
+		<include refid="queryConditionZhuansheng"/>
+	</select>
+	
+	<select id="selectAllZhuansheng" resultMap="zhuansheng">
+		select 
+		user_role_id
+		,sz_level
+		from zhuansheng
+	</select>
+	
+	<select id="selectSingleByParamsZhuansheng" resultMap="zhuansheng">
+		select 
+		user_role_id
+		,sz_level
+		from zhuansheng 
+		<include refid="queryConditionZhuansheng"/>
+	</select>	
+	
+	
+</sqlMap>
+	

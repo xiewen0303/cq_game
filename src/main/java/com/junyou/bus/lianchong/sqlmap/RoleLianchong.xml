@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleLianchong" class="com.junyou.bus.lianchong.entity.RoleLianchong" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="dayRecharge" column="day_recharge"/>
+		<result property="dayReward" column="day_reward"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="goldRewardInfo" column="gold_reward_info"/>
+		<result property="activeEndTime" column="active_end_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="subId" column="sub_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleLianchong">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="dayRecharge"> day_recharge = #dayRecharge# </isNotNull>
+			<isNotNull prepend="and" property="dayReward"> day_reward = #dayReward# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="goldRewardInfo"> gold_reward_info = #goldRewardInfo# </isNotNull>
+			<isNotNull prepend="and" property="activeEndTime"> active_end_time = #activeEndTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleLianchong">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleLianchong" parameterClass="com.junyou.bus.lianchong.entity.RoleLianchong">
+		insert into role_lianchong(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="dayRecharge"> day_recharge </isNotNull> 
+		<isNotNull prepend="," property="dayReward"> day_reward </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="goldRewardInfo"> gold_reward_info </isNotNull> 
+		<isNotNull prepend="," property="activeEndTime"> active_end_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="dayRecharge"> #dayRecharge# </isNotNull>
+		<isNotNull prepend="," property="dayReward"> #dayReward# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="goldRewardInfo"> #goldRewardInfo# </isNotNull>
+		<isNotNull prepend="," property="activeEndTime"> #activeEndTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleLianchong">
+		delete from role_lianchong
+		<include refid="queryByKeyRoleLianchong"/>
+	</delete>
+	
+	<update id="updateRoleLianchong" parameterClass="com.junyou.bus.lianchong.entity.RoleLianchong">
+		update role_lianchong 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="dayRecharge"> day_recharge = #dayRecharge# </isNotNull>
+			<isNotNull prepend="," property="dayReward"> day_reward = #dayReward# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="goldRewardInfo"> gold_reward_info = #goldRewardInfo# </isNotNull>
+			<isNotNull prepend="," property="activeEndTime"> active_end_time = #activeEndTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleLianchong"/>
+	</update>
+	
+	<select id="selectSingleRoleLianchong" resultMap="roleLianchong">
+		select 
+		id
+		,user_role_id
+		,day_recharge
+		,day_reward
+		,update_time
+		,gold_reward_info
+		,active_end_time
+		,create_time
+		,sub_id
+		from role_lianchong 
+		<include refid="queryByKeyRoleLianchong"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleLianchong" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_lianchong
+		<include refid="queryConditionRoleLianchong"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleLianchong" parameterClass="java.util.Map" resultMap="roleLianchong">
+		select 
+		id
+		,user_role_id
+		,day_recharge
+		,day_reward
+		,update_time
+		,gold_reward_info
+		,active_end_time
+		,create_time
+		,sub_id
+		from role_lianchong
+		<include refid="queryConditionRoleLianchong"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleLianchong" parameterClass="java.util.Map" resultMap="roleLianchong">
+		select 
+		id
+		,user_role_id
+		,day_recharge
+		,day_reward
+		,update_time
+		,gold_reward_info
+		,active_end_time
+		,create_time
+		,sub_id
+		from role_lianchong
+		<include refid="queryConditionRoleLianchong"/>
+	</select>
+	
+	<select id="selectAllRoleLianchong" resultMap="roleLianchong">
+		select 
+		id
+		,user_role_id
+		,day_recharge
+		,day_reward
+		,update_time
+		,gold_reward_info
+		,active_end_time
+		,create_time
+		,sub_id
+		from role_lianchong
+	</select>
+	
+	<select id="selectSingleByParamsRoleLianchong" resultMap="roleLianchong">
+		select 
+		id
+		,user_role_id
+		,day_recharge
+		,day_reward
+		,update_time
+		,gold_reward_info
+		,active_end_time
+		,create_time
+		,sub_id
+		from role_lianchong 
+		<include refid="queryConditionRoleLianchong"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="guildMember" class="com.junyou.public_.guild.entity.GuildMember" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="postion" column="postion"/>
+		<result property="curGongxian" column="cur_gongxian"/>
+		<result property="totalGongxian" column="total_gongxian"/>
+		<result property="boxState" column="box_state"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="todayGongxian" column="today_gongxian"/>
+		<result property="enterTime" column="enter_time"/>
+	</resultMap>
+	<resultMap id="guildMemberVo" class="com.junyou.public_.guild.entity.GuildMember" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="guildId" column="guild_id"/>
+		<result property="postion" column="postion"/>
+		<result property="curGongxian" column="cur_gongxian"/>
+		<result property="totalGongxian" column="total_gongxian"/>
+		<result property="boxState" column="box_state"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="zplus" column="zplus"/>
+		<result property="offlineTime" column="offline_time"/>
+		<result property="configId" column="config_id"/>
+		<result property="level" column="level"/>
+		<result property="name" column="name"/>
+		<result property="todayGongxian" column="today_gongxian"/>
+		<result property="enterTime" column="enter_time"/>
+		<result property="vip" column="vip"/>
+	</resultMap>
+	
+	<sql id="queryConditionGuildMember">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="and" property="postion"> postion = #postion# </isNotNull>
+			<isNotNull prepend="and" property="curGongxian"> cur_gongxian = #curGongxian# </isNotNull>
+			<isNotNull prepend="and" property="totalGongxian"> total_gongxian = #totalGongxian# </isNotNull>
+			<isNotNull prepend="and" property="boxState"> box_state = #boxState# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="todayGongxian"> today_gongxian = #todayGongxian# </isNotNull>
+			<isNotNull prepend="and" property="enterTime"> enter_time = #enterTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyGuildMember">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertGuildMember" parameterClass="com.junyou.public_.guild.entity.GuildMember">
+		insert into guild_member(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="guildId"> guild_id </isNotNull> 
+		<isNotNull prepend="," property="postion"> postion </isNotNull> 
+		<isNotNull prepend="," property="curGongxian"> cur_gongxian </isNotNull> 
+		<isNotNull prepend="," property="totalGongxian"> total_gongxian </isNotNull> 
+		<isNotNull prepend="," property="boxState"> box_state </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="todayGongxian"> today_gongxian </isNotNull> 
+		<isNotNull prepend="," property="enterTime"> enter_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="guildId"> #guildId# </isNotNull>
+		<isNotNull prepend="," property="postion"> #postion# </isNotNull>
+		<isNotNull prepend="," property="curGongxian"> #curGongxian# </isNotNull>
+		<isNotNull prepend="," property="totalGongxian"> #totalGongxian# </isNotNull>
+		<isNotNull prepend="," property="boxState"> #boxState# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="todayGongxian"> #todayGongxian# </isNotNull>
+		<isNotNull prepend="," property="enterTime"> #enterTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteGuildMember">
+		delete from guild_member
+		<include refid="queryByKeyGuildMember"/>
+	</delete>
+	
+	<update id="updateGuildMember" parameterClass="com.junyou.public_.guild.entity.GuildMember">
+		update guild_member 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="guildId"> guild_id = #guildId# </isNotNull>
+			<isNotNull prepend="," property="postion"> postion = #postion# </isNotNull>
+			<isNotNull prepend="," property="curGongxian"> cur_gongxian = #curGongxian# </isNotNull>
+			<isNotNull prepend="," property="totalGongxian"> total_gongxian = #totalGongxian# </isNotNull>
+			<isNotNull prepend="," property="boxState"> box_state = #boxState# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="todayGongxian"> today_gongxian = #todayGongxian# </isNotNull>
+			<isNotNull prepend="," property="enterTime"> enter_time = #enterTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyGuildMember"/>
+	</update>
+	
+	<select id="selectSingleGuildMember" resultMap="guildMember">
+		select 
+		user_role_id
+		,guild_id
+		,postion
+		,cur_gongxian
+		,total_gongxian
+		,box_state
+		,update_time
+		,today_gongxian
+		,enter_time
+		from guild_member 
+		<include refid="queryByKeyGuildMember"/>
+	</select>
+	
+	<select id="selectRecordsCountGuildMember" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from guild_member
+		<include refid="queryConditionGuildMember"/>
+	</select>
+	
+	<select id="selectMultiPagingGuildMember" parameterClass="java.util.Map" resultMap="guildMember">
+		select 
+		user_role_id
+		,guild_id
+		,postion
+		,cur_gongxian
+		,total_gongxian
+		,box_state
+		,update_time
+		,today_gongxian
+		,enter_time
+		from guild_member
+		<include refid="queryConditionGuildMember"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiGuildMember" parameterClass="java.util.Map" resultMap="guildMember">
+		select 
+		user_role_id
+		,guild_id
+		,postion
+		,cur_gongxian
+		,total_gongxian
+		,box_state
+		,update_time
+		,today_gongxian
+		,enter_time
+		from guild_member
+		<include refid="queryConditionGuildMember"/>
+	</select>
+	
+	<select id="selectAllGuildMember" resultMap="guildMember">
+		select 
+		user_role_id
+		,guild_id
+		,postion
+		,cur_gongxian
+		,total_gongxian
+		,box_state
+		,update_time
+		,today_gongxian
+		,enter_time
+		from guild_member
+	</select>
+	
+	<select id="selectSingleByParamsGuildMember" resultMap="guildMember">
+		select 
+		user_role_id
+		,guild_id
+		,postion
+		,cur_gongxian
+		,total_gongxian
+		,box_state
+		,update_time
+		,today_gongxian
+		,enter_time
+		from guild_member 
+		<include refid="queryConditionGuildMember"/>
+	</select>	
+	<select id="selectAllGuildMemberVo" resultMap="guildMemberVo">
+		select 
+		g.user_role_id
+		,g.guild_id
+		,g.postion
+		,g.cur_gongxian
+		,g.total_gongxian
+		,g.box_state
+		,g.update_time
+		,g.today_gongxian
+		,g.enter_time
+		,u.name
+		,u.level
+		,u.offline_time
+		,u.config_id
+		,b.cur_fighter zplus
+		,v.vip_level vip
+		from guild_member g 
+		left join user_role u on g.user_role_id = u.id
+		left join role_business_info b on b.user_role_id = u.id
+		left join role_vip_info v on v.user_role_id = u.id
+		order by g.guild_id
+	</select>
+	
+</sqlMap>
+	

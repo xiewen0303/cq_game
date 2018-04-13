@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="taskBranch" class="com.junyou.bus.branchtask.entity.TaskBranch" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="taskId" column="task_id"/>
+		<result property="progress" column="progress"/>
+		<result property="status" column="status"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionTaskBranch">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="taskId"> task_id = #taskId# </isNotNull>
+			<isNotNull prepend="and" property="progress"> progress = #progress# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyTaskBranch">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertTaskBranch" parameterClass="com.junyou.bus.branchtask.entity.TaskBranch">
+		insert into task_branch(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="taskId"> task_id </isNotNull> 
+		<isNotNull prepend="," property="progress"> progress </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="taskId"> #taskId# </isNotNull>
+		<isNotNull prepend="," property="progress"> #progress# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteTaskBranch">
+		delete from task_branch
+		<include refid="queryByKeyTaskBranch"/>
+	</delete>
+	
+	<update id="updateTaskBranch" parameterClass="com.junyou.bus.branchtask.entity.TaskBranch">
+		update task_branch 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="taskId"> task_id = #taskId# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+			<isNotNull prepend="," property="progress"> progress = #progress# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyTaskBranch"/>
+	</update>
+	
+	<select id="selectSingleTaskBranch" resultMap="taskBranch">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,progress
+		,status
+		,update_time
+		from task_branch 
+		<include refid="queryByKeyTaskBranch"/>
+	</select>
+	
+	<select id="selectRecordsCountTaskBranch" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from task_branch
+		<include refid="queryConditionTaskBranch"/>
+	</select>
+	
+	<select id="selectMultiPagingTaskBranch" parameterClass="java.util.Map" resultMap="taskBranch">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,progress
+		,status
+		,update_time
+		from task_branch
+		<include refid="queryConditionTaskBranch"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiTaskBranch" parameterClass="java.util.Map" resultMap="taskBranch">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,progress
+		,status
+		,update_time
+		from task_branch
+		<include refid="queryConditionTaskBranch"/>
+	</select>
+	
+	<select id="selectAllTaskBranch" resultMap="taskBranch">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,progress
+		,status
+		,update_time
+		from task_branch
+	</select>
+	
+	<select id="selectSingleByParamsTaskBranch" resultMap="taskBranch">
+		select 
+		id
+		,user_role_id
+		,task_id
+		,progress
+		,status
+		,update_time
+		from task_branch 
+		<include refid="queryConditionTaskBranch"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="kaifuActity" class="com.junyou.bus.kaifuactivity.entity.KaifuActity" >
+		<result property="subId" column="sub_id"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionKaifuActity">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyKaifuActity">
+		where sub_id = #subId#
+	</sql>
+	
+	<insert id="insertKaifuActity" parameterClass="com.junyou.bus.kaifuactivity.entity.KaifuActity">
+		insert into kaifu_actity(
+		<isNotNull prepend="" property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteKaifuActity">
+		delete from kaifu_actity
+		<include refid="queryByKeyKaifuActity"/>
+	</delete>
+	
+	<update id="updateKaifuActity" parameterClass="com.junyou.bus.kaifuactivity.entity.KaifuActity">
+		update kaifu_actity 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyKaifuActity"/>
+	</update>
+	
+	<select id="selectSingleKaifuActity" resultMap="kaifuActity">
+		select 
+		sub_id
+		,create_time
+		from kaifu_actity 
+		<include refid="queryByKeyKaifuActity"/>
+	</select>
+	
+	<select id="selectRecordsCountKaifuActity" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from kaifu_actity
+		<include refid="queryConditionKaifuActity"/>
+	</select>
+	
+	<select id="selectMultiPagingKaifuActity" parameterClass="java.util.Map" resultMap="kaifuActity">
+		select 
+		sub_id
+		,create_time
+		from kaifu_actity
+		<include refid="queryConditionKaifuActity"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiKaifuActity" parameterClass="java.util.Map" resultMap="kaifuActity">
+		select 
+		sub_id
+		,create_time
+		from kaifu_actity
+		<include refid="queryConditionKaifuActity"/>
+	</select>
+	
+	<select id="selectAllKaifuActity" resultMap="kaifuActity">
+		select 
+		sub_id
+		,create_time
+		from kaifu_actity
+	</select>
+	
+	<select id="selectSingleByParamsKaifuActity" resultMap="kaifuActity">
+		select 
+		sub_id
+		,create_time
+		from kaifu_actity 
+		<include refid="queryConditionKaifuActity"/>
+	</select>	
+	
+	
+</sqlMap>
+	

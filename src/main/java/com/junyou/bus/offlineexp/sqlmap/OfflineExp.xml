@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="offlineExp" class="com.junyou.bus.offlineexp.entity.OfflineExp" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="offlineTotal" column="offline_total"/>
+		<result property="offlineExp" column="offline_exp"/>
+	</resultMap>
+	
+	<sql id="queryConditionOfflineExp">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="offlineTotal"> offline_total = #offlineTotal# </isNotNull>
+			<isNotNull prepend="and" property="offlineExp"> offline_exp = #offlineExp# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyOfflineExp">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertOfflineExp" parameterClass="com.junyou.bus.offlineexp.entity.OfflineExp">
+		insert into offline_exp(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="offlineTotal"> offline_total </isNotNull> 
+		<isNotNull prepend="," property="offlineExp"> offline_exp </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="offlineTotal"> #offlineTotal# </isNotNull>
+		<isNotNull prepend="," property="offlineExp"> #offlineExp# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteOfflineExp">
+		delete from offline_exp
+		<include refid="queryByKeyOfflineExp"/>
+	</delete>
+	
+	<update id="updateOfflineExp" parameterClass="com.junyou.bus.offlineexp.entity.OfflineExp">
+		update offline_exp 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="offlineTotal"> offline_total = #offlineTotal# </isNotNull>
+			<isNotNull prepend="," property="offlineExp"> offline_exp = #offlineExp# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyOfflineExp"/>
+	</update>
+	
+	<select id="selectSingleOfflineExp" resultMap="offlineExp">
+		select 
+		user_role_id
+		,offline_total
+		,offline_exp
+		from offline_exp 
+		<include refid="queryByKeyOfflineExp"/>
+	</select>
+	
+	<select id="selectRecordsCountOfflineExp" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from offline_exp
+		<include refid="queryConditionOfflineExp"/>
+	</select>
+	
+	<select id="selectMultiPagingOfflineExp" parameterClass="java.util.Map" resultMap="offlineExp">
+		select 
+		user_role_id
+		,offline_total
+		,offline_exp
+		from offline_exp
+		<include refid="queryConditionOfflineExp"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiOfflineExp" parameterClass="java.util.Map" resultMap="offlineExp">
+		select 
+		user_role_id
+		,offline_total
+		,offline_exp
+		from offline_exp
+		<include refid="queryConditionOfflineExp"/>
+	</select>
+	
+	<select id="selectAllOfflineExp" resultMap="offlineExp">
+		select 
+		user_role_id
+		,offline_total
+		,offline_exp
+		from offline_exp
+	</select>
+	
+	<select id="selectSingleByParamsOfflineExp" resultMap="offlineExp">
+		select 
+		user_role_id
+		,offline_total
+		,offline_exp
+		from offline_exp 
+		<include refid="queryConditionOfflineExp"/>
+	</select>	
+	
+	
+</sqlMap>
+	

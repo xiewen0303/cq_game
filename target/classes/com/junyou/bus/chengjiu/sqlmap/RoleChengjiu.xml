@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleChengjiu" class="com.junyou.bus.chengjiu.entity.RoleChengjiu" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="chengjiuId" column="chengjiu_id"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="createTime" column="create_time"/>
+		<result property="receiveId" column="receive_id"/>
+		
+	</resultMap>
+	
+	<sql id="queryConditionRoleChengjiu">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="chengjiuId"> chengjiu_id = #chengjiuId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="receiveId"> receive_id = #receiveId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleChengjiu">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleChengjiu" parameterClass="com.junyou.bus.chengjiu.entity.RoleChengjiu">
+		insert into role_chengjiu(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="chengjiuId"> chengjiu_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull>
+		<isNotNull prepend="," property="receiveId"> receive_id </isNotNull>  
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="chengjiuId"> #chengjiuId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="receiveId"> #receiveId# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleChengjiu">
+		delete from role_chengjiu
+		<include refid="queryByKeyRoleChengjiu"/>
+	</delete>
+	
+	<update id="updateRoleChengjiu" parameterClass="com.junyou.bus.chengjiu.entity.RoleChengjiu">
+		update role_chengjiu 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="chengjiuId"> chengjiu_id = #chengjiuId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="receiveId"> receive_id = #receiveId# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleChengjiu"/>
+	</update>
+	
+	<select id="selectSingleRoleChengjiu" resultMap="roleChengjiu">
+		select 
+		user_role_id
+		,chengjiu_id
+		,update_time
+		,create_time
+		,receive_id
+		from role_chengjiu 
+		<include refid="queryByKeyRoleChengjiu"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleChengjiu" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_chengjiu
+		<include refid="queryConditionRoleChengjiu"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleChengjiu" parameterClass="java.util.Map" resultMap="roleChengjiu">
+		select 
+		user_role_id
+		,chengjiu_id
+		,update_time
+		,create_time
+		,receive_id
+		from role_chengjiu
+		<include refid="queryConditionRoleChengjiu"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleChengjiu" parameterClass="java.util.Map" resultMap="roleChengjiu">
+		select 
+		user_role_id
+		,chengjiu_id
+		,update_time
+		,create_time
+		,receive_id
+		from role_chengjiu
+		<include refid="queryConditionRoleChengjiu"/>
+	</select>
+	
+	<select id="selectAllRoleChengjiu" resultMap="roleChengjiu">
+		select 
+		user_role_id
+		,chengjiu_id
+		,update_time
+		,create_time
+		,receive_id
+		from role_chengjiu
+	</select>
+	
+	<select id="selectSingleByParamsRoleChengjiu" resultMap="roleChengjiu">
+		select 
+		user_role_id
+		,chengjiu_id
+		,update_time
+		,create_time
+		,receive_id
+		from role_chengjiu 
+		<include refid="queryConditionRoleChengjiu"/>
+	</select>	
+	
+	
+</sqlMap>
+	

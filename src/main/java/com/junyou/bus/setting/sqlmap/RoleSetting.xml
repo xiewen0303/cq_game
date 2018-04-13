@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleSetting" class="com.junyou.bus.setting.entity.RoleSetting" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="quickbarInfo" column="quickbar_info"/>
+		<result property="guajiInfo" column="guaji_info"/>
+		<result property="systemInfo" column="system_info"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleSetting">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="quickbarInfo"> quickbar_info = #quickbarInfo# </isNotNull>
+			<isNotNull prepend="and" property="guajiInfo"> guaji_info = #guajiInfo# </isNotNull>
+			<isNotNull prepend="and" property="systemInfo"> system_info = #systemInfo# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleSetting">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleSetting" parameterClass="com.junyou.bus.setting.entity.RoleSetting">
+		insert into role_setting(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="quickbarInfo"> quickbar_info </isNotNull> 
+		<isNotNull prepend="," property="guajiInfo"> guaji_info </isNotNull> 
+		<isNotNull prepend="," property="systemInfo"> system_info </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="quickbarInfo"> #quickbarInfo# </isNotNull>
+		<isNotNull prepend="," property="guajiInfo"> #guajiInfo# </isNotNull>
+		<isNotNull prepend="," property="systemInfo"> #systemInfo# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleSetting">
+		delete from role_setting
+		<include refid="queryByKeyRoleSetting"/>
+	</delete>
+	
+	<update id="updateRoleSetting" parameterClass="com.junyou.bus.setting.entity.RoleSetting">
+		update role_setting 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="quickbarInfo"> quickbar_info = #quickbarInfo# </isNotNull>
+			<isNotNull prepend="," property="guajiInfo"> guaji_info = #guajiInfo# </isNotNull>
+			<isNotNull prepend="," property="systemInfo"> system_info = #systemInfo# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleSetting"/>
+	</update>
+	
+	<select id="selectSingleRoleSetting" resultMap="roleSetting">
+		select 
+		user_role_id
+		,quickbar_info
+		,guaji_info
+		,system_info
+		from role_setting 
+		<include refid="queryByKeyRoleSetting"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleSetting" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_setting
+		<include refid="queryConditionRoleSetting"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleSetting" parameterClass="java.util.Map" resultMap="roleSetting">
+		select 
+		user_role_id
+		,quickbar_info
+		,guaji_info
+		,system_info
+		from role_setting
+		<include refid="queryConditionRoleSetting"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleSetting" parameterClass="java.util.Map" resultMap="roleSetting">
+		select 
+		user_role_id
+		,quickbar_info
+		,guaji_info
+		,system_info
+		from role_setting
+		<include refid="queryConditionRoleSetting"/>
+	</select>
+	
+	<select id="selectAllRoleSetting" resultMap="roleSetting">
+		select 
+		user_role_id
+		,quickbar_info
+		,guaji_info
+		,system_info
+		from role_setting
+	</select>
+	
+	<select id="selectSingleByParamsRoleSetting" resultMap="roleSetting">
+		select 
+		user_role_id
+		,quickbar_info
+		,guaji_info
+		,system_info
+		from role_setting 
+		<include refid="queryConditionRoleSetting"/>
+	</select>	
+	
+	
+</sqlMap>
+	

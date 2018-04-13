@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleBusinessInfo" class="com.junyou.bus.rolebusiness.entity.RoleBusinessInfo" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="pkVal" column="pk_val"/>
+		<result property="huiTime" column="hui_time"/>
+		<result property="hmTime" column="hm_time"/>
+		<result property="zhenqi" column="zhenqi"/>
+		<result property="rongluValue" column="ronglu_val"/> 
+		<result property="xuanTieValue" column="xuantie_val"/> 
+		<result property="huiStartTime" column="hui_start_time"/>
+		<result property="hmStartTime" column="hm_start_time"/>
+		<result property="curFighter" column="cur_fighter"/>
+		<result property="maxFighter" column="max_fighter"/>
+		<result property="jumpVal" column="jump_val"/>
+		<result property="rongyu" column="rongyu"/>
+		<result property="xiuwei" column="xiuwei"/>
+		<result property="lastYhTime" column="last_yh_time"/>
+		<result property="userTypeTime" column="user_type_time"/>
+		
+	</resultMap>
+	<!-- 
+	<resultMap id="zhanLiRank" class="com.junyou.bus.rank.entity.ZhanLiRank" >
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="configId" column="config_id"/>
+		<result property="vipLevel" column="vip_level"/>
+		<result property="exp" column="exp"/>
+		<result property="level" column="level"/>
+		<result property="curFighter" column="cur_fighter"/>
+	</resultMap>
+	 -->
+	<resultMap id="fightingRankVo" class="com.junyou.bus.rolebusiness.vo.FightingRankVo" >
+		<result property="rank" column="rank"/>
+		<result property="userRoleId" column="id"/>
+		<result property="configId" column="config_id"/>
+		<result property="name" column="name"/>
+		<result property="fighting" column="cur_fighter"/>
+		<result property="level" column="level"/>
+		<result property="userGuildName" column="guildName"/>
+		<result property="chibang_level" column="chibang_level"/>
+		<result property="zuoqi_level" column="zuoqi_level"/>
+		<result property="vipLevel" column="vip_level"/>
+		<result property="wiQiLevel" column="wq_level"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleBusinessInfo">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="pkVal"> pk_val = #pkVal# </isNotNull>
+			<isNotNull prepend="and" property="huiTime"> hui_time = #huiTime# </isNotNull>
+			<isNotNull prepend="and" property="hmTime"> hm_time = #hmTime# </isNotNull>
+			<isNotNull prepend="and" property="zhenqi"> zhenqi = #zhenqi# </isNotNull>
+			<isNotNull prepend="and" property="rongluValue"> ronglu_val = #rongluValue# </isNotNull>
+			<isNotNull prepend="and" property="xuanTieValue"> xuantie_val = #xuanTieValue# </isNotNull>
+			<isNotNull prepend="and" property="huiStartTime"> hui_start_time = #huiStartTime# </isNotNull>
+			<isNotNull prepend="and" property="hmStartTime"> hm_start_time = #hmStartTime# </isNotNull>
+			<isNotNull prepend="and" property="curFighter"> cur_fighter = #curFighter# </isNotNull>
+			<isNotNull prepend="and" property="jumpVal"> jump_val = #jumpVal# </isNotNull>
+			<isNotNull prepend="and" property="rongyu"> rongyu = #rongyu# </isNotNull>
+			<isNotNull prepend="and" property="xiuwei"> xiuwei = #xiuwei# </isNotNull>
+			<isNotNull prepend="and" property="lastYhTime"> last_yh_time = #lastYhTime# </isNotNull>
+			<isNotNull prepend="and" property="userTypeTime"> user_type_time = #userTypeTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleBusinessInfo">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleBusinessInfo" parameterClass="com.junyou.bus.rolebusiness.entity.RoleBusinessInfo">
+		insert into role_business_info(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="pkVal"> pk_val </isNotNull> 
+		<isNotNull prepend="," property="huiTime"> hui_time </isNotNull> 
+		<isNotNull prepend="," property="hmTime"> hm_time </isNotNull> 
+		<isNotNull prepend="," property="zhenqi"> zhenqi </isNotNull> 
+		<isNotNull prepend="," property="rongluValue"> ronglu_val </isNotNull> 
+		<isNotNull prepend="," property="xuanTieValue"> xuantie_val </isNotNull> 
+		<isNotNull prepend="," property="huiStartTime"> hui_start_time </isNotNull> 
+		<isNotNull prepend="," property="hmStartTime"> hm_start_time </isNotNull> 
+		<isNotNull prepend="," property="curFighter"> cur_fighter </isNotNull> 
+		<isNotNull prepend="," property="maxFighter"> max_fighter </isNotNull> 
+		<isNotNull prepend="," property="jumpVal"> jump_val </isNotNull> 
+		<isNotNull prepend="," property="rongyu"> rongyu </isNotNull> 
+		<isNotNull prepend="," property="xiuwei"> xiuwei </isNotNull> 
+		<isNotNull prepend="," property="lastYhTime"> last_yh_time </isNotNull> 
+		<isNotNull prepend="," property="userTypeTime"> user_type_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="pkVal"> #pkVal# </isNotNull>
+		<isNotNull prepend="," property="huiTime"> #huiTime# </isNotNull>
+		<isNotNull prepend="," property="hmTime"> #hmTime# </isNotNull>
+		<isNotNull prepend="," property="zhenqi"> #zhenqi# </isNotNull>
+		<isNotNull prepend="," property="rongluValue"> #rongluValue# </isNotNull>
+		<isNotNull prepend="," property="xuanTieValue"> #xuanTieValue# </isNotNull>
+		<isNotNull prepend="," property="huiStartTime"> #huiStartTime# </isNotNull>
+		<isNotNull prepend="," property="hmStartTime"> #hmStartTime# </isNotNull>
+		<isNotNull prepend="," property="curFighter"> #curFighter# </isNotNull>
+		<isNotNull prepend="," property="maxFighter"> #maxFighter# </isNotNull>
+		<isNotNull prepend="," property="jumpVal"> #jumpVal# </isNotNull>
+		<isNotNull prepend="," property="rongyu"> #rongyu# </isNotNull>
+		<isNotNull prepend="," property="xiuwei"> #xiuwei# </isNotNull>
+		<isNotNull prepend="," property="lastYhTime"> #lastYhTime# </isNotNull>
+		<isNotNull prepend="," property="userTypeTime"> #userTypeTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleBusinessInfo">
+		delete from role_business_info
+		<include refid="queryByKeyRoleBusinessInfo"/>
+	</delete>
+	
+	<update id="updateRoleBusinessInfo" parameterClass="com.junyou.bus.rolebusiness.entity.RoleBusinessInfo">
+		update role_business_info 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="pkVal"> pk_val = #pkVal# </isNotNull>
+			<isNotNull prepend="," property="huiTime"> hui_time = #huiTime# </isNotNull>
+			<isNotNull prepend="," property="hmTime"> hm_time = #hmTime# </isNotNull>
+			<isNotNull prepend="," property="zhenqi"> zhenqi = #zhenqi# </isNotNull>
+			<isNotNull prepend="," property="rongluValue"> ronglu_val = #rongluValue# </isNotNull>
+			<isNotNull prepend="," property="xuanTieValue"> xuantie_val = #xuanTieValue# </isNotNull>
+			<isNotNull prepend="," property="huiStartTime"> hui_start_time = #huiStartTime# </isNotNull>
+			<isNotNull prepend="," property="hmStartTime"> hm_start_time = #hmStartTime# </isNotNull>
+			<isNotNull prepend="," property="curFighter"> cur_fighter = #curFighter# </isNotNull>
+			<isNotNull prepend="," property="maxFighter"> max_fighter = #maxFighter# </isNotNull>
+			<isNotNull prepend="," property="jumpVal"> jump_val = #jumpVal# </isNotNull>
+			<isNotNull prepend="," property="rongyu"> rongyu = #rongyu# </isNotNull>
+			<isNotNull prepend="," property="xiuwei"> xiuwei = #xiuwei# </isNotNull>
+			<isNotNull prepend="," property="lastYhTime"> last_yh_time = #lastYhTime# </isNotNull>
+			<isNotNull prepend="," property="userTypeTime"> user_type_time = #userTypeTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleBusinessInfo"/>
+	</update>
+	
+	<select id="selectSingleRoleBusinessInfo" resultMap="roleBusinessInfo">
+		select 
+		user_role_id
+		,pk_val
+		,hui_time
+		,hm_time
+		,zhenqi
+		,ronglu_val
+		,hui_start_time
+		,hm_start_time
+		,cur_fighter
+		,max_fighter
+		,jump_val
+		,rongyu
+		,xiuwei
+		,last_yh_time
+		,xuantie_val
+		,user_type_time
+		from role_business_info 
+		<include refid="queryByKeyRoleBusinessInfo"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleBusinessInfo" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_business_info
+		<include refid="queryConditionRoleBusinessInfo"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleBusinessInfo" parameterClass="java.util.Map" resultMap="roleBusinessInfo">
+		select 
+		user_role_id
+		,pk_val
+		,hui_time
+		,hm_time
+		,zhenqi
+		,ronglu_val
+		,hui_start_time
+		,hm_start_time
+		,cur_fighter
+		,max_fighter
+		,jump_val
+		,rongyu
+		,xiuwei
+		,last_yh_time
+		,xuantie_val
+		,user_type_time
+		from role_business_info
+		<include refid="queryConditionRoleBusinessInfo"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleBusinessInfo" parameterClass="java.util.Map" resultMap="roleBusinessInfo">
+		select 
+		user_role_id
+		,pk_val
+		,hui_time
+		,hm_time
+		,zhenqi
+		,ronglu_val
+		,hui_start_time
+		,hm_start_time
+		,cur_fighter
+		,max_fighter
+		,jump_val
+		,rongyu
+		,xiuwei
+		,last_yh_time
+		,xuantie_val
+		,user_type_time
+		from role_business_info
+		<include refid="queryConditionRoleBusinessInfo"/>
+	</select>
+	
+	<select id="selectAllRoleBusinessInfo" resultMap="roleBusinessInfo">
+		select 
+		user_role_id
+		,pk_val
+		,hui_time
+		,hm_time
+		,zhenqi
+		,ronglu_val
+		,hui_start_time
+		,hm_start_time
+		,cur_fighter
+		,max_fighter
+		,jump_val
+		,rongyu
+		,xiuwei
+		,last_yh_time
+		,xuantie_val
+		,user_type_time
+		from role_business_info
+	</select>
+	
+	<select id="selectSingleByParamsRoleBusinessInfo" resultMap="roleBusinessInfo">
+		select 
+		user_role_id
+		,pk_val
+		,hui_time
+		,hm_time
+		,zhenqi
+		,ronglu_val
+		,hui_start_time
+		,hm_start_time
+		,cur_fighter
+		,max_fighter
+		,jump_val
+		,rongyu
+		,xiuwei
+		,last_yh_time
+		,xuantie_val
+		,user_type_time
+		from role_business_info 
+		<include refid="queryConditionRoleBusinessInfo"/>
+	</select>
+	
+	<!-- 查询战力排行榜 -->
+<!-- 
+	<select id="selectZhangLiRank" parameterClass="java.util.Map" resultMap="zhanLiRank">
+		select 
+		u.id
+		,u.name
+		,u.config_id
+		,v.vip_level
+		,u.level
+		,u.exp
+		,b.cur_fighter 
+		from role_business_info b,user_role u ,vip_info v 
+		where b.user_role_id = u.id and b.user_role_id = v.user_role_id and u.is_del = 0 and u.is_gm = 0 
+		order by b.cur_fighter desc,u.level desc,u.exp desc
+		 limit #maxSize#
+	</select>	
+ -->
+ 	<!-- 原版<select id="selectFightingRankToFightingRankVo" resultMap="fightingRankVo">
+		select
+		(@rowNum:=@rowNum+1) as rank 
+		,id
+		,vip_level
+		,name
+		,config_id
+		,cur_fighter
+		from user_role, role_vip_info, role_business_info  ,(Select (@rowNum :=0) ) rank WHERE user_role.id=role_vip_info.user_role_id and user_role.id=role_business_info.user_role_id
+		order by cur_fighter desc limit #limit#
+	</select> -->
+ 	<select id="selectFightingRankToFightingRankVo" resultMap="fightingRankVo">
+		select
+			(@rownum :=@rownum + 1)as rank,
+			r.*
+		from
+			(
+				select
+					gz.id,
+					gz. name,
+					gz.config_id,
+					gz.cur_fighter,
+					gz. level,
+					gl. name guildname,
+					gz.zuoqi_level,
+					gz.chibang_level,
+					gz.vip_level,
+					gz.wq_level
+				from
+					(
+
+select wq.zuoqi_level as wq_level,wqs.* from  (
+
+						select
+							zhu.*, gu.guild_id
+						from
+							(
+								select
+									uz.*, chi_bang_info.chibang_level
+								from
+									(
+										select
+											us.*, zuo_qi_info.zuoqi_level
+										from
+										(
+										select role_vip_info.vip_level,s1.* from 
+											(
+												select
+													user_role.id,
+													name,
+													config_id,
+													cur_fighter,
+													user_role. level
+												from
+													user_role,
+													role_business_info
+												where
+													user_role.id = role_business_info.user_role_id
+												order by
+													cur_fighter desc
+												limit #limit#
+											) s1 left join role_vip_info on s1.id = role_vip_info.user_role_id
+										)
+										as us 	left join zuo_qi_info on us.id = zuo_qi_info.user_role_id
+									)as uz
+								left join chi_bang_info on uz.id = chi_bang_info.user_role_id
+							)zhu
+						left join guild_member gu on zhu.id = gu.user_role_id
+)wqs  left join wu_qi_info wq on wqs.id = wq.user_role_id
+					)gz
+				left join guild gl on gz.guild_id = gl.id
+			)r,
+			(select(@rownum := 0))rank
+	</select>
+ 
+ 	<!-- 查询角色自己的全服战力排名-->
+	<select id="getUserServerFighterRank" resultClass="java.lang.Long" parameterClass="java.util.Map" >
+		select count(*) from role_business_info where cur_fighter > (select MAX(cur_fighter) from role_business_info where user_role_id in(select id from user_role where user_id = #userId# and server_id = #serverId#));
+	</select>
+ 
+ 	<select id="selectByParamsFighter" resultClass="java.lang.Long">
+		select user_role_id from role_business_info where cur_fighter >= #level#;
+	</select>	
+ 
+</sqlMap>
+	

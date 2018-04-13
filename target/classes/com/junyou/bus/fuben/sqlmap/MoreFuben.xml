@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="moreFuben" class="com.junyou.bus.fuben.entity.MoreFuben" >
+		<result property="id" column="id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="moreFubenId" column="more_fuben_id"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="count" column="count"/>
+		<result property="status" column="status"/>
+	</resultMap>
+	
+	<sql id="queryConditionMoreFuben">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="moreFubenId"> more_fuben_id = #moreFubenId# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="and" property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="and" property="status"> status = #status# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyMoreFuben">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertMoreFuben" parameterClass="com.junyou.bus.fuben.entity.MoreFuben">
+		insert into more_fuben(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="moreFubenId"> more_fuben_id </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		<isNotNull prepend="," property="count"> count </isNotNull> 
+		<isNotNull prepend="," property="status"> status </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="moreFubenId"> #moreFubenId# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		<isNotNull prepend="," property="count"> #count# </isNotNull>
+		<isNotNull prepend="," property="status"> #status# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteMoreFuben">
+		delete from more_fuben
+		<include refid="queryByKeyMoreFuben"/>
+	</delete>
+	
+	<update id="updateMoreFuben" parameterClass="com.junyou.bus.fuben.entity.MoreFuben">
+		update more_fuben 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="moreFubenId"> more_fuben_id = #moreFubenId# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+			<isNotNull prepend="," property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="," property="status"> status = #status# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyMoreFuben"/>
+	</update>
+	
+	<select id="selectSingleMoreFuben" resultMap="moreFuben">
+		select 
+		id
+		,user_role_id
+		,more_fuben_id
+		,update_time
+		,count
+		,status
+		from more_fuben 
+		<include refid="queryByKeyMoreFuben"/>
+	</select>
+	
+	<select id="selectRecordsCountMoreFuben" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from more_fuben
+		<include refid="queryConditionMoreFuben"/>
+	</select>
+	
+	<select id="selectMultiPagingMoreFuben" parameterClass="java.util.Map" resultMap="moreFuben">
+		select 
+		id
+		,user_role_id
+		,more_fuben_id
+		,update_time
+		,count
+		,status
+		from more_fuben
+		<include refid="queryConditionMoreFuben"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiMoreFuben" parameterClass="java.util.Map" resultMap="moreFuben">
+		select 
+		id
+		,user_role_id
+		,more_fuben_id
+		,update_time
+		,count
+		,status
+		from more_fuben
+		<include refid="queryConditionMoreFuben"/>
+	</select>
+	
+	<select id="selectAllMoreFuben" resultMap="moreFuben">
+		select 
+		id
+		,user_role_id
+		,more_fuben_id
+		,update_time
+		,count
+		,status
+		from more_fuben
+	</select>
+	
+	<select id="selectSingleByParamsMoreFuben" resultMap="moreFuben">
+		select 
+		id
+		,user_role_id
+		,more_fuben_id
+		,update_time
+		,count
+		,status
+		from more_fuben 
+		<include refid="queryConditionMoreFuben"/>
+	</select>	
+	
+	
+</sqlMap>
+	

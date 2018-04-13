@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleKuafuArena1v1" class="com.junyou.bus.kuafuarena1v1.entity.RoleKuafuArena1v1" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="gongxun" column="gongxun"/>
+		<result property="winTimes" column="win_times"/>
+		<result property="arenaTimes" column="arena_times"/>
+		<result property="lastArenaTime" column="last_arena_time"/>
+		<result property="lastArenaTimes" column="last_arena_times"/>
+		<result property="lastDuan" column="last_duan"/>
+		<result property="gongxunStatus" column="gongxun_status"/>
+		<result property="jifen" column="jifen"/>
+		<result property="jifenUpdateTime" column="jifen_update_time"/>
+		<result property="lianWin" column="lian_win"/>
+		<result property="lianLose" column="lian_lose"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleKuafuArena1v1">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="gongxun"> gongxun = #gongxun# </isNotNull>
+			<isNotNull prepend="and" property="winTimes"> win_times = #winTimes# </isNotNull>
+			<isNotNull prepend="and" property="arenaTimes"> arena_times = #arenaTimes# </isNotNull>
+			<isNotNull prepend="and" property="lastArenaTime"> last_arena_time = #lastArenaTime# </isNotNull>
+			<isNotNull prepend="and" property="lastArenaTimes"> last_arena_times = #lastArenaTimes# </isNotNull>
+			<isNotNull prepend="and" property="lastDuan"> last_duan = #lastDuan# </isNotNull>
+			<isNotNull prepend="and" property="gongxunStatus"> gongxun_status = #gongxunStatus# </isNotNull>
+			<isNotNull prepend="and" property="jifen"> jifen = #jifen# </isNotNull>
+			<isNotNull prepend="and" property="jifenUpdateTime"> jifen_update_time = #jifenUpdateTime# </isNotNull>
+			<isNotNull prepend="and" property="lianWin"> lian_win = #lianWin# </isNotNull>
+			<isNotNull prepend="and" property="lianLose"> lian_lose = #lianLose# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleKuafuArena1v1">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleKuafuArena1v1" parameterClass="com.junyou.bus.kuafuarena1v1.entity.RoleKuafuArena1v1">
+		insert into role_kuafu_arena_1v1(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="gongxun"> gongxun </isNotNull> 
+		<isNotNull prepend="," property="winTimes"> win_times </isNotNull> 
+		<isNotNull prepend="," property="arenaTimes"> arena_times </isNotNull> 
+		<isNotNull prepend="," property="lastArenaTime"> last_arena_time </isNotNull> 
+		<isNotNull prepend="," property="lastArenaTimes"> last_arena_times </isNotNull> 
+		<isNotNull prepend="," property="lastDuan"> last_duan </isNotNull> 
+		<isNotNull prepend="," property="gongxunStatus"> gongxun_status </isNotNull> 
+		<isNotNull prepend="," property="jifen"> jifen </isNotNull> 
+		<isNotNull prepend="," property="jifenUpdateTime"> jifen_update_time </isNotNull> 
+		<isNotNull prepend="," property="lianWin"> lian_win </isNotNull> 
+		<isNotNull prepend="," property="lianLose"> lian_lose </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="gongxun"> #gongxun# </isNotNull>
+		<isNotNull prepend="," property="winTimes"> #winTimes# </isNotNull>
+		<isNotNull prepend="," property="arenaTimes"> #arenaTimes# </isNotNull>
+		<isNotNull prepend="," property="lastArenaTime"> #lastArenaTime# </isNotNull>
+		<isNotNull prepend="," property="lastArenaTimes"> #lastArenaTimes# </isNotNull>
+		<isNotNull prepend="," property="lastDuan"> #lastDuan# </isNotNull>
+		<isNotNull prepend="," property="gongxunStatus"> #gongxunStatus# </isNotNull>
+		<isNotNull prepend="," property="jifen"> #jifen# </isNotNull>
+		<isNotNull prepend="," property="jifenUpdateTime"> #jifenUpdateTime# </isNotNull>
+		<isNotNull prepend="," property="lianWin"> #lianWin# </isNotNull>
+		<isNotNull prepend="," property="lianLose"> #lianLose# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleKuafuArena1v1">
+		delete from role_kuafu_arena_1v1
+		<include refid="queryByKeyRoleKuafuArena1v1"/>
+	</delete>
+	
+	<update id="updateRoleKuafuArena1v1" parameterClass="com.junyou.bus.kuafuarena1v1.entity.RoleKuafuArena1v1">
+		update role_kuafu_arena_1v1 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="gongxun"> gongxun = #gongxun# </isNotNull>
+			<isNotNull prepend="," property="winTimes"> win_times = #winTimes# </isNotNull>
+			<isNotNull prepend="," property="arenaTimes"> arena_times = #arenaTimes# </isNotNull>
+			<isNotNull prepend="," property="lastArenaTime"> last_arena_time = #lastArenaTime# </isNotNull>
+			<isNotNull prepend="," property="lastArenaTimes"> last_arena_times = #lastArenaTimes# </isNotNull>
+			<isNotNull prepend="," property="lastDuan"> last_duan = #lastDuan# </isNotNull>
+			<isNotNull prepend="," property="gongxunStatus"> gongxun_status = #gongxunStatus# </isNotNull>
+			<isNotNull prepend="," property="jifen"> jifen = #jifen# </isNotNull>
+			<isNotNull prepend="," property="jifenUpdateTime"> jifen_update_time = #jifenUpdateTime# </isNotNull>
+			<isNotNull prepend="," property="lianWin"> lian_win = #lianWin# </isNotNull>
+			<isNotNull prepend="," property="lianLose"> lian_lose = #lianLose# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleKuafuArena1v1"/>
+	</update>
+	
+	<select id="selectSingleRoleKuafuArena1v1" resultMap="roleKuafuArena1v1">
+		select 
+		user_role_id
+		,gongxun
+		,win_times
+		,arena_times
+		,last_arena_time
+		,last_arena_times
+		,last_duan
+		,gongxun_status
+		,jifen
+		,jifen_update_time
+		,lian_win
+		,lian_lose
+		from role_kuafu_arena_1v1 
+		<include refid="queryByKeyRoleKuafuArena1v1"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleKuafuArena1v1" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_kuafu_arena_1v1
+		<include refid="queryConditionRoleKuafuArena1v1"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleKuafuArena1v1" parameterClass="java.util.Map" resultMap="roleKuafuArena1v1">
+		select 
+		user_role_id
+		,gongxun
+		,win_times
+		,arena_times
+		,last_arena_time
+		,last_arena_times
+		,last_duan
+		,gongxun_status
+		,jifen
+		,jifen_update_time
+		,lian_win
+		,lian_lose
+		from role_kuafu_arena_1v1
+		<include refid="queryConditionRoleKuafuArena1v1"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleKuafuArena1v1" parameterClass="java.util.Map" resultMap="roleKuafuArena1v1">
+		select 
+		user_role_id
+		,gongxun
+		,win_times
+		,arena_times
+		,last_arena_time
+		,last_arena_times
+		,last_duan
+		,gongxun_status
+		,jifen
+		,jifen_update_time
+		,lian_win
+		,lian_lose
+		from role_kuafu_arena_1v1
+		<include refid="queryConditionRoleKuafuArena1v1"/>
+	</select>
+	
+	<select id="selectAllRoleKuafuArena1v1" resultMap="roleKuafuArena1v1">
+		select 
+		user_role_id
+		,gongxun
+		,win_times
+		,arena_times
+		,last_arena_time
+		,last_arena_times
+		,last_duan
+		,gongxun_status
+		,jifen
+		,jifen_update_time
+		,lian_win
+		,lian_lose
+		from role_kuafu_arena_1v1
+	</select>
+	
+	<select id="selectSingleByParamsRoleKuafuArena1v1" resultMap="roleKuafuArena1v1">
+		select 
+		user_role_id
+		,gongxun
+		,win_times
+		,arena_times
+		,last_arena_time
+		,last_arena_times
+		,last_duan
+		,gongxun_status
+		,jifen
+		,jifen_update_time
+		,lian_win
+		,lian_lose
+		from role_kuafu_arena_1v1 
+		<include refid="queryConditionRoleKuafuArena1v1"/>
+	</select>	
+	
+	<update id="cleanAllJifen" parameterClass="java.util.Map">
+		update role_kuafu_arena_1v1 set jifen=#jifen#,lian_win=0,lian_lose=0 where (jifen!=0 or lian_win!=0 or lian_lose!=0)
+	</update>
+</sqlMap>
+	

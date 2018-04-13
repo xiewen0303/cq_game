@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleWenquan" class="com.junyou.bus.wenquan.entity.RoleWenquan" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="goldTimes" column="gold_times"/>
+		<result property="goldUpdateTime" column="gold_update_time"/>
+		<result property="moneyTimes" column="money_times"/>
+		<result property="moneyUpdateTime" column="money_update_time"/>
+		<result property="playTimes" column="play_times"/>
+		<result property="playUpdateTime" column="play_update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleWenquan">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="goldTimes"> gold_times = #goldTimes# </isNotNull>
+			<isNotNull prepend="and" property="goldUpdateTime"> gold_update_time = #goldUpdateTime# </isNotNull>
+			<isNotNull prepend="and" property="moneyTimes"> money_times = #moneyTimes# </isNotNull>
+			<isNotNull prepend="and" property="moneyUpdateTime"> money_update_time = #moneyUpdateTime# </isNotNull>
+			<isNotNull prepend="and" property="playTimes"> play_times = #playTimes# </isNotNull>
+			<isNotNull prepend="and" property="playUpdateTime"> play_update_time = #playUpdateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleWenquan">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleWenquan" parameterClass="com.junyou.bus.wenquan.entity.RoleWenquan">
+		insert into role_wenquan(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="goldTimes"> gold_times </isNotNull> 
+		<isNotNull prepend="," property="goldUpdateTime"> gold_update_time </isNotNull> 
+		<isNotNull prepend="," property="moneyTimes"> money_times </isNotNull> 
+		<isNotNull prepend="," property="moneyUpdateTime"> money_update_time </isNotNull> 
+		<isNotNull prepend="," property="playTimes"> play_times </isNotNull> 
+		<isNotNull prepend="," property="playUpdateTime"> play_update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="goldTimes"> #goldTimes# </isNotNull>
+		<isNotNull prepend="," property="goldUpdateTime"> #goldUpdateTime# </isNotNull>
+		<isNotNull prepend="," property="moneyTimes"> #moneyTimes# </isNotNull>
+		<isNotNull prepend="," property="moneyUpdateTime"> #moneyUpdateTime# </isNotNull>
+		<isNotNull prepend="," property="playTimes"> #playTimes# </isNotNull>
+		<isNotNull prepend="," property="playUpdateTime"> #playUpdateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleWenquan">
+		delete from role_wenquan
+		<include refid="queryByKeyRoleWenquan"/>
+	</delete>
+	
+	<update id="updateRoleWenquan" parameterClass="com.junyou.bus.wenquan.entity.RoleWenquan">
+		update role_wenquan 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="goldTimes"> gold_times = #goldTimes# </isNotNull>
+			<isNotNull prepend="," property="goldUpdateTime"> gold_update_time = #goldUpdateTime# </isNotNull>
+			<isNotNull prepend="," property="moneyTimes"> money_times = #moneyTimes# </isNotNull>
+			<isNotNull prepend="," property="moneyUpdateTime"> money_update_time = #moneyUpdateTime# </isNotNull>
+			<isNotNull prepend="," property="playTimes"> play_times = #playTimes# </isNotNull>
+			<isNotNull prepend="," property="playUpdateTime"> play_update_time = #playUpdateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleWenquan"/>
+	</update>
+	
+	<select id="selectSingleRoleWenquan" resultMap="roleWenquan">
+		select 
+		user_role_id
+		,gold_times
+		,gold_update_time
+		,money_times
+		,money_update_time
+		,play_times
+		,play_update_time
+		from role_wenquan 
+		<include refid="queryByKeyRoleWenquan"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleWenquan" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_wenquan
+		<include refid="queryConditionRoleWenquan"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleWenquan" parameterClass="java.util.Map" resultMap="roleWenquan">
+		select 
+		user_role_id
+		,gold_times
+		,gold_update_time
+		,money_times
+		,money_update_time
+		,play_times
+		,play_update_time
+		from role_wenquan
+		<include refid="queryConditionRoleWenquan"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleWenquan" parameterClass="java.util.Map" resultMap="roleWenquan">
+		select 
+		user_role_id
+		,gold_times
+		,gold_update_time
+		,money_times
+		,money_update_time
+		,play_times
+		,play_update_time
+		from role_wenquan
+		<include refid="queryConditionRoleWenquan"/>
+	</select>
+	
+	<select id="selectAllRoleWenquan" resultMap="roleWenquan">
+		select 
+		user_role_id
+		,gold_times
+		,gold_update_time
+		,money_times
+		,money_update_time
+		,play_times
+		,play_update_time
+		from role_wenquan
+	</select>
+	
+	<select id="selectSingleByParamsRoleWenquan" resultMap="roleWenquan">
+		select 
+		user_role_id
+		,gold_times
+		,gold_update_time
+		,money_times
+		,money_update_time
+		,play_times
+		,play_update_time
+		from role_wenquan 
+		<include refid="queryConditionRoleWenquan"/>
+	</select>
+	
+	<resultMap id="rankVo" class="com.junyou.bus.wenquan.vo.WenquanRankVo" >
+		<result property="rank" column="rank"/>
+		<result property="userRoleId" column="id"/>
+		<result property="name" column="name"/>
+		<result property="goldTimes" column="gold_times"/>
+		<result property="goldUpdateTime" column="gold_update_time"/>
+	</resultMap>	
+	
+	<select id="selectWenquanRankVo" resultMap="rankVo">
+		select 
+		(@rowNum:=@rowNum+1) as rank 
+		,id
+		,name
+		,gold_times
+		,gold_update_time
+		from user_role, role_wenquan , (Select (@rowNum :=0) ) rank WHERE role_wenquan.gold_times > 0 and user_role.id=role_wenquan.user_role_id 
+		order by role_wenquan.gold_times desc,role_wenquan.gold_update_time  limit #limit#;
+	</select>	
+	
+	
+</sqlMap>
+	

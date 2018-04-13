@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleSendFlower" class="com.junyou.bus.flower.entity.RoleSendFlower" >
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="charmValue" column="charm_value"/>
+		<result property="upateTime" column="upate_time"/>
+		<result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleSendFlower">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="charmValue"> charm_value = #charmValue# </isNotNull>
+			<isNotNull prepend="and" property="upateTime"> upate_time = #upateTime# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleSendFlower">
+		where user_role_id = #userRoleId#
+	</sql>
+	
+	<insert id="insertRoleSendFlower" parameterClass="com.junyou.bus.flower.entity.RoleSendFlower">
+		insert into role_send_flower(
+		<isNotNull prepend="" property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="charmValue"> charm_value </isNotNull> 
+		<isNotNull prepend="," property="upateTime"> upate_time </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="charmValue"> #charmValue# </isNotNull>
+		<isNotNull prepend="," property="upateTime"> #upateTime# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRoleSendFlower">
+		delete from role_send_flower
+		<include refid="queryByKeyRoleSendFlower"/>
+	</delete>
+	
+	<update id="updateRoleSendFlower" parameterClass="com.junyou.bus.flower.entity.RoleSendFlower">
+		update role_send_flower 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="charmValue"> charm_value = #charmValue# </isNotNull>
+			<isNotNull prepend="," property="upateTime"> upate_time = #upateTime# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRoleSendFlower"/>
+	</update>
+	
+	<select id="selectSingleRoleSendFlower" resultMap="roleSendFlower">
+		select 
+		user_role_id
+		,charm_value
+		,upate_time
+		,create_time
+		from role_send_flower 
+		<include refid="queryByKeyRoleSendFlower"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleSendFlower" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_send_flower
+		<include refid="queryConditionRoleSendFlower"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleSendFlower" parameterClass="java.util.Map" resultMap="roleSendFlower">
+		select 
+		user_role_id
+		,charm_value
+		,upate_time
+		,create_time
+		from role_send_flower
+		<include refid="queryConditionRoleSendFlower"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleSendFlower" parameterClass="java.util.Map" resultMap="roleSendFlower">
+		select 
+		user_role_id
+		,charm_value
+		,upate_time
+		,create_time
+		from role_send_flower
+		<include refid="queryConditionRoleSendFlower"/>
+	</select>
+	
+	<select id="selectAllRoleSendFlower" resultMap="roleSendFlower">
+		select 
+		user_role_id
+		,charm_value
+		,upate_time
+		,create_time
+		from role_send_flower
+	</select>
+	
+	<select id="selectSingleByParamsRoleSendFlower" resultMap="roleSendFlower">
+		select 
+		user_role_id
+		,charm_value
+		,upate_time
+		,create_time
+		from role_send_flower 
+		<include refid="queryConditionRoleSendFlower"/>
+	</select>	
+	
+	
+</sqlMap>
+	

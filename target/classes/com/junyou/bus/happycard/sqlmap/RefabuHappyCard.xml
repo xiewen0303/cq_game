@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="refabuHappyCard" class="com.junyou.bus.happycard.entity.RefabuHappyCard" >
+		<result property="id" column="id"/>
+		<result property="subId" column="sub_id"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="beforeYb" column="before_yb"/>
+		<result property="items" column="items"/>
+		<result property="itemIndex" column="item_index"/>
+		<result property="fanTimes" column="fan_times"/>
+		<result property="multi" column="multi"/>
+		<result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<sql id="queryConditionRefabuHappyCard">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="beforeYb"> before_yb = #beforeYb# </isNotNull>
+			<isNotNull prepend="and" property="items"> items = #items# </isNotNull>
+			<isNotNull prepend="and" property="itemIndex"> item_index = #itemIndex# </isNotNull>
+			<isNotNull prepend="and" property="fanTimes"> fan_times = #fanTimes# </isNotNull>
+			<isNotNull prepend="and" property="multi"> multi = #multi# </isNotNull>
+			<isNotNull prepend="and" property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRefabuHappyCard">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRefabuHappyCard" parameterClass="com.junyou.bus.happycard.entity.RefabuHappyCard">
+		insert into refabu_happy_card(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="subId"> sub_id </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="beforeYb"> before_yb </isNotNull> 
+		<isNotNull prepend="," property="items"> items </isNotNull> 
+		<isNotNull prepend="," property="itemIndex"> item_index </isNotNull> 
+		<isNotNull prepend="," property="fanTimes"> fan_times </isNotNull> 
+		<isNotNull prepend="," property="multi"> multi </isNotNull> 
+		<isNotNull prepend="," property="updateTime"> update_time </isNotNull> 
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="subId"> #subId# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="beforeYb"> #beforeYb# </isNotNull>
+		<isNotNull prepend="," property="items"> #items# </isNotNull>
+		<isNotNull prepend="," property="itemIndex"> #itemIndex# </isNotNull>
+		<isNotNull prepend="," property="fanTimes"> #fanTimes# </isNotNull>
+		<isNotNull prepend="," property="multi"> #multi# </isNotNull>
+		<isNotNull prepend="," property="updateTime"> #updateTime# </isNotNull>
+		)
+	</insert>
+	
+	<delete id="deleteRefabuHappyCard">
+		delete from refabu_happy_card
+		<include refid="queryByKeyRefabuHappyCard"/>
+	</delete>
+	
+	<update id="updateRefabuHappyCard" parameterClass="com.junyou.bus.happycard.entity.RefabuHappyCard">
+		update refabu_happy_card 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="subId"> sub_id = #subId# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="beforeYb"> before_yb = #beforeYb# </isNotNull>
+			<isNotNull prepend="," property="items"> items = #items# </isNotNull>
+			<isNotNull prepend="," property="itemIndex"> item_index = #itemIndex# </isNotNull>
+			<isNotNull prepend="," property="fanTimes"> fan_times = #fanTimes# </isNotNull>
+			<isNotNull prepend="," property="multi"> multi = #multi# </isNotNull>
+			<isNotNull prepend="," property="updateTime"> update_time = #updateTime# </isNotNull>
+		</dynamic>
+		<include refid="queryByKeyRefabuHappyCard"/>
+	</update>
+	
+	<select id="selectSingleRefabuHappyCard" resultMap="refabuHappyCard">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,before_yb
+		,items
+		,item_index
+		,fan_times
+		,multi
+		,update_time
+		from refabu_happy_card 
+		<include refid="queryByKeyRefabuHappyCard"/>
+	</select>
+	
+	<select id="selectRecordsCountRefabuHappyCard" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from refabu_happy_card
+		<include refid="queryConditionRefabuHappyCard"/>
+	</select>
+	
+	<select id="selectMultiPagingRefabuHappyCard" parameterClass="java.util.Map" resultMap="refabuHappyCard">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,before_yb
+		,items
+		,item_index
+		,fan_times
+		,multi
+		,update_time
+		from refabu_happy_card
+		<include refid="queryConditionRefabuHappyCard"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRefabuHappyCard" parameterClass="java.util.Map" resultMap="refabuHappyCard">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,before_yb
+		,items
+		,item_index
+		,fan_times
+		,multi
+		,update_time
+		from refabu_happy_card
+		<include refid="queryConditionRefabuHappyCard"/>
+	</select>
+	
+	<select id="selectAllRefabuHappyCard" resultMap="refabuHappyCard">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,before_yb
+		,items
+		,item_index
+		,fan_times
+		,multi
+		,update_time
+		from refabu_happy_card
+	</select>
+	
+	<select id="selectSingleByParamsRefabuHappyCard" resultMap="refabuHappyCard">
+		select 
+		id
+		,sub_id
+		,user_role_id
+		,before_yb
+		,items
+		,item_index
+		,fan_times
+		,multi
+		,update_time
+		from refabu_happy_card 
+		<include refid="queryConditionRefabuHappyCard"/>
+	</select>	
+	
+	
+</sqlMap>
+	

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="roleItem" class="com.junyou.bus.bag.entity.RoleItem" >
+		<result property="id" column="id"/>
+		<result property="containerType" column="container_type"/>
+		<result property="isDelete" column="is_delete"/>
+		<result property="slot" column="slot"/>
+		<result property="userRoleId" column="user_role_id"/>
+		<result property="goodsId" column="goods_id"/>
+		<result property="count" column="count"/>
+		<result property="currentDurability" column="current_durability"/>
+		<result property="expireTime" column="expire_time"/>
+		
+		<result property="qianhuaLevel" column="qianhua_level"/>
+		<!-- 
+		<result property="jinyouLevel" column="jinyou_level"/>
+		<result property="jianding" column="jianding"/>
+		<result property="gems" column="gems"/>
+		<result property="openKongCount" column="open_kong_count"/>
+		-->
+		<result property="randomAttrs" column="random_attrs"/>
+		<result property="createDescribe" column="create_describe"/>
+		<result property="createTime" column="create_time"/>
+		<result property="otherData" column="other_data"/>
+		<result property="tipinValue" column="tipin_value"/>
+		<result property="zhushenLevel" column="zhushen_level"/>
+		<result property="zhushenFailTimes" column="zhushen_fail_times"/>
+		<result property="chongwuId" column="chongwu_id"/>
+		<result property="shenqiId" column="shenqi_id"/>
+	</resultMap>
+	
+	<sql id="queryConditionRoleItem">
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="and" property="containerType"> container_type = #containerType# </isNotNull>
+			<isNotNull prepend="and" property="isDelete"> is_delete = #isDelete# </isNotNull>
+			<isNotNull prepend="and" property="slot"> slot = #slot# </isNotNull>
+			<isNotNull prepend="and" property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="and" property="goodsId"> goods_id = #goodsId# </isNotNull>
+			<isNotNull prepend="and" property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="and" property="currentDurability"> current_durability = #currentDurability# </isNotNull>
+			<isNotNull prepend="and" property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="and" property="qianhuaLevel"> qianhua_level = #qianhuaLevel# </isNotNull>
+			<!-- 
+			<isNotNull prepend="and" property="jinyouLevel"> jinyou_level = #jinyouLevel# </isNotNull>
+			<isNotNull prepend="and" property="jianding"> jianding = #jianding# </isNotNull>
+			<isNotNull prepend="and" property="gems"> gems = #gems# </isNotNull>
+			<isNotNull prepend="and" property="openKongCount"> open_kong_count = #openKongCount# </isNotNull>
+			 -->
+			<isNotNull prepend="and" property="randomAttrs"> random_attrs = #randomAttrs# </isNotNull>
+			<isNotNull prepend="and" property="createDescribe"> create_describe = #createDescribe# </isNotNull>
+			<isNotNull prepend="and" property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="and" property="otherData"> other_data = #otherData# </isNotNull>
+			<isNotNull prepend="and" property="tipinValue"> tipin_value = #tipinValue# </isNotNull>
+			<isNotNull prepend="and" property="zhushenLevel"> zhushen_level = #zhushenLevel# </isNotNull>
+			<isNotNull prepend="and" property="zhushenFailTimes"> zhushen_fail_times = #zhushenFailTimes# </isNotNull>
+			<isNotNull prepend="and" property="chongwuId"> ,chongwu_id  = #chongwuId# </isNotNull>
+			<isNotNull prepend="and" property="shenqiId"> ,shenqi_id  = #shenqiId# </isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="queryByKeyRoleItem">
+		where id = #id#
+	</sql>
+	
+	<insert id="insertRoleItem" parameterClass="com.junyou.bus.bag.entity.RoleItem">
+		insert into role_item(
+		<isNotNull prepend="" property="id"> id </isNotNull> 
+		<isNotNull prepend="," property="containerType"> container_type </isNotNull> 
+		<isNotNull prepend="," property="isDelete"> is_delete </isNotNull> 
+		<isNotNull prepend="," property="slot"> slot </isNotNull> 
+		<isNotNull prepend="," property="userRoleId"> user_role_id </isNotNull> 
+		<isNotNull prepend="," property="goodsId"> goods_id </isNotNull> 
+		<isNotNull prepend="," property="count"> count </isNotNull> 
+		<isNotNull prepend="," property="currentDurability"> current_durability </isNotNull> 
+		<isNotNull prepend="," property="expireTime"> expire_time </isNotNull>  
+		<isNotNull prepend="," property="qianhuaLevel"> qianhua_level </isNotNull> 
+		<!-- 
+		<isNotNull prepend="," property="jinyouLevel"> jinyou_level </isNotNull> 
+		<isNotNull prepend="," property="jianding"> jianding </isNotNull> 
+		<isNotNull prepend="," property="gems"> gems </isNotNull> 
+		<isNotNull prepend="," property="openKongCount"> open_kong_count </isNotNull> 
+		 -->
+		<isNotNull prepend="," property="randomAttrs"> random_attrs </isNotNull> 
+		<isNotNull prepend="," property="createDescribe"> create_describe </isNotNull> 
+		<isNotNull prepend="," property="createTime"> create_time </isNotNull> 
+		<isNotNull prepend="," property="otherData"> other_data </isNotNull> 
+		<isNotNull prepend="," property="tipinValue"> tipin_value </isNotNull> 
+		<isNotNull prepend="," property="zhushenLevel"> zhushen_level </isNotNull>
+		<isNotNull prepend="," property="zhushenFailTimes"> zhushen_fail_times </isNotNull>		
+		<isNotNull prepend="," property="chongwuId"> chongwu_id </isNotNull>		
+		<isNotNull prepend="," property="shenqiId"> shenqi_id </isNotNull>		
+		)
+		values(
+		<isNotNull prepend="" property="id"> #id# </isNotNull>
+		<isNotNull prepend="," property="containerType"> #containerType# </isNotNull>
+		<isNotNull prepend="," property="isDelete"> #isDelete# </isNotNull>
+		<isNotNull prepend="," property="slot"> #slot# </isNotNull>
+		<isNotNull prepend="," property="userRoleId"> #userRoleId# </isNotNull>
+		<isNotNull prepend="," property="goodsId"> #goodsId# </isNotNull>
+		<isNotNull prepend="," property="count"> #count# </isNotNull>
+		<isNotNull prepend="," property="currentDurability"> #currentDurability# </isNotNull>
+		<isNotNull prepend="," property="expireTime"> #expireTime# </isNotNull>
+		<isNotNull prepend="," property="qianhuaLevel"> #qianhuaLevel# </isNotNull>
+		
+		<!-- 
+		<isNotNull prepend="," property="jinyouLevel"> #jinyouLevel# </isNotNull>
+		<isNotNull prepend="," property="jianding"> #jianding# </isNotNull>
+		<isNotNull prepend="," property="gems"> #gems# </isNotNull>
+		<isNotNull prepend="," property="openKongCount"> #openKongCount# </isNotNull>
+		 -->
+		<isNotNull prepend="," property="randomAttrs"> #randomAttrs# </isNotNull> 
+		<isNotNull prepend="," property="createDescribe"> #createDescribe# </isNotNull>
+		<isNotNull prepend="," property="createTime"> #createTime# </isNotNull>
+		<isNotNull prepend="," property="otherData"> #otherData# </isNotNull>
+		<isNotNull prepend="," property="tipinValue"> #tipinValue# </isNotNull>
+		<isNotNull prepend="," property="zhushenLevel"> #zhushenLevel# </isNotNull>
+		<isNotNull prepend="," property="zhushenFailTimes"> #zhushenFailTimes# </isNotNull>			
+		<isNotNull prepend="," property="chongwuId"> #chongwuId# </isNotNull>	
+		<isNotNull prepend="," property="shenqiId"> #shenqiId# </isNotNull>				
+		)
+	</insert>
+	
+	<delete id="deleteRoleItem">
+		delete from role_item
+		<include refid="queryByKeyRoleItem"/>
+	</delete>
+	
+	<update id="updateRoleItem" parameterClass="com.junyou.bus.bag.entity.RoleItem">
+		update role_item 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="id"> id = #id# </isNotNull>
+			<isNotNull prepend="," property="containerType"> container_type = #containerType# </isNotNull>
+			<isNotNull prepend="," property="isDelete"> is_delete = #isDelete# </isNotNull>
+			<isNotNull prepend="," property="slot"> slot = #slot# </isNotNull>
+			<isNotNull prepend="," property="userRoleId"> user_role_id = #userRoleId# </isNotNull>
+			<isNotNull prepend="," property="goodsId"> goods_id = #goodsId# </isNotNull>
+			<isNotNull prepend="," property="count"> count = #count# </isNotNull>
+			<isNotNull prepend="," property="currentDurability"> current_durability = #currentDurability# </isNotNull>
+			<isNotNull prepend="," property="expireTime"> expire_time = #expireTime# </isNotNull>
+			<isNotNull prepend="," property="qianhuaLevel"> qianhua_level = #qianhuaLevel# </isNotNull>
+			<!-- 
+			<isNotNull prepend="," property="jinyouLevel"> jinyou_level = #jinyouLevel# </isNotNull>
+			<isNotNull prepend="," property="jianding"> jianding = #jianding# </isNotNull>
+			<isNotNull prepend="," property="gems"> gems = #gems# </isNotNull>
+			<isNotNull prepend="," property="openKongCount"> open_kong_count = #openKongCount# </isNotNull>
+			 -->
+			 
+			<isNotNull prepend="," property="randomAttrs"> random_attrs = #randomAttrs# </isNotNull>
+			<isNotNull prepend="," property="createDescribe"> create_describe = #createDescribe# </isNotNull>
+			<isNotNull prepend="," property="createTime"> create_time = #createTime# </isNotNull>
+			<isNotNull prepend="," property="otherData"> other_data = #otherData# </isNotNull>
+			<isNotNull prepend="," property="tipinValue"> tipin_value = #tipinValue# </isNotNull>
+			<isNotNull prepend="," property="zhushenLevel">zhushen_level = #zhushenLevel# </isNotNull>
+			<isNotNull prepend="," property="zhushenFailTimes"> zhushen_fail_times = #zhushenFailTimes# </isNotNull>				
+			<isNotNull prepend="," property="chongwuId"> chongwu_id = #chongwuId# </isNotNull>				
+			<isNotNull prepend="," property="shenqiId"> shenqi_id = #shenqiId# </isNotNull>				
+		</dynamic>
+		<include refid="queryByKeyRoleItem"/>
+	</update>
+	
+	<select id="selectSingleRoleItem" resultMap="roleItem">
+		select 
+		id
+		,container_type
+		,is_delete
+		,slot
+		,user_role_id
+		,goods_id
+		,count
+		,current_durability
+		,expire_time
+		
+		,qianhua_level
+		<!-- 
+		,jinyou_level
+		,jianding
+		,gems
+		,open_kong_count
+		 -->
+		,random_attrs 
+		,create_describe
+		,create_time
+		,other_data
+		,tipin_value
+		,zhushen_level
+		,zhushen_fail_times
+		,chongwu_id	
+		,shenqi_id	
+		from role_item 
+		<include refid="queryByKeyRoleItem"/>
+	</select>
+	
+	<select id="selectRecordsCountRoleItem" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(*) from role_item
+		<include refid="queryConditionRoleItem"/>
+	</select>
+	
+	<select id="selectMultiPagingRoleItem" parameterClass="java.util.Map" resultMap="roleItem">
+		select 
+		id
+		,container_type
+		,is_delete
+		,slot
+		,user_role_id
+		,goods_id
+		,count
+		,current_durability
+		,expire_time
+		,qianhua_level
+		<!-- 
+		,jinyou_level
+		,jianding
+		,gems
+		,open_kong_count
+		 -->
+		,random_attrs
+		,create_describe
+		,create_time
+		,other_data
+		,tipin_value
+		,zhushen_level
+		,zhushen_fail_times	
+		,chongwu_id	
+		,shenqi_id	
+		from role_item
+		<include refid="queryConditionRoleItem"/>
+		limit #start#,#pagesize#
+	</select>
+
+	<select id="selectMultiRoleItem" parameterClass="java.util.Map" resultMap="roleItem">
+		select 
+		id
+		,container_type
+		,is_delete
+		,slot
+		,user_role_id
+		,goods_id
+		,count
+		,current_durability
+		,expire_time
+		,qianhua_level
+		<!-- 		
+		,jinyou_level
+		,jianding
+		,gems
+		,open_kong_count
+		 -->
+		,random_attrs
+		,create_describe
+		,create_time
+		,other_data
+		,tipin_value
+		,zhushen_level
+		,zhushen_fail_times
+		,chongwu_id	
+		,shenqi_id	
+		from role_item
+		<include refid="queryConditionRoleItem"/>
+	</select>
+	
+	<select id="selectAllRoleItem" resultMap="roleItem">
+		select 
+		id
+		,container_type
+		,is_delete
+		,slot
+		,user_role_id
+		,goods_id
+		,count
+		,current_durability
+		,expire_time
+		,qianhua_level
+		<!-- 
+		,jinyou_level
+		,jianding
+		,gems
+		,open_kong_count
+		 -->
+		,random_attrs
+		,create_describe
+		,create_time
+		,other_data
+		,tipin_value
+		,zhushen_level
+		,zhushen_fail_times
+		,chongwu_id	 
+		,shenqi_id	
+		from role_item
+	</select>
+	
+	<select id="selectSingleByParamsRoleItem" resultMap="roleItem">
+		select 
+		id
+		,container_type
+		,is_delete
+		,slot
+		,user_role_id
+		,goods_id
+		,count
+		,current_durability
+		,expire_time 
+		,qianhua_level
+		<!-- 
+		,jinyou_level
+		,jianding
+		,gems
+		,open_kong_count
+		 -->
+		,random_attrs
+		,create_describe
+		,create_time
+		,other_data
+		,tipin_value
+		,zhushen_level
+		,zhushen_fail_times		
+		,chongwu_id	 
+		,shenqi_id	
+		from role_item 
+		<include refid="queryConditionRoleItem"/>
+	</select>	
+	
+	<select id="queryAnjinEquipCalcList"  parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		select					
+			t1.level as role_level,
+			count(distinct t1.id) as role_cnt,
+			count(t1.id) as equip_cnt
+		from
+			user_role t1,
+			role_item t2
+		where
+			t1.id = t2.user_role_id
+		and  
+			t2.goods_id in  
+			<iterate property="goodsIds" open="(" close=")" conjunction=",">
+					<![CDATA[#goodsIds[]#]]>
+			</iterate>
+		group by
+			role_level
+	</select>
+	
+	<select id="querySwEquipCalcList"  parameterClass="java.util.Map" resultClass="java.util.HashMap">
+		select
+			t.goods_id as goods_id,
+			sum(t.count) as goods_count
+		from
+			role_item t
+		where
+			t.goods_id in
+			<iterate property="goodsIds" open="(" close=")" conjunction=",">
+					<![CDATA[#goodsIds[]#]]>
+			</iterate>
+		group by
+			goods_id		
+	</select>
+	
+</sqlMap>
+	
