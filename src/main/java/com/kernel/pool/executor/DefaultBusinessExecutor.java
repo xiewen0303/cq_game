@@ -84,7 +84,7 @@ public class DefaultBusinessExecutor implements IBusinessExexutor {
 		private void init(){
 			this.executors = new ExecutorService[size];
 			for(int i=0;i<size;i++){
-				this.executors[i] = Executors.newSingleThreadExecutor(new JunYouThreadFactory(name+"-"+i));
+				this.executors[i] = Executors.newSingleThreadExecutor(new ThreadNameFactory(name+"-"+i));
 			}
 		}
 		

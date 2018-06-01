@@ -13,7 +13,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.junyou.cmd.InnerCmdType;
 import com.junyou.session.SessionConstants;
 import com.junyou.utils.KuafuConfigPropUtil;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 import com.kernel.pool.executor.MsgStatistics;
 import com.kernel.spring.SpringApplicationContext;
 import com.kernel.sync.annotation.Sync;
@@ -24,7 +24,7 @@ public class AsyncWriteManager {
 	
 	private static final String COMPONENT_NAME = "!@#$async_write";
 	
-	private ScheduledExecutorService scheduledExecutor = Executors.newSingleThreadScheduledExecutor(new JunYouThreadFactory("AsyncWrite1-exc-"));
+	private ScheduledExecutorService scheduledExecutor = Executors.newSingleThreadScheduledExecutor(new ThreadNameFactory("AsyncWrite1-exc-"));
 	
 	private long writePeriod = 5 * 60 * 1000;
 	

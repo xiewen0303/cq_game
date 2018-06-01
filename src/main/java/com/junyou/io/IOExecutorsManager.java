@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.junyou.log.ChuanQiLog;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 public class IOExecutorsManager {
 
@@ -18,7 +18,7 @@ public class IOExecutorsManager {
 	static {
 		for (int i = 0; i < 8; i++) {
 			executors[i] = Executors
-					.newSingleThreadExecutor(new JunYouThreadFactory("io-send-"
+					.newSingleThreadExecutor(new ThreadNameFactory("io-send-"
 							+ i + "-"));
 			map.put(executors[i], new AtomicInteger(0));
 		}

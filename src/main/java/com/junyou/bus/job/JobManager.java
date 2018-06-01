@@ -38,7 +38,7 @@ import com.junyou.public_.rank.export.RankExportService;
 import com.junyou.public_.tunnel.PublicMsgQueue;
 import com.junyou.utils.KuafuConfigPropUtil;
 import com.junyou.utils.lottery.Lottery;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 /**
  * 定时器管理 [时间频率的配置在spring-task.xml里统一管理 ]
@@ -93,7 +93,7 @@ public class JobManager {
 	@Autowired
 	private KuafuYunGongExportService kuafuYunGongExportService;
 	
-	private ExecutorService executorService = Executors.newFixedThreadPool(2, new JunYouThreadFactory("spring-job-"));
+	private ExecutorService executorService = Executors.newFixedThreadPool(2, new ThreadNameFactory("spring-job-"));
 	
 	public void fetchDingZhiChenghao(){
 		//跨服务器不执行

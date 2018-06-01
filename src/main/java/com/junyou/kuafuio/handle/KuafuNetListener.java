@@ -13,12 +13,12 @@ import com.junyou.constants.GameConstants;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.utils.ChuanQiConfigUtil;
 import com.junyou.utils.exception.JunYouCustomException;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 public class KuafuNetListener {
 
-	private static EventLoopGroup bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new JunYouThreadFactory("netty-kuafu-boss-"));
-	private static EventLoopGroup workerGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new JunYouThreadFactory("netty-kuafu-worker-"));
+	private static EventLoopGroup bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new ThreadNameFactory("netty-kuafu-boss-"));
+	private static EventLoopGroup workerGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new ThreadNameFactory("netty-kuafu-worker-"));
 	
 	public static void start(){
 		int port = ChuanQiConfigUtil.getClientIoPort();

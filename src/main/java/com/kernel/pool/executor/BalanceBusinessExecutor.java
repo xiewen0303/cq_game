@@ -260,7 +260,7 @@ public class BalanceBusinessExecutor implements IBusinessExexutor {
 		public BalanceExecutor(String name) {
 			this.name = name;
 			
-			executorService = Executors.newSingleThreadExecutor(new JunYouThreadFactory(name));
+			executorService = Executors.newSingleThreadExecutor(new ThreadNameFactory(name));
 			
 		}
 		

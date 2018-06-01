@@ -11,7 +11,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
-import io.netty.util.internal.SystemPropertyUtil;
 
 import com.junyou.cmd.InnerCmdType;
 import com.junyou.constants.GameConstants;
@@ -20,7 +19,7 @@ import com.junyou.kuafumatch.manager.KuafuMatchSourceNetHandler;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.messageswap.ISwapTunnel;
 import com.junyou.utils.ChuanQiConfigUtil;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 import com.kernel.protocol.JavaDecoder;
 import com.kernel.protocol.JavaEncoder;
 import com.kernel.utils.SerializableHelper;
@@ -39,7 +38,7 @@ public class KuafuNetTunnel implements ISwapTunnel {
 	
 	public void initTunnel(final KuafuServerInfo serverInfo) {
 		this.serverInfo = serverInfo;
-		workerGroup = new NioEventLoopGroup(4,new JunYouThreadFactory("netty-kuafu-worker-"+serverInfo.getServerId()+"-"));
+		workerGroup = new NioEventLoopGroup(4,new ThreadNameFactory("netty-kuafu-worker-"+serverInfo.getServerId()+"-"));
 		bootstrap.group(workerGroup).channel(NioSocketChannel.class);
 		final KuafuNetTunnel kuafuNetTunnel = this;
 		bootstrap.handler(new ChannelInitializer<Channel>() {

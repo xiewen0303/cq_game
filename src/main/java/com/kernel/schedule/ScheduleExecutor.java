@@ -5,7 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 /**
  * @description 定时任务执行器 
@@ -14,7 +14,7 @@ import com.kernel.pool.executor.JunYouThreadFactory;
  */
 public class ScheduleExecutor {
 
-	private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor(new JunYouThreadFactory("sche-exc-"));
+	private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor(new ThreadNameFactory("sche-exc-"));
 	
 	/**
 	 * 在指定延迟后执行一个任务

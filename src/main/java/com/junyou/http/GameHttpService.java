@@ -12,7 +12,7 @@ import com.junyou.http.handle.RpcBrokerService;
 import com.junyou.http.processor.GameHttpProcessor;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.utils.ChuanQiConfigUtil;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 import com.kernel.spring.SpringApplicationContext;
 
 /**
@@ -49,8 +49,8 @@ public class GameHttpService {
 		
 		// Configure the server.
 		bootstrap = new ServerBootstrap();
-		bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new JunYouThreadFactory("netty-http-boss-"));
-		workerGroup = new NioEventLoopGroup(2,new JunYouThreadFactory("netty-http-worker-"));
+		bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new ThreadNameFactory("netty-http-boss-"));
+		workerGroup = new NioEventLoopGroup(2,new ThreadNameFactory("netty-http-worker-"));
 		bootstrap.group(bossGroup, workerGroup);
 		bootstrap.channel(NioServerSocketChannel.class);
 		// Set up the event pipeline factory.

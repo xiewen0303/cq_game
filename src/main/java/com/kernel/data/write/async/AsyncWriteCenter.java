@@ -8,7 +8,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.junyou.log.ChuanQiLog;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 /**
  * @description 异步回写控制中心
@@ -17,7 +17,7 @@ import com.kernel.pool.executor.JunYouThreadFactory;
  */
 public class AsyncWriteCenter {
 
-	private static ScheduledExecutorService scheduledExecutor = Executors.newSingleThreadScheduledExecutor(new JunYouThreadFactory("AsyncWrite-exc-"));
+	private static ScheduledExecutorService scheduledExecutor = Executors.newSingleThreadScheduledExecutor(new ThreadNameFactory("AsyncWrite-exc-"));
 	
 	private static LinkedBlockingQueue<AsyncWriteUnit>[] writeQueues;
 	private static final ConcurrentMap<String, LinkedBlockingQueue<AsyncWriteUnit>> ruleMap = new ConcurrentHashMap<String, LinkedBlockingQueue<AsyncWriteUnit>>();

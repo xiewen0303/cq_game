@@ -15,13 +15,13 @@ import com.junyou.constants.GameConstants;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.utils.ChuanQiConfigUtil;
 import com.junyou.utils.exception.JunYouCustomException;
-import com.kernel.pool.executor.JunYouThreadFactory;
+import com.kernel.pool.executor.ThreadNameFactory;
 
 public class NetListener {
 
 	public static final String flashSafePolicy = "<cross-domain-policy><allow-access-from domain=\"*\" to-ports=\"*\"/></cross-domain-policy>\0";
-	private static EventLoopGroup bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new JunYouThreadFactory("netty-game-boss-"));
-	private static EventLoopGroup workerGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new JunYouThreadFactory("netty-game-worker-"));
+	private static EventLoopGroup bossGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new ThreadNameFactory("netty-game-boss-"));
+	private static EventLoopGroup workerGroup = new NioEventLoopGroup(GameConstants.THREAD_NUM,new ThreadNameFactory("netty-game-worker-"));
 
 	
 	public static void start(){
