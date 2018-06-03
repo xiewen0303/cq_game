@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.utils.StartOrStopLog2db;
 import com.junyou.utils.datetime.GameSystemTime;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 
 /**
  * 游戏启动和停机服务抽象类
@@ -13,7 +13,26 @@ import com.junyou.utils.exception.JunYouCustomException;
 public abstract class AbstractGameBootService {
 	
 	enum State {
-		STATE_NEW, STATE_STARTING, STATE_RUNNING, STATE_STOPPING, STATE_TERMINATED
+        /**
+         * 初始值
+         */
+		STATE_NEW,
+        /**
+         * 启动中
+         */
+        STATE_STARTING,
+		/**
+		 * 运行中
+		 */
+		STATE_RUNNING,
+        /**
+         * 停止中
+          */
+        STATE_STOPPING,
+        /**
+         * 终止
+         */
+        STATE_TERMINATED
 	}
 	
 	static class ShutdownThread extends Thread {
@@ -51,11 +70,11 @@ public abstract class AbstractGameBootService {
 		Runtime.getRuntime().addShutdownHook(new ShutdownThread(this));
 	}
 	
-	protected abstract void onStart() throws JunYouCustomException;
+	protected abstract void onStart() throws GameCustomException;
 
-	protected abstract void onRun() throws JunYouCustomException;
+	protected abstract void onRun() throws GameCustomException;
 
-	protected abstract void onStop() throws JunYouCustomException;
+	protected abstract void onStop() throws GameCustomException;
 	
 	public State getState() {
 		return state;
@@ -85,7 +104,7 @@ public abstract class AbstractGameBootService {
 			ChuanQiLog.startLog("{} is running, delta={} ms", getServiceName(), (GameSystemTime.getSystemMillTime() - startTime));
 			onRun();
 			
-			//日志统计第三方服务器启动 TODO
+			//日志统计第三方服务器启动
 			//StartOrStopLog2db.start(args);
 		} catch (Exception e) {
 			ChuanQiLog.startLog("failed to starting service: " + getServiceName(), e);

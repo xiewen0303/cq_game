@@ -10,7 +10,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.junyou.log.ChuanQiLog;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 import com.junyou.utils.xml.XMLUtil;
 
 
@@ -41,16 +41,16 @@ public class ServerInfoConfigManager {
 
 	private Element root;
 	
-	public void load(String fileName) throws JunYouCustomException {
+	public void load(String fileName) throws GameCustomException {
 		String pathBase = ClassLoader.getSystemResource("").getFile()+"/config/" + fileName;
 		File file = new File(pathBase);
 		if (!file.exists()) {
-			throw new JunYouCustomException("config file not found");
+			throw new GameCustomException("config file not found");
 		}
 		try {
 			load(file);
 		} catch (Exception e) {
-			throw new JunYouCustomException("加载配置文件失败: " + file.getAbsolutePath(), e);
+			throw new GameCustomException("加载配置文件失败: " + file.getAbsolutePath(), e);
 		}
 	}
 	
@@ -59,16 +59,16 @@ public class ServerInfoConfigManager {
 
 		File file = new File(pathBase);
 		if (!file.exists()) {
-			throw new JunYouCustomException("config file not found");
+			throw new GameCustomException("config file not found");
 		}
 		try {
 			load(file);
 		} catch (Exception e) {
-			throw new JunYouCustomException("加载配置文件失败: " + file.getAbsolutePath(), e);
+			throw new GameCustomException("加载配置文件失败: " + file.getAbsolutePath(), e);
 		}
 	}
 	
-	public void load(File file) throws JunYouCustomException {
+	public void load(File file) throws GameCustomException {
 		logger.info("加载服务器配置文件开始: {}", file.getAbsolutePath());
 		SAXReader reader = new SAXReader();
 		Document doc;
@@ -79,7 +79,7 @@ public class ServerInfoConfigManager {
 //			gameXmlConfig.setContent(root.asXML());
 			
 		} catch (DocumentException e) {
-			throw new JunYouCustomException("failed to load config file", e);
+			throw new GameCustomException("failed to load config file", e);
 		}
 		
 		parse4GameXmlConfig();
@@ -122,7 +122,7 @@ public class ServerInfoConfigManager {
 			
 			try {
 				gameAppConfig.setUseLog2db(XMLUtil.attributeValueBoolean(gameApp, "isUseLog2db"));
-			} catch (JunYouCustomException e1) {
+			} catch (GameCustomException e1) {
 				ChuanQiLog.debug("isUseLog2db is not exits");
 			}
 			

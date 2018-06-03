@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import com.junyou.bus.serverinfo.entity.ServerInfo;
 import com.junyou.event.StopTimeEvent;
 import com.junyou.event.publish.GamePublishEvent;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 
 /**
  * 生成唯一id的服务 time为服务器第n次重启，seqId 在重启后会重新清零累加
@@ -56,7 +56,7 @@ public class IdFactory {
 		return INSTANCE;
 	}
 	
-	public void init(ServerInfo info) throws JunYouCustomException {
+	public void init(ServerInfo info) throws GameCustomException {
 		if(info != null){
 			this.info = info;
 			int serverId = info.getId();
@@ -65,13 +65,13 @@ public class IdFactory {
 	}
 
 
-	private void init(int worldId, int times) throws JunYouCustomException {
+	private void init(int worldId, int times) throws GameCustomException {
 		logger.info("IdFactory初始化 开始", worldId);
 		if (worldId > MAX_SERVER_ID) {
-			throw new JunYouCustomException(String.format("serverId 超出最大值: %d", worldId));
+			throw new GameCustomException(String.format("serverId 超出最大值: %d", worldId));
 		}
 		if (times > MAX_TIMES) {
-			throw new JunYouCustomException(String.format("times 超出最大值: %d", times));
+			throw new GameCustomException(String.format("times 超出最大值: %d", times));
 		}
 
 		this.worldId = worldId;
@@ -87,12 +87,12 @@ public class IdFactory {
 			try {
 				byte type = field.getByte(null);
 				if (type > MAX_TYPE) {
-					throw new JunYouCustomException(String.format("type 超出最大值: %d", type));
+					throw new GameCustomException(String.format("type 超出最大值: %d", type));
 				}
 				map.put(type, new AtomicInteger(1));
 				ret++;
 			} catch (IllegalArgumentException | IllegalAccessException e) {
-				throw new JunYouCustomException(e.getMessage(), e);
+				throw new GameCustomException(e.getMessage(), e);
 			}
 
 		}
@@ -168,7 +168,7 @@ public class IdFactory {
 //		return stageId & MAX_STAGE_LINE_ID;
 //	}
 
-	public static void main(String[] args) throws JunYouCustomException {
+	public static void main(String[] args) throws GameCustomException {
 //		IdFactory.getInstance().init(1, 20);
 //		for (int i = 1; i < 100; i++) {
 //			System.out.println(IdFactory.getInstance().generateId(ServerIdType.GOODS));

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<easyexecutorconfig>
+	
+	<worker-global-interceptor className="com.junyou.bus.share.interceptor.RoleStateInterceptor" springBean="true"></worker-global-interceptor>
+	<worker-scan>com.junyou.bus</worker-scan>
+
+</easyexecutorconfig>

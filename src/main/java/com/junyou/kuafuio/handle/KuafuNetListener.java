@@ -12,7 +12,7 @@ import java.net.InetSocketAddress;
 import com.junyou.constants.GameConstants;
 import com.junyou.log.ChuanQiLog;
 import com.junyou.utils.ChuanQiConfigUtil;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 import com.kernel.pool.executor.ThreadNameFactory;
 
 public class KuafuNetListener {
@@ -42,7 +42,7 @@ public class KuafuNetListener {
 				ChuanQiLog.info("跨服初始化TCP服务完毕[{}]",port);
 			} catch (Exception e) {
 				ChuanQiLog.info("跨服初始化TCP服务失败");
-				throw new JunYouCustomException(e);
+				throw new GameCustomException(e);
 			}
 			
 		} catch (Exception e) {

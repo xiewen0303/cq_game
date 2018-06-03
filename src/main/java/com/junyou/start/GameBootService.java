@@ -8,7 +8,6 @@ import java.lang.management.RuntimeMXBean;
 
 import com.junyou.analysis.ServerInfoConfig;
 import com.junyou.analysis.ServerInfoConfigManager;
-import com.junyou.bus.platform.utils.PlatformConstants;
 import com.junyou.bus.rfbactivity.configure.export.ReFaBuGxConfigExportService;
 import com.junyou.bus.serverinfo.entity.ServerInfo;
 import com.junyou.bus.serverinfo.export.ServerInfoServiceManager;
@@ -28,7 +27,7 @@ import com.junyou.share.StringAppContextShare;
 import com.junyou.utils.ChuanQiConfigUtil;
 import com.junyou.utils.DownloadServerConfig;
 import com.junyou.utils.KuafuConfigPropUtil;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 import com.kernel.cache.redis.Redis;
 import com.kernel.check.db.CheckEntityTableTool;
 import com.kernel.check.db.JdbcCheckBean;
@@ -49,7 +48,7 @@ public class GameBootService extends AbstractGameBootService {
 	}
 
 	@Override
-	protected void onStart() throws JunYouCustomException {
+	protected void onStart() throws GameCustomException {
 		try{
 			//加载配置
 			ServerInfoConfigManager serverInfoConfigManager = ServerInfoConfigManager.getInstance();
@@ -64,9 +63,9 @@ public class GameBootService extends AbstractGameBootService {
 			//游戏策划配置下载到本地
 			ConfigDownloadManager.getInstance().downloadConfigs(appConfig);
 			if(!ConfigDownloadManager.getInstance().isBoot()){
-				System.out.println("====================================================");
-				System.out.println("=         server boot failed.");
-				System.out.println("====================================================");
+				ChuanQiLog.startLog("====================================================");
+				ChuanQiLog.startLog("=         server boot failed.");
+				ChuanQiLog.startLog("====================================================");
 				return;
 			}
 			
@@ -99,7 +98,7 @@ public class GameBootService extends AbstractGameBootService {
 				
 				Redis redis = new Redis(globalRedisIp, Integer.parseInt(globalRedisPort),globalRedisDb, globalRedisPwd);
 				if(!redis.ping()){
-					throw new JunYouCustomException("redis 启动失败");
+					throw new GameCustomException("redis 启动失败");
 				}
 				GameServerContext.setRedis(redis);
 			}else{
@@ -149,24 +148,17 @@ public class GameBootService extends AbstractGameBootService {
 			rememberPid();
 			
 			//输出成功信息
-			System.out.println();
-			System.out.println("====================================================");
-			System.out.println("=         current server id:" + ChuanQiConfigUtil.getServerId());
-			if(PlatformConstants.isQQ()){
-				System.out.println("=         tencent url:" + ChuanQiConfigUtil.getTencentUrl());
-			}
-			System.out.println("=         server started successfully.");
-			System.out.println("====================================================");
+			ChuanQiLog.startLog("====================================================");
+			ChuanQiLog.startLog("=         current server id:" + ChuanQiConfigUtil.getServerId());
+			ChuanQiLog.startLog("=         server started successfully.");
+			ChuanQiLog.startLog("====================================================");
 
-			
 		}catch (Exception e) {
 			
 			ChuanQiLog.startLog("",e);
-
-			System.out.println();
-			System.out.println("====================================================");
-			System.out.println("=         server started failed.");
-			System.out.println("====================================================");
+			ChuanQiLog.startLog("====================================================");
+			ChuanQiLog.startLog("=         server started failed.");
+			ChuanQiLog.startLog("====================================================");
 			e.printStackTrace();
 			
 			System.exit(0);
@@ -200,12 +192,12 @@ public class GameBootService extends AbstractGameBootService {
 	}
 
 	@Override
-	protected void onRun() throws JunYouCustomException {
+	protected void onRun() throws GameCustomException {
 		// 不需要实现业务
 	}
 
 	@Override
-	protected void onStop() throws JunYouCustomException {
+	protected void onStop() throws GameCustomException {
 		ChuanQiLog.stopLog("onStop stopping {}", this.getServiceName());
 
 		try{

@@ -15,7 +15,7 @@ import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.Tuple;
 
 import com.junyou.log.ChuanQiLog;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 
 public class Redis {
 	/** 默认超时（毫秒） */
@@ -81,7 +81,7 @@ public class Redis {
 			}
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -96,7 +96,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -108,7 +108,7 @@ public class Redis {
 			return result;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -120,7 +120,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -144,7 +144,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -185,7 +185,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -203,7 +203,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -224,7 +224,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -240,7 +240,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -255,7 +255,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -279,7 +279,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 	/**
@@ -297,7 +297,7 @@ public class Redis {
 			return ret!=0L;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -309,7 +309,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -331,7 +331,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -351,7 +351,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -369,7 +369,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -381,7 +381,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -393,7 +393,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -405,7 +405,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -417,7 +417,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -429,7 +429,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -441,7 +441,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -453,7 +453,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -468,7 +468,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -486,7 +486,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -502,7 +502,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -525,7 +525,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -550,7 +550,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -572,7 +572,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -595,7 +595,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptyList();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -619,7 +619,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptySet();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -641,7 +641,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptyList();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -663,7 +663,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -684,7 +684,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -699,7 +699,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -715,7 +715,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -739,7 +739,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptyMap();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -763,7 +763,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptyMap();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -788,7 +788,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -813,7 +813,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -836,7 +836,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -855,7 +855,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -877,7 +877,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptyList();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -890,7 +890,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -910,7 +910,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -931,7 +931,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -951,7 +951,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -971,7 +971,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -983,7 +983,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -995,7 +995,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1007,7 +1007,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1019,7 +1019,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1046,7 +1046,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 	public String save() {
@@ -1057,7 +1057,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 	/**
@@ -1076,7 +1076,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptySet();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1094,7 +1094,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1111,7 +1111,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1126,7 +1126,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1141,7 +1141,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1158,7 +1158,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1186,7 +1186,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1199,7 +1199,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1222,7 +1222,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1244,7 +1244,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1267,7 +1267,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptySet();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1291,7 +1291,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptySet();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1313,7 +1313,7 @@ public class Redis {
 		} catch (Exception e) {
 			ret = Collections.emptySet();
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1334,7 +1334,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1354,7 +1354,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1372,7 +1372,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1396,7 +1396,7 @@ public class Redis {
 			return ret.longValue();
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1418,7 +1418,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1438,7 +1438,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 		return ret;
 	}
@@ -1459,7 +1459,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1476,7 +1476,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1493,7 +1493,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1512,7 +1512,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1529,7 +1529,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 	
@@ -1541,7 +1541,7 @@ public class Redis {
 			return (long) ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1561,7 +1561,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1578,7 +1578,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1598,7 +1598,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1615,7 +1615,7 @@ public class Redis {
 			pool.returnResource(j);
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1632,7 +1632,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1645,7 +1645,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 
@@ -1666,7 +1666,7 @@ public class Redis {
 			return ret;
 		} catch (Exception e) {
 			pool.returnBrokenResource(j);
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 	}
 

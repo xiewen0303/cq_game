@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.junyou.context.GameServerContext;
 import com.junyou.log.ChuanQiLog;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 
 /**
  * 客户端安全端口
@@ -55,7 +55,7 @@ public class SafeServiceListener {
 				ChuanQiLog.info("safe TCP服务完毕{}", safePort);
 			} catch (Exception e) {
 				ChuanQiLog.info("safe TCP服务失败");
-				throw new JunYouCustomException(e);
+				throw new GameCustomException(e);
 			}
 		}else{
 			LOG.error("no need to start flash safe service.");

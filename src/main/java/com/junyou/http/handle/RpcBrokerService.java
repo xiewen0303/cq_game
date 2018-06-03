@@ -10,7 +10,7 @@ import com.junyou.http.key.HttpKeyType;
 import com.junyou.http.msg.HttpCallBackMsg;
 import com.junyou.http.processor.GameHttpProcessor;
 import com.junyou.log.ChuanQiLog;
-import com.junyou.utils.exception.JunYouCustomException;
+import com.junyou.utils.exception.GameCustomException;
 
 /**
  * @author DaoZheng Yuan
@@ -30,7 +30,7 @@ public class RpcBrokerService {
 		private static final RpcBrokerService INSTANCE = new RpcBrokerService();
 	}
 	
-	public void initialize(GameHttpProcessor processor) throws JunYouCustomException{
+	public void initialize(GameHttpProcessor processor) throws GameCustomException {
 		
 		ChuanQiLog.debug("================注册Http监听方法开始");
 		cachedMethod.putAll(registerMethods(processor));
@@ -41,9 +41,9 @@ public class RpcBrokerService {
 	 * 注册方法
 	 * @param instance
 	 * @return
-	 * @throws JunYouCustomException
+	 * @throws GameCustomException
 	 */
-	private Map<String, MethodWrapper> registerMethods(Object instance) throws JunYouCustomException {
+	private Map<String, MethodWrapper> registerMethods(Object instance) throws GameCustomException {
 		Map<String, MethodWrapper> cachedMethod = new HashMap<String, MethodWrapper>();
 		Method[] methods = instance.getClass().getDeclaredMethods();
 		for (Method method : methods) {
@@ -68,7 +68,7 @@ public class RpcBrokerService {
 	 * @param parameter null，表示是无参数的调用
 	 * @return
 	 */
-	public HttpCallBackMsg call(MethodWrapper wrapper, Object parameter) throws JunYouCustomException {
+	public HttpCallBackMsg call(MethodWrapper wrapper, Object parameter) throws GameCustomException {
 		ChuanQiLog.debug("调用======="+wrapper.getMethod().getName());
 		HttpCallBackMsg returnValue = null;
 		try {
@@ -81,7 +81,7 @@ public class RpcBrokerService {
 			returnValue.setPtServerId(GameServerContext.getGameAppConfig().getPlatformServerId());
 			returnValue.setPtName(GameServerContext.getGameAppConfig().getPlatformId());
 		} catch (Exception e) {
-			throw new JunYouCustomException(e);
+			throw new GameCustomException(e);
 		}
 
 		return returnValue;
